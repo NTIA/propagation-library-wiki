@@ -1,4 +1,4 @@
-# NTIA/ITS Propagation Library Wiki
+# ITS Propagation Library Wiki
 
 [![Site Build and Deploy Status][gh-actions-badge]][gh-actions-link]
 
@@ -6,7 +6,7 @@
 [gh-actions-link]: https://ntia.github.io/propagation-library-wiki
 
 This repository hosts wiki pages for the suite of softwares comprising the
-NTIA/ITS Propagation Library. The wiki is generated with [Quarto](https://quarto.org/)
+ITS Propagation Library. The wiki is generated with [Quarto](https://quarto.org/)
 and hosted using [GitHub Pages](https://pages.github.com/). The live version of the
 wiki is available [ntia.github.io/propagation-library-wiki](https://ntia.github.io/propagation-library-wiki)
 
@@ -17,5 +17,5 @@ to get started.
 
 ## Contact
 
-For questions about this repository, or about the NTIA/ITS Propagation Library,
-contact <code@ntia.gov>.
+For questions about this repository, or about the ITS Propagation Library, contact
+<code@ntia.gov>.

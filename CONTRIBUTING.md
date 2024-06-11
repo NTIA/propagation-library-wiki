@@ -1,4 +1,4 @@
-# NTIA/ITS Propagation Library Wiki Contribution Guide
+# ITS Propagation Library Wiki Contribution Guide
 
 Thank you for your interest in contributing to this wiki. This document was adapted
 from [GitHub's own](https://github.com/github/docs/blob/main/.github/CONTRIBUTING.md),
@@ -9,7 +9,7 @@ an issue, creating a PR, reviewing, and merging the PR. The workflow we recommen
 and describe here follows from best and common practices in the Git and GitHub
 ecosystems. We aim to leverage this workflow, especially the elements of code review
 and approval, to enable open source development of a robust, high quality wiki for
-the NTIA/ITS Propagation Library.
+the ITS Propagation Library.
 
 ## Background for new contributors
 
