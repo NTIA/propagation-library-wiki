@@ -1,0 +1,6 @@
+format:
+  html:
+    code-links:
+      - text: GitHub Repository
+        icon: github
+        href: https://github.com/NTIA/ITM

@@ -1,7 +1,11 @@
 ---
 title: "ITU-R P.2108 - C#/.NET"
 ---
+::: {.callout-warning}
+## Page Under Construction
 
+This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
+:::
 ## Getting Started
 
 To begin, install the NuGet package, `P2108`, from the NTIA NuGet repository

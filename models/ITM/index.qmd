@@ -1,7 +1,11 @@
 ---
-title: "Irregular Terrain Model (ITM) - Overview"
+title: Irregular Terrain Model (ITM)
 ---
+::: {.callout-warning}
+## Page Under Construction
 
+This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
+:::
 A description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the [public GitHub repo](https://github.com/NTIA/itm).
 
 ## Getting Started
