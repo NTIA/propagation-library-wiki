@@ -144,14 +144,14 @@
     "href": "models/ITM-MidBand/index.html",
     "title": "ITM-MidBand",
     "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated,incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nA description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the public GitHub repo."
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nA description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the public GitHub repo."
   },
   {
     "objectID": "models/ITM-MidBand/index.html#getting-started",
     "href": "models/ITM-MidBand/index.html#getting-started",
     "title": "ITM-MidBand",
     "section": "Getting Started",
-    "text": "Getting Started\nLanguage-specific information on getting started using the ITM library can be found below at the corresponding page.\nInformation: C# | MATLAB | Python"
+    "text": "Getting Started\nLanguage-specific information on getting started using this library, including installation instructions, is available by following these links:\nC++ C#/.NET MATLAB Python"
   },
   {
     "objectID": "models/ITM-MidBand/index.html#point-to-point-basic-transmission-loss-tls",
@@ -529,7 +529,7 @@
     "href": "models/ITM/index.html#getting-started",
     "title": "Irregular Terrain Model (ITM)",
     "section": "Getting Started",
-    "text": "Getting Started\nLanguage-specific information on getting started using the ITM library can be found below at the corresponding page.\nInformation: C# | MATLAB | Python"
+    "text": "Getting Started\nLanguage-specific information on getting started using this library, including installation instructions, is available by following these links:\nC++ C#/.NET MATLAB Python"
   },
   {
     "objectID": "models/ITM/index.html#point-to-point-basic-transmission-loss-tls",
@@ -732,34 +732,27 @@
     "href": "models/P2108/index.html",
     "title": "ITU-R P.2108",
     "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nRecommendation ITU-R P.2108 (Prediction of clutter loss) provides three methods to predict terminal clutter loss. Two of these methods are for terrestrial paths and one if for aeronautical paths. Frequencies vary depending on the clutter model."
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nRecommendation ITU-R P.2108 Prediction of clutter loss contains three methods for the prediction of clutter loss: the Height Gain Terminal Correction Model, Terrestrial Statistical Model, and Aeronautical Statistical Model [1, Secs. 3.1–3.3]. This software implements each of the three models."
   },
   {
     "objectID": "models/P2108/index.html#getting-started",
     "href": "models/P2108/index.html#getting-started",
     "title": "ITU-R P.2108",
     "section": "Getting Started",
-    "text": "Getting Started\nLanguage-specific information on getting started using the P.218 library can be found below at the corresponding page.\nInformation: C# | MATLAB | Python"
+    "text": "Getting Started\nLanguage-specific information on getting started using this library, including installation instructions, is available by following these links:\nC++ C#/.NET MATLAB Python"
   },
   {
-    "objectID": "models/P2108/index.html#height-gain-terminal-correction-model",
-    "href": "models/P2108/index.html#height-gain-terminal-correction-model",
+    "objectID": "models/P2108/index.html#model-selection",
+    "href": "models/P2108/index.html#model-selection",
     "title": "ITU-R P.2108",
-    "section": "Height Gain Terminal Correction Model",
-    "text": "Height Gain Terminal Correction Model\nThis method, gives the median of losses due to different terminal surroundings. The possible mechanisms include obstruction loss and reflections due to clutter objects at the representative height, and scattering and reflection from the ground and smaller clutter objects. When using a computer implementation, with terrain profile extracted from a digital terrain model, and with the terminal surroundings defined by a clutter category, it is not practicable to identify individual mechanisms. The method used here distinguishes between two general cases: for woodland and urban categories. It is assumed that the dominant mechanism is diffraction over clutter. For other categories, it is assumed that reflection or scattering dominates.\nThis model in valid for frequencies from 0.03 to 3 GHz.\nThe model supports the following clutter types and their respective input value. Note that for language-specific code, enumerations and/or constants are provided for easy-of-use.\n\n\n\nClutter Type\nValue\n\n\n\n\nWater/sea\n1\n\n\nOpen/rural\n2\n\n\nSuburban\n3\n\n\nUrban\n4\n\n\nTrees/forest\n5\n\n\nDense urban\n6\n\n\n\nTwo parameters additional allow that define the clutter at the terminal allow for either path-specific definitions as well as provide default values.\n\nStreet Width\nThe parameter w_s__meter defines the width of the street at the location of the terminal in clutter. If site-specific information is not available, the value of 27 should be used.\n\n\nRepresentative Clutter Height\nThe parameter R__meter defines the representative clutter height at the location of the terminal in clutter. Default values for each clutter type are listed in the below table:\n\n\n\nClutter Type\nR__meter\n\n\n\n\nWater/sea\n10\n\n\nOpen/rural\n10\n\n\nSuburban\n10\n\n\nUrban\n15\n\n\nTrees/forest\n15\n\n\nDense urban\n20\n\n\n\nExample: C# | MATLAB | Python"
+    "section": "Model Selection",
+    "text": "Model Selection\nSelection and use of the appropriate model is required to obtain meaningful outputs. Refer to Table 1 from [1, Sec. 2] for a summary of the applicable scenarios for each model. Further details about the applicability and assumptions of each of the P.2108 models are available in the sections of the Recommendation in which they are described."
   },
   {
-    "objectID": "models/P2108/index.html#terrestrial-statistical-model",
-    "href": "models/P2108/index.html#terrestrial-statistical-model",
+    "objectID": "models/P2108/index.html#functions",
+    "href": "models/P2108/index.html#functions",
     "title": "ITU-R P.2108",
-    "section": "Terrestrial Statistical Model",
-    "text": "Terrestrial Statistical Model\nThis model gives equations that gives a statistical distribution of clutter loss. The model can be applied for urban and suburban clutter loss modelling. Validity of the model is as follows:\n\nFrequency range: 2 to 67 GHz\nMinimum path length:\n\n0.25 km (for the correction to be applied at only one end of the path)\n1.0 km (for the correction to be applied at both ends of the path)\n\nPercentage locations range: 0 &lt; p &lt; 100\n\nExample: C# | MATLAB | Python"
-  },
-  {
-    "objectID": "models/P2108/index.html#aeronautical-statistical-model",
-    "href": "models/P2108/index.html#aeronautical-statistical-model",
-    "title": "ITU-R P.2108",
-    "section": "Aeronautical Statistical Model",
-    "text": "Aeronautical Statistical Model\nThis model provides equations to calculate the statistical distribution of clutter loss where one end of the interference path is within man-made clutter, and the other is a satellite, aeroplane, or other platform above the surface of the Earth. Validity of the model is as follows:\n\nFrequency range: 10 to 100 GHz\nElevation angle range: 0 to 90 degrees\nPercentage locations range: 0 &lt; p &lt; 100\n\nExample: C# | MATLAB | Python"
+    "section": "Functions",
+    "text": "Functions\n\nHeight Gain Terminal Correction Model\nThe height gain terminal correction model is described in [1, Sec. 3.1]. This model calculates an additional loss, \\(A_h\\), which can be added to the basic transmission loss of a path calculated above the clutter. Therefore basic transmission loss should be calculated to/from the height of the representative clutter height used. This model can be applied to both transmitting and receiving ends of the path.\n\n\n\nTable 1: Inputs for the height gain terminal correction model\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nType\nUnits\nLimits\nDescription\n\n\n\n\nf__ghz\ndouble\nGHz\n\\(0.3 \\leq f \\leq 3\\)\nFrequency\n\n\nh__meter\ndouble\nmeter\n\\(0 \\leq h\\)\nAntenna height\n\n\nw_s__meter\ndouble\nmeter\n\\(0 &lt; w_s\\)\nStreet width\n\n\nR__meter\ndouble\nmeter\n\\(0 &lt; R\\)\nRepresentative clutter height\n\n\nclutter_type\nClutterType enum\nN/A\nenum\nSee Table 2\n\n\n\n\n\n\nThe values for \\(w_s\\) and \\(R\\) should be set based upon local information. If local information is not available, [1, Sec. 3.1.1] defines appropriate default values: \\(w_s=27\\) and a set of values for \\(R\\) based on the clutter type, which are reproduced in Table 2. This table also provides the integer values mapped to each clutter type in the enumeration objects are provided by the software for ease of use.\n\n\n\nTable 2: Clutter types for the [1, Sec. 3.1] model\n\n\n\n\n\nClutter Type\nEnum Value\nDefault \\(R\\) (m)\n\n\n\n\nWater/sea\n1\n10\n\n\nOpen/rural\n2\n10\n\n\nSuburban\n3\n10\n\n\nUrban\n4\n15\n\n\nTrees/forest\n5\n15\n\n\nDense urban\n6\n20\n\n\n\n\n\n\n\nExamples\nLanguage-specific code examples showing the use of this function are available by following these links:\nC++ C#/.NET MATLAB Python\n\n\n\nTerrestrial Statistical Model\nThe terrestrial statistical model is described in [1, Sec. 3.2]. The model can be applied for urban and suburban environments provided terminal heights are well below the clutter height. The correction produced by this model can be applied at one terminal, or, if the path length is at least 1 km, at both terminals.\nThis model calculates an additional loss, \\(L_{ctt}\\), which can be added to the transmission loss or basic transmission loss. As this is a statistical model, the term \\(L_{ctt}\\) is the clutter loss not exceeded for \\(p\\) percent of locations for a terrestial path of length \\(d\\). If the transmission loss or basic transmission loss has been calculated using a model that inherently accounts for clutter over the entire path then this model should not be applied.\n\n\n\nTable 3: Inputs for the terrestrial statistical model\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nType\nUnits\nLimits\nDescription\n\n\n\n\nf__ghz\ndouble\nGHz\n\\(2 \\leq f \\leq 67\\)\nFrequency\n\n\nd__km\ndouble\nkm\n\\(0.25 \\leq d\\)\nPath distance\n\n\np\ndouble\n%\n\\(0 &lt; p &lt; 100\\)\nPercentage of locations at which predicted clutter loss will not be exceeded\n\n\n\n\n\n\n\nExamples\nLanguage-specific code examples showing the use of this function are available by following these links:\nC++ C#/.NET MATLAB Python\n\n\n\nAeronautical Statistical Model\nThe Earth-space and aeronautical statistical clutter loss model is described in [1, Sec. 3.3]. This model is applicable when one terminal is within man-made clutter and the other is a satellite, aeroplane, or other platform above the surface of the Earth. The model is applicable to urban and suburban clutter environments.\nThis model calculates an additional loss, \\(L_{ces}\\), which can be added to the basic transmission loss of a path calculated. As this is a statistical model, the term \\(L_{ces}\\) is the clutter loss not exceeded for \\(p\\) percent of locations.\nThe method used to develop this model is described in [2].\n\n\n\nTable 4: Inputs for the aeronautical statistical model\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nType\nUnits\nLimits\nDescription\n\n\n\n\nf__ghz\ndouble\nGHz\n\\(10 \\leq f \\leq 100\\)\nFrequency\n\n\ntheta__deg\ndouble\ndegree\n\\(0 \\leq \\theta \\leq 90\\)\nElevation angle\n\n\np\ndouble\n%\n\\(0 &lt; p &lt; 100\\)\nPercentage of locations at which predicted clutter loss will not be exceeded\n\n\n\n\n\n\n\nExamples\nLanguage-specific code examples showing the use of this function are available by following these links:\nC++ C#/.NET MATLAB Python"
   }
 ]

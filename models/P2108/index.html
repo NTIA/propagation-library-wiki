@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -67,6 +87,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -134,18 +183,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#model-selection" id="toc-model-selection" class="nav-link" data-scroll-target="#model-selection">Model Selection</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
-  <li><a href="#height-gain-terminal-correction-model" id="toc-height-gain-terminal-correction-model" class="nav-link" data-scroll-target="#height-gain-terminal-correction-model">Height Gain Terminal Correction Model</a>
-  <ul class="collapse">
-  <li><a href="#street-width" id="toc-street-width" class="nav-link" data-scroll-target="#street-width">Street Width</a></li>
-  <li><a href="#representative-clutter-height" id="toc-representative-clutter-height" class="nav-link" data-scroll-target="#representative-clutter-height">Representative Clutter Height</a></li>
-  </ul></li>
+  <li><a href="#height-gain-terminal-correction-model" id="toc-height-gain-terminal-correction-model" class="nav-link" data-scroll-target="#height-gain-terminal-correction-model">Height Gain Terminal Correction Model</a></li>
   <li><a href="#terrestrial-statistical-model" id="toc-terrestrial-statistical-model" class="nav-link" data-scroll-target="#terrestrial-statistical-model">Terrestrial Statistical Model</a></li>
   <li><a href="#aeronautical-statistical-model" id="toc-aeronautical-statistical-model" class="nav-link" data-scroll-target="#aeronautical-statistical-model">Aeronautical Statistical Model</a></li>
   </ul></li>
@@ -187,127 +233,276 @@ Page Under Construction
 <p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
 </div>
 </div>
-<p>Recommendation ITU-R P.2108 (Prediction of clutter loss) provides three methods to predict terminal clutter loss. Two of these methods are for terrestrial paths and one if for aeronautical paths. Frequencies vary depending on the clutter model.</p>
+<p>Recommendation ITU-R P.2108 <em>Prediction of clutter loss</em> contains three methods for the prediction of clutter loss: the <a href="#height-gain-terminal-correction-model">Height Gain Terminal Correction Model</a>, <a href="#terrestrial-statistical-model">Terrestrial Statistical Model</a>, and <a href="#aeronautical-statistical-model">Aeronautical Statistical Model</a> <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Secs. 3.1–3.3]</a></span>. This software implements each of the three models.</p>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<p>Language-specific information on getting started using the P.218 library can be found below at the corresponding page.</p>
-<p>Information: <a href="P2108-(.NET)#getting-started">C#</a> | <a href="P2108-(MATLAB)#overview">MATLAB</a> | <a href="P2108-(Python)#getting-started">Python</a></p>
+<p>Language-specific information on getting started using this library, including installation instructions, is available by following these links:</p>
+<p><a href="../../models/P2108/cpp.html#getting-started" class="btn btn-outline-primary" role="button">C++</a> <a href="../../models/P2108/dotnet.html#getting-started" class="btn btn-outline-primary" role="button">C#/.NET</a> <a href="../../models/P2108/matlab.html#getting-started" class="btn btn-outline-primary" role="button">MATLAB</a> <a href="../../models/P2108/python.html#getting-started" class="btn btn-outline-primary" role="button">Python</a></p>
 </section>
-<section id="functions" class="level1">
-<h1>Functions</h1>
-<section id="height-gain-terminal-correction-model" class="level2">
-<h2 class="anchored" data-anchor-id="height-gain-terminal-correction-model">Height Gain Terminal Correction Model</h2>
-<p>This method, gives the median of losses due to different terminal surroundings. The possible mechanisms include obstruction loss and reflections due to clutter objects at the representative height, and scattering and reflection from the ground and smaller clutter objects. When using a computer implementation, with terrain profile extracted from a digital terrain model, and with the terminal surroundings defined by a clutter category, it is not practicable to identify individual mechanisms. The method used here distinguishes between two general cases: for woodland and urban categories. It is assumed that the dominant mechanism is diffraction over clutter. For other categories, it is assumed that reflection or scattering dominates.</p>
-<p>This model in valid for frequencies from 0.03 to 3 GHz.</p>
-<p>The model supports the following clutter types and their respective input value. Note that for language-specific code, enumerations and/or constants are provided for easy-of-use.</p>
+<section id="model-selection" class="level2">
+<h2 class="anchored" data-anchor-id="model-selection">Model Selection</h2>
+<p>Selection and use of the appropriate model is required to obtain meaningful outputs. Refer to Table 1 from <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 2]</a></span> for a summary of the applicable scenarios for each model. Further details about the applicability and assumptions of each of the P.2108 models are available in the sections of the Recommendation in which they are described.</p>
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<section id="height-gain-terminal-correction-model" class="level3">
+<h3 class="anchored" data-anchor-id="height-gain-terminal-correction-model">Height Gain Terminal Correction Model</h3>
+<p>The height gain terminal correction model is described in <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 3.1]</a></span>. This model calculates an additional loss, <span class="math inline">\(A_h\)</span>, which can be added to the basic transmission loss of a path calculated above the clutter. Therefore basic transmission loss should be calculated to/from the height of the representative clutter height used. This model can be applied to both transmitting and receiving ends of the path.</p>
+<div id="tbl-p2108-3p1-inputs" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-p2108-3p1-inputs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Inputs for the height gain terminal correction model
+</figcaption>
+<div aria-describedby="tbl-p2108-3p1-inputs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 24%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Type</th>
+<th>Units</th>
+<th>Limits</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>f__ghz</code></td>
+<td>double</td>
+<td>GHz</td>
+<td><span class="math inline">\(0.3 \leq f \leq 3\)</span></td>
+<td>Frequency</td>
+</tr>
+<tr class="even">
+<td><code>h__meter</code></td>
+<td>double</td>
+<td>meter</td>
+<td><span class="math inline">\(0 \leq h\)</span></td>
+<td>Antenna height</td>
+</tr>
+<tr class="odd">
+<td><code>w_s__meter</code></td>
+<td>double</td>
+<td>meter</td>
+<td><span class="math inline">\(0 &lt; w_s\)</span></td>
+<td>Street width</td>
+</tr>
+<tr class="even">
+<td><code>R__meter</code></td>
+<td>double</td>
+<td>meter</td>
+<td><span class="math inline">\(0 &lt; R\)</span></td>
+<td>Representative clutter height</td>
+</tr>
+<tr class="odd">
+<td><code>clutter_type</code></td>
+<td><code>ClutterType</code> enum</td>
+<td>N/A</td>
+<td>enum</td>
+<td>See <a href="#tbl-p2108-3p1-clutter-types" class="quarto-xref">Table&nbsp;2</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The values for <span class="math inline">\(w_s\)</span> and <span class="math inline">\(R\)</span> should be set based upon local information. If local information is not available, <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 3.1.1]</a></span> defines appropriate default values: <span class="math inline">\(w_s=27\)</span> and a set of values for <span class="math inline">\(R\)</span> based on the clutter type, which are reproduced in <a href="#tbl-p2108-3p1-clutter-types" class="quarto-xref">Table&nbsp;2</a>. This table also provides the integer values mapped to each clutter type in the enumeration objects are provided by the software for ease of use.</p>
+<div id="tbl-p2108-3p1-clutter-types" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-p2108-3p1-clutter-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Clutter types for the <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 3.1]</a></span> model
+</figcaption>
+<div aria-describedby="tbl-p2108-3p1-clutter-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Clutter Type</th>
-<th style="text-align: center;">Value</th>
+<th style="text-align: center;">Enum Value</th>
+<th>Default <span class="math inline">\(R\)</span> (m)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Water/sea</td>
 <td style="text-align: center;">1</td>
+<td>10</td>
 </tr>
 <tr class="even">
 <td>Open/rural</td>
 <td style="text-align: center;">2</td>
+<td>10</td>
 </tr>
 <tr class="odd">
 <td>Suburban</td>
 <td style="text-align: center;">3</td>
+<td>10</td>
 </tr>
 <tr class="even">
 <td>Urban</td>
 <td style="text-align: center;">4</td>
+<td>15</td>
 </tr>
 <tr class="odd">
 <td>Trees/forest</td>
 <td style="text-align: center;">5</td>
+<td>15</td>
 </tr>
 <tr class="even">
 <td>Dense urban</td>
 <td style="text-align: center;">6</td>
+<td>20</td>
 </tr>
 </tbody>
 </table>
-<p>Two parameters additional allow that define the clutter at the terminal allow for either path-specific definitions as well as provide default values.</p>
-<section id="street-width" class="level3">
-<h3 class="anchored" data-anchor-id="street-width">Street Width</h3>
-<p>The parameter <code>w_s__meter</code> defines the width of the street at the location of the terminal in clutter. If site-specific information is not available, the value of 27 should be used.</p>
+</div>
+</figure>
+</div>
+<section id="examples" class="level4">
+<h4 class="anchored" data-anchor-id="examples">Examples</h4>
+<p>Language-specific code examples showing the use of this function are available by following these links:</p>
+<p><a href="../../models/P2108/cpp.html#height-gain-terminal-correction" class="btn btn-outline-primary" role="button">C++</a> <a href="../../models/P2108/dotnet.html#height-gain-terminal-correction" class="btn btn-outline-primary" role="button">C#/.NET</a> <a href="../../models/P2108/matlab.html#height-gain-terminal-correction" class="btn btn-outline-primary" role="button">MATLAB</a> <a href="../../models/P2108/python.html#height-gain-terminal-correction" class="btn btn-outline-primary" role="button">Python</a></p>
 </section>
-<section id="representative-clutter-height" class="level3">
-<h3 class="anchored" data-anchor-id="representative-clutter-height">Representative Clutter Height</h3>
-<p>The parameter <code>R__meter</code> defines the representative clutter height at the location of the terminal in clutter. Default values for each clutter type are listed in the below table:</p>
+</section>
+<section id="terrestrial-statistical-model" class="level3">
+<h3 class="anchored" data-anchor-id="terrestrial-statistical-model">Terrestrial Statistical Model</h3>
+<p>The terrestrial statistical model is described in <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 3.2]</a></span>. The model can be applied for urban and suburban environments provided terminal heights are well below the clutter height. The correction produced by this model can be applied at one terminal, or, if the path length is at least 1 km, at both terminals.</p>
+<p>This model calculates an additional loss, <span class="math inline">\(L_{ctt}\)</span>, which can be added to the transmission loss or basic transmission loss. As this is a statistical model, the term <span class="math inline">\(L_{ctt}\)</span> is the clutter loss not exceeded for <span class="math inline">\(p\)</span> percent of locations for a terrestial path of length <span class="math inline">\(d\)</span>. If the transmission loss or basic transmission loss has been calculated using a model that inherently accounts for clutter over the entire path then this model should not be applied.</p>
+<div id="tbl-p2108-3p2-inputs" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-p2108-3p2-inputs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Inputs for the terrestrial statistical model
+</figcaption>
+<div aria-describedby="tbl-p2108-3p2-inputs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 33%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Clutter Type</th>
-<th style="text-align: center;"><code>R__meter</code></th>
+<th>Variable</th>
+<th>Type</th>
+<th>Units</th>
+<th>Limits</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Water/sea</td>
-<td style="text-align: center;">10</td>
+<td><code>f__ghz</code></td>
+<td>double</td>
+<td>GHz</td>
+<td><span class="math inline">\(2 \leq f \leq 67\)</span></td>
+<td>Frequency</td>
 </tr>
 <tr class="even">
-<td>Open/rural</td>
-<td style="text-align: center;">10</td>
+<td><code>d__km</code></td>
+<td>double</td>
+<td>km</td>
+<td><span class="math inline">\(0.25 \leq d\)</span></td>
+<td>Path distance</td>
 </tr>
 <tr class="odd">
-<td>Suburban</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="even">
-<td>Urban</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="odd">
-<td>Trees/forest</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="even">
-<td>Dense urban</td>
-<td style="text-align: center;">20</td>
+<td><code>p</code></td>
+<td>double</td>
+<td>%</td>
+<td><span class="math inline">\(0 &lt; p &lt; 100\)</span></td>
+<td>Percentage of locations at which predicted clutter loss will not be exceeded</td>
 </tr>
 </tbody>
 </table>
-<p>Example: <a href="P2108-(.NET)#height-gain-terminal-correction-model">C#</a> | <a href="P2108-(MATLAB)#height-gain-terminal-correction-model">MATLAB</a> | <a href="P2108-(Python)#height-gain-terminal-correction-model">Python</a></p>
+</div>
+</figure>
+</div>
+<section id="examples-1" class="level4">
+<h4 class="anchored" data-anchor-id="examples-1">Examples</h4>
+<p>Language-specific code examples showing the use of this function are available by following these links:</p>
+<p><a href="../../models/P2108/cpp.html#terrestrial-statistical-model" class="btn btn-outline-primary" role="button">C++</a> <a href="../../models/P2108/dotnet.html#terrestrial-statistical-model" class="btn btn-outline-primary" role="button">C#/.NET</a> <a href="../../models/P2108/matlab.html#terrestrial-statistical-model" class="btn btn-outline-primary" role="button">MATLAB</a> <a href="../../models/P2108/python.html#terrestrial-statistical-model" class="btn btn-outline-primary" role="button">Python</a></p>
 </section>
 </section>
-<section id="terrestrial-statistical-model" class="level2">
-<h2 class="anchored" data-anchor-id="terrestrial-statistical-model">Terrestrial Statistical Model</h2>
-<p>This model gives equations that gives a statistical distribution of clutter loss. The model can be applied for urban and suburban clutter loss modelling. Validity of the model is as follows:</p>
-<ul>
-<li>Frequency range: 2 to 67 GHz</li>
-<li>Minimum path length:
-<ul>
-<li>0.25 km (for the correction to be applied at only one end of the path)</li>
-<li>1.0 km (for the correction to be applied at both ends of the path)</li>
-</ul></li>
-<li>Percentage locations range: 0 &lt; <code>p</code> &lt; 100</li>
-</ul>
-<p>Example: <a href="P2108-(.NET)#terrestrial-statistical-model">C#</a> | <a href="P2108-(MATLAB)#terrestrial-statistical-model">MATLAB</a> | <a href="P2108-(Python)#terrestrial-statistical-model">Python</a></p>
-</section>
-<section id="aeronautical-statistical-model" class="level2">
-<h2 class="anchored" data-anchor-id="aeronautical-statistical-model">Aeronautical Statistical Model</h2>
-<p>This model provides equations to calculate the statistical distribution of clutter loss where one end of the interference path is within man-made clutter, and the other is a satellite, aeroplane, or other platform above the surface of the Earth. Validity of the model is as follows:</p>
-<ul>
-<li>Frequency range: 10 to 100 GHz</li>
-<li>Elevation angle range: 0 to 90 degrees</li>
-<li>Percentage locations range: 0 &lt; <code>p</code> &lt; 100</li>
-</ul>
-<p>Example: <a href="P2108-(.NET)#aeronautical-statistical-model">C#</a> | <a href="P2108-(MATLAB)#aeronautical-statistical-model">MATLAB</a> | <a href="P2108-(Python)#aeronautical-statistical-model">Python</a></p>
+<section id="aeronautical-statistical-model" class="level3">
+<h3 class="anchored" data-anchor-id="aeronautical-statistical-model">Aeronautical Statistical Model</h3>
+<p>The Earth-space and aeronautical statistical clutter loss model is described in <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 3.3]</a></span>. This model is applicable when one terminal is within man-made clutter and the other is a satellite, aeroplane, or other platform above the surface of the Earth. The model is applicable to urban and suburban clutter environments.</p>
+<p>This model calculates an additional loss, <span class="math inline">\(L_{ces}\)</span>, which can be added to the basic transmission loss of a path calculated. As this is a statistical model, the term <span class="math inline">\(L_{ces}\)</span> is the clutter loss not exceeded for <span class="math inline">\(p\)</span> percent of locations.</p>
+<p>The method used to develop this model is described in <span class="citation" data-cites="p2402-0"><a href="#ref-p2402-0" role="doc-biblioref">[2]</a></span>.</p>
+<div id="tbl-p2108-3p3-inputs" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-p2108-3p3-inputs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Inputs for the aeronautical statistical model
+</figcaption>
+<div aria-describedby="tbl-p2108-3p3-inputs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 34%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Type</th>
+<th>Units</th>
+<th>Limits</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>f__ghz</code></td>
+<td>double</td>
+<td>GHz</td>
+<td><span class="math inline">\(10 \leq f \leq 100\)</span></td>
+<td>Frequency</td>
+</tr>
+<tr class="even">
+<td><code>theta__deg</code></td>
+<td>double</td>
+<td>degree</td>
+<td><span class="math inline">\(0 \leq \theta \leq 90\)</span></td>
+<td>Elevation angle</td>
+</tr>
+<tr class="odd">
+<td><code>p</code></td>
+<td>double</td>
+<td>%</td>
+<td><span class="math inline">\(0 &lt; p &lt; 100\)</span></td>
+<td>Percentage of locations at which predicted clutter loss will not be exceeded</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="examples-2" class="level4">
+<h4 class="anchored" data-anchor-id="examples-2">Examples</h4>
+<p>Language-specific code examples showing the use of this function are available by following these links:</p>
+<p><a href="../../models/P2108/cpp.html#aeronautical-statistical-model" class="btn btn-outline-primary" role="button">C++</a> <a href="../../models/P2108/dotnet.html#aeronautical-statistical-model" class="btn btn-outline-primary" role="button">C#/.NET</a> <a href="../../models/P2108/matlab.html#aeronautical-statistical-model" class="btn btn-outline-primary" role="button">MATLAB</a> <a href="../../models/P2108/python.html#aeronautical-statistical-model" class="btn btn-outline-primary" role="button">Python</a></p>
 
 
+
+</section>
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-p2108-1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><span>“<span class="nocase">Prediction of clutter loss</span>,”</span> International Telecommunications Union, Recommendation ITU-R P.2108-1, Sep. 2021. Available: <a href="https://www.itu.int/rec/R-REC-P.2108">https://www.itu.int/rec/R-REC-P.2108</a></div>
+</div>
+<div id="ref-p2402-0" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><span>“<span class="nocase">A method to predict the statistics of clutter loss for earth-space and aeronautical paths</span>,”</span> International Telecommunications Union, Recommendation ITU-R P.2402-0, Mar. 2017. Available: <a href="https://www.itu.int/pub/R-REP-P.2402-2017">https://www.itu.int/pub/R-REP-P.2402-2017</a></div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
