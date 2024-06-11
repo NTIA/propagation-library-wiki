@@ -9,9 +9,9 @@ execute:
   freeze: auto
 
 website:
-  title: "NTIA/ITS Propagation Library Wiki"
+  title: "ITS Propagation Library Wiki"
   navbar:
-    title: "NTIA/ITS PropLib Wiki"
+    title: "ITS PropLib Wiki"
     left:
       - href: index.qmd
         text: Home
