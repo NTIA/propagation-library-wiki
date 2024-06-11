@@ -1,26 +1,37 @@
 ---
 title: "Quick Start - Python"
+date: 2024-06-11
+date-modified: 2024-06-11
 ---
 ::: {.callout-warning}
 ## Page Under Construction
 
 This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
 :::
-This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the Python development environment.
+
+This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from a Python development environment.
 
 ## Dependencies and Limitations
 
-Users are assumed to be using Python 3.  Anaconda is helpful, but is not required.  Support is currently limited to Windows users (possible non-Windows users support in the future).  Spyder is used for all examples, however, Visual Studio Code should work equally well.
+Users are assumed to be using a [current version](https://devguide.python.org/versions/) of Python 3. All officially-released versions of Python which have not reached end-of-life are supported. Package dependencies are defined on a per-package basis in each project's `pyproject.toml` file, which will allow your package manager (e.g., `pip`) to discover and install required dependencies automatically when you install a PropLib package.
 
-## Internal Package Repository
+## Getting Packages
+::: {.callout-warning}
+### TO DO
 
-ITS Propagation Library Python packages are hosted at \\\\itsfs01\\Tools\\Python\\pip
+Update this section when packages are available on PyPi
+:::
 
 # Quick Start
 
 This example walks a user through how to install and call into ITM.
 
 ## Installing Packages
+::: {.callout-warning}
+### TO DO
+
+Modify example to avoid use of `conda`
+:::
 
 Create a new conda environment:
 

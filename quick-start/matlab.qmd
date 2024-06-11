@@ -1,12 +1,21 @@
 ---
 title: "Quick Start - MATLAB"
+date: 2024-06-11
+date-modified: 2024-06-11
 ---
 ::: {.callout-warning}
 ## Page Under Construction
 
 This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
 :::
-This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the MATLAB development environment.  Included in this is a brief introduction to the internal MATLAB package manager, `matpak`.
+
+::: {.callout-warning}
+### TO DO
+
+The matpak approach is abandoned in favor of MEX files and this page needs to be updated accordingly.
+:::
+
+This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from a MATLAB development environment.  Included in this is a brief introduction to the internal MATLAB package manager, `matpak`.
 
 ## Dependencies and Limitations
 
@@ -14,18 +23,21 @@ Any reasonably newer version of MATLAB should work.  Backwards compatibility wit
 
 Support is currently limited to Windows users only.  This is due to MATLAB's use of the .NET Framework, as opposed to the cross-platform .NET Core.  MATLAB currently has not given a timeline to switch to .NET Core, however, as Microsoft is moving everything onto .NET Core in the near future, this implies that as some (hopefully soon) future date, cross-platform support can be achieved.
 
-## Internal Package Repository
+## Getting Packages
 
-ITS Propagation Library Packages are hosted at any of the following places:
+::: {.callout-warning}
+### TO DO
 
-For ITS users, they are available at either,
- * \\\\itsfs01\\Tools\\Matpak\\packages
- * \\\\ntinetapp001g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\Matlab\\packages
-
-For OSM users (or anyone else in HCHB), packages can be found,
- * \\\\nthnetapp002g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\Matlab\\packages
+Add section detailing workflow for installing new packages
+:::
 
 # Quick Start
+
+::: {.callout-warning}
+### TO DO
+
+Section needs to be updated with new instructions for MEX
+:::
 
 This example walks a user will:
 
