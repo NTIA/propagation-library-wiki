@@ -1,0 +1,3 @@
+#### Examples
+
+Language-specific code examples showing the use of this function are available by following these links:
