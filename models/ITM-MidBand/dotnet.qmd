@@ -1,0 +1,191 @@
+---
+title: "ITM-MidBand - C#/.NET"
+---
+
+## Getting Started
+
+To begin, install the NuGet package, `ITM`, from the NTIA NuGet repository
+
+![itm nuget install screenshot](images/nuget_itm.png)
+
+All of the below code snippets requires the including the following `using` statement.
+
+```csharp
+using ITS.Propagation;
+```
+
+## Documentation
+
+The `itm` library is packaged to support IntelliSense when developing in Visual Studio.  This documentation will provide the developer with information on function descriptions, variable details, etc.
+
+# Examples
+
+**Note:** These examples use an artificial terrain profile.
+
+## Point-to-Point Basic Transmission Loss (TLS)
+
+```csharp
+// define the terrain profile in PFL format
+var pfl = new double[] { 5, 200, 5, 7, 2, 4, 7, 5 };
+
+// define link parameters
+double f__mhz = 3500;                      // MHz
+double h_tx__meter = 10;                   // meters, AGL
+double h_rx__meter = 5;                    // meters, AGL
+double N_0 = 301;                          // N-Units
+double epsilon = 15;                       // average ground
+double sigma = 0.005;                      // average ground
+var climate = ITM.Climate.ContinentalTemperate;
+var pol = ITM.Polarization.Horizontal;
+
+// define variability parameters
+int mdvar = 13;
+double time = 50;                          // median
+double location = 50;                      // median
+double situation = 50;                     // median
+
+// call ITM
+int rtn = ITM.ITM_P2P_TLS_Ex(h_tx__meter, h_rx__meter, pfl,
+    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,
+    time, location, situation, out double A__db, 
+    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);
+
+// rtn = 0                                 // no errors
+// A__db = 105.8590                        // basic transmission loss, in dB
+// warnings = 0                            // no warnings
+
+// can use the intermediate values object to access additional information
+// from the ITM prediction
+Console.WriteLine($"The mode of propagation is {ivals.Mode}");
+Console.WriteLine($"The effective height of the TX is {ivals.h_e__meter[0]} meters");
+Console.WriteLine($"The free space basic transmission loss is {ivals.A_fs__db} dB");
+// The mode of propagation is LineOfSight
+// The effective height of the TX is 10.222222222222221 meters.
+// The free space basic transmission loss is 103.33136088700552 dB.
+```
+
+## Point-to-Point Basic Transmission Loss (CR)
+
+```csharp
+// define the terrain profile in PFL format
+var pfl = new double[] { 5, 200, 5, 7, 2, 4, 7, 5 };
+
+// define link parameters
+double f__mhz = 1500;                      // MHz
+double h_tx__meter = 10;                   // meters, AGL
+double h_rx__meter = 5;                    // meters, AGL
+double N_0 = 301;                          // N-Units
+double epsilon = 15;                       // average ground
+double sigma = 0.005;                      // average ground
+var climate = ITM.Climate.ContinentalTemperate;
+var pol = ITM.Polarization.Horizontal;
+
+// define variability parameters
+int mdvar = 13;
+double confidence = 50;                    // median
+double reliability = 50;                   // median
+
+// call ITM
+int rtn = ITM.ITM_P2P_CR_Ex(h_tx__meter, h_rx__meter, pfl,
+    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,
+    confidence, reliability, out double A__db, 
+    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);
+
+// rtn = 0                                 // no errors
+// A__db = 99.9744                         // basic transmission loss, in dB
+// warnings = 0                            // no warnings
+
+// can use the intermediate values object to access additional information
+// from the ITM prediction
+Console.WriteLine($"The mode of propagation is {ivals.Mode}");
+Console.WriteLine($"The effective height of the TX is {ivals.h_e__meter[0]} meters");
+Console.WriteLine($"The free space basic transmission loss is {ivals.A_fs__db} dB");
+// The mode of propagation is LineOfSight
+// The effective height of the TX is 10.222222222222221 meters.
+// The free space basic transmission loss is 95.971825 dB.
+```
+
+## Area Mode Basic Transmission Loss (TLS)
+
+```csharp
+// define link parameters
+double f__mhz = 1500;                      // MHz
+double h_tx__meter = 10;                   // meters, AGL
+double h_rx__meter = 5;                    // meters, AGL
+double N_0 = 301;                          // N-Units
+double epsilon = 15;                       // average ground
+double sigma = 0.005;                      // average ground
+double d__km = 100;                        // km
+double delta_h__meter = 40;                // meter
+var tx_site_criteria = ITM.SitingCriteria.Careful;
+var rx_site_criteria = ITM.SitingCriteria.Careful;
+var climate = ITM.Climate.ContinentalTemperate;
+var pol = ITM.Polarization.Horizontal;
+
+// define variability parameters
+int mdvar = 13;
+double time = 50;                          // median
+double location = 50;                      // median
+double situation = 50;                     // median
+
+// call ITM
+int rtn = ITM.ITM_AREA_TLS_Ex(h_tx__meter, h_rx__meter,
+    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter,
+    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,
+    time, location, situation, out double A__db,
+    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);
+// rtn = 0                                 // no errors
+// A__db = 191.0266                        // basic transmission loss, in dB
+// warnings = 0                            // no warnings
+
+// can use the intermediate values object to access additional information
+// from the ITM prediction
+Console.WriteLine($"The mode of propagation is {ivals.Mode}");
+Console.WriteLine($"The effective height of the TX is {ivals.h_e__meter[0]} meters.");
+Console.WriteLine($"The free space basic transmission loss is {ivals.A_fs__db} dB.");
+// The mode of propagation is Troposcatter
+// The effective height of the TX is 13.032653 meters.
+// The free space basic transmission loss is 135.971825 dB.
+```
+
+## Area Mode Basic Transmission Loss (CR)
+
+```csharp
+// define link parameters
+double f__mhz = 5000;                      // MHz
+double h_tx__meter = 10;                   // meters, AGL
+double h_rx__meter = 5;                    // meters, AGL
+double N_0 = 301;                          // N-Units
+double epsilon = 15;                       // average ground
+double sigma = 0.005;                      // average ground
+double d__km = 100;                        // km
+double delta_h__meter = 40;                // meter
+var tx_site_criteria = ITM.SitingCriteria.Careful;
+var rx_site_criteria = ITM.SitingCriteria.Careful;
+var climate = ITM.Climate.ContinentalTemperate;
+var pol = ITM.Polarization.Horizontal;
+
+// define variability parameters
+int mdvar = 13;
+double confidence = 50;                    // median
+double reliability = 50;                   // median
+
+// call ITM
+int rtn = ITM.ITM_AREA_CR_Ex(h_tx__meter, h_rx__meter,
+    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter,
+    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,
+    confidence, reliability, out double A__db,
+    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);
+// rtn = 0                                 // no errors
+// A__db = 205.7474                        // basic transmission loss, in dB
+// warnings = 0                            // no warnings
+
+// can use the intermediate values object to access additional information
+// from the ITM prediction
+Console.WriteLine($"The mode of propagation is {ivals.Mode}");
+Console.WriteLine($"The effective height of the TX is {ivals.h_e__meter[0]} meters.");
+Console.WriteLine($"The free space basic transmission loss is {ivals.A_fs__db} dB.");
+// The mode of propagation is Troposcatter
+// The effective height of the TX is 13.032653 meters.
+// The free space basic transmission loss is 146.429400 dB.
+```

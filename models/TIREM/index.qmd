@@ -1,0 +1,85 @@
+---
+title: "Terrain Integrated Rough-Earth Model (TIREM) - Overview"
+---
+
+The Terrain Integrated Rough-Earth Model (TIREM) is a general purpose propagation model.   Additional information regarding input parameters can be found at the [private GitHub repo](https://github.com/NTIA/tirem)
+
+## Getting Started
+
+Language-specific information on getting started using the TIREM library can be found below at the corresponding page.
+
+Information: [C#](TIREM-(.NET)#getting-started) | [MATLAB](TIREM-(MATLAB)#getting-started) | Python
+
+# Functions
+
+## Basic Transmission Loss
+
+Generate a basic transmission loss prediction for a specified path.  
+
+Example: [C#](TIREM-(.NET)#basic-transmission-loss) | [MATLAB](TIREM-(MATLAB)#basic-transmission-loss) | Python
+
+## Absorption Loss
+
+Retrieves the intermediate variable `ABLOSS` from the last call of TIREM, which is the absorption loss, in dB.
+
+Example: [C#](TIREM-(.NET)#absorption-loss) | [MATLAB](TIREM-(MATLAB)#absorption-loss) | Python
+
+## Diffraction Loss
+
+Retrieves the intermediate variable `TOTDIF` from the last call of TIREM, which is the diffraction loss, in dB.
+
+Example: [C#](TIREM-(.NET)#diffraction-loss) | [MATLAB](TIREM-(MATLAB)#diffraction-loss) | Python
+
+## Troposcatter Loss
+
+Retrieves the intermediate variable `TOTTRO` from the last call of TIREM, which is the troposcatter loss, in dB.
+
+Example: [C#](TIREM-(.NET)#troposcatter-loss) | [MATLAB](TIREM-(MATLAB)#troposcatter-loss) | Python
+
+## TX Troposcatter Angle
+
+Retrieves the intermediate variable `ALPHAE` from the last call of TIREM, which is the angle at the transmitter in the troposcatter triangle, `alpha_e__rad`, in radians.
+
+Example: [C#](TIREM-(.NET)#tx-troposcatter-angle) | [MATLAB](TIREM-(MATLAB)#tx-troposcatter-angle) | Python
+
+## RX Troposcatter Angle
+
+Retrieves the intermediate variable `BETAE` from the last call of TIREM, which is the angle at the receiver in the troposcatter triangle, `beta_e__rad`, in radians.
+
+Example: [C#](TIREM-(.NET)#rx-troposcatter-angle) | [MATLAB](TIREM-(MATLAB)#rx-troposcatter-angle) | Python
+
+## TX Horizon Index
+
+Retrieves the intermediate variable `HORZTX` from the last call of TIREM, which is the index of the profile point where the transmitter's horizon occurs.
+
+Example: [C#](TIREM-(.NET)#tx-horizon-index) | [MATLAB](TIREM-(MATLAB)#tx-horizon-index) | Python
+
+## RX Horizon Index
+
+Retrieves the intermediate variable `HORZRX` from the last call of TIREM, which is the index of the profile point where the receiver's horizon occurs.
+
+Example: [C#](TIREM-(.NET)#rx-horizon-index) | [MATLAB](TIREM-(MATLAB)#rx-horizon-index) | Python
+
+## TX Horizon Angle
+
+Retrieves the intermediate variable `TXANG` from the last call of TIREM, which is the transmitter's horizon angle, in radians.
+
+Example: [C#](TIREM-(.NET)#tx-horizon-angle) | [MATLAB](TIREM-(MATLAB)#tx-horizon-angle) | Python
+
+## RX Horizon Angle
+
+Retrieves the intermediate variable `RXANG` from the last call of TIREM, which is the receiver's horizon angle, in radians.
+
+Example: [C#](TIREM-(.NET)#rx-horizon-angle) | [MATLAB](TIREM-(MATLAB)#rx-horizon-angle) | Python
+
+## Troposcatter Angle
+
+Retrieves the intermediate variable `THET00` from the last call of TIREM, which is the troposcatter angle, in radians.
+
+Example: [C#](TIREM-(.NET)#troposcatter-angle) | [MATLAB](TIREM-(MATLAB)#troposcatter-angle) | Python
+
+## Version
+
+Retrieves the current version number of TIREM.
+
+Example: [C#](TIREM-(.NET)#version) | [MATLAB](TIREM-(MATLAB)#version) | Python

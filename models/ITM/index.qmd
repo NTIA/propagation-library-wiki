@@ -1,0 +1,37 @@
+---
+title: "Irregular Terrain Model (ITM) - Overview"
+---
+
+A description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the [public GitHub repo](https://github.com/NTIA/itm).
+
+## Getting Started
+
+Language-specific information on getting started using the ITM library can be found below at the corresponding page.
+
+Information: [C#](ITM-(.NET)#overview) | [MATLAB](ITM-(MATLAB)#overview) | [Python](ITM-(Python)#overview)
+
+# Functions
+
+## Point-to-Point Basic Transmission Loss (TLS)
+
+Generate a basic transmission loss prediction by operating ITM in point-to-point mode.  Variabilities are provided as time, location, and situation percentages.
+
+Example: [C#](ITM-(.NET)#point-to-point-basic-transmission-loss-tls) | [MATLAB](ITM-(MATLAB)#point-to-point-basic-transmission-loss-tls) | [Python](ITM-(Python)#site-specific-basic-transmission-loss-tls)
+
+## Point-to-Point Basic Transmission Loss (CR)
+
+Generate a basic transmission loss prediction by operating ITM in point-to-point mode.  Variabilities are provided as confidence and reliability percentages.
+
+Example: [C#](ITM-(.NET)#point-to-point-basic-transmission-loss-cr) | [MATLAB](ITM-(MATLAB)#point-to-point-basic-transmission-loss-cr) | [Python](ITM-(Python)#site-specific-basic-transmission-loss-cr)
+
+## Area Mode Basic Transmission Loss (TLS)
+
+Generate a basic transmission loss prediction by operating ITM in area mode.  Variabilities are provided as time, location, and situation percentages.
+
+Example: [C#](ITM-(.NET)#area-mode-basic-transmission-loss-tls) | [MATLAB](ITM-(MATLAB)#area-mode-basic-transmission-loss-tls) | [Python](ITM-(Python)#area-mode-basic-transmission-loss-tls)
+
+## Area Mode Basic Transmission Loss (CR)
+
+Generate a basic transmission loss prediction by operating ITM in area mode.  Variabilities are provided as confidence and reliability percentages.
+
+Example: [C#](ITM-(.NET)#area-mode-basic-transmission-loss-cr) | [MATLAB](ITM-(MATLAB)#area-mode-basic-transmission-loss-cr) | [Python](ITM-(Python)#area-mode-basic-transmission-loss-cr)

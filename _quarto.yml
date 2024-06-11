@@ -1,0 +1,26 @@
+project:
+  type: website
+
+toc: true
+number-sections: false
+
+execute:
+  freeze: auto
+
+website:
+  title: "NTIA/ITS Propagation Library Wiki"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+
+format:
+  html:
+    page-layout: article
+    theme: cosmo
+    css: styles.css
+    toc: true
+    code-fold: false
+
+jupyter: python3

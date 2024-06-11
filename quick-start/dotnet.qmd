@@ -1,0 +1,37 @@
+---
+title: "Quick Start - C#/.NET"
+---
+
+This  page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the .NET development environment.
+
+## Dependencies and Limitations
+
+Users are assumed to be developing in .NET Framework 4.7 to greater.  Explicit support is not present at this time for .NET Core, although it is being considered in the near future (if this is a requested feature, please reach out to bump its priority).
+
+## Internal Package Repository
+
+All packages are hosted on an internal NTIA NuGet Server.  The location of the server is dependent on your office (packages are cloned between the two locations):
+
+ITS/Boulder: `\\ntinetapp001g.ntiadc.ntia.doc.gov\ntiadropbox\itsdata\NuGet` or `\\itsfs01\Tools\NuGet`
+
+OSM/HCHB: `\\nthnetapp002g.ntiadc.ntia.doc.gov\ntiadropbox\itsdata\NuGet`
+
+### Configuring Visual Studio
+
+1. Open Visual Studio.
+1. Open Options and Select *Package Sources* under NuGet Package Manager
+
+![nuget setup 1](images/nuget_set_up_1.jpg)
+
+1. Click the green plus symbol to create a new package source
+1. For the newly created package source, fill in the details for *Name* and *Source* as follows:
+    * Name: NTIA NuGet
+    * Source: <package repository path, see above>
+
+![nuget setup 2](images/nuget_set_up_2.jpg)
+
+1. Click *Update* to confirm the configuration of the new package source
+
+![nuget setup 3](images/nuget_set_up_3.jpg)
+
+# Quick Start

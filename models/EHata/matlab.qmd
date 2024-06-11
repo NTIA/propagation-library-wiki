@@ -1,0 +1,33 @@
+---
+title: "Extended-Hata (E-Hata) Model - MATLAB"
+---
+
+## Examples
+
+### Basic Transmission Loss
+
+```matlab
+% fake terrain profile information, in PFL-format, formatted from the 
+% mobile to the base station
+pfl = [5 100 5 7 2 4 7 5];
+
+% additional prediction parameters
+f__mhz = 3500;
+h_b__meter = 25;
+h_m__meter = 1.5;
+env = EHataClassification.Urban;
+rel = 0.5;  % variability
+
+[A__db, interVals] = EHata.Invoke(pfl, f__mhz, h_b__meter, h_m__meter, env, rel);
+fprintf('The basic transmission loss is %f dB\n', A__db);
+fprintf('Can access internal values of this prediction such as:\n');
+fprintf(' - Breakpoint distance: %f km\n', interVals.d_bp__km);
+fprintf(' - Delta h: %f meter\n', interVals.deltah__meter);
+fprintf(' - Base station horizon distance: %f km\n', interVals.d_hzn__meter(2));
+
+% The basic transmission loss is 133.783679 dB
+% Can access internal values of this prediction such as:
+%  - Breakpoint distance: 15.583715 km
+%  - Delta h: 4.977138 meter
+%  - Base station horizon distance: 500.000000 km
+```

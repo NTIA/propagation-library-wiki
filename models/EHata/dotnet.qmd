@@ -1,0 +1,40 @@
+---
+title: "Extended-Hata (E-Hata) Model - C#/.NET"
+---
+
+## Getting Started
+
+To begin, install the NuGet package, `EHata`, from the NTIA NuGet repository
+
+![ehata nuget install screenshot](images/nuget_ehata.jpg)
+
+All of the below code snippets requires the including the following `using` statement.
+
+```csharp
+using ITS.Propagation;
+```
+
+## Documentation
+
+The `ehata` library is packaged to support IntelliSense when developing in Visual Studio.  This documentation will provide the developer with information on function descriptions, variable details, etc.
+# Examples
+
+## Basic Transmission Loss
+
+```csharp
+var pfl = new double[] { 5, 100, 5, 7, 2, 4, 7, 5 };
+double f__mhz = 3500;
+double h_b__meter = 25;
+double h_m__meter = 1.5;
+var env = EHata.ClutterEnvironment.Urban;
+double rel = 0.5;
+
+EHata.InvokeEx(pfl, f__mhz, h_b__meter, h_m__meter, env, rel,
+    out double A__db, out EHata.IntermediateValues ivals);
+// A__db = 133.7836794567479
+
+// can use the intermediate values object to access additional information
+// from the EHata prediction
+Console.WriteLine($"The effective height of the base station is {ivals.h_b_eff__meter} meters");
+// The effective height of the base station is 30.0 meters
+```

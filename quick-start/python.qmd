@@ -1,0 +1,101 @@
+---
+title: "Quick Start - Python"
+---
+
+This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the Python development environment.
+
+## Dependencies and Limitations
+
+Users are assumed to be using Python 3.  Anaconda is helpful, but is not required.  Support is currently limited to Windows users (possible non-Windows users support in the future).  Spyder is used for all examples, however, Visual Studio Code should work equally well.
+
+## Internal Package Repository
+
+ITS Propagation Library Python packages are hosted at \\\\itsfs01\\Tools\\Python\\pip
+
+# Quick Start
+
+This example walks a user through how to install and call into ITM.
+
+## Installing Packages
+
+Create a new conda environment:
+
+```
+conda create --name prop
+conda activate prop
+```
+
+Install `numpy` as it's a dependency of the `itm` package
+
+```
+pip install numpy
+```
+or
+```
+conda install -c anaconda numpy
+```
+
+Install `pythonnet` as it's a dependency of the `ohiopyle` package
+```
+pip install -i https://pypi.anaconda.org/pythonnet/simple pythonnet
+```
+or
+```
+conda install -c pythonnet pythonnet=2.5.2
+```
+
+Install `itm` from the local repository
+
+```
+pip install itm --no-index --find-links file://itsfs01/Tools/Python/pip
+```
+
+Install `ohiopyle` from the local repository
+```
+pip install ohiopyle --no-index --find-links file://itsfs01/Tools/Python/pip
+```
+
+## Calling PropCore in Python
+
+Open Spyder (or your Python IDE of choice) and copy the following snippet of code:
+
+```python
+import itm
+
+# define the terrain profile in PFL format
+pfl = [5, 200, 5, 7, 2, 4, 7, 5]
+
+# define link parameters
+f__mhz = 3500;                      # MHz
+h_tx__meter = 10                    # meters, AGL
+h_rx__meter = 5                     # meters, AGL
+N_0 = 301                           # N-Units
+epsilon = 15                        # average ground
+sigma = 0.005                       # average ground
+climate = itm.Climate.ContinentalTemperate
+pol = itm.Polarization.Horizontal
+
+# define variability parameters
+mdvar = 13
+time = 50                           # median
+location = 50                       # median
+situation = 50                      # median
+
+# call ITM
+rtn, A__db, warnings, ivals = itm.ITM_P2P_TLS(h_tx__meter, h_rx__meter, 
+    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, 
+    time, location, situation)
+
+assert(rtn == 0)                    # no errors
+assert(A__db == 105.85899333756423) # basic transmission loss, in dB
+assert(warnings == 0)               # no warnings
+
+# can use the intermediate values object to access additional information
+# from the ITM prediction
+print(f"The mode of propagation is {ivals.mode.name}")
+print(f"The effective height of the TX is {ivals.h_e__meter[0]} meters.")
+print(f"The free space basic transmission loss is {ivals.A_fs__db} dB.")
+# The mode of propagation is LineOfSight
+# The effective height of the TX is 10.222222222222221 meters.
+# The free space basic transmission loss is 103.33136088700552 dB.
+```
