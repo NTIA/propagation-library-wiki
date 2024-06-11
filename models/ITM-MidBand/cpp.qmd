@@ -1,3 +1,0 @@
----
-title: "ITM-MidBand - C++"
----

@@ -1,3 +1,0 @@
----
-title: "Terrain Integrated Rough-Earth Model (TIREM) - C++"
----
