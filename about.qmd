@@ -1,5 +1,20 @@
 ---
 title: "About"
 ---
+::: {.callout-warning}
+## Page Under Construction
 
-**TODO**
+This page is still under construction and has not yet been finalized. Information may be outdated,incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
+:::
+
+## The Nation's Spectrum and Communications Lab
+
+The [Institute for Telecommunication Sciences (ITS)](https://its.ntia.gov/) is the research and engineering laboratory of the [National Telecommunications and Information Administration (NTIA)](https://ntia.gov/), an agency of the [U.S. Department of Commerce (DOC)](https://www.commerce.gov/). 
+ITS basic research in radio science provides the technical foundation for NTIA’s policy development and spectrum management activities and enhances scientific knowledge and understanding in cutting-edge areas of telecommunications technology. ITS also addresses other federal agencies’ telecommunications and spectrum research needs via Interagency Agreements (IAAs) and engages directly with industry and academia via Cooperative Research and Development Agreements (CRADAs).
+
+More information about the role of ITS can be found on [our website](https://its.ntia.gov/about-its/its-the-nation-s-spectrum-and-communications-lab/).
+
+## A Pioneer in Propagation Software
+
+In the 1960s and 1970s, the first wave of ITS-developed computer programs for propagation prediction was published. Perhaps the most famous and influential was Anita G. Longley and Philip L. Rice's "Prediction of Tropospheric Radio Transmission Loss Over Irregular Terrain: A Computer Method - 1968" [@longley-rice]. The technical report provided the mathematical algorithms, flow charts, and logic used to develop the code, and the FORTRAN code was printed out in an Annex. The Longley-Rice model, which is more commonly referred to as the Irregular Terrain Model or ITM, is a general purpose model that can be applied to a large variety of engineering problems to predict propagation for radio frequencies between 20 MHz and 20 GHz, and is still in widespread use today. Since that time, ITS has continued to develop and refine computer programs for propagation prediction based on electromagnetic theory and on statistical analyses of both terrain features and radio measurements. The iterative cycle of modeling and measurement, with constant reference to first principles, produced models that are highly regarded. At the beginning of the 21st Century, ITS embarked on a systematic program of updating these software implementations. Today, ITS continues to develop and publish open-source propagation model software implementations at the [NTIA GitHub Repository](https://github.com/NTIA). There, too, ITS provides other open-source software tools used in our research. The ITS Open Source Software list provides direct links to individual repositories. Legacy FORTRAN implementations of ITS propagation models are no longer maintained, but can be found on the ITS website [here](https://its.ntia.gov/software/legacy-radio-propagation-software/).
+
