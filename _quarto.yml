@@ -36,4 +36,4 @@ jupyter: python3
 bibliography: references.bib
 csl: ieee.csl
 
-quarto-required: ">= 1.5.40"
+quarto-required: ">= 1.4.555"
