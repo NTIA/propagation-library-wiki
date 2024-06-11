@@ -45,6 +45,13 @@ in the meantime.
 
 The ITU-R Recommendations constitute a set of international technical standards developed by the Radiocommunication Sector (formerly CCIR) of the ITU @itu-r-recommendations. A subset of these have been implemented in software as a part of this library by ITS.
 
+::: {.callout-warning}
+## Page Under Construction
+
+The P.528 model has a public code repositories, but documentation is not yet available on this website. Please check back later, and contact [code@ntia.gov](mailto:code@ntia.gov) with questions
+in the meantime.
+:::
+
 +-----------:+:-------------------------------------:+:------------------------------:+:------------------------------------------------------------+
 | **P.528**  | [Repo](https://github.com/NTIA/P528)  | [Docs](models/P528/index.qmd)  | A propagation prediction method for aeronautical mobile and |
 |            |                                       |                                | radionavigation services using the VHF, UHF, and SHF bands  |
