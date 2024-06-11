@@ -48,7 +48,7 @@ The ITU-R Recommendations constitute a set of international technical standards 
 ::: {.callout-warning}
 ## Page Under Construction
 
-The P.528 model has a public code repositories, but documentation is not yet available on this website. Please check back later, and contact [code@ntia.gov](mailto:code@ntia.gov) with questions
+The P.528 model has a public code repository, but documentation is not yet available on this website. Please check back later, and contact [code@ntia.gov](mailto:code@ntia.gov) with questions
 in the meantime.
 :::
 
