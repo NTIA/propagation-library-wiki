@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.40">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-06-11">
 
-<title>NTIA/ITS Propagation Library Wiki – Quick Start - C#/.NET</title>
+<title>NTIA/ITS Propagation Library Wiki - Quick Start - C#/.NET</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,11 +80,11 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">NTIA/ITS Propagation Library Wiki</span>
+    <span class="navbar-title">NTIA/ITS PropLib Wiki</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -92,13 +93,39 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-u.s.-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">U.S. Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-u.s.-models">    
+        <li>
+    <a class="dropdown-item" href="../models/ITM/index.html">
+ <span class="dropdown-text">Irregular Terrain Model (ITM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../models/ITM-MidBand/index.html">
+ <span class="dropdown-text">ITM-MidBand</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-itu-r-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">ITU-R Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-itu-r-models">    
+        <li>
+    <a class="dropdown-item" href="../models/P2108/index.html">
+ <span class="dropdown-text">ITU-R P.2108</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -109,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#dependencies-and-limitations" id="toc-dependencies-and-limitations" class="nav-link active" data-scroll-target="#dependencies-and-limitations">Dependencies and Limitations</a></li>
@@ -134,7 +161,19 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 11, 2024</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 11, 2024</p>
+    </div>
+  </div>
     
   </div>
   
@@ -143,31 +182,56 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Page Under Construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+</div>
+</div>
 <p>This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the .NET development environment.</p>
 <section id="dependencies-and-limitations" class="level2">
 <h2 class="anchored" data-anchor-id="dependencies-and-limitations">Dependencies and Limitations</h2>
-<p>Users are assumed to be developing in .NET Framework 4.7 to greater. Explicit support is not present at this time for .NET Core, although it is being considered in the near future (if this is a requested feature, please reach out to bump its priority).</p>
+<p>Users are assumed to be developing in .NET Framework 4.7 or greater. Explicit support is not present at this time for .NET Core, although it is being considered in the near future (if this is a requested feature, please reach out to <a href="mailto:code@ntia.gov">code@ntia.gov</a> to bump its priority).</p>
 </section>
 <section id="internal-package-repository" class="level2">
 <h2 class="anchored" data-anchor-id="internal-package-repository">Internal Package Repository</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Internal Repository to be Superceded</p>
+<p>Soon, PropLib packages will migrate to public-facing package repositories. Check back later for updates.</p>
+</div>
+</div>
 <p>All packages are hosted on an internal NTIA NuGet Server. The location of the server is dependent on your office (packages are cloned between the two locations):</p>
 <p>ITS/Boulder: <code>\\ntinetapp001g.ntiadc.ntia.doc.gov\ntiadropbox\itsdata\NuGet</code> or <code>\\itsfs01\Tools\NuGet</code></p>
 <p>OSM/HCHB: <code>\\nthnetapp002g.ntiadc.ntia.doc.gov\ntiadropbox\itsdata\NuGet</code></p>
 <section id="configuring-visual-studio" class="level3">
 <h3 class="anchored" data-anchor-id="configuring-visual-studio">Configuring Visual Studio</h3>
 <ol type="1">
-<li>Open Visual Studio.</li>
-<li>Open Options and Select <em>Package Sources</em> under NuGet Package Manager</li>
-</ol>
+<li><p>Open Visual Studio.</p></li>
+<li><p>Open Options and Select <em>Package Sources</em> under NuGet Package Manager</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/nuget_set_up_1.jpg" class="img-fluid figure-img"></p>
-<figcaption>nuget setup 1</figcaption>
+<figcaption>Accessing NuGet package manager settings in Visual Studio</figcaption>
 </figure>
-</div>
-<ol type="1">
-<li>Click the green plus symbol to create a new package source</li>
-<li>For the newly created package source, fill in the details for <em>Name</em> and <em>Source</em> as follows:
+</div></li>
+<li><p>Click the green plus symbol to create a new package source</p></li>
+<li><p>For the newly created package source, fill in the details for <em>Name</em> and <em>Source</em> as follows:</p>
 <ul>
 <li>Name: NTIA NuGet</li>
 <li>Source: &lt;package repository path, see above&gt;</li>
@@ -176,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/nuget_set_up_2.jpg" class="img-fluid figure-img"></p>
-<figcaption>nuget setup 2</figcaption>
+<figcaption>Configuring the NuGet package source</figcaption>
 </figure>
 </div>
 <ol type="1">
@@ -185,13 +249,26 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/nuget_set_up_3.jpg" class="img-fluid figure-img"></p>
-<figcaption>nuget setup 3</figcaption>
+<figcaption>Updating the list of NuGet package sources</figcaption>
 </figure>
 </div>
 </section>
 </section>
 <section id="quick-start" class="level1">
 <h1>Quick Start</h1>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>TO DO</p>
+</div>
+</div>
 
 
 </section>
@@ -232,7 +309,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -264,29 +352,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/NTIA\.github\.io\/propagation-library-wiki\/");
@@ -294,7 +360,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

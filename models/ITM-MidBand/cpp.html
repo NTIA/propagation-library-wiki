@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.40">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NTIA/ITS Propagation Library Wiki – ITM-MidBand - Overview</title>
+<title>NTIA/ITS Propagation Library Wiki - ITM-MidBand - C++</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,11 +79,11 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">NTIA/ITS Propagation Library Wiki</span>
+    <span class="navbar-title">NTIA/ITS PropLib Wiki</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -92,13 +92,39 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-u.s.-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">U.S. Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-u.s.-models">    
+        <li>
+    <a class="dropdown-item" href="../../models/ITM/index.html">
+ <span class="dropdown-text">Irregular Terrain Model (ITM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../models/ITM-MidBand/index.html">
+ <span class="dropdown-text">ITM-MidBand</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-itu-r-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">ITU-R Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-itu-r-models">    
+        <li>
+    <a class="dropdown-item" href="../../models/P2108/index.html">
+ <span class="dropdown-text">ITU-R P.2108</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -108,27 +134,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
-  <ul class="collapse">
-  <li><a href="#point-to-point-basic-transmission-loss-tls" id="toc-point-to-point-basic-transmission-loss-tls" class="nav-link" data-scroll-target="#point-to-point-basic-transmission-loss-tls">Point-to-Point Basic Transmission Loss (TLS)</a></li>
-  <li><a href="#point-to-point-basic-transmission-loss-cr" id="toc-point-to-point-basic-transmission-loss-cr" class="nav-link" data-scroll-target="#point-to-point-basic-transmission-loss-cr">Point-to-Point Basic Transmission Loss (CR)</a></li>
-  <li><a href="#area-mode-basic-transmission-loss-tls" id="toc-area-mode-basic-transmission-loss-tls" class="nav-link" data-scroll-target="#area-mode-basic-transmission-loss-tls">Area Mode Basic Transmission Loss (TLS)</a></li>
-  <li><a href="#area-mode-basic-transmission-loss-cr" id="toc-area-mode-basic-transmission-loss-cr" class="nav-link" data-scroll-target="#area-mode-basic-transmission-loss-cr">Area Mode Basic Transmission Loss (CR)</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ITM-MidBand - Overview</h1>
+<h1 class="title">ITM-MidBand - C++</h1>
 </div>
 
 
@@ -145,37 +158,21 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>A description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the <a href="https://github.com/NTIA/itm">public GitHub repo</a>.</p>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<p>Language-specific information on getting started using the ITM library can be found below at the corresponding page.</p>
-<p>Information: <a href="ITM-(.NET)#overview">C#</a> | <a href="ITM-(MATLAB)#overview">MATLAB</a> | <a href="ITM-(Python)#overview">Python</a></p>
-</section>
-<section id="functions" class="level1">
-<h1>Functions</h1>
-<section id="point-to-point-basic-transmission-loss-tls" class="level2">
-<h2 class="anchored" data-anchor-id="point-to-point-basic-transmission-loss-tls">Point-to-Point Basic Transmission Loss (TLS)</h2>
-<p>Generate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as time, location, and situation percentages.</p>
-<p>Example: <a href="ITM-(.NET)#point-to-point-basic-transmission-loss-tls">C#</a> | <a href="ITM-(MATLAB)#point-to-point-basic-transmission-loss-tls">MATLAB</a> | <a href="ITM-(Python)#site-specific-basic-transmission-loss-tls">Python</a></p>
-</section>
-<section id="point-to-point-basic-transmission-loss-cr" class="level2">
-<h2 class="anchored" data-anchor-id="point-to-point-basic-transmission-loss-cr">Point-to-Point Basic Transmission Loss (CR)</h2>
-<p>Generate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as confidence and reliability percentages.</p>
-<p>Example: <a href="ITM-(.NET)#point-to-point-basic-transmission-loss-cr">C#</a> | <a href="ITM-(MATLAB)#point-to-point-basic-transmission-loss-cr">MATLAB</a> | <a href="ITM-(Python)#site-specific-basic-transmission-loss-cr">Python</a></p>
-</section>
-<section id="area-mode-basic-transmission-loss-tls" class="level2">
-<h2 class="anchored" data-anchor-id="area-mode-basic-transmission-loss-tls">Area Mode Basic Transmission Loss (TLS)</h2>
-<p>Generate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as time, location, and situation percentages.</p>
-<p>Example: <a href="ITM-(.NET)#area-mode-basic-transmission-loss-tls">C#</a> | <a href="ITM-(MATLAB)#area-mode-basic-transmission-loss-tls">MATLAB</a> | <a href="ITM-(Python)#area-mode-basic-transmission-loss-tls">Python</a></p>
-</section>
-<section id="area-mode-basic-transmission-loss-cr" class="level2">
-<h2 class="anchored" data-anchor-id="area-mode-basic-transmission-loss-cr">Area Mode Basic Transmission Loss (CR)</h2>
-<p>Generate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as confidence and reliability percentages.</p>
-<p>Example: <a href="ITM-(.NET)#area-mode-basic-transmission-loss-cr">C#</a> | <a href="ITM-(MATLAB)#area-mode-basic-transmission-loss-cr">MATLAB</a> | <a href="ITM-(Python)#area-mode-basic-transmission-loss-cr">Python</a></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Page Under Construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is still under construction and has not yet been finalized. Information may be outdated,incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+</div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -213,7 +210,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -245,29 +253,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/NTIA\.github\.io\/propagation-library-wiki\/");
@@ -275,7 +261,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

@@ -1,164 +1,108 @@
 [
   {
-    "objectID": "quick-start/python.html",
-    "href": "quick-start/python.html",
-    "title": "Quick Start - Python",
+    "objectID": "models/P2108/python.html",
+    "href": "models/P2108/python.html",
+    "title": "ITU-R P.2108 - Python",
     "section": "",
-    "text": "This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the Python development environment."
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nTODO Section outdated\nThe package name to install is p2108\nor"
   },
   {
-    "objectID": "quick-start/python.html#dependencies-and-limitations",
-    "href": "quick-start/python.html#dependencies-and-limitations",
-    "title": "Quick Start - Python",
-    "section": "Dependencies and Limitations",
-    "text": "Dependencies and Limitations\nUsers are assumed to be using Python 3. Anaconda is helpful, but is not required. Support is currently limited to Windows users (possible non-Windows users support in the future). Spyder is used for all examples, however, Visual Studio Code should work equally well."
+    "objectID": "models/P2108/python.html#dependencies",
+    "href": "models/P2108/python.html#dependencies",
+    "title": "ITU-R P.2108 - Python",
+    "section": "Dependencies",
+    "text": "Dependencies\nThe p2108 package has no dependencies."
   },
   {
-    "objectID": "quick-start/python.html#internal-package-repository",
-    "href": "quick-start/python.html#internal-package-repository",
-    "title": "Quick Start - Python",
-    "section": "Internal Package Repository",
-    "text": "Internal Package Repository\nITS Propagation Library Python packages are hosted at \\\\itsfs01\\Tools\\Python\\pip"
+    "objectID": "models/P2108/python.html#installing-package",
+    "href": "models/P2108/python.html#installing-package",
+    "title": "ITU-R P.2108 - Python",
+    "section": "Installing Package",
+    "text": "Installing Package\nTODO Section outdated\nUse the following command to install p2108 from the local pip repo:\nFor ITS users:\npip install p2108 --no-index --find-links file://itsfs01/Tools/Python/pip\nFor OSM (or HCHB) users,\npip install p2108 --no-index --find-links file://nthnetapp002g.ntiadc.ntia.doc.gov/ntiadropbox/itsdata/Python/pip"
   },
   {
-    "objectID": "quick-start/python.html#installing-packages",
-    "href": "quick-start/python.html#installing-packages",
-    "title": "Quick Start - Python",
-    "section": "Installing Packages",
-    "text": "Installing Packages\nCreate a new conda environment:\nconda create --name prop\nconda activate prop\nInstall numpy as it’s a dependency of the itm package\npip install numpy\nor\nconda install -c anaconda numpy\nInstall pythonnet as it’s a dependency of the ohiopyle package\npip install -i https://pypi.anaconda.org/pythonnet/simple pythonnet\nor\nconda install -c pythonnet pythonnet=2.5.2\nInstall itm from the local repository\npip install itm --no-index --find-links file://itsfs01/Tools/Python/pip\nInstall ohiopyle from the local repository\npip install ohiopyle --no-index --find-links file://itsfs01/Tools/Python/pip"
-  },
-  {
-    "objectID": "quick-start/python.html#calling-propcore-in-python",
-    "href": "quick-start/python.html#calling-propcore-in-python",
-    "title": "Quick Start - Python",
-    "section": "Calling PropCore in Python",
-    "text": "Calling PropCore in Python\nOpen Spyder (or your Python IDE of choice) and copy the following snippet of code:\nimport itm\n\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 3500;                      # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_TLS(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, \n    time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 105.85899333756423) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 103.33136088700552 dB."
-  },
-  {
-    "objectID": "quick-start/dotnet.html",
-    "href": "quick-start/dotnet.html",
-    "title": "Quick Start - C#/.NET",
-    "section": "",
-    "text": "This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the .NET development environment."
-  },
-  {
-    "objectID": "quick-start/dotnet.html#dependencies-and-limitations",
-    "href": "quick-start/dotnet.html#dependencies-and-limitations",
-    "title": "Quick Start - C#/.NET",
-    "section": "Dependencies and Limitations",
-    "text": "Dependencies and Limitations\nUsers are assumed to be developing in .NET Framework 4.7 to greater. Explicit support is not present at this time for .NET Core, although it is being considered in the near future (if this is a requested feature, please reach out to bump its priority)."
-  },
-  {
-    "objectID": "quick-start/dotnet.html#internal-package-repository",
-    "href": "quick-start/dotnet.html#internal-package-repository",
-    "title": "Quick Start - C#/.NET",
-    "section": "Internal Package Repository",
-    "text": "Internal Package Repository\nAll packages are hosted on an internal NTIA NuGet Server. The location of the server is dependent on your office (packages are cloned between the two locations):\nITS/Boulder: \\\\ntinetapp001g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\NuGet or \\\\itsfs01\\Tools\\NuGet\nOSM/HCHB: \\\\nthnetapp002g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\NuGet\n\nConfiguring Visual Studio\n\nOpen Visual Studio.\nOpen Options and Select Package Sources under NuGet Package Manager\n\n\n\n\nnuget setup 1\n\n\n\nClick the green plus symbol to create a new package source\nFor the newly created package source, fill in the details for Name and Source as follows:\n\nName: NTIA NuGet\nSource: &lt;package repository path, see above&gt;\n\n\n\n\n\nnuget setup 2\n\n\n\nClick Update to confirm the configuration of the new package source\n\n\n\n\nnuget setup 3"
-  },
-  {
-    "objectID": "models/TIREM/index.html",
-    "href": "models/TIREM/index.html",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "",
-    "text": "The Terrain Integrated Rough-Earth Model (TIREM) is a general purpose propagation model. Additional information regarding input parameters can be found at the private GitHub repo"
-  },
-  {
-    "objectID": "models/TIREM/index.html#getting-started",
-    "href": "models/TIREM/index.html#getting-started",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
+    "objectID": "models/P2108/python.html#getting-started",
+    "href": "models/P2108/python.html#getting-started",
+    "title": "ITU-R P.2108 - Python",
     "section": "Getting Started",
-    "text": "Getting Started\nLanguage-specific information on getting started using the TIREM library can be found below at the corresponding page.\nInformation: C# | MATLAB | Python"
+    "text": "Getting Started\nImporting P2108 is as simple as including the following in your .py file:\nfrom ITS.ITU.PSeries import P2108"
   },
   {
-    "objectID": "models/TIREM/index.html#basic-transmission-loss",
-    "href": "models/TIREM/index.html#basic-transmission-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "Basic Transmission Loss",
-    "text": "Basic Transmission Loss\nGenerate a basic transmission loss prediction for a specified path.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/python.html#documentation",
+    "href": "models/P2108/python.html#documentation",
+    "title": "ITU-R P.2108 - Python",
+    "section": "Documentation",
+    "text": "Documentation\nAll P2108 functions contain built-in docstring help. This means that if your python development editor supports it, it can provide you with assistance on information such as function description, parameter types and descriptions, and return details.\nThis also means that help() is supported in the console to provide information."
   },
   {
-    "objectID": "models/TIREM/index.html#absorption-loss",
-    "href": "models/TIREM/index.html#absorption-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "Absorption Loss",
-    "text": "Absorption Loss\nRetrieves the intermediate variable ABLOSS from the last call of TIREM, which is the absorption loss, in dB.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/python.html#height-gain-terminal-correction-model",
+    "href": "models/P2108/python.html#height-gain-terminal-correction-model",
+    "title": "ITU-R P.2108 - Python",
+    "section": "Height Gain Terminal Correction Model",
+    "text": "Height Gain Terminal Correction Model\n# define inputs\nf__ghz = 1          # Frequency, in GHz\nh__meter = 1.5      # Antenna height, in meters\nw_s__meter = 27     # Street width, in meters\nR__meter = 20       # Representative clutter height, in meters\nclutter_type = 6    # Clutter type, enum\n\n# Call height gain terminal correction model (P.2108 Section 3.1)\nA_h__db = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)\nassert(A_h__db == 8.769394261533549)\n\n# can also use clutter type IntEnum\nclutter_type = P2108.ClutterType.DenseUrban\n\n# call clutter model\nA_h__db = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)\nassert(A_h__db == 8.769394261533549)"
   },
   {
-    "objectID": "models/TIREM/index.html#diffraction-loss",
-    "href": "models/TIREM/index.html#diffraction-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "Diffraction Loss",
-    "text": "Diffraction Loss\nRetrieves the intermediate variable TOTDIF from the last call of TIREM, which is the diffraction loss, in dB.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/python.html#terrestrial-statistical-model",
+    "href": "models/P2108/python.html#terrestrial-statistical-model",
+    "title": "ITU-R P.2108 - Python",
+    "section": "Terrestrial Statistical Model",
+    "text": "Terrestrial Statistical Model\n# define inputs\nf__ghz = 3          # Frequency, in GHz\nd__km = 0.5         # Path distance, in km\np = 50              # Percentage of locations, in %\n\n# call terrestrial statistical model\nL_ctt__db = P2108.TerrestrialStatisticalModel(f__ghz, d__km, p)\nassert(L_ctt__db == 26.10075036783342)"
   },
   {
-    "objectID": "models/TIREM/index.html#troposcatter-loss",
-    "href": "models/TIREM/index.html#troposcatter-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "Troposcatter Loss",
-    "text": "Troposcatter Loss\nRetrieves the intermediate variable TOTTRO from the last call of TIREM, which is the troposcatter loss, in dB.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/python.html#aeronautical-statistical-model",
+    "href": "models/P2108/python.html#aeronautical-statistical-model",
+    "title": "ITU-R P.2108 - Python",
+    "section": "Aeronautical Statistical Model",
+    "text": "Aeronautical Statistical Model\n# define inputs\nf__ghz = 15         # Frequency, in GHz\ntheta__deg = 10     # Elevation angle, in degrees\np = 50              # Percentage of locations, in %\n\n# call clutter model\nL_ces__db = P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p)\nassert(L_ces__db == 14.333686040067786)"
   },
   {
-    "objectID": "models/TIREM/index.html#tx-troposcatter-angle",
-    "href": "models/TIREM/index.html#tx-troposcatter-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "TX Troposcatter Angle",
-    "text": "TX Troposcatter Angle\nRetrieves the intermediate variable ALPHAE from the last call of TIREM, which is the angle at the transmitter in the troposcatter triangle, alpha_e__rad, in radians.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/dotnet.html",
+    "href": "models/P2108/dotnet.html",
+    "title": "ITU-R P.2108 - C#/.NET",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
   },
   {
-    "objectID": "models/TIREM/index.html#rx-troposcatter-angle",
-    "href": "models/TIREM/index.html#rx-troposcatter-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "RX Troposcatter Angle",
-    "text": "RX Troposcatter Angle\nRetrieves the intermediate variable BETAE from the last call of TIREM, which is the angle at the receiver in the troposcatter triangle, beta_e__rad, in radians.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/dotnet.html#getting-started",
+    "href": "models/P2108/dotnet.html#getting-started",
+    "title": "ITU-R P.2108 - C#/.NET",
+    "section": "Getting Started",
+    "text": "Getting Started\nTo begin, install the NuGet package, P2108, from the NTIA NuGet repository\n\n\n\np2108 nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
   },
   {
-    "objectID": "models/TIREM/index.html#tx-horizon-index",
-    "href": "models/TIREM/index.html#tx-horizon-index",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "TX Horizon Index",
-    "text": "TX Horizon Index\nRetrieves the intermediate variable HORZTX from the last call of TIREM, which is the index of the profile point where the transmitter’s horizon occurs.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/dotnet.html#documentation",
+    "href": "models/P2108/dotnet.html#documentation",
+    "title": "ITU-R P.2108 - C#/.NET",
+    "section": "Documentation",
+    "text": "Documentation\nThe p2108 library is packaged to support IntelliSense when developing in Visual Studio. This documentation will provide the developer with information on function descriptions, variable details, etc."
   },
   {
-    "objectID": "models/TIREM/index.html#rx-horizon-index",
-    "href": "models/TIREM/index.html#rx-horizon-index",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "RX Horizon Index",
-    "text": "RX Horizon Index\nRetrieves the intermediate variable HORZRX from the last call of TIREM, which is the index of the profile point where the receiver’s horizon occurs.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/dotnet.html#height-gain-terminal-correction-model",
+    "href": "models/P2108/dotnet.html#height-gain-terminal-correction-model",
+    "title": "ITU-R P.2108 - C#/.NET",
+    "section": "Height Gain Terminal Correction Model",
+    "text": "Height Gain Terminal Correction Model\n// define inputs\ndouble f__ghz = 1;         // GHz\ndouble h__meter = 1.5;     // meters\ndouble w_s__meter = 27;    // meters (default value)\ndouble R__meter = 20;      // meters (Dense urban default value)\nint clutter_type = 6;      // Dense urban\n\n// call clutter model\nint rtn = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type, out double A_h__db);\n// A_h__db = 8.76939426153355\n\n// can also use clutter type enum\nvar clutterType = P2108.ClutterType.DenseUrban;\n\n// call clutter model\nrtn = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, (int)clutterType, out double A_h__db2);\n// A_h__db = 8.76939426153355"
   },
   {
-    "objectID": "models/TIREM/index.html#tx-horizon-angle",
-    "href": "models/TIREM/index.html#tx-horizon-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "TX Horizon Angle",
-    "text": "TX Horizon Angle\nRetrieves the intermediate variable TXANG from the last call of TIREM, which is the transmitter’s horizon angle, in radians.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/dotnet.html#terrestrial-statistical-model",
+    "href": "models/P2108/dotnet.html#terrestrial-statistical-model",
+    "title": "ITU-R P.2108 - C#/.NET",
+    "section": "Terrestrial Statistical Model",
+    "text": "Terrestrial Statistical Model\n// define inputs\ndouble f__ghz = 3;         // GHz\ndouble d__km = 0.5;        // km\ndouble p = 50;             // %\n\n// call clutter model\nint rtn = P2108.TerrestrialStatisticalModel(f__ghz, d__km, p, out double L_ctt__db);\n// L_ctt__db = 26.1007503678334"
   },
   {
-    "objectID": "models/TIREM/index.html#rx-horizon-angle",
-    "href": "models/TIREM/index.html#rx-horizon-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "RX Horizon Angle",
-    "text": "RX Horizon Angle\nRetrieves the intermediate variable RXANG from the last call of TIREM, which is the receiver’s horizon angle, in radians.\nExample: C# | MATLAB | Python"
-  },
-  {
-    "objectID": "models/TIREM/index.html#troposcatter-angle",
-    "href": "models/TIREM/index.html#troposcatter-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "Troposcatter Angle",
-    "text": "Troposcatter Angle\nRetrieves the intermediate variable THET00 from the last call of TIREM, which is the troposcatter angle, in radians.\nExample: C# | MATLAB | Python"
-  },
-  {
-    "objectID": "models/TIREM/index.html#version",
-    "href": "models/TIREM/index.html#version",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - Overview",
-    "section": "Version",
-    "text": "Version\nRetrieves the current version number of TIREM.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/dotnet.html#aeronautical-statistical-model",
+    "href": "models/P2108/dotnet.html#aeronautical-statistical-model",
+    "title": "ITU-R P.2108 - C#/.NET",
+    "section": "Aeronautical Statistical Model",
+    "text": "Aeronautical Statistical Model\n// define inputs\ndouble f__ghz = 15;        // GHz\ndouble theta__deg = 10;    // degrees\ndouble p = 50;             // %\n\n// call clutter model\nint rtn = P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p, out double L_ces__db);\n// L_ces__db = 14.3336860400678"
   },
   {
     "objectID": "models/P2108/matlab.html",
     "href": "models/P2108/matlab.html",
     "title": "ITU-R P.2108 - MATLAB",
     "section": "",
-    "text": "The package name to install is p2108. The package can be found in the matpak repo with the following command:"
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThe package name to install is p2108. The package can be found in the matpak repo with the following command:"
   },
   {
     "objectID": "models/P2108/matlab.html#installing-package",
@@ -196,431 +140,60 @@
     "text": "Aeronautical Statistical Model\n% define inputs\nf__ghz = 15;        % GHz\ntheta__deg = 10;    % degrees\np = 50;             % %\n\n% call clutter model\n[L_ces__db, rtn] = P2108.AeronauticalStatisticalModel(...\n    f__ghz, theta__deg, p)\n% L_ces__db = 14.3337\n% rtn = 0"
   },
   {
-    "objectID": "models/P2108/dotnet.html",
-    "href": "models/P2108/dotnet.html",
-    "title": "ITU-R P.2108 - C#/.NET",
-    "section": "",
-    "text": "To begin, install the NuGet package, P2108, from the NTIA NuGet repository\n\n\n\np2108 nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
-  },
-  {
-    "objectID": "models/P2108/dotnet.html#getting-started",
-    "href": "models/P2108/dotnet.html#getting-started",
-    "title": "ITU-R P.2108 - C#/.NET",
-    "section": "",
-    "text": "To begin, install the NuGet package, P2108, from the NTIA NuGet repository\n\n\n\np2108 nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
-  },
-  {
-    "objectID": "models/P2108/dotnet.html#documentation",
-    "href": "models/P2108/dotnet.html#documentation",
-    "title": "ITU-R P.2108 - C#/.NET",
-    "section": "Documentation",
-    "text": "Documentation\nThe p2108 library is packaged to support IntelliSense when developing in Visual Studio. This documentation will provide the developer with information on function descriptions, variable details, etc."
-  },
-  {
-    "objectID": "models/P2108/dotnet.html#height-gain-terminal-correction-model",
-    "href": "models/P2108/dotnet.html#height-gain-terminal-correction-model",
-    "title": "ITU-R P.2108 - C#/.NET",
-    "section": "Height Gain Terminal Correction Model",
-    "text": "Height Gain Terminal Correction Model\n// define inputs\ndouble f__ghz = 1;         // GHz\ndouble h__meter = 1.5;     // meters\ndouble w_s__meter = 27;    // meters (default value)\ndouble R__meter = 20;      // meters (Dense urban default value)\nint clutter_type = 6;      // Dense urban\n\n// call clutter model\nint rtn = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type, out double A_h__db);\n// A_h__db = 8.76939426153355\n\n// can also use clutter type enum\nvar clutterType = P2108.ClutterType.DenseUrban;\n\n// call clutter model\nrtn = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, (int)clutterType, out double A_h__db2);\n// A_h__db = 8.76939426153355"
-  },
-  {
-    "objectID": "models/P2108/dotnet.html#terrestrial-statistical-model",
-    "href": "models/P2108/dotnet.html#terrestrial-statistical-model",
-    "title": "ITU-R P.2108 - C#/.NET",
-    "section": "Terrestrial Statistical Model",
-    "text": "Terrestrial Statistical Model\n// define inputs\ndouble f__ghz = 3;         // GHz\ndouble d__km = 0.5;        // km\ndouble p = 50;             // %\n\n// call clutter model\nint rtn = P2108.TerrestrialStatisticalModel(f__ghz, d__km, p, out double L_ctt__db);\n// L_ctt__db = 26.1007503678334"
-  },
-  {
-    "objectID": "models/P2108/dotnet.html#aeronautical-statistical-model",
-    "href": "models/P2108/dotnet.html#aeronautical-statistical-model",
-    "title": "ITU-R P.2108 - C#/.NET",
-    "section": "Aeronautical Statistical Model",
-    "text": "Aeronautical Statistical Model\n// define inputs\ndouble f__ghz = 15;        // GHz\ndouble theta__deg = 10;    // degrees\ndouble p = 50;             // %\n\n// call clutter model\nint rtn = P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p, out double L_ces__db);\n// L_ces__db = 14.3336860400678"
-  },
-  {
-    "objectID": "models/ITM-MidBand/python.html",
-    "href": "models/ITM-MidBand/python.html",
-    "title": "ITM-MidBand - Python",
-    "section": "",
-    "text": "The package name to install is itm\nor"
-  },
-  {
-    "objectID": "models/ITM-MidBand/python.html#dependencies",
-    "href": "models/ITM-MidBand/python.html#dependencies",
-    "title": "ITM-MidBand - Python",
-    "section": "Dependencies",
-    "text": "Dependencies\nThe itm package requires numpy."
-  },
-  {
-    "objectID": "models/ITM-MidBand/python.html#installing-package",
-    "href": "models/ITM-MidBand/python.html#installing-package",
-    "title": "ITM-MidBand - Python",
-    "section": "Installing Package",
-    "text": "Installing Package\nUse the following command to install itm from the local pip repo:\npip install itm --no-index --find-links file://itsfs01/Tools/Python/pip"
-  },
-  {
-    "objectID": "models/ITM-MidBand/python.html#getting-started",
-    "href": "models/ITM-MidBand/python.html#getting-started",
-    "title": "ITM-MidBand - Python",
-    "section": "Getting Started",
-    "text": "Getting Started\nImporting itm is as simple as including the following in your .py file:\nimport itm"
-  },
-  {
-    "objectID": "models/ITM-MidBand/python.html#documentation",
-    "href": "models/ITM-MidBand/python.html#documentation",
-    "title": "ITM-MidBand - Python",
-    "section": "Documentation",
-    "text": "Documentation\nAll itm functions contain built-in docstring help. This means that if your python development editor supports it, it can provide you with assistance on information such as function description, parameter types and descriptions, and return details.\nThis also means that help() is supported in the console to provide information."
-  },
-  {
-    "objectID": "models/ITM-MidBand/python.html#site-specific-basic-transmission-loss-tls",
-    "href": "models/ITM-MidBand/python.html#site-specific-basic-transmission-loss-tls",
-    "title": "ITM-MidBand - Python",
-    "section": "Site Specific Basic Transmission Loss (TLS)",
-    "text": "Site Specific Basic Transmission Loss (TLS)\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 3500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_TLS(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, \n    time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 105.85899333756423) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 103.33136088700552 dB."
-  },
-  {
-    "objectID": "models/ITM-MidBand/python.html#site-specific-basic-transmission-loss-cr",
-    "href": "models/ITM-MidBand/python.html#site-specific-basic-transmission-loss-cr",
-    "title": "ITM-MidBand - Python",
-    "section": "Site Specific Basic Transmission Loss (CR)",
-    "text": "Site Specific Basic Transmission Loss (CR)\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 1500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\nconfidence = 50                     # median\nreliability = 50                    # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_CR(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, \n    reliability)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 99.97444366973738)  # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 95.97182518111363 dB."
-  },
-  {
-    "objectID": "models/ITM-MidBand/python.html#area-mode-basic-transmission-loss-tls",
-    "href": "models/ITM-MidBand/python.html#area-mode-basic-transmission-loss-tls",
-    "title": "ITM-MidBand - Python",
-    "section": "Area Mode Basic Transmission Loss (TLS)",
-    "text": "Area Mode Basic Transmission Loss (TLS)\n# define link parameters\nf__mhz = 1500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nd__km = 100                         # km\ndelta_h__meter = 40                 # meter\ntx_site_criteria = itm.SitingCriteria.Careful\nrx_site_criteria = itm.SitingCriteria.Careful\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_AREA_TLS(h_tx__meter, h_rx__meter, \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, \n    N_0, f__mhz, pol, epsilon, sigma, mdvar, time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 191.02659749297175) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is Troposcatter\n# The effective height of the TX is 13.032653298563167 meters.\n# The free space basic transmission loss is 135.97182518111362 dB."
-  },
-  {
-    "objectID": "models/ITM-MidBand/python.html#area-mode-basic-transmission-loss-cr",
-    "href": "models/ITM-MidBand/python.html#area-mode-basic-transmission-loss-cr",
-    "title": "ITM-MidBand - Python",
-    "section": "Area Mode Basic Transmission Loss (CR)",
-    "text": "Area Mode Basic Transmission Loss (CR)\n# define link parameters\nf__mhz = 5000                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nd__km = 100                         # km\ndelta_h__meter = 40                 # meter\ntx_site_criteria = itm.SitingCriteria.Careful\nrx_site_criteria = itm.SitingCriteria.Careful\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\nconfidence = 50                     # median\nreliability = 50                    # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_AREA_CR(h_tx__meter, h_rx__meter, \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, \n    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 205.7473567880463)  # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is Troposcatter\n# The effective height of the TX is 13.032653298563167 meters.\n# The free space basic transmission loss is 146.42940008672036 dB."
-  },
-  {
     "objectID": "models/ITM-MidBand/index.html",
     "href": "models/ITM-MidBand/index.html",
-    "title": "ITM-MidBand - Overview",
+    "title": "ITM-MidBand",
     "section": "",
-    "text": "A description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the public GitHub repo."
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated,incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nA description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the public GitHub repo."
   },
   {
     "objectID": "models/ITM-MidBand/index.html#getting-started",
     "href": "models/ITM-MidBand/index.html#getting-started",
-    "title": "ITM-MidBand - Overview",
+    "title": "ITM-MidBand",
     "section": "Getting Started",
     "text": "Getting Started\nLanguage-specific information on getting started using the ITM library can be found below at the corresponding page.\nInformation: C# | MATLAB | Python"
   },
   {
     "objectID": "models/ITM-MidBand/index.html#point-to-point-basic-transmission-loss-tls",
     "href": "models/ITM-MidBand/index.html#point-to-point-basic-transmission-loss-tls",
-    "title": "ITM-MidBand - Overview",
+    "title": "ITM-MidBand",
     "section": "Point-to-Point Basic Transmission Loss (TLS)",
     "text": "Point-to-Point Basic Transmission Loss (TLS)\nGenerate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as time, location, and situation percentages.\nExample: C# | MATLAB | Python"
   },
   {
     "objectID": "models/ITM-MidBand/index.html#point-to-point-basic-transmission-loss-cr",
     "href": "models/ITM-MidBand/index.html#point-to-point-basic-transmission-loss-cr",
-    "title": "ITM-MidBand - Overview",
+    "title": "ITM-MidBand",
     "section": "Point-to-Point Basic Transmission Loss (CR)",
     "text": "Point-to-Point Basic Transmission Loss (CR)\nGenerate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as confidence and reliability percentages.\nExample: C# | MATLAB | Python"
   },
   {
     "objectID": "models/ITM-MidBand/index.html#area-mode-basic-transmission-loss-tls",
     "href": "models/ITM-MidBand/index.html#area-mode-basic-transmission-loss-tls",
-    "title": "ITM-MidBand - Overview",
+    "title": "ITM-MidBand",
     "section": "Area Mode Basic Transmission Loss (TLS)",
     "text": "Area Mode Basic Transmission Loss (TLS)\nGenerate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as time, location, and situation percentages.\nExample: C# | MATLAB | Python"
   },
   {
     "objectID": "models/ITM-MidBand/index.html#area-mode-basic-transmission-loss-cr",
     "href": "models/ITM-MidBand/index.html#area-mode-basic-transmission-loss-cr",
-    "title": "ITM-MidBand - Overview",
+    "title": "ITM-MidBand",
     "section": "Area Mode Basic Transmission Loss (CR)",
     "text": "Area Mode Basic Transmission Loss (CR)\nGenerate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as confidence and reliability percentages.\nExample: C# | MATLAB | Python"
   },
   {
-    "objectID": "models/ITM/matlab.html",
-    "href": "models/ITM/matlab.html",
-    "title": "Irregular Terrain Model (ITM) - MATLAB",
+    "objectID": "models/ITM-MidBand/cpp.html",
+    "href": "models/ITM-MidBand/cpp.html",
+    "title": "ITM-MidBand - C++",
     "section": "",
-    "text": "The package name to install is itm. The package can be found in the matpak repo with the following command:"
-  },
-  {
-    "objectID": "models/ITM/matlab.html#installing-package",
-    "href": "models/ITM/matlab.html#installing-package",
-    "title": "Irregular Terrain Model (ITM) - MATLAB",
-    "section": "Installing Package",
-    "text": "Installing Package\nUse the following command to install itm from the matpak repo:\nmatpak install itm\nThe packag can be installed directly into your working directory or in a seperate directory that you include in your execution path."
-  },
-  {
-    "objectID": "models/ITM/matlab.html#documentation",
-    "href": "models/ITM/matlab.html#documentation",
-    "title": "Irregular Terrain Model (ITM) - MATLAB",
-    "section": "Documentation",
-    "text": "Documentation\nAll itm functions are docummented with detailed headers, such as:\n% Function ITM_P2P_TLS(...)\n%\n% Description: Calculates the propagation loss between antennas\n%       using ITM\n%\n% Inputs:\n%   h_tx__meter : Structural height of the TX, in meters\n%   h_rx__meter : Structural height of the RX, in meters\n%   radio_climate : Radio climate\n%   time : Time percentage (0 &lt; p &lt; 100)\n%   location : Location percentage (0 &lt; p &lt; 100)\n%   situation : Situation percentage (0 &lt; p &lt; 100)\n%   pfl : Terrain data, in PFL format\n%   N_0 : Refractivity, in N-Units\n%   f__mhz : Frequency, in MHz\n%   polarization : Polarization\n%   epsilon : Relative permittivity\n%   sigma : Conductivity\n%   mdvar : Mode of variability\n%\n% Outputs:\n%   rtn : Error code\n%   A__db : Basic transmission loss, in dB\n%   warnings : Warning flags\n%   interValues : Intermedate values"
-  },
-  {
-    "objectID": "models/ITM/matlab.html#point-to-point-basic-transmission-loss-tls",
-    "href": "models/ITM/matlab.html#point-to-point-basic-transmission-loss-tls",
-    "title": "Irregular Terrain Model (ITM) - MATLAB",
-    "section": "Point-to-Point Basic Transmission Loss (TLS)",
-    "text": "Point-to-Point Basic Transmission Loss (TLS)\n% define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5];\n\n% define link parameters\nf__mhz = 3500;                      % MHz\nh_tx__meter = 10;                   % meters, AGL\nh_rx__meter = 5;                    % meters, AGL\nN_0 = 301;                          % N-Units\nepsilon = 15;                       % average ground\nsigma = 0.005;                      % average ground\nclimate = ITMClimate.ContinentalTemperate;\npol = ITMPolarization.Horizontal;\n\n% define variability parameters\nmdvar = 13;\ntime = 50;                          % median\nlocation = 50;                      % median\nsituation = 50;                     % median\n\n% call ITM\n[rtn, A__db, warnings, ivals] = ITM.ITM_P2P_TLS(h_tx__meter, h_rx__meter, ...\n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, ...\n    time, location, situation)\n% rtn = 0                           % no errors\n% A__db = 105.8590                  % basic transmission loss, in dB\n% warnings = 0                      % no warnings\n\n% can use the intermediate values object to access additional information\n% from the ITM prediction\nfprintf('The mode of propagation is %s\\n', ivals.Mode)\nfprintf('The effective height of the TX is %f meters\\n', ivals.h_e__meter(1))\nfprintf('The free space basic transmission loss is %f dB\\n', ivals.A_fs__db)\n% The mode of propagation is LineOfSight\n% The effective height of the TX is 10.222222222222221 meters.\n% The free space basic transmission loss is 103.33136088700552 dB."
-  },
-  {
-    "objectID": "models/ITM/matlab.html#point-to-point-basic-transmission-loss-cr",
-    "href": "models/ITM/matlab.html#point-to-point-basic-transmission-loss-cr",
-    "title": "Irregular Terrain Model (ITM) - MATLAB",
-    "section": "Point-to-Point Basic Transmission Loss (CR)",
-    "text": "Point-to-Point Basic Transmission Loss (CR)\n% define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5];\n\n% define link parameters\nf__mhz = 1500;                      % MHz\nh_tx__meter = 10;                   % meters, AGL\nh_rx__meter = 5;                    % meters, AGL\nN_0 = 301;                          % N-Units\nepsilon = 15;                       % average ground\nsigma = 0.005;                      % average ground\nclimate = ITMClimate.ContinentalTemperate;\npol = ITMPolarization.Horizontal;\n\n% define variability parameters\nmdvar = 13;\nconfidence = 50;                    % median\nreliability = 50;                   % median\n\n% call ITM\n[rtn, A__db, warnings, ivals] = ITM.ITM_P2P_CR(h_tx__meter, h_rx__meter, ...\n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, ...\n    confidence, reliability)\n% rtn = 0                           % no errors\n% A__db = 99.9744                   % basic transmission loss, in dB\n% warnings = 0                      % no warnings\n\n% can use the intermediate values object to access additional information\n% from the ITM prediction\nfprintf('The mode of propagation is %s\\n', ivals.Mode)\nfprintf('The effective height of the TX is %f meters\\n', ivals.h_e__meter(1))\nfprintf('The free space basic transmission loss is %f dB\\n', ivals.A_fs__db)\n% The mode of propagation is LineOfSight\n% The effective height of the TX is 10.222222222222221 meters.\n% The free space basic transmission loss is 95.971825 dB."
-  },
-  {
-    "objectID": "models/ITM/matlab.html#area-mode-basic-transmission-loss-tls",
-    "href": "models/ITM/matlab.html#area-mode-basic-transmission-loss-tls",
-    "title": "Irregular Terrain Model (ITM) - MATLAB",
-    "section": "Area Mode Basic Transmission Loss (TLS)",
-    "text": "Area Mode Basic Transmission Loss (TLS)\n% define link parameters\nf__mhz = 1500;                      % MHz\nh_tx__meter = 10;                   % meters, AGL\nh_rx__meter = 5;                    % meters, AGL\nN_0 = 301;                          % N-Units\nepsilon = 15;                       % average ground\nsigma = 0.005;                      % average ground\nd__km = 100;                        % km\ndelta_h__meter = 40;                % meter\ntx_site_criteria = ITMSitingCriteria.Careful;\nrx_site_criteria = ITMSitingCriteria.Careful;\nclimate = ITMClimate.ContinentalTemperate;\npol = ITMPolarization.Horizontal;\n\n% define variability parameters\nmdvar = 13;\ntime = 50;                          % median\nlocation = 50;                      % median\nsituation = 50;                     % median\n\n% call ITM\n[rtn, A__db, warnings, ivals] = ITM.ITM_AREA_TLS(h_tx__meter, h_rx__meter, ... \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, ...\n    N_0, f__mhz, pol, epsilon, sigma, mdvar, time, location, situation)\n% rtn = 0                           % no errors\n% A__db = 191.0266                  % basic transmission loss, in dB\n% warnings = 0                      % no warnings\n\n% can use the intermediate values object to access additional information\n% from the ITM prediction\nfprintf('The mode of propagation is %s\\n', ivals.Mode)\nfprintf('The effective height of the TX is %f meters.\\n', ivals.h_e__meter(1))\nfprintf('The free space basic transmission loss is %f dB.\\n', ivals.A_fs__db)\n% The mode of propagation is Troposcatter\n% The effective height of the TX is 13.032653 meters.\n% The free space basic transmission loss is 135.971825 dB."
-  },
-  {
-    "objectID": "models/ITM/matlab.html#area-mode-basic-transmission-loss-cr",
-    "href": "models/ITM/matlab.html#area-mode-basic-transmission-loss-cr",
-    "title": "Irregular Terrain Model (ITM) - MATLAB",
-    "section": "Area Mode Basic Transmission Loss (CR)",
-    "text": "Area Mode Basic Transmission Loss (CR)\n% define link parameters\nf__mhz = 5000;                      % MHz\nh_tx__meter = 10;                   % meters, AGL\nh_rx__meter = 5;                    % meters, AGL\nN_0 = 301;                          % N-Units\nepsilon = 15;                       % average ground\nsigma = 0.005;                      % average ground\nd__km = 100;                        % km\ndelta_h__meter = 40;                % meter\ntx_site_criteria = ITMSitingCriteria.Careful;\nrx_site_criteria = ITMSitingCriteria.Careful;\nclimate = ITMClimate.ContinentalTemperate;\npol = ITMPolarization.Horizontal;\n\n% define variability parameters\nmdvar = 13;\nconfidence = 50;                    % median\nreliability = 50;                   % median\n\n% call ITM\n[rtn, A__db, warnings, ivals] = ITM.ITM_AREA_CR(h_tx__meter, h_rx__meter, ... \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, ...\n    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)\n% rtn = 0                           % no errors\n% A__db = 205.7474                  % basic transmission loss, in dB\n% warnings = 0                      % no warnings\n\n% can use the intermediate values object to access additional information\n% from the ITM prediction\nfprintf('The mode of propagation is %s\\n', ivals.Mode)\nfprintf('The effective height of the TX is %f meters.\\n', ivals.h_e__meter(1))\nfprintf('The free space basic transmission loss is %f dB.\\n', ivals.A_fs__db)\n% The mode of propagation is Troposcatter\n% The effective height of the TX is 13.032653 meters.\n% The free space basic transmission loss is 146.429400 dB."
-  },
-  {
-    "objectID": "models/ITM/dotnet.html",
-    "href": "models/ITM/dotnet.html",
-    "title": "Irregular Terrain Model (ITM) - C#/.NET",
-    "section": "",
-    "text": "To begin, install the NuGet package, ITM, from the NTIA NuGet repository\n\n\n\nitm nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
-  },
-  {
-    "objectID": "models/ITM/dotnet.html#getting-started",
-    "href": "models/ITM/dotnet.html#getting-started",
-    "title": "Irregular Terrain Model (ITM) - C#/.NET",
-    "section": "",
-    "text": "To begin, install the NuGet package, ITM, from the NTIA NuGet repository\n\n\n\nitm nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
-  },
-  {
-    "objectID": "models/ITM/dotnet.html#documentation",
-    "href": "models/ITM/dotnet.html#documentation",
-    "title": "Irregular Terrain Model (ITM) - C#/.NET",
-    "section": "Documentation",
-    "text": "Documentation\nThe itm library is packaged to support IntelliSense when developing in Visual Studio. This documentation will provide the developer with information on function descriptions, variable details, etc."
-  },
-  {
-    "objectID": "models/ITM/dotnet.html#point-to-point-basic-transmission-loss-tls",
-    "href": "models/ITM/dotnet.html#point-to-point-basic-transmission-loss-tls",
-    "title": "Irregular Terrain Model (ITM) - C#/.NET",
-    "section": "Point-to-Point Basic Transmission Loss (TLS)",
-    "text": "Point-to-Point Basic Transmission Loss (TLS)\n// define the terrain profile in PFL format\nvar pfl = new double[] { 5, 200, 5, 7, 2, 4, 7, 5 };\n\n// define link parameters\ndouble f__mhz = 3500;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble time = 50;                          // median\ndouble location = 50;                      // median\ndouble situation = 50;                     // median\n\n// call ITM\nint rtn = ITM.ITM_P2P_TLS_Ex(h_tx__meter, h_rx__meter, pfl,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    time, location, situation, out double A__db, \n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n\n// rtn = 0                                 // no errors\n// A__db = 105.8590                        // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB\");\n// The mode of propagation is LineOfSight\n// The effective height of the TX is 10.222222222222221 meters.\n// The free space basic transmission loss is 103.33136088700552 dB."
-  },
-  {
-    "objectID": "models/ITM/dotnet.html#point-to-point-basic-transmission-loss-cr",
-    "href": "models/ITM/dotnet.html#point-to-point-basic-transmission-loss-cr",
-    "title": "Irregular Terrain Model (ITM) - C#/.NET",
-    "section": "Point-to-Point Basic Transmission Loss (CR)",
-    "text": "Point-to-Point Basic Transmission Loss (CR)\n// define the terrain profile in PFL format\nvar pfl = new double[] { 5, 200, 5, 7, 2, 4, 7, 5 };\n\n// define link parameters\ndouble f__mhz = 1500;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble confidence = 50;                    // median\ndouble reliability = 50;                   // median\n\n// call ITM\nint rtn = ITM.ITM_P2P_CR_Ex(h_tx__meter, h_rx__meter, pfl,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    confidence, reliability, out double A__db, \n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n\n// rtn = 0                                 // no errors\n// A__db = 99.9744                         // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB\");\n// The mode of propagation is LineOfSight\n// The effective height of the TX is 10.222222222222221 meters.\n// The free space basic transmission loss is 95.971825 dB."
-  },
-  {
-    "objectID": "models/ITM/dotnet.html#area-mode-basic-transmission-loss-tls",
-    "href": "models/ITM/dotnet.html#area-mode-basic-transmission-loss-tls",
-    "title": "Irregular Terrain Model (ITM) - C#/.NET",
-    "section": "Area Mode Basic Transmission Loss (TLS)",
-    "text": "Area Mode Basic Transmission Loss (TLS)\n// define link parameters\ndouble f__mhz = 1500;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\ndouble d__km = 100;                        // km\ndouble delta_h__meter = 40;                // meter\nvar tx_site_criteria = ITM.SitingCriteria.Careful;\nvar rx_site_criteria = ITM.SitingCriteria.Careful;\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble time = 50;                          // median\ndouble location = 50;                      // median\ndouble situation = 50;                     // median\n\n// call ITM\nint rtn = ITM.ITM_AREA_TLS_Ex(h_tx__meter, h_rx__meter,\n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    time, location, situation, out double A__db,\n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n// rtn = 0                                 // no errors\n// A__db = 191.0266                        // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB.\");\n// The mode of propagation is Troposcatter\n// The effective height of the TX is 13.032653 meters.\n// The free space basic transmission loss is 135.971825 dB."
-  },
-  {
-    "objectID": "models/ITM/dotnet.html#area-mode-basic-transmission-loss-cr",
-    "href": "models/ITM/dotnet.html#area-mode-basic-transmission-loss-cr",
-    "title": "Irregular Terrain Model (ITM) - C#/.NET",
-    "section": "Area Mode Basic Transmission Loss (CR)",
-    "text": "Area Mode Basic Transmission Loss (CR)\n// define link parameters\ndouble f__mhz = 5000;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\ndouble d__km = 100;                        // km\ndouble delta_h__meter = 40;                // meter\nvar tx_site_criteria = ITM.SitingCriteria.Careful;\nvar rx_site_criteria = ITM.SitingCriteria.Careful;\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble confidence = 50;                    // median\ndouble reliability = 50;                   // median\n\n// call ITM\nint rtn = ITM.ITM_AREA_CR_Ex(h_tx__meter, h_rx__meter,\n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    confidence, reliability, out double A__db,\n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n// rtn = 0                                 // no errors\n// A__db = 205.7474                        // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB.\");\n// The mode of propagation is Troposcatter\n// The effective height of the TX is 13.032653 meters.\n// The free space basic transmission loss is 146.429400 dB."
-  },
-  {
-    "objectID": "models/EHata/python.html",
-    "href": "models/EHata/python.html",
-    "title": "Extended-Hata (E-Hata) Model - Python",
-    "section": "",
-    "text": "The package name to install is ehata\nor"
-  },
-  {
-    "objectID": "models/EHata/python.html#dependencies",
-    "href": "models/EHata/python.html#dependencies",
-    "title": "Extended-Hata (E-Hata) Model - Python",
-    "section": "Dependencies",
-    "text": "Dependencies\nThe ehata package has no dependencies."
-  },
-  {
-    "objectID": "models/EHata/python.html#installing-package",
-    "href": "models/EHata/python.html#installing-package",
-    "title": "Extended-Hata (E-Hata) Model - Python",
-    "section": "Installing Package",
-    "text": "Installing Package\nUse the following command to install ehata from the local pip repo:\npip install ehata --no-index --find-links file://itsfs01/Tools/Python/pip"
-  },
-  {
-    "objectID": "models/EHata/python.html#getting-started",
-    "href": "models/EHata/python.html#getting-started",
-    "title": "Extended-Hata (E-Hata) Model - Python",
-    "section": "Getting Started",
-    "text": "Getting Started\nImporting ehata is as simple as including the following in your .py file:\nimport ehata"
-  },
-  {
-    "objectID": "models/EHata/python.html#documentation",
-    "href": "models/EHata/python.html#documentation",
-    "title": "Extended-Hata (E-Hata) Model - Python",
-    "section": "Documentation",
-    "text": "Documentation\nAll ehata functions contain built-in docstring help. This means that if your python development editor supports it, it can provide you with assistance on information such as function description, parameter types and descriptions, and return details.\nThis also means that help() is supported in the console to provide information."
-  },
-  {
-    "objectID": "models/EHata/python.html#basic-transmission-loss",
-    "href": "models/EHata/python.html#basic-transmission-loss",
-    "title": "Extended-Hata (E-Hata) Model - Python",
-    "section": "Basic Transmission Loss",
-    "text": "Basic Transmission Loss\npfl = [5, 100, 5, 7, 2, 4, 7, 5]\nf__mhz = 3500\nh_b__meter = 25\nh_m__meter = 1.5\nenv = ehata.Classification.Urban\nrel = 0.5\n\nA__db, ivals = ehata.Invoke(pfl, f__mhz, h_b__meter, h_m__meter, env, rel)\nassert(A__db == 133.7836794567479)\n\n# can use the intermediate values object to access additional information\n# from the EHata prediction\nprint(f\"The effective height of the base station is {ivals.h_b_eff__meter} meters\")\n# The effective height of the base station is 30.0 meters"
-  },
-  {
-    "objectID": "models/EHata/index.html",
-    "href": "models/EHata/index.html",
-    "title": "Extended-Hata (E-Hata) Model - Overview",
-    "section": "",
-    "text": "A description of the Extended Hata Model (eHata), as well as details on input parameters, can be found at the public GitHub repo."
-  },
-  {
-    "objectID": "models/EHata/index.html#basic-transmission-loss",
-    "href": "models/EHata/index.html#basic-transmission-loss",
-    "title": "Extended-Hata (E-Hata) Model - Overview",
-    "section": "Basic Transmission Loss",
-    "text": "Basic Transmission Loss\nGenerate a basic transmission loss prediction.\nExample: C# | MATLAB | Python"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "NTIA/ITS Propagation Library Wiki",
-    "section": "",
-    "text": "The ITS Propagation Library currently supports C++, C#/.NET, MATLAB, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements."
-  },
-  {
-    "objectID": "index.html#quick-start",
-    "href": "index.html#quick-start",
-    "title": "NTIA/ITS Propagation Library Wiki",
-    "section": "Quick Start",
-    "text": "Quick Start\n\nFor C++ developers, Quick Start for C++\nFor .NET developers, Quick Start for .NET\nFor MATLAB developers, Quick Start for MATLAB\nFor Python developers, Quick Start for Python"
-  },
-  {
-    "objectID": "index.html#packages",
-    "href": "index.html#packages",
-    "title": "NTIA/ITS Propagation Library Wiki",
-    "section": "Packages",
-    "text": "Packages\n\nUS Propagation Models\nComing soon\n\n\n\n\n\n\n\nITU-R Recommendations\n\n\n\n\n\n🌎 P.2108: [Repo | Docs] - Prediction of clutter loss"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "TODO"
-  },
-  {
-    "objectID": "LICENSE.html",
-    "href": "LICENSE.html",
-    "title": "SOFTWARE DISCLAIMER / RELEASE",
-    "section": "",
-    "text": "SOFTWARE DISCLAIMER / RELEASE\nThis software was developed by employees of the National Telecommunications and Information Administration (NTIA), an agency of the Federal Government and is provided to you as a public service. Pursuant to Title 15 United States Code Section 105, works of NTIA employees are not subject to copyright protection within the United States.\nThe software is provided by NTIA “AS IS.” NTIA MAKES NO WARRANTY OF ANY KIND, EXPRESS, IMPLIED OR STATUTORY, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT AND DATA ACCURACY. NTIA does not warrant or make any representations regarding the use of the software or the results thereof, including but not limited to the correctness, accuracy, reliability or usefulness of the software.\nTo the extent that NTIA holds rights in countries other than the United States, you are hereby granted the non-exclusive irrevocable and unconditional right to print, publish, prepare derivative works and distribute the NTIA software, in any medium, or authorize others to do so on your behalf, on a royalty-free basis throughout the World.\nYou may improve, modify, and create derivative works of the software or any portion of the software, and you may copy and distribute such modifications or works. Modified works should carry a notice stating that you changed the software and should note the date and nature of any such change.\nYou are solely responsible for determining the appropriateness of using and distributing the software and you assume all risks associated with its use, including but not limited to the risks and costs of program errors, compliance with applicable laws, damage to or loss of data, programs or equipment, and the unavailability or interruption of operation. This software is not intended to be used in any situation where a failure could cause risk of injury or damage to property.\nPlease provide appropriate acknowledgments of NTIA’s creation of the software in any copies or derivative works of this software."
-  },
-  {
-    "objectID": "models/EHata/dotnet.html",
-    "href": "models/EHata/dotnet.html",
-    "title": "Extended-Hata (E-Hata) Model - C#/.NET",
-    "section": "",
-    "text": "To begin, install the NuGet package, EHata, from the NTIA NuGet repository\n\n\n\nehata nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
-  },
-  {
-    "objectID": "models/EHata/dotnet.html#getting-started",
-    "href": "models/EHata/dotnet.html#getting-started",
-    "title": "Extended-Hata (E-Hata) Model - C#/.NET",
-    "section": "",
-    "text": "To begin, install the NuGet package, EHata, from the NTIA NuGet repository\n\n\n\nehata nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
-  },
-  {
-    "objectID": "models/EHata/dotnet.html#documentation",
-    "href": "models/EHata/dotnet.html#documentation",
-    "title": "Extended-Hata (E-Hata) Model - C#/.NET",
-    "section": "Documentation",
-    "text": "Documentation\nThe ehata library is packaged to support IntelliSense when developing in Visual Studio. This documentation will provide the developer with information on function descriptions, variable details, etc. # Examples"
-  },
-  {
-    "objectID": "models/EHata/dotnet.html#basic-transmission-loss",
-    "href": "models/EHata/dotnet.html#basic-transmission-loss",
-    "title": "Extended-Hata (E-Hata) Model - C#/.NET",
-    "section": "Basic Transmission Loss",
-    "text": "Basic Transmission Loss\nvar pfl = new double[] { 5, 100, 5, 7, 2, 4, 7, 5 };\ndouble f__mhz = 3500;\ndouble h_b__meter = 25;\ndouble h_m__meter = 1.5;\nvar env = EHata.ClutterEnvironment.Urban;\ndouble rel = 0.5;\n\nEHata.InvokeEx(pfl, f__mhz, h_b__meter, h_m__meter, env, rel,\n    out double A__db, out EHata.IntermediateValues ivals);\n// A__db = 133.7836794567479\n\n// can use the intermediate values object to access additional information\n// from the EHata prediction\nConsole.WriteLine($\"The effective height of the base station is {ivals.h_b_eff__meter} meters\");\n// The effective height of the base station is 30.0 meters"
-  },
-  {
-    "objectID": "models/EHata/matlab.html",
-    "href": "models/EHata/matlab.html",
-    "title": "Extended-Hata (E-Hata) Model - MATLAB",
-    "section": "",
-    "text": "% fake terrain profile information, in PFL-format, formatted from the \n% mobile to the base station\npfl = [5 100 5 7 2 4 7 5];\n\n% additional prediction parameters\nf__mhz = 3500;\nh_b__meter = 25;\nh_m__meter = 1.5;\nenv = EHataClassification.Urban;\nrel = 0.5;  % variability\n\n[A__db, interVals] = EHata.Invoke(pfl, f__mhz, h_b__meter, h_m__meter, env, rel);\nfprintf('The basic transmission loss is %f dB\\n', A__db);\nfprintf('Can access internal values of this prediction such as:\\n');\nfprintf(' - Breakpoint distance: %f km\\n', interVals.d_bp__km);\nfprintf(' - Delta h: %f meter\\n', interVals.deltah__meter);\nfprintf(' - Base station horizon distance: %f km\\n', interVals.d_hzn__meter(2));\n\n% The basic transmission loss is 133.783679 dB\n% Can access internal values of this prediction such as:\n%  - Breakpoint distance: 15.583715 km\n%  - Delta h: 4.977138 meter\n%  - Base station horizon distance: 500.000000 km"
-  },
-  {
-    "objectID": "models/EHata/matlab.html#examples",
-    "href": "models/EHata/matlab.html#examples",
-    "title": "Extended-Hata (E-Hata) Model - MATLAB",
-    "section": "",
-    "text": "% fake terrain profile information, in PFL-format, formatted from the \n% mobile to the base station\npfl = [5 100 5 7 2 4 7 5];\n\n% additional prediction parameters\nf__mhz = 3500;\nh_b__meter = 25;\nh_m__meter = 1.5;\nenv = EHataClassification.Urban;\nrel = 0.5;  % variability\n\n[A__db, interVals] = EHata.Invoke(pfl, f__mhz, h_b__meter, h_m__meter, env, rel);\nfprintf('The basic transmission loss is %f dB\\n', A__db);\nfprintf('Can access internal values of this prediction such as:\\n');\nfprintf(' - Breakpoint distance: %f km\\n', interVals.d_bp__km);\nfprintf(' - Delta h: %f meter\\n', interVals.deltah__meter);\nfprintf(' - Base station horizon distance: %f km\\n', interVals.d_hzn__meter(2));\n\n% The basic transmission loss is 133.783679 dB\n% Can access internal values of this prediction such as:\n%  - Breakpoint distance: 15.583715 km\n%  - Delta h: 4.977138 meter\n%  - Base station horizon distance: 500.000000 km"
-  },
-  {
-    "objectID": "models/ITM/index.html",
-    "href": "models/ITM/index.html",
-    "title": "Irregular Terrain Model (ITM) - Overview",
-    "section": "",
-    "text": "A description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the public GitHub repo."
-  },
-  {
-    "objectID": "models/ITM/index.html#getting-started",
-    "href": "models/ITM/index.html#getting-started",
-    "title": "Irregular Terrain Model (ITM) - Overview",
-    "section": "Getting Started",
-    "text": "Getting Started\nLanguage-specific information on getting started using the ITM library can be found below at the corresponding page.\nInformation: C# | MATLAB | Python"
-  },
-  {
-    "objectID": "models/ITM/index.html#point-to-point-basic-transmission-loss-tls",
-    "href": "models/ITM/index.html#point-to-point-basic-transmission-loss-tls",
-    "title": "Irregular Terrain Model (ITM) - Overview",
-    "section": "Point-to-Point Basic Transmission Loss (TLS)",
-    "text": "Point-to-Point Basic Transmission Loss (TLS)\nGenerate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as time, location, and situation percentages.\nExample: C# | MATLAB | Python"
-  },
-  {
-    "objectID": "models/ITM/index.html#point-to-point-basic-transmission-loss-cr",
-    "href": "models/ITM/index.html#point-to-point-basic-transmission-loss-cr",
-    "title": "Irregular Terrain Model (ITM) - Overview",
-    "section": "Point-to-Point Basic Transmission Loss (CR)",
-    "text": "Point-to-Point Basic Transmission Loss (CR)\nGenerate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as confidence and reliability percentages.\nExample: C# | MATLAB | Python"
-  },
-  {
-    "objectID": "models/ITM/index.html#area-mode-basic-transmission-loss-tls",
-    "href": "models/ITM/index.html#area-mode-basic-transmission-loss-tls",
-    "title": "Irregular Terrain Model (ITM) - Overview",
-    "section": "Area Mode Basic Transmission Loss (TLS)",
-    "text": "Area Mode Basic Transmission Loss (TLS)\nGenerate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as time, location, and situation percentages.\nExample: C# | MATLAB | Python"
-  },
-  {
-    "objectID": "models/ITM/index.html#area-mode-basic-transmission-loss-cr",
-    "href": "models/ITM/index.html#area-mode-basic-transmission-loss-cr",
-    "title": "Irregular Terrain Model (ITM) - Overview",
-    "section": "Area Mode Basic Transmission Loss (CR)",
-    "text": "Area Mode Basic Transmission Loss (CR)\nGenerate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as confidence and reliability percentages.\nExample: C# | MATLAB | Python"
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated,incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
   },
   {
     "objectID": "models/ITM/python.html",
     "href": "models/ITM/python.html",
     "title": "Irregular Terrain Model (ITM) - Python",
     "section": "",
-    "text": "The package name to install is itm\nor"
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThe package name to install is itm\nor"
   },
   {
     "objectID": "models/ITM/python.html#dependencies",
@@ -679,60 +252,319 @@
     "text": "Area Mode Basic Transmission Loss (CR)\n# define link parameters\nf__mhz = 5000                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nd__km = 100                         # km\ndelta_h__meter = 40                 # meter\ntx_site_criteria = itm.SitingCriteria.Careful\nrx_site_criteria = itm.SitingCriteria.Careful\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\nconfidence = 50                     # median\nreliability = 50                    # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_AREA_CR(h_tx__meter, h_rx__meter, \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, \n    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 205.7473567880463)  # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is Troposcatter\n# The effective height of the TX is 13.032653298563167 meters.\n# The free space basic transmission loss is 146.42940008672036 dB."
   },
   {
-    "objectID": "models/ITM-MidBand/dotnet.html",
-    "href": "models/ITM-MidBand/dotnet.html",
-    "title": "ITM-MidBand - C#/.NET",
+    "objectID": "models/ITM/dotnet.html",
+    "href": "models/ITM/dotnet.html",
+    "title": "Irregular Terrain Model (ITM) - C#/.NET",
     "section": "",
-    "text": "To begin, install the NuGet package, ITM, from the NTIA NuGet repository\n\n\n\nitm nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
   },
   {
-    "objectID": "models/ITM-MidBand/dotnet.html#getting-started",
-    "href": "models/ITM-MidBand/dotnet.html#getting-started",
-    "title": "ITM-MidBand - C#/.NET",
-    "section": "",
-    "text": "To begin, install the NuGet package, ITM, from the NTIA NuGet repository\n\n\n\nitm nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
+    "objectID": "models/ITM/dotnet.html#getting-started",
+    "href": "models/ITM/dotnet.html#getting-started",
+    "title": "Irregular Terrain Model (ITM) - C#/.NET",
+    "section": "Getting Started",
+    "text": "Getting Started\nTo begin, install the NuGet package, ITM, from the NTIA NuGet repository\n\n\n\nitm nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
   },
   {
-    "objectID": "models/ITM-MidBand/dotnet.html#documentation",
-    "href": "models/ITM-MidBand/dotnet.html#documentation",
-    "title": "ITM-MidBand - C#/.NET",
+    "objectID": "models/ITM/dotnet.html#documentation",
+    "href": "models/ITM/dotnet.html#documentation",
+    "title": "Irregular Terrain Model (ITM) - C#/.NET",
     "section": "Documentation",
     "text": "Documentation\nThe itm library is packaged to support IntelliSense when developing in Visual Studio. This documentation will provide the developer with information on function descriptions, variable details, etc."
   },
   {
-    "objectID": "models/ITM-MidBand/dotnet.html#point-to-point-basic-transmission-loss-tls",
-    "href": "models/ITM-MidBand/dotnet.html#point-to-point-basic-transmission-loss-tls",
-    "title": "ITM-MidBand - C#/.NET",
+    "objectID": "models/ITM/dotnet.html#point-to-point-basic-transmission-loss-tls",
+    "href": "models/ITM/dotnet.html#point-to-point-basic-transmission-loss-tls",
+    "title": "Irregular Terrain Model (ITM) - C#/.NET",
     "section": "Point-to-Point Basic Transmission Loss (TLS)",
     "text": "Point-to-Point Basic Transmission Loss (TLS)\n// define the terrain profile in PFL format\nvar pfl = new double[] { 5, 200, 5, 7, 2, 4, 7, 5 };\n\n// define link parameters\ndouble f__mhz = 3500;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble time = 50;                          // median\ndouble location = 50;                      // median\ndouble situation = 50;                     // median\n\n// call ITM\nint rtn = ITM.ITM_P2P_TLS_Ex(h_tx__meter, h_rx__meter, pfl,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    time, location, situation, out double A__db, \n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n\n// rtn = 0                                 // no errors\n// A__db = 105.8590                        // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB\");\n// The mode of propagation is LineOfSight\n// The effective height of the TX is 10.222222222222221 meters.\n// The free space basic transmission loss is 103.33136088700552 dB."
   },
   {
-    "objectID": "models/ITM-MidBand/dotnet.html#point-to-point-basic-transmission-loss-cr",
-    "href": "models/ITM-MidBand/dotnet.html#point-to-point-basic-transmission-loss-cr",
-    "title": "ITM-MidBand - C#/.NET",
+    "objectID": "models/ITM/dotnet.html#point-to-point-basic-transmission-loss-cr",
+    "href": "models/ITM/dotnet.html#point-to-point-basic-transmission-loss-cr",
+    "title": "Irregular Terrain Model (ITM) - C#/.NET",
     "section": "Point-to-Point Basic Transmission Loss (CR)",
     "text": "Point-to-Point Basic Transmission Loss (CR)\n// define the terrain profile in PFL format\nvar pfl = new double[] { 5, 200, 5, 7, 2, 4, 7, 5 };\n\n// define link parameters\ndouble f__mhz = 1500;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble confidence = 50;                    // median\ndouble reliability = 50;                   // median\n\n// call ITM\nint rtn = ITM.ITM_P2P_CR_Ex(h_tx__meter, h_rx__meter, pfl,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    confidence, reliability, out double A__db, \n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n\n// rtn = 0                                 // no errors\n// A__db = 99.9744                         // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB\");\n// The mode of propagation is LineOfSight\n// The effective height of the TX is 10.222222222222221 meters.\n// The free space basic transmission loss is 95.971825 dB."
   },
   {
-    "objectID": "models/ITM-MidBand/dotnet.html#area-mode-basic-transmission-loss-tls",
-    "href": "models/ITM-MidBand/dotnet.html#area-mode-basic-transmission-loss-tls",
-    "title": "ITM-MidBand - C#/.NET",
+    "objectID": "models/ITM/dotnet.html#area-mode-basic-transmission-loss-tls",
+    "href": "models/ITM/dotnet.html#area-mode-basic-transmission-loss-tls",
+    "title": "Irregular Terrain Model (ITM) - C#/.NET",
     "section": "Area Mode Basic Transmission Loss (TLS)",
     "text": "Area Mode Basic Transmission Loss (TLS)\n// define link parameters\ndouble f__mhz = 1500;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\ndouble d__km = 100;                        // km\ndouble delta_h__meter = 40;                // meter\nvar tx_site_criteria = ITM.SitingCriteria.Careful;\nvar rx_site_criteria = ITM.SitingCriteria.Careful;\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble time = 50;                          // median\ndouble location = 50;                      // median\ndouble situation = 50;                     // median\n\n// call ITM\nint rtn = ITM.ITM_AREA_TLS_Ex(h_tx__meter, h_rx__meter,\n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    time, location, situation, out double A__db,\n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n// rtn = 0                                 // no errors\n// A__db = 191.0266                        // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB.\");\n// The mode of propagation is Troposcatter\n// The effective height of the TX is 13.032653 meters.\n// The free space basic transmission loss is 135.971825 dB."
   },
   {
-    "objectID": "models/ITM-MidBand/dotnet.html#area-mode-basic-transmission-loss-cr",
-    "href": "models/ITM-MidBand/dotnet.html#area-mode-basic-transmission-loss-cr",
-    "title": "ITM-MidBand - C#/.NET",
+    "objectID": "models/ITM/dotnet.html#area-mode-basic-transmission-loss-cr",
+    "href": "models/ITM/dotnet.html#area-mode-basic-transmission-loss-cr",
+    "title": "Irregular Terrain Model (ITM) - C#/.NET",
     "section": "Area Mode Basic Transmission Loss (CR)",
     "text": "Area Mode Basic Transmission Loss (CR)\n// define link parameters\ndouble f__mhz = 5000;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\ndouble d__km = 100;                        // km\ndouble delta_h__meter = 40;                // meter\nvar tx_site_criteria = ITM.SitingCriteria.Careful;\nvar rx_site_criteria = ITM.SitingCriteria.Careful;\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble confidence = 50;                    // median\ndouble reliability = 50;                   // median\n\n// call ITM\nint rtn = ITM.ITM_AREA_CR_Ex(h_tx__meter, h_rx__meter,\n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    confidence, reliability, out double A__db,\n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n// rtn = 0                                 // no errors\n// A__db = 205.7474                        // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB.\");\n// The mode of propagation is Troposcatter\n// The effective height of the TX is 13.032653 meters.\n// The free space basic transmission loss is 146.429400 dB."
+  },
+  {
+    "objectID": "models/ITM/matlab.html",
+    "href": "models/ITM/matlab.html",
+    "title": "Irregular Terrain Model (ITM) - MATLAB",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThe package name to install is itm. The package can be found in the matpak repo with the following command:"
+  },
+  {
+    "objectID": "models/ITM/matlab.html#installing-package",
+    "href": "models/ITM/matlab.html#installing-package",
+    "title": "Irregular Terrain Model (ITM) - MATLAB",
+    "section": "Installing Package",
+    "text": "Installing Package\nUse the following command to install itm from the matpak repo:\nmatpak install itm\nThe packag can be installed directly into your working directory or in a seperate directory that you include in your execution path."
+  },
+  {
+    "objectID": "models/ITM/matlab.html#documentation",
+    "href": "models/ITM/matlab.html#documentation",
+    "title": "Irregular Terrain Model (ITM) - MATLAB",
+    "section": "Documentation",
+    "text": "Documentation\nAll itm functions are docummented with detailed headers, such as:\n% Function ITM_P2P_TLS(...)\n%\n% Description: Calculates the propagation loss between antennas\n%       using ITM\n%\n% Inputs:\n%   h_tx__meter : Structural height of the TX, in meters\n%   h_rx__meter : Structural height of the RX, in meters\n%   radio_climate : Radio climate\n%   time : Time percentage (0 &lt; p &lt; 100)\n%   location : Location percentage (0 &lt; p &lt; 100)\n%   situation : Situation percentage (0 &lt; p &lt; 100)\n%   pfl : Terrain data, in PFL format\n%   N_0 : Refractivity, in N-Units\n%   f__mhz : Frequency, in MHz\n%   polarization : Polarization\n%   epsilon : Relative permittivity\n%   sigma : Conductivity\n%   mdvar : Mode of variability\n%\n% Outputs:\n%   rtn : Error code\n%   A__db : Basic transmission loss, in dB\n%   warnings : Warning flags\n%   interValues : Intermedate values"
+  },
+  {
+    "objectID": "models/ITM/matlab.html#point-to-point-basic-transmission-loss-tls",
+    "href": "models/ITM/matlab.html#point-to-point-basic-transmission-loss-tls",
+    "title": "Irregular Terrain Model (ITM) - MATLAB",
+    "section": "Point-to-Point Basic Transmission Loss (TLS)",
+    "text": "Point-to-Point Basic Transmission Loss (TLS)\n% define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5];\n\n% define link parameters\nf__mhz = 3500;                      % MHz\nh_tx__meter = 10;                   % meters, AGL\nh_rx__meter = 5;                    % meters, AGL\nN_0 = 301;                          % N-Units\nepsilon = 15;                       % average ground\nsigma = 0.005;                      % average ground\nclimate = ITMClimate.ContinentalTemperate;\npol = ITMPolarization.Horizontal;\n\n% define variability parameters\nmdvar = 13;\ntime = 50;                          % median\nlocation = 50;                      % median\nsituation = 50;                     % median\n\n% call ITM\n[rtn, A__db, warnings, ivals] = ITM.ITM_P2P_TLS(h_tx__meter, h_rx__meter, ...\n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, ...\n    time, location, situation)\n% rtn = 0                           % no errors\n% A__db = 105.8590                  % basic transmission loss, in dB\n% warnings = 0                      % no warnings\n\n% can use the intermediate values object to access additional information\n% from the ITM prediction\nfprintf('The mode of propagation is %s\\n', ivals.Mode)\nfprintf('The effective height of the TX is %f meters\\n', ivals.h_e__meter(1))\nfprintf('The free space basic transmission loss is %f dB\\n', ivals.A_fs__db)\n% The mode of propagation is LineOfSight\n% The effective height of the TX is 10.222222222222221 meters.\n% The free space basic transmission loss is 103.33136088700552 dB."
+  },
+  {
+    "objectID": "models/ITM/matlab.html#point-to-point-basic-transmission-loss-cr",
+    "href": "models/ITM/matlab.html#point-to-point-basic-transmission-loss-cr",
+    "title": "Irregular Terrain Model (ITM) - MATLAB",
+    "section": "Point-to-Point Basic Transmission Loss (CR)",
+    "text": "Point-to-Point Basic Transmission Loss (CR)\n% define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5];\n\n% define link parameters\nf__mhz = 1500;                      % MHz\nh_tx__meter = 10;                   % meters, AGL\nh_rx__meter = 5;                    % meters, AGL\nN_0 = 301;                          % N-Units\nepsilon = 15;                       % average ground\nsigma = 0.005;                      % average ground\nclimate = ITMClimate.ContinentalTemperate;\npol = ITMPolarization.Horizontal;\n\n% define variability parameters\nmdvar = 13;\nconfidence = 50;                    % median\nreliability = 50;                   % median\n\n% call ITM\n[rtn, A__db, warnings, ivals] = ITM.ITM_P2P_CR(h_tx__meter, h_rx__meter, ...\n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, ...\n    confidence, reliability)\n% rtn = 0                           % no errors\n% A__db = 99.9744                   % basic transmission loss, in dB\n% warnings = 0                      % no warnings\n\n% can use the intermediate values object to access additional information\n% from the ITM prediction\nfprintf('The mode of propagation is %s\\n', ivals.Mode)\nfprintf('The effective height of the TX is %f meters\\n', ivals.h_e__meter(1))\nfprintf('The free space basic transmission loss is %f dB\\n', ivals.A_fs__db)\n% The mode of propagation is LineOfSight\n% The effective height of the TX is 10.222222222222221 meters.\n% The free space basic transmission loss is 95.971825 dB."
+  },
+  {
+    "objectID": "models/ITM/matlab.html#area-mode-basic-transmission-loss-tls",
+    "href": "models/ITM/matlab.html#area-mode-basic-transmission-loss-tls",
+    "title": "Irregular Terrain Model (ITM) - MATLAB",
+    "section": "Area Mode Basic Transmission Loss (TLS)",
+    "text": "Area Mode Basic Transmission Loss (TLS)\n% define link parameters\nf__mhz = 1500;                      % MHz\nh_tx__meter = 10;                   % meters, AGL\nh_rx__meter = 5;                    % meters, AGL\nN_0 = 301;                          % N-Units\nepsilon = 15;                       % average ground\nsigma = 0.005;                      % average ground\nd__km = 100;                        % km\ndelta_h__meter = 40;                % meter\ntx_site_criteria = ITMSitingCriteria.Careful;\nrx_site_criteria = ITMSitingCriteria.Careful;\nclimate = ITMClimate.ContinentalTemperate;\npol = ITMPolarization.Horizontal;\n\n% define variability parameters\nmdvar = 13;\ntime = 50;                          % median\nlocation = 50;                      % median\nsituation = 50;                     % median\n\n% call ITM\n[rtn, A__db, warnings, ivals] = ITM.ITM_AREA_TLS(h_tx__meter, h_rx__meter, ... \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, ...\n    N_0, f__mhz, pol, epsilon, sigma, mdvar, time, location, situation)\n% rtn = 0                           % no errors\n% A__db = 191.0266                  % basic transmission loss, in dB\n% warnings = 0                      % no warnings\n\n% can use the intermediate values object to access additional information\n% from the ITM prediction\nfprintf('The mode of propagation is %s\\n', ivals.Mode)\nfprintf('The effective height of the TX is %f meters.\\n', ivals.h_e__meter(1))\nfprintf('The free space basic transmission loss is %f dB.\\n', ivals.A_fs__db)\n% The mode of propagation is Troposcatter\n% The effective height of the TX is 13.032653 meters.\n% The free space basic transmission loss is 135.971825 dB."
+  },
+  {
+    "objectID": "models/ITM/matlab.html#area-mode-basic-transmission-loss-cr",
+    "href": "models/ITM/matlab.html#area-mode-basic-transmission-loss-cr",
+    "title": "Irregular Terrain Model (ITM) - MATLAB",
+    "section": "Area Mode Basic Transmission Loss (CR)",
+    "text": "Area Mode Basic Transmission Loss (CR)\n% define link parameters\nf__mhz = 5000;                      % MHz\nh_tx__meter = 10;                   % meters, AGL\nh_rx__meter = 5;                    % meters, AGL\nN_0 = 301;                          % N-Units\nepsilon = 15;                       % average ground\nsigma = 0.005;                      % average ground\nd__km = 100;                        % km\ndelta_h__meter = 40;                % meter\ntx_site_criteria = ITMSitingCriteria.Careful;\nrx_site_criteria = ITMSitingCriteria.Careful;\nclimate = ITMClimate.ContinentalTemperate;\npol = ITMPolarization.Horizontal;\n\n% define variability parameters\nmdvar = 13;\nconfidence = 50;                    % median\nreliability = 50;                   % median\n\n% call ITM\n[rtn, A__db, warnings, ivals] = ITM.ITM_AREA_CR(h_tx__meter, h_rx__meter, ... \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, ...\n    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)\n% rtn = 0                           % no errors\n% A__db = 205.7474                  % basic transmission loss, in dB\n% warnings = 0                      % no warnings\n\n% can use the intermediate values object to access additional information\n% from the ITM prediction\nfprintf('The mode of propagation is %s\\n', ivals.Mode)\nfprintf('The effective height of the TX is %f meters.\\n', ivals.h_e__meter(1))\nfprintf('The free space basic transmission loss is %f dB.\\n', ivals.A_fs__db)\n% The mode of propagation is Troposcatter\n% The effective height of the TX is 13.032653 meters.\n% The free space basic transmission loss is 146.429400 dB."
+  },
+  {
+    "objectID": "quick-start/dotnet.html",
+    "href": "quick-start/dotnet.html",
+    "title": "Quick Start - C#/.NET",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThis page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the .NET development environment."
+  },
+  {
+    "objectID": "quick-start/dotnet.html#dependencies-and-limitations",
+    "href": "quick-start/dotnet.html#dependencies-and-limitations",
+    "title": "Quick Start - C#/.NET",
+    "section": "Dependencies and Limitations",
+    "text": "Dependencies and Limitations\nUsers are assumed to be developing in .NET Framework 4.7 or greater. Explicit support is not present at this time for .NET Core, although it is being considered in the near future (if this is a requested feature, please reach out to code@ntia.gov to bump its priority)."
+  },
+  {
+    "objectID": "quick-start/dotnet.html#internal-package-repository",
+    "href": "quick-start/dotnet.html#internal-package-repository",
+    "title": "Quick Start - C#/.NET",
+    "section": "Internal Package Repository",
+    "text": "Internal Package Repository\n\n\n\n\n\n\nWarning\n\n\n\nInternal Repository to be Superceded\nSoon, PropLib packages will migrate to public-facing package repositories. Check back later for updates.\n\n\nAll packages are hosted on an internal NTIA NuGet Server. The location of the server is dependent on your office (packages are cloned between the two locations):\nITS/Boulder: \\\\ntinetapp001g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\NuGet or \\\\itsfs01\\Tools\\NuGet\nOSM/HCHB: \\\\nthnetapp002g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\NuGet\n\nConfiguring Visual Studio\n\nOpen Visual Studio.\nOpen Options and Select Package Sources under NuGet Package Manager\n\n\n\nAccessing NuGet package manager settings in Visual Studio\n\n\nClick the green plus symbol to create a new package source\nFor the newly created package source, fill in the details for Name and Source as follows:\n\nName: NTIA NuGet\nSource: &lt;package repository path, see above&gt;\n\n\n\n\n\nConfiguring the NuGet package source\n\n\n\nClick Update to confirm the configuration of the new package source\n\n\n\n\nUpdating the list of NuGet package sources"
+  },
+  {
+    "objectID": "quick-start/matlab.html",
+    "href": "quick-start/matlab.html",
+    "title": "Quick Start - MATLAB",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThis page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from a MATLAB development environment. Included in this is a brief introduction to the internal MATLAB package manager, matpak."
+  },
+  {
+    "objectID": "quick-start/matlab.html#dependencies-and-limitations",
+    "href": "quick-start/matlab.html#dependencies-and-limitations",
+    "title": "Quick Start - MATLAB",
+    "section": "Dependencies and Limitations",
+    "text": "Dependencies and Limitations\nAny reasonably newer version of MATLAB should work. Backwards compatibility with older versions of MATLAB is not possible due to not having access to the software. However, versions starting in 2019 have not shown to have any issues.\nSupport is currently limited to Windows users only. This is due to MATLAB’s use of the .NET Framework, as opposed to the cross-platform .NET Core. MATLAB currently has not given a timeline to switch to .NET Core, however, as Microsoft is moving everything onto .NET Core in the near future, this implies that as some (hopefully soon) future date, cross-platform support can be achieved."
+  },
+  {
+    "objectID": "quick-start/matlab.html#getting-packages",
+    "href": "quick-start/matlab.html#getting-packages",
+    "title": "Quick Start - MATLAB",
+    "section": "Getting Packages",
+    "text": "Getting Packages\n\n\n\n\n\n\nTO DO\n\n\n\nAdd section detailing workflow for installing new packages"
+  },
+  {
+    "objectID": "quick-start/matlab.html#system-setup",
+    "href": "quick-start/matlab.html#system-setup",
+    "title": "Quick Start - MATLAB",
+    "section": "System Setup",
+    "text": "System Setup\nMATLAB support for the ITS Propagation Library relies on an internally developed package manager called matpak. Generally speaking, matpak allows users to download, update, and manage library packages in MATLAB. More information on matpak can be found here.\n\n\n\nmatpak install screenshot\n\n\nTo install matpak, from the below location:\nFor ITS users, * \\\\itsfs01\\Tools\\Matpak\\installers\nFor OSM (or HCHB) users, * \\\\nthnetapp002g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\Matlab\\installers\nInstall the most recent version. Run the installer with User access (not as Admin). Accept the default file location for install. The installer assumes that MATLAB has been installed onto your machine in the default locations (if this is not true, reach out to Billy Kozma)."
+  },
+  {
+    "objectID": "quick-start/matlab.html#setting-the-correct-package-location",
+    "href": "quick-start/matlab.html#setting-the-correct-package-location",
+    "title": "Quick Start - MATLAB",
+    "section": "Setting the Correct Package Location",
+    "text": "Setting the Correct Package Location\nNote: If you are an ITS user, you should be able to skip this step.\nOnce the installion has completed, you can verify and update the package location of matpak. To do this, open “Windows Explorer” and nagivate to “Documents”. Inside the “MATLAB” directory, you should see a “matpak” subdirectory which contains a settings.ini file. Open this file in a text editor. The default setting should be:\nSOURCE=\\\\itsfs01\\tools\\Matpak\\packages\nThis is the location that matpak will use to search for packages. Update this location according to the package source you have access to (listed in previous subsection)."
+  },
+  {
+    "objectID": "quick-start/matlab.html#installing-packages",
+    "href": "quick-start/matlab.html#installing-packages",
+    "title": "Quick Start - MATLAB",
+    "section": "Installing Packages",
+    "text": "Installing Packages\nInstalling packages requires only a single command. To install the PropCore package, run:\n&gt;&gt; matpak install propcore\nMatpak: Package 'PropCore' (Version 1.0.0) has been installed.\n&gt;&gt; \n\n\n\nmatpak install screenshot\n\n\nmatpak will install the package files in the current directory. The files can be instead installed into a different location and that directory added to the path at runtime."
+  },
+  {
+    "objectID": "quick-start/matlab.html#calling-propcore-in-matlab",
+    "href": "quick-start/matlab.html#calling-propcore-in-matlab",
+    "title": "Quick Start - MATLAB",
+    "section": "Calling PropCore in MATLAB",
+    "text": "Calling PropCore in MATLAB\nIn a script file or the Command Window, copy the following snippet of code:\ntheta = Terrestrial.TakeoffAngle(5, 1, 100, 8400)\nIt should result in: theta = -0.0459"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "NTIA/ITS Propagation Library Wiki",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThe NTIA/ITS Propagation Library (“PropLib”) is a collection of open source software developed by ITS, focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements."
+  },
+  {
+    "objectID": "index.html#quick-start",
+    "href": "index.html#quick-start",
+    "title": "NTIA/ITS Propagation Library Wiki",
+    "section": "Quick Start",
+    "text": "Quick Start\nFor each supported programming language, we’ve prepared “quick start” guides to help you get up and running with PropLib software. These pages should be helpful regardless of which specific package(s) you may be interested in using. Choose your programming language below to get started.\nC++ C#/.NET MATLAB Python"
+  },
+  {
+    "objectID": "index.html#packages",
+    "href": "index.html#packages",
+    "title": "NTIA/ITS Propagation Library Wiki",
+    "section": "Packages",
+    "text": "Packages\nThe following are categorized lists of available packages within the NTIA/ITS Propagation Library. Currently, this includes U.S. and ITU-R propagation models.\n\nU.S. Propagation Models\n\nITM: [Repo | Docs] - The Irregular Terrain Model\n\n\n\nITU-R Recommendations\n\nP.2108: [Repo | Docs] - Prediction of clutter loss"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "about.html#the-nations-spectrum-and-communications-lab",
+    "href": "about.html#the-nations-spectrum-and-communications-lab",
+    "title": "About",
+    "section": "The Nation’s Spectrum and Communications Lab",
+    "text": "The Nation’s Spectrum and Communications Lab\nThe Institute for Telecommunication Sciences (ITS) is the research and engineering laboratory of the National Telecommunications and Information Administration (NTIA), an agency of the U.S. Department of Commerce (DOC). ITS basic research in radio science provides the technical foundation for NTIA’s policy development and spectrum management activities and enhances scientific knowledge and understanding in cutting-edge areas of telecommunications technology. ITS also addresses other federal agencies’ telecommunications and spectrum research needs via Interagency Agreements (IAAs) and engages directly with industry and academia via Cooperative Research and Development Agreements (CRADAs).\nMore information about the role of ITS can be found on our website."
+  },
+  {
+    "objectID": "about.html#a-pioneer-in-propagation-software",
+    "href": "about.html#a-pioneer-in-propagation-software",
+    "title": "About",
+    "section": "A Pioneer in Propagation Software",
+    "text": "A Pioneer in Propagation Software\nIn the 1960s and 1970s, the first wave of ITS-developed computer programs for propagation prediction was published. Perhaps the most famous and influential was Anita G. Longley and Philip L. Rice’s “Prediction of Tropospheric Radio Transmission Loss Over Irregular Terrain: A Computer Method - 1968” [1]. The technical report provided the mathematical algorithms, flow charts, and logic used to develop the code, and the FORTRAN code was printed out in an Annex. The Longley-Rice model, which is more commonly referred to as the Irregular Terrain Model or ITM, is a general purpose model that can be applied to a large variety of engineering problems to predict propagation for radio frequencies between 20 MHz and 20 GHz, and is still in widespread use today. Since that time, ITS has continued to develop and refine computer programs for propagation prediction based on electromagnetic theory and on statistical analyses of both terrain features and radio measurements. The iterative cycle of modeling and measurement, with constant reference to first principles, produced models that are highly regarded. At the beginning of the 21st Century, ITS embarked on a systematic program of updating these software implementations. Today, ITS continues to develop and publish open-source propagation model software implementations at the NTIA GitHub Repository. There, too, ITS provides other open-source software tools used in our research. The ITS Open Source Software list provides direct links to individual repositories. Legacy FORTRAN implementations of ITS propagation models are no longer maintained, but can be found on the ITS website here."
+  },
+  {
+    "objectID": "LICENSE.html",
+    "href": "LICENSE.html",
+    "title": "SOFTWARE DISCLAIMER / RELEASE",
+    "section": "",
+    "text": "SOFTWARE DISCLAIMER / RELEASE\nThis software was developed by employees of the National Telecommunications and Information Administration (NTIA), an agency of the Federal Government and is provided to you as a public service. Pursuant to Title 15 United States Code Section 105, works of NTIA employees are not subject to copyright protection within the United States.\nThe software is provided by NTIA “AS IS.” NTIA MAKES NO WARRANTY OF ANY KIND, EXPRESS, IMPLIED OR STATUTORY, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT AND DATA ACCURACY. NTIA does not warrant or make any representations regarding the use of the software or the results thereof, including but not limited to the correctness, accuracy, reliability or usefulness of the software.\nTo the extent that NTIA holds rights in countries other than the United States, you are hereby granted the non-exclusive irrevocable and unconditional right to print, publish, prepare derivative works and distribute the NTIA software, in any medium, or authorize others to do so on your behalf, on a royalty-free basis throughout the World.\nYou may improve, modify, and create derivative works of the software or any portion of the software, and you may copy and distribute such modifications or works. Modified works should carry a notice stating that you changed the software and should note the date and nature of any such change.\nYou are solely responsible for determining the appropriateness of using and distributing the software and you assume all risks associated with its use, including but not limited to the risks and costs of program errors, compliance with applicable laws, damage to or loss of data, programs or equipment, and the unavailability or interruption of operation. This software is not intended to be used in any situation where a failure could cause risk of injury or damage to property.\nPlease provide appropriate acknowledgments of NTIA’s creation of the software in any copies or derivative works of this software."
+  },
+  {
+    "objectID": "quick-start/cpp.html",
+    "href": "quick-start/cpp.html",
+    "title": "Quick Start - C++",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "quick-start/python.html",
+    "href": "quick-start/python.html",
+    "title": "Quick Start - Python",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThis page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from a Python development environment."
+  },
+  {
+    "objectID": "quick-start/python.html#dependencies-and-limitations",
+    "href": "quick-start/python.html#dependencies-and-limitations",
+    "title": "Quick Start - Python",
+    "section": "Dependencies and Limitations",
+    "text": "Dependencies and Limitations\nUsers are assumed to be using a current version of Python 3. All officially-released versions of Python which have not reached end-of-life are supported. Package dependencies are defined on a per-package basis in each project’s pyproject.toml file, which will allow your package manager (e.g., pip) to discover and install required dependencies automatically when you install a PropLib package."
+  },
+  {
+    "objectID": "quick-start/python.html#getting-packages",
+    "href": "quick-start/python.html#getting-packages",
+    "title": "Quick Start - Python",
+    "section": "Getting Packages",
+    "text": "Getting Packages\n\n\n\n\n\n\nTO DO\n\n\n\nUpdate this section when packages are available on PyPi"
+  },
+  {
+    "objectID": "quick-start/python.html#installing-packages",
+    "href": "quick-start/python.html#installing-packages",
+    "title": "Quick Start - Python",
+    "section": "Installing Packages",
+    "text": "Installing Packages\n\n\n\n\n\n\nTO DO\n\n\n\nModify example to avoid use of conda\n\n\nCreate a new conda environment:\nconda create --name prop\nconda activate prop\nInstall numpy as it’s a dependency of the itm package\npip install numpy\nor\nconda install -c anaconda numpy\nInstall pythonnet as it’s a dependency of the ohiopyle package\npip install -i https://pypi.anaconda.org/pythonnet/simple pythonnet\nor\nconda install -c pythonnet pythonnet=2.5.2\nInstall itm from the local repository\npip install itm --no-index --find-links file://itsfs01/Tools/Python/pip\nInstall ohiopyle from the local repository\npip install ohiopyle --no-index --find-links file://itsfs01/Tools/Python/pip"
+  },
+  {
+    "objectID": "quick-start/python.html#calling-propcore-in-python",
+    "href": "quick-start/python.html#calling-propcore-in-python",
+    "title": "Quick Start - Python",
+    "section": "Calling PropCore in Python",
+    "text": "Calling PropCore in Python\nOpen Spyder (or your Python IDE of choice) and copy the following snippet of code:\nimport itm\n\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 3500;                      # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_TLS(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, \n    time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 105.85899333756423) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 103.33136088700552 dB."
+  },
+  {
+    "objectID": "models/ITM/cpp.html",
+    "href": "models/ITM/cpp.html",
+    "title": "Irregular Terrain Model (ITM) - C++",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "models/ITM/index.html",
+    "href": "models/ITM/index.html",
+    "title": "Irregular Terrain Model (ITM)",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nA description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the public GitHub repo."
+  },
+  {
+    "objectID": "models/ITM/index.html#getting-started",
+    "href": "models/ITM/index.html#getting-started",
+    "title": "Irregular Terrain Model (ITM)",
+    "section": "Getting Started",
+    "text": "Getting Started\nLanguage-specific information on getting started using the ITM library can be found below at the corresponding page.\nInformation: C# | MATLAB | Python"
+  },
+  {
+    "objectID": "models/ITM/index.html#point-to-point-basic-transmission-loss-tls",
+    "href": "models/ITM/index.html#point-to-point-basic-transmission-loss-tls",
+    "title": "Irregular Terrain Model (ITM)",
+    "section": "Point-to-Point Basic Transmission Loss (TLS)",
+    "text": "Point-to-Point Basic Transmission Loss (TLS)\nGenerate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as time, location, and situation percentages.\nExample: C# | MATLAB | Python"
+  },
+  {
+    "objectID": "models/ITM/index.html#point-to-point-basic-transmission-loss-cr",
+    "href": "models/ITM/index.html#point-to-point-basic-transmission-loss-cr",
+    "title": "Irregular Terrain Model (ITM)",
+    "section": "Point-to-Point Basic Transmission Loss (CR)",
+    "text": "Point-to-Point Basic Transmission Loss (CR)\nGenerate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as confidence and reliability percentages.\nExample: C# | MATLAB | Python"
+  },
+  {
+    "objectID": "models/ITM/index.html#area-mode-basic-transmission-loss-tls",
+    "href": "models/ITM/index.html#area-mode-basic-transmission-loss-tls",
+    "title": "Irregular Terrain Model (ITM)",
+    "section": "Area Mode Basic Transmission Loss (TLS)",
+    "text": "Area Mode Basic Transmission Loss (TLS)\nGenerate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as time, location, and situation percentages.\nExample: C# | MATLAB | Python"
+  },
+  {
+    "objectID": "models/ITM/index.html#area-mode-basic-transmission-loss-cr",
+    "href": "models/ITM/index.html#area-mode-basic-transmission-loss-cr",
+    "title": "Irregular Terrain Model (ITM)",
+    "section": "Area Mode Basic Transmission Loss (CR)",
+    "text": "Area Mode Basic Transmission Loss (CR)\nGenerate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as confidence and reliability percentages.\nExample: C# | MATLAB | Python"
   },
   {
     "objectID": "models/ITM-MidBand/matlab.html",
     "href": "models/ITM-MidBand/matlab.html",
     "title": "ITM-MidBand - MATLAB",
     "section": "",
-    "text": "The package name to install is itm. The package can be found in the matpak repo with the following command:"
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated,incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThe package name to install is itm. The package can be found in the matpak repo with the following command:"
   },
   {
     "objectID": "models/ITM-MidBand/matlab.html#installing-package",
@@ -777,353 +609,157 @@
     "text": "Area Mode Basic Transmission Loss (CR)\n% define link parameters\nf__mhz = 5000;                      % MHz\nh_tx__meter = 10;                   % meters, AGL\nh_rx__meter = 5;                    % meters, AGL\nN_0 = 301;                          % N-Units\nepsilon = 15;                       % average ground\nsigma = 0.005;                      % average ground\nd__km = 100;                        % km\ndelta_h__meter = 40;                % meter\ntx_site_criteria = ITMSitingCriteria.Careful;\nrx_site_criteria = ITMSitingCriteria.Careful;\nclimate = ITMClimate.ContinentalTemperate;\npol = ITMPolarization.Horizontal;\n\n% define variability parameters\nmdvar = 13;\nconfidence = 50;                    % median\nreliability = 50;                   % median\n\n% call ITM\n[rtn, A__db, warnings, ivals] = ITM.ITM_AREA_CR(h_tx__meter, h_rx__meter, ... \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, ...\n    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)\n% rtn = 0                           % no errors\n% A__db = 205.7474                  % basic transmission loss, in dB\n% warnings = 0                      % no warnings\n\n% can use the intermediate values object to access additional information\n% from the ITM prediction\nfprintf('The mode of propagation is %s\\n', ivals.Mode)\nfprintf('The effective height of the TX is %f meters.\\n', ivals.h_e__meter(1))\nfprintf('The free space basic transmission loss is %f dB.\\n', ivals.A_fs__db)\n% The mode of propagation is Troposcatter\n% The effective height of the TX is 13.032653 meters.\n% The free space basic transmission loss is 146.429400 dB."
   },
   {
+    "objectID": "models/ITM-MidBand/dotnet.html",
+    "href": "models/ITM-MidBand/dotnet.html",
+    "title": "ITM-MidBand - C#/.NET",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated,incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "models/ITM-MidBand/dotnet.html#getting-started",
+    "href": "models/ITM-MidBand/dotnet.html#getting-started",
+    "title": "ITM-MidBand - C#/.NET",
+    "section": "Getting Started",
+    "text": "Getting Started\nTo begin, install the NuGet package, ITM, from the NTIA NuGet repository\n\n\n\nitm nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
+  },
+  {
+    "objectID": "models/ITM-MidBand/dotnet.html#documentation",
+    "href": "models/ITM-MidBand/dotnet.html#documentation",
+    "title": "ITM-MidBand - C#/.NET",
+    "section": "Documentation",
+    "text": "Documentation\nThe itm library is packaged to support IntelliSense when developing in Visual Studio. This documentation will provide the developer with information on function descriptions, variable details, etc."
+  },
+  {
+    "objectID": "models/ITM-MidBand/dotnet.html#point-to-point-basic-transmission-loss-tls",
+    "href": "models/ITM-MidBand/dotnet.html#point-to-point-basic-transmission-loss-tls",
+    "title": "ITM-MidBand - C#/.NET",
+    "section": "Point-to-Point Basic Transmission Loss (TLS)",
+    "text": "Point-to-Point Basic Transmission Loss (TLS)\n// define the terrain profile in PFL format\nvar pfl = new double[] { 5, 200, 5, 7, 2, 4, 7, 5 };\n\n// define link parameters\ndouble f__mhz = 3500;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble time = 50;                          // median\ndouble location = 50;                      // median\ndouble situation = 50;                     // median\n\n// call ITM\nint rtn = ITM.ITM_P2P_TLS_Ex(h_tx__meter, h_rx__meter, pfl,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    time, location, situation, out double A__db, \n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n\n// rtn = 0                                 // no errors\n// A__db = 105.8590                        // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB\");\n// The mode of propagation is LineOfSight\n// The effective height of the TX is 10.222222222222221 meters.\n// The free space basic transmission loss is 103.33136088700552 dB."
+  },
+  {
+    "objectID": "models/ITM-MidBand/dotnet.html#point-to-point-basic-transmission-loss-cr",
+    "href": "models/ITM-MidBand/dotnet.html#point-to-point-basic-transmission-loss-cr",
+    "title": "ITM-MidBand - C#/.NET",
+    "section": "Point-to-Point Basic Transmission Loss (CR)",
+    "text": "Point-to-Point Basic Transmission Loss (CR)\n// define the terrain profile in PFL format\nvar pfl = new double[] { 5, 200, 5, 7, 2, 4, 7, 5 };\n\n// define link parameters\ndouble f__mhz = 1500;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble confidence = 50;                    // median\ndouble reliability = 50;                   // median\n\n// call ITM\nint rtn = ITM.ITM_P2P_CR_Ex(h_tx__meter, h_rx__meter, pfl,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    confidence, reliability, out double A__db, \n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n\n// rtn = 0                                 // no errors\n// A__db = 99.9744                         // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB\");\n// The mode of propagation is LineOfSight\n// The effective height of the TX is 10.222222222222221 meters.\n// The free space basic transmission loss is 95.971825 dB."
+  },
+  {
+    "objectID": "models/ITM-MidBand/dotnet.html#area-mode-basic-transmission-loss-tls",
+    "href": "models/ITM-MidBand/dotnet.html#area-mode-basic-transmission-loss-tls",
+    "title": "ITM-MidBand - C#/.NET",
+    "section": "Area Mode Basic Transmission Loss (TLS)",
+    "text": "Area Mode Basic Transmission Loss (TLS)\n// define link parameters\ndouble f__mhz = 1500;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\ndouble d__km = 100;                        // km\ndouble delta_h__meter = 40;                // meter\nvar tx_site_criteria = ITM.SitingCriteria.Careful;\nvar rx_site_criteria = ITM.SitingCriteria.Careful;\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble time = 50;                          // median\ndouble location = 50;                      // median\ndouble situation = 50;                     // median\n\n// call ITM\nint rtn = ITM.ITM_AREA_TLS_Ex(h_tx__meter, h_rx__meter,\n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    time, location, situation, out double A__db,\n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n// rtn = 0                                 // no errors\n// A__db = 191.0266                        // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB.\");\n// The mode of propagation is Troposcatter\n// The effective height of the TX is 13.032653 meters.\n// The free space basic transmission loss is 135.971825 dB."
+  },
+  {
+    "objectID": "models/ITM-MidBand/dotnet.html#area-mode-basic-transmission-loss-cr",
+    "href": "models/ITM-MidBand/dotnet.html#area-mode-basic-transmission-loss-cr",
+    "title": "ITM-MidBand - C#/.NET",
+    "section": "Area Mode Basic Transmission Loss (CR)",
+    "text": "Area Mode Basic Transmission Loss (CR)\n// define link parameters\ndouble f__mhz = 5000;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\ndouble d__km = 100;                        // km\ndouble delta_h__meter = 40;                // meter\nvar tx_site_criteria = ITM.SitingCriteria.Careful;\nvar rx_site_criteria = ITM.SitingCriteria.Careful;\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble confidence = 50;                    // median\ndouble reliability = 50;                   // median\n\n// call ITM\nint rtn = ITM.ITM_AREA_CR_Ex(h_tx__meter, h_rx__meter,\n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    confidence, reliability, out double A__db,\n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n// rtn = 0                                 // no errors\n// A__db = 205.7474                        // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB.\");\n// The mode of propagation is Troposcatter\n// The effective height of the TX is 13.032653 meters.\n// The free space basic transmission loss is 146.429400 dB."
+  },
+  {
+    "objectID": "models/ITM-MidBand/python.html",
+    "href": "models/ITM-MidBand/python.html",
+    "title": "ITM-MidBand - Python",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated,incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThe package name to install is itm\nor"
+  },
+  {
+    "objectID": "models/ITM-MidBand/python.html#dependencies",
+    "href": "models/ITM-MidBand/python.html#dependencies",
+    "title": "ITM-MidBand - Python",
+    "section": "Dependencies",
+    "text": "Dependencies\nThe itm package requires numpy."
+  },
+  {
+    "objectID": "models/ITM-MidBand/python.html#installing-package",
+    "href": "models/ITM-MidBand/python.html#installing-package",
+    "title": "ITM-MidBand - Python",
+    "section": "Installing Package",
+    "text": "Installing Package\nUse the following command to install itm from the local pip repo:\npip install itm --no-index --find-links file://itsfs01/Tools/Python/pip"
+  },
+  {
+    "objectID": "models/ITM-MidBand/python.html#getting-started",
+    "href": "models/ITM-MidBand/python.html#getting-started",
+    "title": "ITM-MidBand - Python",
+    "section": "Getting Started",
+    "text": "Getting Started\nImporting itm is as simple as including the following in your .py file:\nimport itm"
+  },
+  {
+    "objectID": "models/ITM-MidBand/python.html#documentation",
+    "href": "models/ITM-MidBand/python.html#documentation",
+    "title": "ITM-MidBand - Python",
+    "section": "Documentation",
+    "text": "Documentation\nAll itm functions contain built-in docstring help. This means that if your python development editor supports it, it can provide you with assistance on information such as function description, parameter types and descriptions, and return details.\nThis also means that help() is supported in the console to provide information."
+  },
+  {
+    "objectID": "models/ITM-MidBand/python.html#site-specific-basic-transmission-loss-tls",
+    "href": "models/ITM-MidBand/python.html#site-specific-basic-transmission-loss-tls",
+    "title": "ITM-MidBand - Python",
+    "section": "Site Specific Basic Transmission Loss (TLS)",
+    "text": "Site Specific Basic Transmission Loss (TLS)\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 3500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_TLS(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, \n    time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 105.85899333756423) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 103.33136088700552 dB."
+  },
+  {
+    "objectID": "models/ITM-MidBand/python.html#site-specific-basic-transmission-loss-cr",
+    "href": "models/ITM-MidBand/python.html#site-specific-basic-transmission-loss-cr",
+    "title": "ITM-MidBand - Python",
+    "section": "Site Specific Basic Transmission Loss (CR)",
+    "text": "Site Specific Basic Transmission Loss (CR)\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 1500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\nconfidence = 50                     # median\nreliability = 50                    # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_CR(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, \n    reliability)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 99.97444366973738)  # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 95.97182518111363 dB."
+  },
+  {
+    "objectID": "models/ITM-MidBand/python.html#area-mode-basic-transmission-loss-tls",
+    "href": "models/ITM-MidBand/python.html#area-mode-basic-transmission-loss-tls",
+    "title": "ITM-MidBand - Python",
+    "section": "Area Mode Basic Transmission Loss (TLS)",
+    "text": "Area Mode Basic Transmission Loss (TLS)\n# define link parameters\nf__mhz = 1500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nd__km = 100                         # km\ndelta_h__meter = 40                 # meter\ntx_site_criteria = itm.SitingCriteria.Careful\nrx_site_criteria = itm.SitingCriteria.Careful\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_AREA_TLS(h_tx__meter, h_rx__meter, \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, \n    N_0, f__mhz, pol, epsilon, sigma, mdvar, time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 191.02659749297175) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is Troposcatter\n# The effective height of the TX is 13.032653298563167 meters.\n# The free space basic transmission loss is 135.97182518111362 dB."
+  },
+  {
+    "objectID": "models/ITM-MidBand/python.html#area-mode-basic-transmission-loss-cr",
+    "href": "models/ITM-MidBand/python.html#area-mode-basic-transmission-loss-cr",
+    "title": "ITM-MidBand - Python",
+    "section": "Area Mode Basic Transmission Loss (CR)",
+    "text": "Area Mode Basic Transmission Loss (CR)\n# define link parameters\nf__mhz = 5000                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nd__km = 100                         # km\ndelta_h__meter = 40                 # meter\ntx_site_criteria = itm.SitingCriteria.Careful\nrx_site_criteria = itm.SitingCriteria.Careful\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\nconfidence = 50                     # median\nreliability = 50                    # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_AREA_CR(h_tx__meter, h_rx__meter, \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, \n    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 205.7473567880463)  # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is Troposcatter\n# The effective height of the TX is 13.032653298563167 meters.\n# The free space basic transmission loss is 146.42940008672036 dB."
+  },
+  {
+    "objectID": "models/P2108/cpp.html",
+    "href": "models/P2108/cpp.html",
+    "title": "ITU-R P.2108 - C++",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
     "objectID": "models/P2108/index.html",
     "href": "models/P2108/index.html",
-    "title": "ITU-R P.2108 - Overview",
+    "title": "ITU-R P.2108",
     "section": "",
-    "text": "Recommendation ITU-R P.2108 (Prediction of clutter loss) provides three methods to predict terminal clutter loss. Two of these methods are for terrestrial paths and one if for aeronautical paths. Frequencies vary depending on the clutter model."
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nRecommendation ITU-R P.2108 (Prediction of clutter loss) provides three methods to predict terminal clutter loss. Two of these methods are for terrestrial paths and one if for aeronautical paths. Frequencies vary depending on the clutter model."
   },
   {
     "objectID": "models/P2108/index.html#getting-started",
     "href": "models/P2108/index.html#getting-started",
-    "title": "ITU-R P.2108 - Overview",
+    "title": "ITU-R P.2108",
     "section": "Getting Started",
     "text": "Getting Started\nLanguage-specific information on getting started using the P.218 library can be found below at the corresponding page.\nInformation: C# | MATLAB | Python"
   },
   {
     "objectID": "models/P2108/index.html#height-gain-terminal-correction-model",
     "href": "models/P2108/index.html#height-gain-terminal-correction-model",
-    "title": "ITU-R P.2108 - Overview",
+    "title": "ITU-R P.2108",
     "section": "Height Gain Terminal Correction Model",
     "text": "Height Gain Terminal Correction Model\nThis method, gives the median of losses due to different terminal surroundings. The possible mechanisms include obstruction loss and reflections due to clutter objects at the representative height, and scattering and reflection from the ground and smaller clutter objects. When using a computer implementation, with terrain profile extracted from a digital terrain model, and with the terminal surroundings defined by a clutter category, it is not practicable to identify individual mechanisms. The method used here distinguishes between two general cases: for woodland and urban categories. It is assumed that the dominant mechanism is diffraction over clutter. For other categories, it is assumed that reflection or scattering dominates.\nThis model in valid for frequencies from 0.03 to 3 GHz.\nThe model supports the following clutter types and their respective input value. Note that for language-specific code, enumerations and/or constants are provided for easy-of-use.\n\n\n\nClutter Type\nValue\n\n\n\n\nWater/sea\n1\n\n\nOpen/rural\n2\n\n\nSuburban\n3\n\n\nUrban\n4\n\n\nTrees/forest\n5\n\n\nDense urban\n6\n\n\n\nTwo parameters additional allow that define the clutter at the terminal allow for either path-specific definitions as well as provide default values.\n\nStreet Width\nThe parameter w_s__meter defines the width of the street at the location of the terminal in clutter. If site-specific information is not available, the value of 27 should be used.\n\n\nRepresentative Clutter Height\nThe parameter R__meter defines the representative clutter height at the location of the terminal in clutter. Default values for each clutter type are listed in the below table:\n\n\n\nClutter Type\nR__meter\n\n\n\n\nWater/sea\n10\n\n\nOpen/rural\n10\n\n\nSuburban\n10\n\n\nUrban\n15\n\n\nTrees/forest\n15\n\n\nDense urban\n20\n\n\n\nExample: C# | MATLAB | Python"
   },
   {
     "objectID": "models/P2108/index.html#terrestrial-statistical-model",
     "href": "models/P2108/index.html#terrestrial-statistical-model",
-    "title": "ITU-R P.2108 - Overview",
+    "title": "ITU-R P.2108",
     "section": "Terrestrial Statistical Model",
     "text": "Terrestrial Statistical Model\nThis model gives equations that gives a statistical distribution of clutter loss. The model can be applied for urban and suburban clutter loss modelling. Validity of the model is as follows:\n\nFrequency range: 2 to 67 GHz\nMinimum path length:\n\n0.25 km (for the correction to be applied at only one end of the path)\n1.0 km (for the correction to be applied at both ends of the path)\n\nPercentage locations range: 0 &lt; p &lt; 100\n\nExample: C# | MATLAB | Python"
   },
   {
     "objectID": "models/P2108/index.html#aeronautical-statistical-model",
     "href": "models/P2108/index.html#aeronautical-statistical-model",
-    "title": "ITU-R P.2108 - Overview",
+    "title": "ITU-R P.2108",
     "section": "Aeronautical Statistical Model",
     "text": "Aeronautical Statistical Model\nThis model provides equations to calculate the statistical distribution of clutter loss where one end of the interference path is within man-made clutter, and the other is a satellite, aeroplane, or other platform above the surface of the Earth. Validity of the model is as follows:\n\nFrequency range: 10 to 100 GHz\nElevation angle range: 0 to 90 degrees\nPercentage locations range: 0 &lt; p &lt; 100\n\nExample: C# | MATLAB | Python"
-  },
-  {
-    "objectID": "models/P2108/python.html",
-    "href": "models/P2108/python.html",
-    "title": "ITU-R P.2108 - Python",
-    "section": "",
-    "text": "TODO Section outdated\nThe package name to install is p2108\nor"
-  },
-  {
-    "objectID": "models/P2108/python.html#dependencies",
-    "href": "models/P2108/python.html#dependencies",
-    "title": "ITU-R P.2108 - Python",
-    "section": "Dependencies",
-    "text": "Dependencies\nThe p2108 package has no dependencies."
-  },
-  {
-    "objectID": "models/P2108/python.html#installing-package",
-    "href": "models/P2108/python.html#installing-package",
-    "title": "ITU-R P.2108 - Python",
-    "section": "Installing Package",
-    "text": "Installing Package\nTODO Section outdated\nUse the following command to install p2108 from the local pip repo:\nFor ITS users:\npip install p2108 --no-index --find-links file://itsfs01/Tools/Python/pip\nFor OSM (or HCHB) users,\npip install p2108 --no-index --find-links file://nthnetapp002g.ntiadc.ntia.doc.gov/ntiadropbox/itsdata/Python/pip"
-  },
-  {
-    "objectID": "models/P2108/python.html#getting-started",
-    "href": "models/P2108/python.html#getting-started",
-    "title": "ITU-R P.2108 - Python",
-    "section": "Getting Started",
-    "text": "Getting Started\nImporting P2108 is as simple as including the following in your .py file:\nfrom ITS.ITU.PSeries import P2108"
-  },
-  {
-    "objectID": "models/P2108/python.html#documentation",
-    "href": "models/P2108/python.html#documentation",
-    "title": "ITU-R P.2108 - Python",
-    "section": "Documentation",
-    "text": "Documentation\nAll P2108 functions contain built-in docstring help. This means that if your python development editor supports it, it can provide you with assistance on information such as function description, parameter types and descriptions, and return details.\nThis also means that help() is supported in the console to provide information."
-  },
-  {
-    "objectID": "models/P2108/python.html#height-gain-terminal-correction-model",
-    "href": "models/P2108/python.html#height-gain-terminal-correction-model",
-    "title": "ITU-R P.2108 - Python",
-    "section": "Height Gain Terminal Correction Model",
-    "text": "Height Gain Terminal Correction Model\n# define inputs\nf__ghz = 1          # Frequency, in GHz\nh__meter = 1.5      # Antenna height, in meters\nw_s__meter = 27     # Street width, in meters\nR__meter = 20       # Representative clutter height, in meters\nclutter_type = 6    # Clutter type, enum\n\n# Call height gain terminal correction model (P.2108 Section 3.1)\nA_h__db = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)\nassert(A_h__db == 8.769394261533549)\n\n# can also use clutter type IntEnum\nclutter_type = P2108.ClutterType.DenseUrban\n\n# call clutter model\nA_h__db = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)\nassert(A_h__db == 8.769394261533549)"
-  },
-  {
-    "objectID": "models/P2108/python.html#terrestrial-statistical-model",
-    "href": "models/P2108/python.html#terrestrial-statistical-model",
-    "title": "ITU-R P.2108 - Python",
-    "section": "Terrestrial Statistical Model",
-    "text": "Terrestrial Statistical Model\n# define inputs\nf__ghz = 3          # Frequency, in GHz\nd__km = 0.5         # Path distance, in km\np = 50              # Percentage of locations, in %\n\n# call terrestrial statistical model\nL_ctt__db = P2108.TerrestrialStatisticalModel(f__ghz, d__km, p)\nassert(L_ctt__db == 26.10075036783342)"
-  },
-  {
-    "objectID": "models/P2108/python.html#aeronautical-statistical-model",
-    "href": "models/P2108/python.html#aeronautical-statistical-model",
-    "title": "ITU-R P.2108 - Python",
-    "section": "Aeronautical Statistical Model",
-    "text": "Aeronautical Statistical Model\n# define inputs\nf__ghz = 15         # Frequency, in GHz\ntheta__deg = 10     # Elevation angle, in degrees\np = 50              # Percentage of locations, in %\n\n# call clutter model\nL_ces__db = P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p)\nassert(L_ces__db == 14.333686040067786)"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html",
-    "href": "models/TIREM/dotnet.html",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "",
-    "text": "To begin, install the NuGet package, TIREM, from the NTIA NuGet repository\n\n\n\ntirem nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;\n\n\n\nThe tirem library is packaged to support IntelliSense when developing in Visual Studio. This documentation will provide the developer with information on function descriptions, variable details, etc."
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#getting-started",
-    "href": "models/TIREM/dotnet.html#getting-started",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "",
-    "text": "To begin, install the NuGet package, TIREM, from the NTIA NuGet repository\n\n\n\ntirem nuget install screenshot\n\n\nAll of the below code snippets requires the including the following using statement.\nusing ITS.Propagation;"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#documentation",
-    "href": "models/TIREM/dotnet.html#documentation",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "",
-    "text": "The tirem library is packaged to support IntelliSense when developing in Visual Studio. This documentation will provide the developer with information on function descriptions, variable details, etc."
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#basic-transmission-loss",
-    "href": "models/TIREM/dotnet.html#basic-transmission-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "Basic Transmission Loss",
-    "text": "Basic Transmission Loss\nvar heights = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists, \n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db, \n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 204.60               // basic transmission loss, in dB\n// A_fs__db = 143.35            // free space loss, in dB\n// mode = Troposcatter"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#absorption-loss",
-    "href": "models/TIREM/dotnet.html#absorption-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "Absorption Loss",
-    "text": "Absorption Loss\nvar heights = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists, \n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db, \n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 204.60               // basic transmission loss, in dB\n// A_fs__db = 143.35            // free space loss, in dB\n// mode = Troposcatter\n\ndouble abloss = TIREM.GetTiremAbloss();\n\n// abloss = 0                   // absorption loss, in dB"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#diffraction-loss",
-    "href": "models/TIREM/dotnet.html#diffraction-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "Diffraction Loss",
-    "text": "Diffraction Loss\nvar heights = new[] { 4.5, 7, 50, 8, 10 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists, \n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db, \n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 168.82               // basic transmission loss, in dB\n// A_fs__db = 134.23            // free space loss, in dB\n// mode = Diffraction\n\ndouble totdif = TIREM.GetTiremTotdif();\n\n// totdif = 168.82              // diffraction loss, in dB\n\n// you can also get the diffraction loss for a troposcatter path\nvar heights2 = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists2 = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights2, dists2, \n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db2, out double A_fs__db2, \n    out TIREM.TiremPropagationMode mode2);\n\n// A__db2 = 204.60              // basic transmission loss, in dB\n// A_fs__db2 = 143.35           // free space loss, in dB\n// mode2 = Troposcatter\n\ndouble totdif2 = TIREM.GetTiremTotdif();\n\n// totdif2 = 208.20             // diffraction loss, in dB"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#troposcatter-loss",
-    "href": "models/TIREM/dotnet.html#troposcatter-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "Troposcatter Loss",
-    "text": "Troposcatter Loss\nvar heights = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists,\n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db,\n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 204.60               // basic transmission loss, in dB\n// A_fs__db = 143.35            // free space loss, in dB\n// mode = Troposcatter\n\ndouble tottro = TIREM.GetTiremTottro();\n\n// tottro = 204.60              // troposcatter loss, in dB\n\n// you can also get the troposcatter loss for a diffraction path\nvar heights2 = new[] { 4.5, 7, 50, 8, 10 };\nvar dists2 = new[] { 0.0, 10000, 20000, 30000, 70000 };\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights2, dists2,\n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db2, out double A_fs__db2,\n    out TIREM.TiremPropagationMode mode2);\n\n// A__db2 = 168.82              // basic transmission loss, in dB\n// A_fs__db2 = 134.23           // free space loss, in dB\n// mode2 = Diffraction\n\ndouble tottro2 = TIREM.GetTiremTottro();\n\n// tottro2 = 192.23             // diffraction loss, in dB"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#tx-troposcatter-angle",
-    "href": "models/TIREM/dotnet.html#tx-troposcatter-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "TX Troposcatter Angle",
-    "text": "TX Troposcatter Angle\nvar heights = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists,\n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db,\n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 204.60               // basic transmission loss, in dB\n// A_fs__db = 143.35            // free space loss, in dB\n// mode = Troposcatter\n\ndouble alphae = TIREM.GetTiremAlphae();\n\n// alphae = 0.010916            // tx troposcatter angle, in radians"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#rx-troposcatter-angle",
-    "href": "models/TIREM/dotnet.html#rx-troposcatter-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "RX Troposcatter Angle",
-    "text": "RX Troposcatter Angle\nvar heights = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists,\n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db,\n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 204.60               // basic transmission loss, in dB\n// A_fs__db = 143.35            // free space loss, in dB\n// mode = Troposcatter\n\ndouble betae = TIREM.GetTiremBetae();\n\n// betae = 0.004116             // rx troposcatter angle, in radians"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#tx-horizon-index",
-    "href": "models/TIREM/dotnet.html#tx-horizon-index",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "TX Horizon Index",
-    "text": "TX Horizon Index\nvar heights = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists,\n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db,\n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 204.60               // basic transmission loss, in dB\n// A_fs__db = 143.35            // free space loss, in dB\n// mode = Troposcatter\n\nint horztx = TIREM.GetTiremHorztx();\n\n// horztx = 1\n// tx horizon point is dists[1] and heights[1]"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#rx-horizon-index",
-    "href": "models/TIREM/dotnet.html#rx-horizon-index",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "RX Horizon Index",
-    "text": "RX Horizon Index\nvar heights = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists,\n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db,\n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 204.60               // basic transmission loss, in dB\n// A_fs__db = 143.35            // free space loss, in dB\n// mode = Troposcatter\n\nint horzrx = TIREM.GetTiremHorzrx();\n\n// horzrx = 4\n// rx horizon point is dists[4] and heights[4]"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#tx-horizon-angle",
-    "href": "models/TIREM/dotnet.html#tx-horizon-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "TX Horizon Angle",
-    "text": "TX Horizon Angle\nvar heights = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists,\n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db,\n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 204.60               // basic transmission loss, in dB\n// A_fs__db = 143.35            // free space loss, in dB\n// mode = Troposcatter\n\ndouble txang = TIREM.GetTiremTxang();\n\n// txang = -0.000838            // tx horizon angle, in radians"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#rx-horizon-angle",
-    "href": "models/TIREM/dotnet.html#rx-horizon-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "RX Horizon Angle",
-    "text": "RX Horizon Angle\nvar heights = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists,\n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db,\n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 204.60               // basic transmission loss, in dB\n// A_fs__db = 143.35            // free space loss, in dB\n// mode = Troposcatter\n\ndouble rxang = TIREM.GetTiremRxang();\n\n// rxang = -0.007653            // rx horizon angle, in radians"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#troposcatter-angle",
-    "href": "models/TIREM/dotnet.html#troposcatter-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "Troposcatter Angle",
-    "text": "Troposcatter Angle\nvar heights = new[] { 4.5, 7, 3.6, 8, 10, 5 };\nvar dists = new[] { 0.0, 10000, 20000, 30000, 70000, 200000 };\n\ndouble h_tx__meter = 5;\ndouble h_rx__meter = 6;\ndouble f__mhz = 1755;\ndouble N_s = 301;\ndouble sigma = 0.005;\ndouble epsilon = 15;\ndouble humid = 50;\n\nTIREM.Invoke(h_tx__meter, h_rx__meter, f__mhz, heights, dists,\n    N_s, sigma, epsilon, humid, TIREM.Polarization.Vertical,\n    out double A__db, out double A_fs__db,\n    out TIREM.TiremPropagationMode mode);\n\n// A__db = 204.60               // basic transmission loss, in dB\n// A_fs__db = 143.35            // free space loss, in dB\n// mode = Troposcatter\n\ndouble thet00 = TIREM.GetTiremThet00();\n\n// thet00 = 0.015033            // troposcatter angle, in radians"
-  },
-  {
-    "objectID": "models/TIREM/dotnet.html#version",
-    "href": "models/TIREM/dotnet.html#version",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - C#/.NET",
-    "section": "Version",
-    "text": "Version\nstring version = TIREM.GetTiremNumber();\n\n// version = \"3.20\""
-  },
-  {
-    "objectID": "models/TIREM/matlab.html",
-    "href": "models/TIREM/matlab.html",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "",
-    "text": "The package name to install is tirem. The package can be found in the matpak repo with the following command:\nmatpak search tirem\n\n\nUse the following command to install tirem from the matpak repo:\nmatpak install tirem\nThe packag can be installed directly into your working directory or in a seperate directory that you include in your execution path.\n\n\n\nAll tirem functions are docummented with detailed headers, such as:\n% Function Invoke(...)\n%\n% Description: Calculates the propagation loss between antennas\n%       using the Terrain Integrated Rough-Earth Model (TIREM)\n%       software\n%\n% Inputs:\n%   h_tx__meter : Transmitter structural antenna height (0.0 to \n%       30,000.0), in meters\n%   h_rx__meter : Receiver structural antenna height (0.0 to \n%       30,000.0), in meters\n%   f__mhz : Transmitter frequency (1.0 to 275,000.0), in MHz\n%   heights__meter : Array of profile terrain heights above mean \n%       sea level (-450.0 to 9000.0), in meters\n%   distances__meter : Array of great circle distances from the \n%       beginning of the profile to each profile point, in meters\n%   N_s : Surface refractivity (200.0 to 450.0), in N-Units\n%   sigma : Conductivity of earth surface (0.00001 to 100.0), \n%       in S/m\n%   epsilon : Relative permittivity of earth surface (1.0 to 100.0)\n%   humid : Surface humidity at the transmitter site (0.0 to \n%       110.0), in gram/m^3\n%   polarization : Transmitter antenna polarization\n%\n% Outputs:\n%   A__db : Total path loss (Basic transmission loss), in dB\n%   A_fs__db : Free space loss, in dB\n%   mode : Mode of propagation"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#installing-package",
-    "href": "models/TIREM/matlab.html#installing-package",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "",
-    "text": "Use the following command to install tirem from the matpak repo:\nmatpak install tirem\nThe packag can be installed directly into your working directory or in a seperate directory that you include in your execution path."
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#documentation",
-    "href": "models/TIREM/matlab.html#documentation",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "",
-    "text": "All tirem functions are docummented with detailed headers, such as:\n% Function Invoke(...)\n%\n% Description: Calculates the propagation loss between antennas\n%       using the Terrain Integrated Rough-Earth Model (TIREM)\n%       software\n%\n% Inputs:\n%   h_tx__meter : Transmitter structural antenna height (0.0 to \n%       30,000.0), in meters\n%   h_rx__meter : Receiver structural antenna height (0.0 to \n%       30,000.0), in meters\n%   f__mhz : Transmitter frequency (1.0 to 275,000.0), in MHz\n%   heights__meter : Array of profile terrain heights above mean \n%       sea level (-450.0 to 9000.0), in meters\n%   distances__meter : Array of great circle distances from the \n%       beginning of the profile to each profile point, in meters\n%   N_s : Surface refractivity (200.0 to 450.0), in N-Units\n%   sigma : Conductivity of earth surface (0.00001 to 100.0), \n%       in S/m\n%   epsilon : Relative permittivity of earth surface (1.0 to 100.0)\n%   humid : Surface humidity at the transmitter site (0.0 to \n%       110.0), in gram/m^3\n%   polarization : Transmitter antenna polarization\n%\n% Outputs:\n%   A__db : Total path loss (Basic transmission loss), in dB\n%   A_fs__db : Free space loss, in dB\n%   mode : Mode of propagation"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#basic-transmission-loss",
-    "href": "models/TIREM/matlab.html#basic-transmission-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "Basic Transmission Loss",
-    "text": "Basic Transmission Loss\nheights = [4.5, 7, 3.6, 8, 10, 5];\ndists = [0.0, 10000, 20000, 30000, 70000, 200000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 204.60               // basic transmission loss, in dB\n% A_fs__db = 143.35            // free space loss, in dB\n% mode = 3                     // Troposcatter"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#absorption-loss",
-    "href": "models/TIREM/matlab.html#absorption-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "Absorption Loss",
-    "text": "Absorption Loss\nheights = [4.5, 7, 3.6, 8, 10, 5];\ndists = [0.0, 10000, 20000, 30000, 70000, 200000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 204.60               // basic transmission loss, in dB\n% A_fs__db = 143.35            // free space loss, in dB\n% mode = 3                     // Troposcatter\n\nabloss = TIREM.GetTiremAbloss();\n\n% abloss = 0                   // absorption loss, in dB"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#diffraction-loss",
-    "href": "models/TIREM/matlab.html#diffraction-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "Diffraction Loss",
-    "text": "Diffraction Loss\nheights = [4.5, 7, 50, 8, 10];\ndists = [0.0, 10000, 20000, 30000, 70000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 168.82               // basic transmission loss, in dB\n% A_fs__db = 134.23            // free space loss, in dB\n% mode = 2                     // Diffraction\n\ntotdif = TIREM.GetTiremTotdif();\n\n% totdif = 168.82              // diffraction loss, in dB\n\n% you can also get the diffraction loss for a troposcatter path\nheights2 = [4.5, 7, 3.6, 8, 10, 5];\ndists2 = [0.0, 10000, 20000, 30000, 70000, 200000];\n\n[A__db2, A_fs__db2, mod2e] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights2, dists2, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db2 = 204.60              // basic transmission loss, in dB\n% A_fs__db2 = 143.35           // free space loss, in dB\n% mode2 = 3                    // Troposcatter\n\ntotdif2 = TIREM.GetTiremTotdif();\n\n% totdif2 = 208.20             // diffraction loss, in dB"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#troposcatter-loss",
-    "href": "models/TIREM/matlab.html#troposcatter-loss",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "Troposcatter Loss",
-    "text": "Troposcatter Loss\nheights = [4.5, 7, 3.6, 8, 10, 5];\ndists = [0.0, 10000, 20000, 30000, 70000, 200000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 204.60               // basic transmission loss, in dB\n% A_fs__db = 143.35            // free space loss, in dB\n% mode = 3                     // Troposcatter\n\ntottro = TIREM.GetTiremTottro();\n\n% tottro = 204.60              // troposcatter loss, in dB\n\n% you can also get the troposcatter loss for a diffraction path\nheights2 = [4.5, 7, 50, 8, 10];\ndists2 = [0.0, 10000, 20000, 30000, 70000];\n\n[A__db2, A_fs__db2, mode2] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights2, dists2, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db2 = 168.82              // basic transmission loss, in dB\n% A_fs__db2 = 134.23           // free space loss, in dB\n% mode2 = 2                    // Diffraction\n\ntottro2 = TIREM.GetTiremTottro();\n\n% tottro2 = 192.23             // diffraction loss, in dB"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#tx-troposcatter-angle",
-    "href": "models/TIREM/matlab.html#tx-troposcatter-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "TX Troposcatter Angle",
-    "text": "TX Troposcatter Angle\nheights = [4.5, 7, 3.6, 8, 10, 5];\ndists = [0.0, 10000, 20000, 30000, 70000, 200000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 204.60               // basic transmission loss, in dB\n% A_fs__db = 143.35            // free space loss, in dB\n% mode = 3                     // Troposcatter\n\nalphae = TIREM.GetTiremAlphae();\n\n% alphae = 0.010916            // tx troposcatter angle, in radians"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#rx-troposcatter-angle",
-    "href": "models/TIREM/matlab.html#rx-troposcatter-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "RX Troposcatter Angle",
-    "text": "RX Troposcatter Angle\nheights = [4.5, 7, 3.6, 8, 10, 5];\ndists = [0.0, 10000, 20000, 30000, 70000, 200000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 204.60               // basic transmission loss, in dB\n% A_fs__db = 143.35            // free space loss, in dB\n% mode = 3                     // Troposcatter\n\nbetae = TIREM.GetTiremBetae();\n\n% betae = 0.004116             // rx troposcatter angle, in radians"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#tx-horizon-index",
-    "href": "models/TIREM/matlab.html#tx-horizon-index",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "TX Horizon Index",
-    "text": "TX Horizon Index\nheights = [4.5, 7, 3.6, 8, 10, 5];\ndists = [0.0, 10000, 20000, 30000, 70000, 200000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 204.60               // basic transmission loss, in dB\n% A_fs__db = 143.35            // free space loss, in dB\n% mode = 3                     // Troposcatter\n\nhorztx = TIREM.GetTiremHorztx();\n\n% horztx = 2\n% tx horizon point is dists(2) and heights(2)"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#rx-horizon-index",
-    "href": "models/TIREM/matlab.html#rx-horizon-index",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "RX Horizon Index",
-    "text": "RX Horizon Index\nheights = [4.5, 7, 3.6, 8, 10, 5];\ndists = [0.0, 10000, 20000, 30000, 70000, 200000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 204.60               // basic transmission loss, in dB\n% A_fs__db = 143.35            // free space loss, in dB\n% mode = 3                     // Troposcatter\n\nhorzrx = TIREM.GetTiremHorzrx();\n\n% horzrx = 5\n% rx horizon point is dists(5) and heights(5)"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#tx-horizon-angle",
-    "href": "models/TIREM/matlab.html#tx-horizon-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "TX Horizon Angle",
-    "text": "TX Horizon Angle\nheights = [4.5, 7, 3.6, 8, 10, 5];\ndists = [0.0, 10000, 20000, 30000, 70000, 200000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 204.60               // basic transmission loss, in dB\n% A_fs__db = 143.35            // free space loss, in dB\n% mode = 3                     // Troposcatter\n\ntxang = TIREM.GetTiremTxang();\n\n% txang = -0.000838            // tx horizon angle, in radians"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#rx-horizon-angle",
-    "href": "models/TIREM/matlab.html#rx-horizon-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "RX Horizon Angle",
-    "text": "RX Horizon Angle\nheights = [4.5, 7, 3.6, 8, 10, 5];\ndists = [0.0, 10000, 20000, 30000, 70000, 200000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 204.60               // basic transmission loss, in dB\n% A_fs__db = 143.35            // free space loss, in dB\n% mode = 3                     // Troposcatter\n\nrxang = TIREM.GetTiremRxang();\n\n% rxang = -0.007653            // rx horizon angle, in radians"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#troposcatter-angle",
-    "href": "models/TIREM/matlab.html#troposcatter-angle",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "Troposcatter Angle",
-    "text": "Troposcatter Angle\nheights = [4.5, 7, 3.6, 8, 10, 5];\ndists = [0.0, 10000, 20000, 30000, 70000, 200000];\n\nh_tx__meter = 5;\nh_rx__meter = 6;\nf__mhz = 1755;\nN_s = 301;\nsigma = 0.005;\nepsilon = 15;\nhumid = 50;\n\n[A__db, A_fs__db, mode] = TIREM.Invoke(h_tx__meter, ...\n    h_rx__meter, f__mhz, heights, dists, ...\n    N_s, sigma, epsilon, humid, TIREMPolarization.Vertical);\n\n% A__db = 204.60               // basic transmission loss, in dB\n% A_fs__db = 143.35            // free space loss, in dB\n% mode = 3                     // Troposcatter\n\nthet00 = TIREM.GetTiremThet00();\n\n% thet00 = 0.015033            // troposcatter angle, in radians"
-  },
-  {
-    "objectID": "models/TIREM/matlab.html#version",
-    "href": "models/TIREM/matlab.html#version",
-    "title": "Terrain Integrated Rough-Earth Model (TIREM) - MATLAB",
-    "section": "Version",
-    "text": "Version\nversion = TIREM.GetTiremNumber();\n\n% version = \"3.20\""
-  },
-  {
-    "objectID": "quick-start/matlab.html",
-    "href": "quick-start/matlab.html",
-    "title": "Quick Start - MATLAB",
-    "section": "",
-    "text": "This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the MATLAB development environment. Included in this is a brief introduction to the internal MATLAB package manager, matpak."
-  },
-  {
-    "objectID": "quick-start/matlab.html#dependencies-and-limitations",
-    "href": "quick-start/matlab.html#dependencies-and-limitations",
-    "title": "Quick Start - MATLAB",
-    "section": "Dependencies and Limitations",
-    "text": "Dependencies and Limitations\nAny reasonably newer version of MATLAB should work. Backwards compatibility with older versions of MATLAB is not possible due to not having access to the software. However, versions starting in 2019 have not shown to have any issues.\nSupport is currently limited to Windows users only. This is due to MATLAB’s use of the .NET Framework, as opposed to the cross-platform .NET Core. MATLAB currently has not given a timeline to switch to .NET Core, however, as Microsoft is moving everything onto .NET Core in the near future, this implies that as some (hopefully soon) future date, cross-platform support can be achieved."
-  },
-  {
-    "objectID": "quick-start/matlab.html#internal-package-repository",
-    "href": "quick-start/matlab.html#internal-package-repository",
-    "title": "Quick Start - MATLAB",
-    "section": "Internal Package Repository",
-    "text": "Internal Package Repository\nITS Propagation Library Packages are hosted at any of the following places:\nFor ITS users, they are available at either, * \\\\itsfs01\\Tools\\Matpak\\packages * \\\\ntinetapp001g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\Matlab\\packages\nFor OSM users (or anyone else in HCHB), packages can be found, * \\\\nthnetapp002g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\Matlab\\packages"
-  },
-  {
-    "objectID": "quick-start/matlab.html#system-setup",
-    "href": "quick-start/matlab.html#system-setup",
-    "title": "Quick Start - MATLAB",
-    "section": "System Setup",
-    "text": "System Setup\nMATLAB support for the ITS Propagation Library relies on an internally developed package manager called matpak. Generally speaking, matpak allows users to download, update, and manage library packages in MATLAB. More information on matpak can be found here.\n\n\n\nmatpak install screenshot\n\n\nTo install matpak, from the below location:\nFor ITS users, * \\\\itsfs01\\Tools\\Matpak\\installers\nFor OSM (or HCHB) users, * \\\\nthnetapp002g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\Matlab\\installers\nInstall the most recent version. Run the installer with User access (not as Admin). Accept the default file location for install. The installer assumes that MATLAB has been installed onto your machine in the default locations (if this is not true, reach out to Billy Kozma)."
-  },
-  {
-    "objectID": "quick-start/matlab.html#setting-the-correct-package-location",
-    "href": "quick-start/matlab.html#setting-the-correct-package-location",
-    "title": "Quick Start - MATLAB",
-    "section": "Setting the Correct Package Location",
-    "text": "Setting the Correct Package Location\nNote: If you are an ITS user, you should be able to skip this step.\nOnce the installion has completed, you can verify and update the package location of matpak. To do this, open “Windows Explorer” and nagivate to “Documents”. Inside the “MATLAB” directory, you should see a “matpak” subdirectory which contains a settings.ini file. Open this file in a text editor. The default setting should be:\nSOURCE=\\\\itsfs01\\tools\\Matpak\\packages\nThis is the location that matpak will use to search for packages. Update this location according to the package source you have access to (listed in previous subsection)."
-  },
-  {
-    "objectID": "quick-start/matlab.html#installing-packages",
-    "href": "quick-start/matlab.html#installing-packages",
-    "title": "Quick Start - MATLAB",
-    "section": "Installing Packages",
-    "text": "Installing Packages\nInstalling packages requires only a single command. To install the PropCore package, run:\n&gt;&gt; matpak install propcore\nMatpak: Package 'PropCore' (Version 1.0.0) has been installed.\n&gt;&gt; \n\n\n\nmatpak install screenshot\n\n\nmatpak will install the package files in the current directory. The files can be instead installed into a different location and that directory added to the path at runtime."
-  },
-  {
-    "objectID": "quick-start/matlab.html#calling-propcore-in-matlab",
-    "href": "quick-start/matlab.html#calling-propcore-in-matlab",
-    "title": "Quick Start - MATLAB",
-    "section": "Calling PropCore in MATLAB",
-    "text": "Calling PropCore in MATLAB\nIn a script file or the Command Window, copy the following snippet of code:\ntheta = Terrestrial.TakeoffAngle(5, 1, 100, 8400)\nIt should result in: theta = -0.0459"
   }
 ]

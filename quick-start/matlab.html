@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.40">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-06-11">
 
-<title>NTIA/ITS Propagation Library Wiki – Quick Start - MATLAB</title>
+<title>NTIA/ITS Propagation Library Wiki - Quick Start - MATLAB</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -113,11 +114,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">NTIA/ITS Propagation Library Wiki</span>
+    <span class="navbar-title">NTIA/ITS PropLib Wiki</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -126,13 +127,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-u.s.-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">U.S. Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-u.s.-models">    
+        <li>
+    <a class="dropdown-item" href="../models/ITM/index.html">
+ <span class="dropdown-text">Irregular Terrain Model (ITM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../models/ITM-MidBand/index.html">
+ <span class="dropdown-text">ITM-MidBand</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-itu-r-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">ITU-R Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-itu-r-models">    
+        <li>
+    <a class="dropdown-item" href="../models/P2108/index.html">
+ <span class="dropdown-text">ITU-R P.2108</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -143,11 +170,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#dependencies-and-limitations" id="toc-dependencies-and-limitations" class="nav-link active" data-scroll-target="#dependencies-and-limitations">Dependencies and Limitations</a></li>
-  <li><a href="#internal-package-repository" id="toc-internal-package-repository" class="nav-link" data-scroll-target="#internal-package-repository">Internal Package Repository</a></li>
+  <li><a href="#getting-packages" id="toc-getting-packages" class="nav-link" data-scroll-target="#getting-packages">Getting Packages</a></li>
   <li><a href="#quick-start" id="toc-quick-start" class="nav-link" data-scroll-target="#quick-start">Quick Start</a>
   <ul class="collapse">
   <li><a href="#system-setup" id="toc-system-setup" class="nav-link" data-scroll-target="#system-setup">System Setup</a></li>
@@ -171,7 +198,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 11, 2024</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 11, 2024</p>
+    </div>
+  </div>
     
   </div>
   
@@ -180,20 +219,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the MATLAB development environment. Included in this is a brief introduction to the internal MATLAB package manager, <code>matpak</code>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Page Under Construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TO DO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The matpak approach is abandoned in favor of MEX files and this page needs to be updated accordingly.</p>
+</div>
+</div>
+<p>This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from a MATLAB development environment. Included in this is a brief introduction to the internal MATLAB package manager, <code>matpak</code>.</p>
 <section id="dependencies-and-limitations" class="level2">
 <h2 class="anchored" data-anchor-id="dependencies-and-limitations">Dependencies and Limitations</h2>
 <p>Any reasonably newer version of MATLAB should work. Backwards compatibility with older versions of MATLAB is not possible due to not having access to the software. However, versions starting in 2019 have not shown to have any issues.</p>
 <p>Support is currently limited to Windows users only. This is due to MATLAB’s use of the .NET Framework, as opposed to the cross-platform .NET Core. MATLAB currently has not given a timeline to switch to .NET Core, however, as Microsoft is moving everything onto .NET Core in the near future, this implies that as some (hopefully soon) future date, cross-platform support can be achieved.</p>
 </section>
-<section id="internal-package-repository" class="level2">
-<h2 class="anchored" data-anchor-id="internal-package-repository">Internal Package Repository</h2>
-<p>ITS Propagation Library Packages are hosted at any of the following places:</p>
-<p>For ITS users, they are available at either, * \\itsfs01\Tools\Matpak\packages * \\ntinetapp001g.ntiadc.ntia.doc.gov\ntiadropbox\itsdata\Matlab\packages</p>
-<p>For OSM users (or anyone else in HCHB), packages can be found, * \\nthnetapp002g.ntiadc.ntia.doc.gov\ntiadropbox\itsdata\Matlab\packages</p>
+<section id="getting-packages" class="level2">
+<h2 class="anchored" data-anchor-id="getting-packages">Getting Packages</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TO DO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Add section detailing workflow for installing new packages</p>
+</div>
+</div>
 </section>
 <section id="quick-start" class="level1">
 <h1>Quick Start</h1>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TO DO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Section needs to be updated with new instructions for MEX</p>
+</div>
+</div>
 <p>This example walks a user will:</p>
 <ol type="1">
 <li>Configure their machine by installing the ITS MATLAB package manager</li>
@@ -281,7 +369,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -313,29 +412,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/NTIA\.github\.io\/propagation-library-wiki\/");
@@ -343,7 +420,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

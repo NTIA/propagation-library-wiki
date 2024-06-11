@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.40">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NTIA/ITS Propagation Library Wiki – Extended-Hata (E-Hata) Model - C#/.NET</title>
+<title>NTIA/ITS Propagation Library Wiki - ITU-R P.2108</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -113,11 +79,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">NTIA/ITS Propagation Library Wiki</span>
+    <span class="navbar-title">NTIA/ITS PropLib Wiki</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -126,13 +92,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-u.s.-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">U.S. Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-u.s.-models">    
+        <li>
+    <a class="dropdown-item" href="../../models/ITM/index.html">
+ <span class="dropdown-text">Irregular Terrain Model (ITM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../models/ITM-MidBand/index.html">
+ <span class="dropdown-text">ITM-MidBand</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-itu-r-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">ITU-R Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-itu-r-models">    
+        <li>
+    <a class="dropdown-item" href="../../models/P2108/index.html">
+ <span class="dropdown-text">ITU-R P.2108</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -143,21 +135,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a></li>
-  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
-  <li><a href="#basic-transmission-loss" id="toc-basic-transmission-loss" class="nav-link" data-scroll-target="#basic-transmission-loss">Basic Transmission Loss</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#height-gain-terminal-correction-model" id="toc-height-gain-terminal-correction-model" class="nav-link" data-scroll-target="#height-gain-terminal-correction-model">Height Gain Terminal Correction Model</a>
+  <ul class="collapse">
+  <li><a href="#street-width" id="toc-street-width" class="nav-link" data-scroll-target="#street-width">Street Width</a></li>
+  <li><a href="#representative-clutter-height" id="toc-representative-clutter-height" class="nav-link" data-scroll-target="#representative-clutter-height">Representative Clutter Height</a></li>
+  </ul></li>
+  <li><a href="#terrestrial-statistical-model" id="toc-terrestrial-statistical-model" class="nav-link" data-scroll-target="#terrestrial-statistical-model">Terrestrial Statistical Model</a></li>
+  <li><a href="#aeronautical-statistical-model" id="toc-aeronautical-statistical-model" class="nav-link" data-scroll-target="#aeronautical-statistical-model">Aeronautical Statistical Model</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/NTIA/P2108"><i class="bi bi-github"></i>GitHub Repository</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Extended-Hata (E-Hata) Model - C#/.NET</h1>
+<h1 class="title">ITU-R P.2108</h1>
 </div>
 
 
@@ -174,41 +174,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Page Under Construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+</div>
+</div>
+<p>Recommendation ITU-R P.2108 (Prediction of clutter loss) provides three methods to predict terminal clutter loss. Two of these methods are for terrestrial paths and one if for aeronautical paths. Frequencies vary depending on the clutter model.</p>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<p>To begin, install the NuGet package, <code>EHata</code>, from the NTIA NuGet repository</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/nuget_ehata.jpg" class="img-fluid figure-img"></p>
-<figcaption>ehata nuget install screenshot</figcaption>
-</figure>
-</div>
-<p>All of the below code snippets requires the including the following <code>using</code> statement.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> ITS<span class="op">.</span><span class="fu">Propagation</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Language-specific information on getting started using the P.218 library can be found below at the corresponding page.</p>
+<p>Information: <a href="P2108-(.NET)#getting-started">C#</a> | <a href="P2108-(MATLAB)#overview">MATLAB</a> | <a href="P2108-(Python)#getting-started">Python</a></p>
 </section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<p>The <code>ehata</code> library is packaged to support IntelliSense when developing in Visual Studio. This documentation will provide the developer with information on function descriptions, variable details, etc. # Examples</p>
+<section id="functions" class="level1">
+<h1>Functions</h1>
+<section id="height-gain-terminal-correction-model" class="level2">
+<h2 class="anchored" data-anchor-id="height-gain-terminal-correction-model">Height Gain Terminal Correction Model</h2>
+<p>This method, gives the median of losses due to different terminal surroundings. The possible mechanisms include obstruction loss and reflections due to clutter objects at the representative height, and scattering and reflection from the ground and smaller clutter objects. When using a computer implementation, with terrain profile extracted from a digital terrain model, and with the terminal surroundings defined by a clutter category, it is not practicable to identify individual mechanisms. The method used here distinguishes between two general cases: for woodland and urban categories. It is assumed that the dominant mechanism is diffraction over clutter. For other categories, it is assumed that reflection or scattering dominates.</p>
+<p>This model in valid for frequencies from 0.03 to 3 GHz.</p>
+<p>The model supports the following clutter types and their respective input value. Note that for language-specific code, enumerations and/or constants are provided for easy-of-use.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Clutter Type</th>
+<th style="text-align: center;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Water/sea</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td>Open/rural</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="odd">
+<td>Suburban</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td>Urban</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td>Trees/forest</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td>Dense urban</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<p>Two parameters additional allow that define the clutter at the terminal allow for either path-specific definitions as well as provide default values.</p>
+<section id="street-width" class="level3">
+<h3 class="anchored" data-anchor-id="street-width">Street Width</h3>
+<p>The parameter <code>w_s__meter</code> defines the width of the street at the location of the terminal in clutter. If site-specific information is not available, the value of 27 should be used.</p>
 </section>
-<section id="basic-transmission-loss" class="level2">
-<h2 class="anchored" data-anchor-id="basic-transmission-loss">Basic Transmission Loss</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">var</span> pfl <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">[]</span> <span class="op">{</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">5</span> <span class="op">};</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> f__mhz <span class="op">=</span> <span class="dv">3500</span><span class="op">;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> h_b__meter <span class="op">=</span> <span class="dv">25</span><span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> h_m__meter <span class="op">=</span> <span class="fl">1.5</span><span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">var</span> env <span class="op">=</span> EHata<span class="op">.</span><span class="fu">ClutterEnvironment</span><span class="op">.</span><span class="fu">Urban</span><span class="op">;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> rel <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>EHata<span class="op">.</span><span class="fu">InvokeEx</span><span class="op">(</span>pfl<span class="op">,</span> f__mhz<span class="op">,</span> h_b__meter<span class="op">,</span> h_m__meter<span class="op">,</span> env<span class="op">,</span> rel<span class="op">,</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">out</span> <span class="dt">double</span> A__db<span class="op">,</span> <span class="kw">out</span> EHata<span class="op">.</span><span class="fu">IntermediateValues</span> ivals<span class="op">);</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">// A__db = 133.7836794567479</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">// can use the intermediate values object to access additional information</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">// from the EHata prediction</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>Console<span class="op">.</span><span class="fu">WriteLine</span><span class="op">(</span>$<span class="st">"The effective height of the base station is {ivals.h_b_eff__meter} meters"</span><span class="op">);</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">// The effective height of the base station is 30.0 meters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="representative-clutter-height" class="level3">
+<h3 class="anchored" data-anchor-id="representative-clutter-height">Representative Clutter Height</h3>
+<p>The parameter <code>R__meter</code> defines the representative clutter height at the location of the terminal in clutter. Default values for each clutter type are listed in the below table:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Clutter Type</th>
+<th style="text-align: center;"><code>R__meter</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Water/sea</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td>Open/rural</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="odd">
+<td>Suburban</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td>Urban</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="odd">
+<td>Trees/forest</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td>Dense urban</td>
+<td style="text-align: center;">20</td>
+</tr>
+</tbody>
+</table>
+<p>Example: <a href="P2108-(.NET)#height-gain-terminal-correction-model">C#</a> | <a href="P2108-(MATLAB)#height-gain-terminal-correction-model">MATLAB</a> | <a href="P2108-(Python)#height-gain-terminal-correction-model">Python</a></p>
+</section>
+</section>
+<section id="terrestrial-statistical-model" class="level2">
+<h2 class="anchored" data-anchor-id="terrestrial-statistical-model">Terrestrial Statistical Model</h2>
+<p>This model gives equations that gives a statistical distribution of clutter loss. The model can be applied for urban and suburban clutter loss modelling. Validity of the model is as follows:</p>
+<ul>
+<li>Frequency range: 2 to 67 GHz</li>
+<li>Minimum path length:
+<ul>
+<li>0.25 km (for the correction to be applied at only one end of the path)</li>
+<li>1.0 km (for the correction to be applied at both ends of the path)</li>
+</ul></li>
+<li>Percentage locations range: 0 &lt; <code>p</code> &lt; 100</li>
+</ul>
+<p>Example: <a href="P2108-(.NET)#terrestrial-statistical-model">C#</a> | <a href="P2108-(MATLAB)#terrestrial-statistical-model">MATLAB</a> | <a href="P2108-(Python)#terrestrial-statistical-model">Python</a></p>
+</section>
+<section id="aeronautical-statistical-model" class="level2">
+<h2 class="anchored" data-anchor-id="aeronautical-statistical-model">Aeronautical Statistical Model</h2>
+<p>This model provides equations to calculate the statistical distribution of clutter loss where one end of the interference path is within man-made clutter, and the other is a satellite, aeroplane, or other platform above the surface of the Earth. Validity of the model is as follows:</p>
+<ul>
+<li>Frequency range: 10 to 100 GHz</li>
+<li>Elevation angle range: 0 to 90 degrees</li>
+<li>Percentage locations range: 0 &lt; <code>p</code> &lt; 100</li>
+</ul>
+<p>Example: <a href="P2108-(.NET)#aeronautical-statistical-model">C#</a> | <a href="P2108-(MATLAB)#aeronautical-statistical-model">MATLAB</a> | <a href="P2108-(Python)#aeronautical-statistical-model">Python</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -247,7 +343,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -279,29 +386,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/NTIA\.github\.io\/propagation-library-wiki\/");
@@ -309,7 +394,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

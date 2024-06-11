@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.40">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NTIA/ITS Propagation Library Wiki – Extended-Hata (E-Hata) Model - Overview</title>
+<title>NTIA/ITS Propagation Library Wiki - ITU-R P.2108 - Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -79,11 +113,11 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">NTIA/ITS Propagation Library Wiki</span>
+    <span class="navbar-title">NTIA/ITS PropLib Wiki</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -92,13 +126,39 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-u.s.-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">U.S. Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-u.s.-models">    
+        <li>
+    <a class="dropdown-item" href="../../models/ITM/index.html">
+ <span class="dropdown-text">Irregular Terrain Model (ITM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../models/ITM-MidBand/index.html">
+ <span class="dropdown-text">ITM-MidBand</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-itu-r-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">ITU-R Models</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-itu-r-models">    
+        <li>
+    <a class="dropdown-item" href="../../models/P2108/index.html">
+ <span class="dropdown-text">ITU-R P.2108</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -109,22 +169,28 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#functions" id="toc-functions" class="nav-link active" data-scroll-target="#functions">Functions</a>
+  <li><a href="#dependencies" id="toc-dependencies" class="nav-link active" data-scroll-target="#dependencies">Dependencies</a></li>
+  <li><a href="#installing-package" id="toc-installing-package" class="nav-link" data-scroll-target="#installing-package">Installing Package</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
   <ul class="collapse">
-  <li><a href="#basic-transmission-loss" id="toc-basic-transmission-loss" class="nav-link" data-scroll-target="#basic-transmission-loss">Basic Transmission Loss</a></li>
+  <li><a href="#height-gain-terminal-correction-model" id="toc-height-gain-terminal-correction-model" class="nav-link" data-scroll-target="#height-gain-terminal-correction-model">Height Gain Terminal Correction Model</a></li>
+  <li><a href="#terrestrial-statistical-model" id="toc-terrestrial-statistical-model" class="nav-link" data-scroll-target="#terrestrial-statistical-model">Terrestrial Statistical Model</a></li>
+  <li><a href="#aeronautical-statistical-model" id="toc-aeronautical-statistical-model" class="nav-link" data-scroll-target="#aeronautical-statistical-model">Aeronautical Statistical Model</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/NTIA/P2108"><i class="bi bi-github"></i>GitHub Repository</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Extended-Hata (E-Hata) Model - Overview</h1>
+<h1 class="title">ITU-R P.2108 - Python</h1>
 </div>
 
 
@@ -141,13 +207,92 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>A description of the Extended Hata Model (eHata), as well as details on input parameters, can be found at the <a href="https://github.com/NTIA/ehata">public GitHub repo</a>.</p>
-<section id="functions" class="level1">
-<h1>Functions</h1>
-<section id="basic-transmission-loss" class="level2">
-<h2 class="anchored" data-anchor-id="basic-transmission-loss">Basic Transmission Loss</h2>
-<p>Generate a basic transmission loss prediction.</p>
-<p>Example: <a href="EHata-(.NET)#basic-transmission-loss">C#</a> | <a href="EHata-(MATLAB)#basic-transmission-loss">MATLAB</a> | <a href="EHata-(Python)#basic-transmission-loss">Python</a></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Page Under Construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+</div>
+</div>
+<p><strong>TODO</strong> Section outdated</p>
+<p>The package name to install is <code>p2108</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> p2108</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p2108.__version__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<pre><code>&gt;&gt; pip show p2108</code></pre>
+<section id="dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="dependencies">Dependencies</h2>
+<p>The <code>p2108</code> package has no dependencies.</p>
+</section>
+<section id="installing-package" class="level2">
+<h2 class="anchored" data-anchor-id="installing-package">Installing Package</h2>
+<p><strong>TODO</strong> Section outdated</p>
+<p>Use the following command to install <code>p2108</code> from the local pip repo:</p>
+<p>For ITS users:</p>
+<pre><code>pip install p2108 --no-index --find-links file://itsfs01/Tools/Python/pip</code></pre>
+<p>For OSM (or HCHB) users,</p>
+<pre><code>pip install p2108 --no-index --find-links file://nthnetapp002g.ntiadc.ntia.doc.gov/ntiadropbox/itsdata/Python/pip</code></pre>
+</section>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<p>Importing <code>P2108</code> is as simple as including the following in your <code>.py</code> file:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ITS.ITU.PSeries <span class="im">import</span> P2108</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>All <code>P2108</code> functions contain built-in docstring help. This means that if your python development editor supports it, it can provide you with assistance on information such as function description, parameter types and descriptions, and return details.</p>
+<p>This also means that <code>help()</code> is supported in the console to provide information.</p>
+</section>
+<section id="examples" class="level1">
+<h1>Examples</h1>
+<section id="height-gain-terminal-correction-model" class="level2">
+<h2 class="anchored" data-anchor-id="height-gain-terminal-correction-model">Height Gain Terminal Correction Model</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define inputs</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>f__ghz <span class="op">=</span> <span class="dv">1</span>          <span class="co"># Frequency, in GHz</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>h__meter <span class="op">=</span> <span class="fl">1.5</span>      <span class="co"># Antenna height, in meters</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>w_s__meter <span class="op">=</span> <span class="dv">27</span>     <span class="co"># Street width, in meters</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>R__meter <span class="op">=</span> <span class="dv">20</span>       <span class="co"># Representative clutter height, in meters</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>clutter_type <span class="op">=</span> <span class="dv">6</span>    <span class="co"># Clutter type, enum</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Call height gain terminal correction model (P.2108 Section 3.1)</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>A_h__db <span class="op">=</span> P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A_h__db <span class="op">==</span> <span class="fl">8.769394261533549</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># can also use clutter type IntEnum</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>clutter_type <span class="op">=</span> P2108.ClutterType.DenseUrban</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># call clutter model</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>A_h__db <span class="op">=</span> P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A_h__db <span class="op">==</span> <span class="fl">8.769394261533549</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="terrestrial-statistical-model" class="level2">
+<h2 class="anchored" data-anchor-id="terrestrial-statistical-model">Terrestrial Statistical Model</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define inputs</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>f__ghz <span class="op">=</span> <span class="dv">3</span>          <span class="co"># Frequency, in GHz</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>d__km <span class="op">=</span> <span class="fl">0.5</span>         <span class="co"># Path distance, in km</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">50</span>              <span class="co"># Percentage of locations, in %</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># call terrestrial statistical model</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>L_ctt__db <span class="op">=</span> P2108.TerrestrialStatisticalModel(f__ghz, d__km, p)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(L_ctt__db <span class="op">==</span> <span class="fl">26.10075036783342</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="aeronautical-statistical-model" class="level2">
+<h2 class="anchored" data-anchor-id="aeronautical-statistical-model">Aeronautical Statistical Model</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define inputs</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>f__ghz <span class="op">=</span> <span class="dv">15</span>         <span class="co"># Frequency, in GHz</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>theta__deg <span class="op">=</span> <span class="dv">10</span>     <span class="co"># Elevation angle, in degrees</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">50</span>              <span class="co"># Percentage of locations, in %</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># call clutter model</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>L_ces__db <span class="op">=</span> P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(L_ces__db <span class="op">==</span> <span class="fl">14.333686040067786</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -189,7 +334,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -221,29 +377,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/NTIA\.github\.io\/propagation-library-wiki\/");
@@ -251,7 +385,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
