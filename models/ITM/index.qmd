@@ -2,11 +2,11 @@
 title: Irregular Terrain Model (ITM)
 ---
 
-{{< include ../includes/_under_construction.qmd >}}
+{{< include /includes/_under_construction.qmd >}}
 
 A description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the [public GitHub repo](https://github.com/NTIA/itm).
 
-{{< include ../includes/_getting_started.qmd >}}
+{{< include /includes/_getting_started.qmd >}}
 
 # Functions
 

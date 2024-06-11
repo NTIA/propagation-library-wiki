@@ -4,7 +4,7 @@ date: 2024-06-11
 date-modified: 2024-06-11
 ---
 
-{{< include includes/_under_construction.qmd >}}
+{{< include /includes/_under_construction.qmd >}}
 
 This  page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the .NET development environment.
 

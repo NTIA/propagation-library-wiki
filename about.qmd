@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-{{< include models/includes/_under_construction.qmd >}}
+{{< include includes/_under_construction.qmd >}}
 
 ## The Nation's Spectrum and Communications Lab
 
