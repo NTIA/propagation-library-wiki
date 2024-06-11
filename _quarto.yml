@@ -10,9 +10,17 @@ execute:
 website:
   title: "NTIA/ITS Propagation Library Wiki"
   navbar:
+    title: "NTIA/ITS PropLib Wiki"
     left:
       - href: index.qmd
         text: Home
+      - text: "U.S. Models"
+        menu:
+          - models/ITM/index.qmd
+          - models/ITM-MidBand/index.qmd
+      - text: "ITU-R Models"
+        menu:
+          - models/P2108/index.qmd
       - about.qmd
 
 format:
@@ -21,6 +29,11 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
+    toc-title: Contents
     code-fold: false
 
 jupyter: python3
+bibliography: references.bib
+csl: ieee.csl
+
+quarto-required: ">= 1.5.40"
