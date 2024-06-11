@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2024-06-11">
 
-<title>NTIA/ITS Propagation Library Wiki</title>
+<title>ITS Propagation Library Wiki</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -80,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">NTIA/ITS PropLib Wiki</span>
+    <span class="navbar-title">ITS PropLib Wiki</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -98,14 +118,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">U.S. Models</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-u.s.-models">    
-        <li>
-    <a class="dropdown-item" href="./models/ITM/index.html">
- <span class="dropdown-text">Irregular Terrain Model (ITM)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./models/ITM-MidBand/index.html">
- <span class="dropdown-text">ITM-MidBand</span></a>
-  </li>  
+        <li class="dropdown-header">Coming Soon</li>
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -153,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">NTIA/ITS Propagation Library Wiki</h1>
+<h1 class="title">ITS Propagation Library Wiki</h1>
 </div>
 
 
@@ -182,6 +195,18 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>The ITS Propagation Library (<strong>“PropLib”</strong>) is a collection of open source software developed by <a href="./about.html">ITS</a>, focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements.</p>
+<section id="quick-start" class="level2">
+<h2 class="anchored" data-anchor-id="quick-start">Quick Start</h2>
+<p>For each supported programming language, we’ve prepared “quick start” guides to help you get up and running with PropLib software. These pages should be helpful regardless of which specific package(s) you may be interested in using. Choose your programming language below to get started.</p>
+<p><a href="./quick-start/cpp.html" class="btn btn-outline-primary" role="button">C++</a> <a href="./quick-start/dotnet.html" class="btn btn-outline-primary" role="button">C#/.NET</a> <a href="./quick-start/matlab.html" class="btn btn-outline-primary" role="button">MATLAB</a> <a href="./quick-start/python.html" class="btn btn-outline-primary" role="button">Python</a></p>
+</section>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<p>Currently, PropLib includes implementations of propagation models developed by the U.S. (NTIA/ITS) and by the International Telecommunication Union Radiocommunication Sector (ITU-R). The following are categorized lists of available packages within PropLib.</p>
+<section id="u.s.-propagation-models" class="level3">
+<h3 class="anchored" data-anchor-id="u.s.-propagation-models">U.S. Propagation Models</h3>
+<p>Documentation pages are being worked on, and will soon be available through links in the following table, for the following U.S. propagation models:</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -192,35 +217,89 @@ Page Under Construction
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+<p>The listed U.S. propagation models have public code repositories, but documentation is not yet available on this website. Please check back later, and contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with questions in the meantime.</p>
 </div>
 </div>
-<p>The NTIA/ITS Propagation Library (“PropLib”) is a collection of open source software developed by <a href="./about.html">ITS</a>, focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements.</p>
-<section id="quick-start" class="level2">
-<h2 class="anchored" data-anchor-id="quick-start">Quick Start</h2>
-<p>For each supported programming language, we’ve prepared “quick start” guides to help you get up and running with PropLib software. These pages should be helpful regardless of which specific package(s) you may be interested in using. Choose your programming language below to get started.</p>
-<p><a href="./quick-start/cpp.html" class="btn btn-outline-primary" role="button">C++</a> <a href="./quick-start/dotnet.html" class="btn btn-outline-primary" role="button">C#/.NET</a> <a href="./quick-start/matlab.html" class="btn btn-outline-primary" role="button">MATLAB</a> <a href="./quick-start/python.html" class="btn btn-outline-primary" role="button">Python</a></p>
-</section>
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Packages</h2>
-<p>The following are categorized lists of available packages within the NTIA/ITS Propagation Library. Currently, this includes U.S. and ITU-R propagation models.</p>
-<section id="u.s.-propagation-models" class="level3">
-<h3 class="anchored" data-anchor-id="u.s.-propagation-models">U.S. Propagation Models</h3>
-<ul>
-<li>ITM: [<a href="https://github.com/NTIA/ITM">Repo</a> | <a href="./models/ITM/index.html">Docs</a>] - The Irregular Terrain Model</li>
-</ul>
+<table class="caption-top table">
+<caption>U.S. propagation models available in the ITS Propagation Library</caption>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 65%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><strong>eHata</strong></td>
+<td style="text-align: center;"><a href="https://github.com/NTIA/eHata">Repo</a></td>
+<td style="text-align: center;"><a href="models/eHata/index.qmd">Docs</a></td>
+<td style="text-align: left;">Extended Hata Urban Propagation Model</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>ITM</strong></td>
+<td style="text-align: center;"><a href="https://github.com/NTIA/ITM">Repo</a></td>
+<td style="text-align: center;"><a href="./models/ITM/index.html">Docs</a></td>
+<td style="text-align: left;">Irregular Terrain Model</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><strong>LFMF</strong></td>
+<td style="text-align: center;"><a href="https://github.com/NTIA/LFMF">Repo</a></td>
+<td style="text-align: center;"><a href="models/LFMF/index.qmd">Docs</a></td>
+<td style="text-align: left;">Low Frequency / Medium Frequency Propagation Model</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="itu-r-recommendations" class="level3">
 <h3 class="anchored" data-anchor-id="itu-r-recommendations">ITU-R Recommendations</h3>
-<ul>
-<li>P.2108: [<a href="https://github.com/NTIA/p2108">Repo</a> | <a href="./models/P2108/index.html">Docs</a>] - Prediction of clutter loss</li>
-</ul>
+<p>The ITU-R Recommendations constitute a set of international technical standards developed by the Radiocommunication Sector (formerly CCIR) of the ITU <span class="citation" data-cites="itu-r-recommendations"><a href="#ref-itu-r-recommendations" role="doc-biblioref">[1]</a></span>. A subset of these have been implemented in software as a part of this library by ITS.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Page Under Construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The P.528 model has a public code repository, but documentation is not yet available on this website. Please check back later, and contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with questions in the meantime.</p>
+</div>
+</div>
+<table class="caption-top table">
+<caption>ITU-R Recommendations implemented in the ITS Propagation Library</caption>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 65%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><strong>P.528</strong></td>
+<td style="text-align: center;"><a href="https://github.com/NTIA/P528">Repo</a></td>
+<td style="text-align: center;"><a href="models/P528/index.qmd">Docs</a></td>
+<td style="text-align: left;">A propagation prediction method for aeronautical mobile and radionavigation services using the VHF, UHF, and SHF bands</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>P.2108</strong></td>
+<td style="text-align: center;"><a href="https://github.com/NTIA/P2108">Repo</a></td>
+<td style="text-align: center;"><a href="./models/P2108/index.html">Docs</a></td>
+<td style="text-align: left;">Prediction of clutter loss</td>
+</tr>
+</tbody>
+</table>
+
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-itu-r-recommendations" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><span>“<span>ITU-R Recommendations</span>.”</span> <a href="https://www.itu.int/pub/R-REC" class="uri">https://www.itu.int/pub/R-REC</a>.</div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
