@@ -1,16 +1,10 @@
 ---
-title: "NTIA/ITS Propagation Library Wiki"
+title: "ITS Propagation Library Wiki"
 date: 2024-06-11
 date-modified: 2024-06-11
 ---
 
-{{< include includes/_under_construction.qmd >}}
-
-The NTIA/ITS Propagation Library ("PropLib") is a collection of open source software developed by [ITS](about.qmd), focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python
-users through exposing common functionality across multiple programming environments.
-One of the key benefits of this approach is that users are assured of identical
-results across languages, allowing researchers to work in their most efficient
-development environment while benefitting from common library improvements.
+The ITS Propagation Library (**"PropLib"**) is a collection of open source software developed by [ITS](about.qmd), focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements.
 
 ## Quick Start
 
@@ -23,12 +17,38 @@ For each supported programming language, we've prepared "quick start" guides to 
 
 ## Packages
 
-The following are categorized lists of available packages within the NTIA/ITS Propagation Library. Currently, this includes U.S. and ITU-R propagation models.
+Currently, PropLib includes implementations of propagation models developed by the U.S. (NTIA/ITS) and by the International Telecommunication Union Radiocommunication Sector (ITU-R). The following are categorized lists of available packages within PropLib. 
 
 ### U.S. Propagation Models
 
-* ITM: [[Repo](https://github.com/NTIA/ITM) | [Docs](models/ITM/index.qmd)] - The Irregular Terrain Model
+Documentation pages are being worked on, and will soon be available through links in the following table, for the following U.S. propagation models:
+
+::: {.callout-warning}
+## Page Under Construction
+
+The listed U.S. propagation models have public code repositories, but
+documentation is not yet available on this website. Please check back
+later, and contact [code@ntia.gov](mailto:code@ntia.gov) with questions
+in the meantime.
+:::
+
++----------:+:-------------------------------------:+:------------------------------:+:---------------------------------------------------+
+| **eHata** | [Repo](https://github.com/NTIA/eHata) | [Docs](models/eHata/index.qmd) | Extended Hata Urban Propagation Model              |
++-----------+---------------------------------------+--------------------------------+----------------------------------------------------+
+| **ITM**   | [Repo](https://github.com/NTIA/ITM)   | [Docs](models/ITM/index.qmd)   | Irregular Terrain Model                            |
++-----------+---------------------------------------+--------------------------------+----------------------------------------------------+
+| **LFMF**  | [Repo](https://github.com/NTIA/LFMF)  | [Docs](models/LFMF/index.qmd)  | Low Frequency / Medium Frequency Propagation Model |
++-----------+---------------------------------------+--------------------------------+----------------------------------------------------+
+: U.S. propagation models available in the ITS Propagation Library {tbl-colwidths="[15,10,10,65]"}
 
 ### ITU-R Recommendations
 
-* P.2108: [[Repo](https://github.com/NTIA/p2108) | [Docs](models/P2108/index.qmd)] - Prediction of clutter loss
+The ITU-R Recommendations constitute a set of international technical standards developed by the Radiocommunication Sector (formerly CCIR) of the ITU @itu-r-recommendations. A subset of these have been implemented in software as a part of this library by ITS.
+
++-----------:+:-------------------------------------:+:------------------------------:+:------------------------------------------------------------+
+| **P.528**  | [Repo](https://github.com/NTIA/P528)  | [Docs](models/P528/index.qmd)  | A propagation prediction method for aeronautical mobile and |
+|            |                                       |                                | radionavigation services using the VHF, UHF, and SHF bands  |
++------------+---------------------------------------+--------------------------------+-------------------------------------------------------------+
+| **P.2108** | [Repo](https://github.com/NTIA/P2108) | [Docs](models/P2108/index.qmd) | Prediction of clutter loss                                  |
++------------+---------------------------------------+--------------------------------+-------------------------------------------------------------+
+: ITU-R Recommendations implemented in the ITS Propagation Library {tbl-colwidths="[15,10,10,65]"}
