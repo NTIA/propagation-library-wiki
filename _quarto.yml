@@ -17,8 +17,7 @@ website:
         text: Home
       - text: "U.S. Models"
         menu:
-          - models/ITM/index.qmd
-          - models/ITM-MidBand/index.qmd
+          - Coming Soon
       - text: "ITU-R Models"
         menu:
           - models/P2108/index.qmd
