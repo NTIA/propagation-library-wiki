@@ -1,19 +1,12 @@
 ---
 title: "ITM-MidBand"
 ---
-::: {.callout-warning}
-## Page Under Construction
 
-This page is still under construction and has not yet been finalized. Information may be outdated,incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
-:::
+{{< include ../includes/_under_construction.qmd >}}
 
 A description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the [public GitHub repo](https://github.com/NTIA/itm).
 
-## Getting Started
-
-Language-specific information on getting started using the ITM library can be found below at the corresponding page.
-
-Information: [C#](ITM-(.NET)#overview) | [MATLAB](ITM-(MATLAB)#overview) | [Python](ITM-(Python)#overview)
+{{< include ../includes/_getting_started.qmd >}}
 
 # Functions
 

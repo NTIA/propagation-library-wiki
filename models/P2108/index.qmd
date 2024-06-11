@@ -1,19 +1,12 @@
 ---
 title: "ITU-R P.2108"
 ---
-::: {.callout-warning}
-## Page Under Construction
 
-This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
-:::
+{{< include ../includes/_under_construction.qmd >}}
 
 Recommendation ITU-R P.2108 (Prediction of clutter loss) provides three methods to predict terminal clutter loss.  Two of these methods are for terrestrial paths and one if for aeronautical paths.  Frequencies vary depending on the clutter model.
 
-## Getting Started
-
-Language-specific information on getting started using the P.218 library can be found below at the corresponding page.
-
-Information: [C#](P2108-(.NET)#getting-started) | [MATLAB](P2108-(MATLAB)#overview) | [Python](P2108-(Python)#getting-started)
+{{< include ../includes/_getting_started.qmd >}}
 
 # Functions
 

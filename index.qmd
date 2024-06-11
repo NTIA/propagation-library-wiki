@@ -3,11 +3,8 @@ title: "NTIA/ITS Propagation Library Wiki"
 date: 2024-06-11
 date-modified: 2024-06-11
 ---
-::: {.callout-warning}
-## Page Under Construction
 
-This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
-:::
+{{< include models/includes/_under_construction.qmd >}}
 
 The NTIA/ITS Propagation Library ("PropLib") is a collection of open source software developed by [ITS](about.qmd), focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python
 users through exposing common functionality across multiple programming environments.

@@ -10,7 +10,7 @@ This page is still under construction and has not yet been finalized. Informatio
 
 To begin, install the NuGet package, `P2108`, from the NTIA NuGet repository
 
-![p2108 nuget install screenshot](images/p2108_nuget.png)
+![p2108 nuget install screenshot](images/p2108_nuget.jpg)
 
 All of the below code snippets requires the including the following `using` statement.
 

@@ -3,11 +3,8 @@ title: "Quick Start - Python"
 date: 2024-06-11
 date-modified: 2024-06-11
 ---
-::: {.callout-warning}
-## Page Under Construction
 
-This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
-:::
+{{< include includes/_under_construction.qmd >}}
 
 This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from a Python development environment.
 
