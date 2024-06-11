@@ -1,8 +1,15 @@
 ---
 title: "NTIA/ITS Propagation Library Wiki"
+date: 2024-06-11
+date-modified: 2024-06-11'
 ---
+::: {.callout-warning}
+## Page Under Construction
 
-The ITS Propagation Library currently supports C++, C#/.NET, MATLAB, and Python
+This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
+:::
+
+The NTIA/ITS Propagation Library ("PropLib") is a collection of open source software developed by [ITS](about.qmd), focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python
 users through exposing common functionality across multiple programming environments.
 One of the key benefits of this approach is that users are assured of identical
 results across languages, allowing researchers to work in their most efficient
@@ -10,32 +17,21 @@ development environment while benefitting from common library improvements.
 
 ## Quick Start
 
-* For C++ developers, [Quick Start for C++](./quick-start/cpp.qmd)
-* For .NET developers, [Quick Start for .NET](./quick-start/dotnet.qmd)
-* For MATLAB developers, [Quick Start for MATLAB](./quick-start/matlab.qmd)
-* For Python developers, [Quick Start for Python](./quick-start/python.qmd)
+For each supported programming language, we've prepared "quick start" guides to help you get up and running with PropLib software. These pages should be helpful regardless of which specific package(s) you may be interested in using. Choose your programming language below to get started.
+
+[C++](quick-start/cpp.qmd){.btn .btn-outline-primary .btn role="button"}
+[C#/.NET](quick-start/dotnet.qmd){.btn .btn-outline-primary .btn role="button"}
+[MATLAB](quick-start/matlab.qmd){.btn .btn-outline-primary .btn role="button"}
+[Python](quick-start/python.qmd){.btn .btn-outline-primary .btn role="button"}
 
 ## Packages
 
-### US Propagation Models
+The following are categorized lists of available packages within the NTIA/ITS Propagation Library. Currently, this includes U.S. and ITU-R propagation models.
 
-Coming soon
+### U.S. Propagation Models
 
-<!-- * ITM 🌎 : [[Repo](https://github.com/ntia/itm) | [Docs](ITM)] - The Irregular Terrain Model -->
-<!-- * IF77 -->
-<!-- * EHata 🌎 : [[Repo](https://github.com/ntia/ehata) | [Docs](EHata)] - The Extended Hata Urban Propagation Model -->
-<!-- * LFMF -->
-<!-- * TIREM 🔒 : [Repo | [Docs](TIREM)] - The Terrain Integrated Rough-Earth Model -->
+* ITM: [[Repo](https://github.com/NTIA/ITM) | [Docs](models/ITM/index.qmd)] - The Irregular Terrain Model
 
 ### ITU-R Recommendations
 
-<!-- * P.526 🔒 : [Repo | [Docs](P526)] - Propagation by diffraction -->
-<!-- * P.528 🌎 : [[Repo](https://github.com/ntia/p528) | [Docs](P528)] - A propagation prediction method for aeronautical mobile and radionavigation services using the VHF, UHF and SHF bands -->
-<!-- * P.676 🔒 : [Repo | [Docs](P676)] - Attenuation by atmospheric gases and related effects -->
-<!-- * P.835 🔒 : [Repo | [Docs](P835)] - Reference standard atmospheres -->
-* 🌎 P.2108: [[Repo](https://github.com/NTIA/p2108) | [Docs](models/P2108/index.qmd)] - Prediction of clutter loss
-
-<!-- ## General Purpose -->
-
-<!-- * Ohiopyle 🔒 : [[Repo](https://github.com/ntia/ohiopyle) | [Docs](Ohiopyle)] - A data access and management library -->
-<!-- * PropCore 🔒 : [[Repo](https://github.com/ntia/propcore) | [Docs](PropCore)] - A collection of useful general purposes propagation functions -->
+* P.2108: [[Repo](https://github.com/NTIA/p2108) | [Docs](models/P2108/index.qmd)] - Prediction of clutter loss
