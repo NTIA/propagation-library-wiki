@@ -2,6 +2,7 @@ project:
   type: website
 
 toc: true
+toc-expand: 2
 number-sections: false
 
 execute:
