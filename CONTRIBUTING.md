@@ -34,9 +34,8 @@ typos, erroneous content, or anything else which you think should be changed.
 #### Solve an issue
 
 Scan through our existing issues to find one that interests you. You can narrow
-down the search using `labels` as filters. See "[Label reference](https://docs.github.com/en/contributing/collaborating-on-github-docs/label-reference)"
-for more information. You may wish to comment on the issue to let others know if
-you plan to resolve it with a pull request.
+down the search using `labels` as filters. You may wish to comment on the issue
+to let others know if you plan to resolve it with a pull request.
 
 ### Make Changes
 
