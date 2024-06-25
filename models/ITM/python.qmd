@@ -1,38 +1,25 @@
 ---
 title: "Irregular Terrain Model (ITM) - Python"
 ---
-::: {.callout-warning}
-## Page Under Construction
 
-This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
-:::
-The package name to install is `itm`
+{{< include /includes/_under_construction.qmd >}}
 
-```python
-import itm
+## Getting Started
 
-print(itm.__version__)
-```
+{{< include /includes/_package_install_not_ready.qmd >}}
 
-or 
 
-```
->> pip show itm
-```
-
-## Dependencies
+### Dependencies
 
 The `itm` package requires `numpy`.
 
-## Installing Package
+### Installing Package
 
 Use the following command to install `itm` from the local pip repo:
 
 ```
 pip install itm --no-index --find-links file://itsfs01/Tools/Python/pip
 ```
-
-## Getting Started
 
 Importing `itm` is as simple as including the following in your `.py` file:
 

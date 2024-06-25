@@ -6,7 +6,7 @@ date-modified: 2024-06-11
 
 {{< include /includes/_under_construction.qmd >}}
 
-This page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from a Python development environment.
+This page provides a walkthrough on how to quickly get up and running installing and running ITS PropLib software in a Python development environment.
 
 ## Dependencies and Limitations
 
@@ -68,6 +68,12 @@ pip install ohiopyle --no-index --find-links file://itsfs01/Tools/Python/pip
 ```
 
 ## Calling PropCore in Python
+
+::: {.callout-warning}
+### TO DO
+
+Replace with an interactive Jupyter example
+:::
 
 Open Spyder (or your Python IDE of choice) and copy the following snippet of code:
 

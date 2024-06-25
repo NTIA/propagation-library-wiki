@@ -1,27 +1,12 @@
 ---
 title: "ITU-R P.2108 - MATLAB"
 ---
-::: {.callout-warning}
-## Page Under Construction
 
-This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
-:::
+{{< include /includes/_under_construction.qmd >}}
 
-The package name to install is `p2108`.  The package can be found in the matpak repo with the following command:
+## Getting Started
 
-```
-matpak search p2108
-```
-
-## Installing Package
-
-Use the following command to install `p2108` from the matpak repo:
-
-```
-matpak install p2108
-```
-
-The packag can be installed directly into your working directory or in a seperate directory that you include in your execution path.
+{{< include /includes/_package_install_not_ready.qmd >}}
 
 ## Documentation
 

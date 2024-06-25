@@ -1,26 +1,12 @@
 ---
 title: "Irregular Terrain Model (ITM) - MATLAB"
 ---
-::: {.callout-warning}
-## Page Under Construction
 
-This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
-:::
-The package name to install is `itm`.  The package can be found in the matpak repo with the following command:
+{{< include /includes/_under_construction.qmd >}}
 
-```
-matpak search itm
-```
+## Getting Started
 
-## Installing Package
-
-Use the following command to install `itm` from the matpak repo:
-
-```
-matpak install itm
-```
-
-The packag can be installed directly into your working directory or in a seperate directory that you include in your execution path.
+{{< include /includes/_package_install_not_ready.qmd >}}
 
 ## Documentation
 

@@ -1,13 +1,14 @@
 ---
 title: "ITU-R P.2108 - Python"
+date: 2024-06-25
+date-modified: 2024-06-25
 ---
-::: {.callout-warning}
-## Page Under Construction
 
-This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact [code@ntia.gov](mailto:code@ntia.gov) with any questions.
-:::
+{{< include /includes/_under_construction.qmd >}}
 
-**TODO** Section outdated
+## Installation
+
+{{< include /includes/_package_install_not_ready.qmd >}}
 
 The package name to install is `p2108`
 
@@ -25,7 +26,7 @@ or
 
 ## Dependencies
 
-The `p2108` package has no dependencies.
+The `p2108` package has no external Python dependencies.
 
 ## Installing Package
 
