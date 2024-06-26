@@ -6,3 +6,4 @@ models/TIREM
 models/P528
 **/index_files/
 **/*_files
+/env/
