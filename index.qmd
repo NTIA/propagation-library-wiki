@@ -10,10 +10,10 @@ The ITS Propagation Library (**"PropLib"**) is a collection of open source softw
 
 For each supported programming language, we've prepared "quick start" guides to help you get up and running with PropLib software. These pages should be helpful regardless of which specific package(s) you may be interested in using. Choose your programming language below to get started.
 
-[C++](quick-start/cpp.qmd){.btn .btn-outline-primary .btn role="button"}
-[C#/.NET](quick-start/dotnet.qmd){.btn .btn-outline-primary .btn role="button"}
-[MATLAB](quick-start/matlab.qmd){.btn .btn-outline-primary .btn role="button"}
-[Python](quick-start/python.qmd){.btn .btn-outline-primary .btn role="button"}
+[C++](quick-start/cpp.qmd){.btn .btn-secondary role="button"}
+[C#/.NET](quick-start/dotnet.qmd){.btn .btn-secondary role="button"}
+[MATLAB](quick-start/matlab.qmd){.btn .btn-secondary role="button"}
+[Python](quick-start/python.qmd){.btn .btn-secondary role="button"}
 
 ## Packages
 
@@ -32,13 +32,13 @@ later, and contact [code@ntia.gov](mailto:code@ntia.gov) with questions
 in the meantime.
 :::
 
-+----------:+:-------------------------------------:+:------------------------------:+:---------------------------------------------------+
-| **eHata** | [Repo](https://github.com/NTIA/eHata) | [Docs](models/eHata/index.qmd) | Extended Hata Urban Propagation Model              |
-+-----------+---------------------------------------+--------------------------------+----------------------------------------------------+
-| **ITM**   | [Repo](https://github.com/NTIA/ITM)   | [Docs](models/ITM/index.qmd)   | Irregular Terrain Model                            |
-+-----------+---------------------------------------+--------------------------------+----------------------------------------------------+
-| **LFMF**  | [Repo](https://github.com/NTIA/LFMF)  | [Docs](models/LFMF/index.qmd)  | Low Frequency / Medium Frequency Propagation Model |
-+-----------+---------------------------------------+--------------------------------+----------------------------------------------------+
++----------:+:-------------------------------------:+:----:+:---------------------------------------------------+
+| **eHata** | [Repo](https://github.com/NTIA/eHata) | Docs | Extended Hata Urban Propagation Model              |
++-----------+---------------------------------------+------+----------------------------------------------------+
+| **ITM**   | [Repo](https://github.com/NTIA/ITM)   | Docs | Irregular Terrain Model                            |
++-----------+---------------------------------------+------+----------------------------------------------------+
+| **LFMF**  | [Repo](https://github.com/NTIA/LFMF)  | Docs | Low Frequency / Medium Frequency Propagation Model |
++-----------+---------------------------------------+------+----------------------------------------------------+
 : U.S. propagation models available in the ITS Propagation Library {tbl-colwidths="[15,10,10,65]"}
 
 ### ITU-R Recommendations
@@ -53,7 +53,7 @@ in the meantime.
 :::
 
 +-----------:+:-------------------------------------:+:------------------------------:+:------------------------------------------------------------+
-| **P.528**  | [Repo](https://github.com/NTIA/P528)  | [Docs](models/P528/index.qmd)  | A propagation prediction method for aeronautical mobile and |
+| **P.528**  | [Repo](https://github.com/NTIA/P528)  | Docs                           | A propagation prediction method for aeronautical mobile and |
 |            |                                       |                                | radionavigation services using the VHF, UHF, and SHF bands  |
 +------------+---------------------------------------+--------------------------------+-------------------------------------------------------------+
 | **P.2108** | [Repo](https://github.com/NTIA/P2108) | [Docs](models/P2108/index.qmd) | Prediction of clutter loss                                  |

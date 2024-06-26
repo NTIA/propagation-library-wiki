@@ -1,0 +1,46 @@
+/*-- scss:defaults --*/
+$primary: #162e51;   // ITS blue (NTIA is 162d51)
+$secondary: #D63E04; // ITS orange
+$footer-bg-color: #c6cace;
+$link-color: #0066CC;
+$light: #fff;
+$black: rgba(0, 0, 0, 0.8);
+
+
+// Theming reference:
+// https://quarto.org/docs/output-formats/html-themes.html
+
+// Basic Options
+
+
+// Colors
+$body-bg: $light;
+$body-color: rgba(0,0,0,0.8);
+
+// Table of Contents
+$toc-color: $secondary;
+$toc-active-border: $secondary;
+nav#TOC.toc-active ul li a.nav-link.active {
+    font-weight: bold;
+}
+
+// Navigation
+$navbar-fg: $light;
+$navbar-hl: $link-color;
+
+header nav {
+    font-weight: bold;
+}
+.navbar-title {
+    font-family: "Merriweather", "Georgia", "Cambria", "Times New Roman", "Times", serif;
+}
+
+// Other
+h1 {
+    border-bottom: 3px solid $secondary;
+    display: inline-block;
+    padding-bottom: 10px;
+    color: $black;
+    font-family: "Merriweather", "Georgia", "Cambria", "Times New Roman", "Times", serif;
+}
+

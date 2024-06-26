@@ -1,0 +1,3 @@
+## Documentation
+
+All functions and/or objects provided by this Python package contain built-in docstring help. This means that your Python development editor should be able to provide you with assistance on information such as function description, parameter types and descriptions, and return details. Regardless of your editor, you can always use Python's `help()` function in the console to provide information. For example:

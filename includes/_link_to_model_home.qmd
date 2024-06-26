@@ -1,0 +1,3 @@
+The home page for this model contains language-agnostic background and usage information for the routines implemented by this software, and provides links to additional documentation for implementations in other programming languages. 
+
+[Model Home](index.qmd){.btn .btn-secondary role="button"}

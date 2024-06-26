@@ -2,7 +2,7 @@
 
 Language-specific information on getting started using this library, including installation instructions, is available by following these links:
 
-[C++](cpp.qmd#getting-started){.btn .btn-outline-primary .btn role="button"}
-[C#/.NET](dotnet.qmd#getting-started){.btn .btn-outline-primary .btn role="button"}
-[MATLAB](matlab.qmd#getting-started){.btn .btn-outline-primary .btn role="button"}
-[Python](python.qmd#getting-started){.btn .btn-outline-primary .btn role="button"}
+[C++](cpp.qmd#getting-started){.btn .btn-secondary role="button"}
+[C#/.NET](dotnet.qmd#getting-started){.btn .btn-secondary role="button"}
+[MATLAB](matlab.qmd#getting-started){.btn .btn-secondary  role="button"}
+[Python](python.qmd#getting-started){.btn .btn-secondary role="button"}

@@ -10,6 +10,27 @@ execute:
 
 website:
   title: "ITS Propagation Library Wiki"
+  twitter-card:
+    card-style: summary
+    description: |
+      The NTIA/ITS Propagation Library: a versatile and robust set of
+      tools for propagation modeling. Learn more on our wiki.
+    image: images/ntia-logo-300px.png
+    image-alt: National Telecommunications and Information Administration Logo
+    image-width: 300
+    image-height: 300
+    creator: "@NTIA"
+    site: "@NTIA"
+  open-graph:
+    description: |
+      The NTIA/ITS Propagation Library: a versatile and robust set of
+      tools for propagation modeling. Learn more on our wiki.
+    image: images/ntia-logo-300px.png
+    image-alt: National Telecommunications and Information Administration Logo
+    image-width: 300
+    image-height: 300
+    locale: en_US
+  site-url: https://ntia.github.io/propagation-library-wiki
   navbar:
     title: "ITS PropLib Wiki"
     left:
@@ -22,15 +43,36 @@ website:
         menu:
           - models/P2108/index.qmd
       - about.qmd
+  page-footer:
+    border: true
+    background: footer-bg-color
+    foreground: primary
+    left: |
+      Institute for Telecommunication Sciences<br>
+      [National Telecommunications and Information Administration](https://www.ntia.gov)<br>
+      [United States Department of Commerce](https://www.commerce.gov)<br>
+      325 Broadway, Boulder, CO 80305-3337<br>
+      (303) 497-3571 [itsinfo@ntia.gov](mailto:itsinfo@ntia.gov)
+    right: |
+      [Visiting the Boulder Labs](https://its.ntia.gov/about-its/visiting-its.aspx)<br>
+      [Boulder Labs Site Status](https://www.boulder.doc.gov/docstatus.php)<br><br>
+      Have a question about government services? Contact [USA.gov](https://usa.gov/)
+    center: |
+      [Privacy Policy](https://www.ntia.gov/page/ntia-privacy-policy)<br>
+      [FOIA](https://www.ntia.gov/page/freedom-information-act-information)<br>
+      [Accessibility](https://www.ntia.gov/page/about-ntias-web-site-accessibility-policy)<br>
+      [Information Quality](https://www.ntia.gov/page/information-quality-guidelines)
 
 format:
   html:
     page-layout: article
-    theme: cosmo
-    css: styles.css
     toc: true
     toc-title: Contents
     code-fold: false
+    theme: [cosmo, theme.scss]
+    include-in-header: header.html
+    includes: 
+      after_body: footer.html
 
 jupyter: python3
 bibliography: references.bib
