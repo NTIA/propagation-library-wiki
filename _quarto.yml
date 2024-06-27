@@ -1,12 +1,6 @@
 project:
   type: website
-
-toc: true
-toc-expand: 2
-number-sections: false
-
-execute:
-  freeze: auto
+quarto-required: ">= 1.4.555"
 
 website:
   title: "ITS Propagation Library Wiki"
@@ -49,17 +43,37 @@ website:
 
 format:
   html:
-    page-layout: article
-    toc: true
-    toc-title: Contents
-    code-fold: false
+    # Format options
     theme: [cosmo, theme.scss]
+    # css: uswds/dist/css/uswds.min.css  # Maybe compile from SASS instead?
+    # Table of Contents
+    toc: true
+    toc-title: On this page
+    tox-expand: true
+    # Layout
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    page-layout: article
+    # Code
+    code-fold: false
+    code-overflow: scroll
+    code-copy: true
+    code-block-border-left: $secondary
+    code-block-bg: rgba(233, 236, 239, 0.65) # default restored after enabling border
+    # Figures
+    fig-align: center
+    fig-responsive: true
+    # Links
+    link-external-icon: true
+    link-external-newwindow: true
+    # References
+    bibliography: references.bib
+    csl: ieee.csl
+    # Includes
     include-in-header: header.html
     include-after-body: 
       file: footer.html
-
-jupyter: python3
-bibliography: references.bib
-csl: ieee.csl
-
-quarto-required: ">= 1.4.555"
+    # Metadata
+    keywords: [its, ntia, propagation, proplib, rf, radio, itu-r, radiocommunications]
+    license: Testing this is a license text
+    
