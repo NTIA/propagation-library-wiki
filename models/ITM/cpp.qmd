@@ -1,5 +1,5 @@
 ---
-title: "Irregular Terrain Model (ITM) - C++"
+title: "Irregular Terrain Model (ITM) – C++"
 ---
 
 {{< include /includes/_under_construction.qmd >}}

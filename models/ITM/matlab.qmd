@@ -1,5 +1,5 @@
 ---
-title: "Irregular Terrain Model (ITM) - MATLAB"
+title: "Irregular Terrain Model (ITM) – MATLAB"
 ---
 
 {{< include /includes/_under_construction.qmd >}}

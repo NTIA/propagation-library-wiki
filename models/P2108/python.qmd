@@ -1,5 +1,5 @@
 ---
-title: "ITU-R P.2108 - Python"
+title: "ITU-R P.2108 – Python"
 date: 2024-06-25
 date-modified: 2024-06-25
 ---

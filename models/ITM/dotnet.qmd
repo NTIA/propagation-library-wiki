@@ -1,5 +1,5 @@
 ---
-title: "Irregular Terrain Model (ITM) - C#/.NET"
+title: "Irregular Terrain Model (ITM) – C#/.NET"
 ---
 
 {{< include /includes/_under_construction.qmd >}}
