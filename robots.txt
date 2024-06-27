@@ -1,1 +1,1 @@
-Sitemap: https://NTIA.github.io/propagation-library-wiki/sitemap.xml
+Sitemap: https://ntia.github.io/propagation-library-wiki/sitemap.xml

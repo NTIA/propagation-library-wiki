@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.4.557">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -100,9 +100,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-48B5WEZDBS"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
+</script>
+<!-- ITS Favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+
+<!-- Webfont from Google -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ITS Propagation Library Wiki - Irregular Terrain Model (ITM) - Python">
+<meta property="og:description" content="The NTIA/ITS Propagation Library: a versatile and robust set of tools for propagation modeling. Learn more on our wiki.">
+<meta property="og:image" content="https://ntia.github.io/propagation-library-wiki/models/ITM/images/ntia-logo-300px.png">
+<meta property="og:site_name" content="ITS Propagation Library Wiki">
+<meta property="og:image:alt" content="National Telecommunications and Information Administration Logo">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="ITS Propagation Library Wiki - Irregular Terrain Model (ITM) - Python">
+<meta name="twitter:description" content="The NTIA/ITS Propagation Library: a versatile and robust set of tools for propagation modeling. Learn more on our wiki.">
+<meta name="twitter:image" content="https://ntia.github.io/propagation-library-wiki/models/ITM/images/ntia-logo-300px.png">
+<meta name="twitter:image:alt" content="National Telecommunications and Information Administration Logo">
+<meta name="twitter:creator" content="@NTIA">
+<meta name="twitter:site" content="@NTIA">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed">
@@ -165,9 +195,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#dependencies" id="toc-dependencies" class="nav-link active" data-scroll-target="#dependencies">Dependencies</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a>
+  <ul class="collapse">
+  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies">Dependencies</a></li>
   <li><a href="#installing-package" id="toc-installing-package" class="nav-link" data-scroll-target="#installing-package">Installing Package</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
+  </ul></li>
   <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
   <ul class="collapse">
@@ -214,25 +246,32 @@ Page Under Construction
 <p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
 </div>
 </div>
-<p>The package name to install is <code>itm</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itm</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(itm.__version__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>or</p>
-<pre><code>&gt;&gt; pip show itm</code></pre>
-<section id="dependencies" class="level2">
-<h2 class="anchored" data-anchor-id="dependencies">Dependencies</h2>
-<p>The <code>itm</code> package requires <code>numpy</code>.</p>
-</section>
-<section id="installing-package" class="level2">
-<h2 class="anchored" data-anchor-id="installing-package">Installing Package</h2>
-<p>Use the following command to install <code>itm</code> from the local pip repo:</p>
-<pre><code>pip install itm --no-index --find-links file://itsfs01/Tools/Python/pip</code></pre>
-</section>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Package Not Yet Available
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This package is not yet being publicly distributed. Check back later, or contact <a href="mailto:code@ntia.gov">code@ntia.gov</a>.</p>
+</div>
+</div>
+<section id="dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="dependencies">Dependencies</h3>
+<p>The <code>itm</code> package requires <code>numpy</code>.</p>
+</section>
+<section id="installing-package" class="level3">
+<h3 class="anchored" data-anchor-id="installing-package">Installing Package</h3>
+<p>Use the following command to install <code>itm</code> from the local pip repo:</p>
+<pre><code>pip install itm --no-index --find-links file://itsfs01/Tools/Python/pip</code></pre>
 <p>Importing <code>itm</code> is as simple as including the following in your <code>.py</code> file:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
@@ -244,159 +283,159 @@ Page Under Construction
 <p><strong>Note:</strong> These examples use an artificial terrain profile as a python list. The <code>itm</code> package supports terrain profiles to be passed as either python lists or numpy arrays.</p>
 <section id="site-specific-basic-transmission-loss-tls" class="level2">
 <h2 class="anchored" data-anchor-id="site-specific-basic-transmission-loss-tls">Site Specific Basic Transmission Loss (TLS)</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the terrain profile in PFL format</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pfl <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">200</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># define link parameters</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>f__mhz <span class="op">=</span> <span class="dv">3500</span>                       <span class="co"># MHz</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>h_tx__meter <span class="op">=</span> <span class="dv">10</span>                    <span class="co"># meters, AGL</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>h_rx__meter <span class="op">=</span> <span class="dv">5</span>                     <span class="co"># meters, AGL</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>N_0 <span class="op">=</span> <span class="dv">301</span>                           <span class="co"># N-Units</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="dv">15</span>                        <span class="co"># average ground</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.005</span>                       <span class="co"># average ground</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>climate <span class="op">=</span> itm.Climate.ContinentalTemperate</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>pol <span class="op">=</span> itm.Polarization.Horizontal</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># define variability parameters</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>mdvar <span class="op">=</span> <span class="dv">13</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> <span class="dv">50</span>                           <span class="co"># median</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>location <span class="op">=</span> <span class="dv">50</span>                       <span class="co"># median</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>situation <span class="op">=</span> <span class="dv">50</span>                      <span class="co"># median</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># call ITM</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>rtn, A__db, warnings, ivals <span class="op">=</span> itm.ITM_P2P_TLS(h_tx__meter, h_rx__meter, </span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, </span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    time, location, situation)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(rtn <span class="op">==</span> <span class="dv">0</span>)                    <span class="co"># no errors</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A__db <span class="op">==</span> <span class="fl">105.85899333756423</span>) <span class="co"># basic transmission loss, in dB</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(warnings <span class="op">==</span> <span class="dv">0</span>)               <span class="co"># no warnings</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># can use the intermediate values object to access additional information</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># from the ITM prediction</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The mode of propagation is </span><span class="sc">{</span>ivals<span class="sc">.</span>mode<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The effective height of the TX is </span><span class="sc">{</span>ivals<span class="sc">.</span>h_e__meter[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> meters."</span>)</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The free space basic transmission loss is </span><span class="sc">{</span>ivals<span class="sc">.</span>A_fs__db<span class="sc">}</span><span class="ss"> dB."</span>)</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co"># The mode of propagation is LineOfSight</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective height of the TX is 10.222222222222221 meters.</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co"># The free space basic transmission loss is 103.33136088700552 dB.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the terrain profile in PFL format</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pfl <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">200</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># define link parameters</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>f__mhz <span class="op">=</span> <span class="dv">3500</span>                       <span class="co"># MHz</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>h_tx__meter <span class="op">=</span> <span class="dv">10</span>                    <span class="co"># meters, AGL</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>h_rx__meter <span class="op">=</span> <span class="dv">5</span>                     <span class="co"># meters, AGL</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>N_0 <span class="op">=</span> <span class="dv">301</span>                           <span class="co"># N-Units</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="dv">15</span>                        <span class="co"># average ground</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.005</span>                       <span class="co"># average ground</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>climate <span class="op">=</span> itm.Climate.ContinentalTemperate</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>pol <span class="op">=</span> itm.Polarization.Horizontal</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># define variability parameters</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>mdvar <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> <span class="dv">50</span>                           <span class="co"># median</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>location <span class="op">=</span> <span class="dv">50</span>                       <span class="co"># median</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>situation <span class="op">=</span> <span class="dv">50</span>                      <span class="co"># median</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># call ITM</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>rtn, A__db, warnings, ivals <span class="op">=</span> itm.ITM_P2P_TLS(h_tx__meter, h_rx__meter, </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    time, location, situation)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(rtn <span class="op">==</span> <span class="dv">0</span>)                    <span class="co"># no errors</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A__db <span class="op">==</span> <span class="fl">105.85899333756423</span>) <span class="co"># basic transmission loss, in dB</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(warnings <span class="op">==</span> <span class="dv">0</span>)               <span class="co"># no warnings</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># can use the intermediate values object to access additional information</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># from the ITM prediction</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The mode of propagation is </span><span class="sc">{</span>ivals<span class="sc">.</span>mode<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The effective height of the TX is </span><span class="sc">{</span>ivals<span class="sc">.</span>h_e__meter[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> meters."</span>)</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The free space basic transmission loss is </span><span class="sc">{</span>ivals<span class="sc">.</span>A_fs__db<span class="sc">}</span><span class="ss"> dB."</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co"># The mode of propagation is LineOfSight</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective height of the TX is 10.222222222222221 meters.</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co"># The free space basic transmission loss is 103.33136088700552 dB.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="site-specific-basic-transmission-loss-cr" class="level2">
 <h2 class="anchored" data-anchor-id="site-specific-basic-transmission-loss-cr">Site Specific Basic Transmission Loss (CR)</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the terrain profile in PFL format</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pfl <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">200</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># define link parameters</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>f__mhz <span class="op">=</span> <span class="dv">1500</span>                       <span class="co"># MHz</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>h_tx__meter <span class="op">=</span> <span class="dv">10</span>                    <span class="co"># meters, AGL</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>h_rx__meter <span class="op">=</span> <span class="dv">5</span>                     <span class="co"># meters, AGL</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>N_0 <span class="op">=</span> <span class="dv">301</span>                           <span class="co"># N-Units</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="dv">15</span>                        <span class="co"># average ground</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.005</span>                       <span class="co"># average ground</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>climate <span class="op">=</span> itm.Climate.ContinentalTemperate</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>pol <span class="op">=</span> itm.Polarization.Horizontal</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># define variability parameters</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>mdvar <span class="op">=</span> <span class="dv">13</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>confidence <span class="op">=</span> <span class="dv">50</span>                     <span class="co"># median</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>reliability <span class="op">=</span> <span class="dv">50</span>                    <span class="co"># median</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># call ITM</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>rtn, A__db, warnings, ivals <span class="op">=</span> itm.ITM_P2P_CR(h_tx__meter, h_rx__meter, </span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, </span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    reliability)</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(rtn <span class="op">==</span> <span class="dv">0</span>)                    <span class="co"># no errors</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A__db <span class="op">==</span> <span class="fl">99.97444366973738</span>)  <span class="co"># basic transmission loss, in dB</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(warnings <span class="op">==</span> <span class="dv">0</span>)               <span class="co"># no warnings</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># can use the intermediate values object to access additional information</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># from the ITM prediction</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The mode of propagation is </span><span class="sc">{</span>ivals<span class="sc">.</span>mode<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The effective height of the TX is </span><span class="sc">{</span>ivals<span class="sc">.</span>h_e__meter[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> meters."</span>)</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The free space basic transmission loss is </span><span class="sc">{</span>ivals<span class="sc">.</span>A_fs__db<span class="sc">}</span><span class="ss"> dB."</span>)</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co"># The mode of propagation is LineOfSight</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective height of the TX is 10.222222222222221 meters.</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># The free space basic transmission loss is 95.97182518111363 dB.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the terrain profile in PFL format</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>pfl <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">200</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># define link parameters</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>f__mhz <span class="op">=</span> <span class="dv">1500</span>                       <span class="co"># MHz</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>h_tx__meter <span class="op">=</span> <span class="dv">10</span>                    <span class="co"># meters, AGL</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>h_rx__meter <span class="op">=</span> <span class="dv">5</span>                     <span class="co"># meters, AGL</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>N_0 <span class="op">=</span> <span class="dv">301</span>                           <span class="co"># N-Units</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="dv">15</span>                        <span class="co"># average ground</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.005</span>                       <span class="co"># average ground</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>climate <span class="op">=</span> itm.Climate.ContinentalTemperate</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>pol <span class="op">=</span> itm.Polarization.Horizontal</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># define variability parameters</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>mdvar <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>confidence <span class="op">=</span> <span class="dv">50</span>                     <span class="co"># median</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>reliability <span class="op">=</span> <span class="dv">50</span>                    <span class="co"># median</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># call ITM</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>rtn, A__db, warnings, ivals <span class="op">=</span> itm.ITM_P2P_CR(h_tx__meter, h_rx__meter, </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    reliability)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(rtn <span class="op">==</span> <span class="dv">0</span>)                    <span class="co"># no errors</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A__db <span class="op">==</span> <span class="fl">99.97444366973738</span>)  <span class="co"># basic transmission loss, in dB</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(warnings <span class="op">==</span> <span class="dv">0</span>)               <span class="co"># no warnings</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># can use the intermediate values object to access additional information</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># from the ITM prediction</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The mode of propagation is </span><span class="sc">{</span>ivals<span class="sc">.</span>mode<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The effective height of the TX is </span><span class="sc">{</span>ivals<span class="sc">.</span>h_e__meter[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> meters."</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The free space basic transmission loss is </span><span class="sc">{</span>ivals<span class="sc">.</span>A_fs__db<span class="sc">}</span><span class="ss"> dB."</span>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co"># The mode of propagation is LineOfSight</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective height of the TX is 10.222222222222221 meters.</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># The free space basic transmission loss is 95.97182518111363 dB.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="area-mode-basic-transmission-loss-tls" class="level2">
 <h2 class="anchored" data-anchor-id="area-mode-basic-transmission-loss-tls">Area Mode Basic Transmission Loss (TLS)</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define link parameters</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>f__mhz <span class="op">=</span> <span class="dv">1500</span>                       <span class="co"># MHz</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>h_tx__meter <span class="op">=</span> <span class="dv">10</span>                    <span class="co"># meters, AGL</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>h_rx__meter <span class="op">=</span> <span class="dv">5</span>                     <span class="co"># meters, AGL</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>N_0 <span class="op">=</span> <span class="dv">301</span>                           <span class="co"># N-Units</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="dv">15</span>                        <span class="co"># average ground</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.005</span>                       <span class="co"># average ground</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>d__km <span class="op">=</span> <span class="dv">100</span>                         <span class="co"># km</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>delta_h__meter <span class="op">=</span> <span class="dv">40</span>                 <span class="co"># meter</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>tx_site_criteria <span class="op">=</span> itm.SitingCriteria.Careful</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>rx_site_criteria <span class="op">=</span> itm.SitingCriteria.Careful</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>climate <span class="op">=</span> itm.Climate.ContinentalTemperate</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>pol <span class="op">=</span> itm.Polarization.Horizontal</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># define variability parameters</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>mdvar <span class="op">=</span> <span class="dv">13</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> <span class="dv">50</span>                           <span class="co"># median</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>location <span class="op">=</span> <span class="dv">50</span>                       <span class="co"># median</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>situation <span class="op">=</span> <span class="dv">50</span>                      <span class="co"># median</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># call ITM</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>rtn, A__db, warnings, ivals <span class="op">=</span> itm.ITM_AREA_TLS(h_tx__meter, h_rx__meter, </span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, </span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    N_0, f__mhz, pol, epsilon, sigma, mdvar, time, location, situation)</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(rtn <span class="op">==</span> <span class="dv">0</span>)                    <span class="co"># no errors</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A__db <span class="op">==</span> <span class="fl">191.02659749297175</span>) <span class="co"># basic transmission loss, in dB</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(warnings <span class="op">==</span> <span class="dv">0</span>)               <span class="co"># no warnings</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co"># can use the intermediate values object to access additional information</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co"># from the ITM prediction</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The mode of propagation is </span><span class="sc">{</span>ivals<span class="sc">.</span>mode<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The effective height of the TX is </span><span class="sc">{</span>ivals<span class="sc">.</span>h_e__meter[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> meters."</span>)</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The free space basic transmission loss is </span><span class="sc">{</span>ivals<span class="sc">.</span>A_fs__db<span class="sc">}</span><span class="ss"> dB."</span>)</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="co"># The mode of propagation is Troposcatter</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective height of the TX is 13.032653298563167 meters.</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co"># The free space basic transmission loss is 135.97182518111362 dB.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define link parameters</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>f__mhz <span class="op">=</span> <span class="dv">1500</span>                       <span class="co"># MHz</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>h_tx__meter <span class="op">=</span> <span class="dv">10</span>                    <span class="co"># meters, AGL</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>h_rx__meter <span class="op">=</span> <span class="dv">5</span>                     <span class="co"># meters, AGL</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>N_0 <span class="op">=</span> <span class="dv">301</span>                           <span class="co"># N-Units</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="dv">15</span>                        <span class="co"># average ground</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.005</span>                       <span class="co"># average ground</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>d__km <span class="op">=</span> <span class="dv">100</span>                         <span class="co"># km</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>delta_h__meter <span class="op">=</span> <span class="dv">40</span>                 <span class="co"># meter</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>tx_site_criteria <span class="op">=</span> itm.SitingCriteria.Careful</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>rx_site_criteria <span class="op">=</span> itm.SitingCriteria.Careful</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>climate <span class="op">=</span> itm.Climate.ContinentalTemperate</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>pol <span class="op">=</span> itm.Polarization.Horizontal</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># define variability parameters</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>mdvar <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> <span class="dv">50</span>                           <span class="co"># median</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>location <span class="op">=</span> <span class="dv">50</span>                       <span class="co"># median</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>situation <span class="op">=</span> <span class="dv">50</span>                      <span class="co"># median</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># call ITM</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>rtn, A__db, warnings, ivals <span class="op">=</span> itm.ITM_AREA_TLS(h_tx__meter, h_rx__meter, </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    N_0, f__mhz, pol, epsilon, sigma, mdvar, time, location, situation)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(rtn <span class="op">==</span> <span class="dv">0</span>)                    <span class="co"># no errors</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A__db <span class="op">==</span> <span class="fl">191.02659749297175</span>) <span class="co"># basic transmission loss, in dB</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(warnings <span class="op">==</span> <span class="dv">0</span>)               <span class="co"># no warnings</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># can use the intermediate values object to access additional information</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># from the ITM prediction</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The mode of propagation is </span><span class="sc">{</span>ivals<span class="sc">.</span>mode<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The effective height of the TX is </span><span class="sc">{</span>ivals<span class="sc">.</span>h_e__meter[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> meters."</span>)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The free space basic transmission loss is </span><span class="sc">{</span>ivals<span class="sc">.</span>A_fs__db<span class="sc">}</span><span class="ss"> dB."</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co"># The mode of propagation is Troposcatter</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective height of the TX is 13.032653298563167 meters.</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co"># The free space basic transmission loss is 135.97182518111362 dB.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="area-mode-basic-transmission-loss-cr" class="level2">
 <h2 class="anchored" data-anchor-id="area-mode-basic-transmission-loss-cr">Area Mode Basic Transmission Loss (CR)</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define link parameters</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>f__mhz <span class="op">=</span> <span class="dv">5000</span>                       <span class="co"># MHz</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>h_tx__meter <span class="op">=</span> <span class="dv">10</span>                    <span class="co"># meters, AGL</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>h_rx__meter <span class="op">=</span> <span class="dv">5</span>                     <span class="co"># meters, AGL</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>N_0 <span class="op">=</span> <span class="dv">301</span>                           <span class="co"># N-Units</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="dv">15</span>                        <span class="co"># average ground</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.005</span>                       <span class="co"># average ground</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>d__km <span class="op">=</span> <span class="dv">100</span>                         <span class="co"># km</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>delta_h__meter <span class="op">=</span> <span class="dv">40</span>                 <span class="co"># meter</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>tx_site_criteria <span class="op">=</span> itm.SitingCriteria.Careful</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>rx_site_criteria <span class="op">=</span> itm.SitingCriteria.Careful</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>climate <span class="op">=</span> itm.Climate.ContinentalTemperate</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>pol <span class="op">=</span> itm.Polarization.Horizontal</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># define variability parameters</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>mdvar <span class="op">=</span> <span class="dv">13</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>confidence <span class="op">=</span> <span class="dv">50</span>                     <span class="co"># median</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>reliability <span class="op">=</span> <span class="dv">50</span>                    <span class="co"># median</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># call ITM</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>rtn, A__db, warnings, ivals <span class="op">=</span> itm.ITM_AREA_CR(h_tx__meter, h_rx__meter, </span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, </span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(rtn <span class="op">==</span> <span class="dv">0</span>)                    <span class="co"># no errors</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A__db <span class="op">==</span> <span class="fl">205.7473567880463</span>)  <span class="co"># basic transmission loss, in dB</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(warnings <span class="op">==</span> <span class="dv">0</span>)               <span class="co"># no warnings</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co"># can use the intermediate values object to access additional information</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co"># from the ITM prediction</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The mode of propagation is </span><span class="sc">{</span>ivals<span class="sc">.</span>mode<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The effective height of the TX is </span><span class="sc">{</span>ivals<span class="sc">.</span>h_e__meter[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> meters."</span>)</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The free space basic transmission loss is </span><span class="sc">{</span>ivals<span class="sc">.</span>A_fs__db<span class="sc">}</span><span class="ss"> dB."</span>)</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co"># The mode of propagation is Troposcatter</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective height of the TX is 13.032653298563167 meters.</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co"># The free space basic transmission loss is 146.42940008672036 dB.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define link parameters</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>f__mhz <span class="op">=</span> <span class="dv">5000</span>                       <span class="co"># MHz</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>h_tx__meter <span class="op">=</span> <span class="dv">10</span>                    <span class="co"># meters, AGL</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>h_rx__meter <span class="op">=</span> <span class="dv">5</span>                     <span class="co"># meters, AGL</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>N_0 <span class="op">=</span> <span class="dv">301</span>                           <span class="co"># N-Units</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="dv">15</span>                        <span class="co"># average ground</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.005</span>                       <span class="co"># average ground</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>d__km <span class="op">=</span> <span class="dv">100</span>                         <span class="co"># km</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>delta_h__meter <span class="op">=</span> <span class="dv">40</span>                 <span class="co"># meter</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>tx_site_criteria <span class="op">=</span> itm.SitingCriteria.Careful</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>rx_site_criteria <span class="op">=</span> itm.SitingCriteria.Careful</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>climate <span class="op">=</span> itm.Climate.ContinentalTemperate</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>pol <span class="op">=</span> itm.Polarization.Horizontal</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># define variability parameters</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>mdvar <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>confidence <span class="op">=</span> <span class="dv">50</span>                     <span class="co"># median</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>reliability <span class="op">=</span> <span class="dv">50</span>                    <span class="co"># median</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># call ITM</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>rtn, A__db, warnings, ivals <span class="op">=</span> itm.ITM_AREA_CR(h_tx__meter, h_rx__meter, </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, </span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(rtn <span class="op">==</span> <span class="dv">0</span>)                    <span class="co"># no errors</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A__db <span class="op">==</span> <span class="fl">205.7473567880463</span>)  <span class="co"># basic transmission loss, in dB</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(warnings <span class="op">==</span> <span class="dv">0</span>)               <span class="co"># no warnings</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># can use the intermediate values object to access additional information</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co"># from the ITM prediction</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The mode of propagation is </span><span class="sc">{</span>ivals<span class="sc">.</span>mode<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The effective height of the TX is </span><span class="sc">{</span>ivals<span class="sc">.</span>h_e__meter[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> meters."</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The free space basic transmission loss is </span><span class="sc">{</span>ivals<span class="sc">.</span>A_fs__db<span class="sc">}</span><span class="ss"> dB."</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># The mode of propagation is Troposcatter</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective height of the TX is 13.032653298563167 meters.</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="co"># The free space basic transmission loss is 146.42940008672036 dB.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -484,7 +523,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/NTIA\.github\.io\/propagation-library-wiki\/");
+      var filterRegex = new RegExp("https:\/\/ntia\.github\.io\/propagation-library-wiki");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -813,6 +852,83 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="usa-footer usa-footer-big">
+    <div class="usa-footer-primary-section additionallinks">
+        <div class="usa-grid">
+            <div class="usa-footer-nav ">
+                <div class="region region-footer-menu">
+                    <ol class="dotsbetween linesbetween">
+                        
+                        <li>
+                            <a href="https://www.ntia.gov/page/2011/ntia-privacy-policy" target="_blank">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="https://www.ntia.gov/page/2011/foia-information" target="_blank">FOIA</a>
+                        </li>
+                        <li>
+                            <a href="https://www.ntia.gov/page/2011/about-ntias-web-site-accessibility-policy" target="_blank">Accessibility</a>
+                        </li>
+                        <li>
+                            <a href="https://www.ntia.gov/page/2011/information-quality-guidelines" target="_blank">Information Quality</a>
+                        </li>
+                        <li>
+                            <a href="https://www.commerce.gov/vulnerability-disclosure-policy" target="_blank">Vulnerability Disclosure Policy</a>
+                        </li>
+                        
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="usa-footer-secondary_section usa-background-dark">
+        <div class="usa-grid">
+            <div class="usa-grid usa-width-one-half">
+                <div class="usa-footer-logo usa-width-two-thirds">
+                    
+                    <div class="footer-title">
+                        <div>
+                            Institute for Telecommunication Sciences
+                        </div>
+                        <div>
+                            <a href="https://www.ntia.gov/" target="_blank">
+                                National Telecommunications and Information Administration
+                            </a>
+                        </div>
+                        <div>
+                            <a href="https://www.commerce.gov/" target="_blank">
+                                United States Department of Commerce
+                            </a>
+                        </div>
+                        <div>
+                            325 Broadway, Boulder, CO 80305-3337
+                        </div>
+                        <div>
+                            (303) 497-3571 <a href="mailto:itsinfo@ntia.gov">itsinfo@ntia.gov</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="usa-grid usa-width-one-half">
+                <div class="region region-footer-secondary">
+                    <ol class="dotsbetween">
+                        
+                        <li><a href="../../about-its/visiting-its.aspx" title="Visiting ITS">Visiting the Boulder Labs</a></li>
+                        <li><a rel="noopener" href="https://www.boulder.doc.gov/docstatus.php" target="_blank">Boulder Labs Site Status</a></li>
+                    </ol>
+                </div>
+                <div>
+                    Have a question about government services? Contact <a href="https://usa.gov" target="_blank">USA.gov</a>.
+                </div>
+            </div>
+        </div>
+        <div class="bottom-image">
+            <img src="../../images/ITSlogoOnly400.png" id="its_logo" width="256" height="40" alt="Institute for Telecommunication Sciences Logo">
+        </div>
+    </div>
+
+</footer>
 
 
 

@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.4.557">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-06-25">
 
 <title>ITS Propagation Library Wiki - ITU-R P.2108 - Python</title>
 <style>
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -100,9 +101,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-48B5WEZDBS"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
+</script>
+<!-- ITS Favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+
+<!-- Webfont from Google -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ITS Propagation Library Wiki - ITU-R P.2108 - Python">
+<meta property="og:description" content="The NTIA/ITS Propagation Library: a versatile and robust set of tools for propagation modeling. Learn more on our wiki.">
+<meta property="og:image" content="https://ntia.github.io/propagation-library-wiki/models/P2108/images/ntia-logo-300px.png">
+<meta property="og:site_name" content="ITS Propagation Library Wiki">
+<meta property="og:image:alt" content="National Telecommunications and Information Administration Logo">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="ITS Propagation Library Wiki - ITU-R P.2108 - Python">
+<meta name="twitter:description" content="The NTIA/ITS Propagation Library: a versatile and robust set of tools for propagation modeling. Learn more on our wiki.">
+<meta name="twitter:image" content="https://ntia.github.io/propagation-library-wiki/models/P2108/images/ntia-logo-300px.png">
+<meta name="twitter:image:alt" content="National Telecommunications and Information Administration Logo">
+<meta name="twitter:creator" content="@NTIA">
+<meta name="twitter:site" content="@NTIA">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed">
@@ -165,9 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#dependencies" id="toc-dependencies" class="nav-link active" data-scroll-target="#dependencies">Dependencies</a></li>
-  <li><a href="#installing-package" id="toc-installing-package" class="nav-link" data-scroll-target="#installing-package">Installing Package</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
   <ul class="collapse">
@@ -191,7 +220,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 25, 2024</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 25, 2024</p>
+    </div>
+  </div>
     
   </div>
   
@@ -200,92 +241,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled">
+<p>This page details the installation and usage of the Python version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.</p>
+<p>The home page for this model contains language-agnostic background and usage information for the routines implemented by this software, and provides links to additional documentation for implementations in other programming languages.</p>
+<p><a href="../../models/P2108/index.html" class="btn btn-secondary" role="button">Model Home</a></p>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Page Under Construction
+Package Not Yet Available
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+<p>This package is not yet being publicly distributed. Check back later, or contact <a href="mailto:code@ntia.gov">code@ntia.gov</a>.</p>
 </div>
 </div>
-<p><strong>TODO</strong> Section outdated</p>
-<p>The package name to install is <code>p2108</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> p2108</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p2108.__version__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>or</p>
-<pre><code>&gt;&gt; pip show p2108</code></pre>
-<section id="dependencies" class="level2">
-<h2 class="anchored" data-anchor-id="dependencies">Dependencies</h2>
-<p>The <code>p2108</code> package has no dependencies.</p>
-</section>
-<section id="installing-package" class="level2">
-<h2 class="anchored" data-anchor-id="installing-package">Installing Package</h2>
-<p><strong>TODO</strong> Section outdated</p>
-<p>Use the following command to install <code>p2108</code> from the local pip repo:</p>
-<p>For ITS users:</p>
-<pre><code>pip install p2108 --no-index --find-links file://itsfs01/Tools/Python/pip</code></pre>
-<p>For OSM (or HCHB) users,</p>
-<pre><code>pip install p2108 --no-index --find-links file://nthnetapp002g.ntiadc.ntia.doc.gov/ntiadropbox/itsdata/Python/pip</code></pre>
-</section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<p>Importing <code>P2108</code> is as simple as including the following in your <code>.py</code> file:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ITS.ITU.PSeries <span class="im">import</span> P2108</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The following code snippet shows how to import the package and check the installed version:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ITS.ITU.PSeries <span class="im">import</span> P2108</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(P2108.__version__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This package has no external Python dependencies.</p>
 </section>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<p>All <code>P2108</code> functions contain built-in docstring help. This means that if your python development editor supports it, it can provide you with assistance on information such as function description, parameter types and descriptions, and return details.</p>
-<p>This also means that <code>help()</code> is supported in the console to provide information.</p>
+<p>All functions and/or objects provided by this Python package contain built-in docstring help. This means that your Python development editor should be able to provide you with assistance on information such as function description, parameter types and descriptions, and return details. Regardless of your editor, you can always use Python’s <code>help()</code> function in the console to provide information. For example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(P2108.TerrestrialStatisticalModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="examples" class="level1">
-<h1>Examples</h1>
-<section id="height-gain-terminal-correction-model" class="level2">
-<h2 class="anchored" data-anchor-id="height-gain-terminal-correction-model">Height Gain Terminal Correction Model</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define inputs</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>f__ghz <span class="op">=</span> <span class="dv">1</span>          <span class="co"># Frequency, in GHz</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>h__meter <span class="op">=</span> <span class="fl">1.5</span>      <span class="co"># Antenna height, in meters</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>w_s__meter <span class="op">=</span> <span class="dv">27</span>     <span class="co"># Street width, in meters</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>R__meter <span class="op">=</span> <span class="dv">20</span>       <span class="co"># Representative clutter height, in meters</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>clutter_type <span class="op">=</span> <span class="dv">6</span>    <span class="co"># Clutter type, enum</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Call height gain terminal correction model (P.2108 Section 3.1)</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>A_h__db <span class="op">=</span> P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A_h__db <span class="op">==</span> <span class="fl">8.769394261533549</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># can also use clutter type IntEnum</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>clutter_type <span class="op">=</span> P2108.ClutterType.DenseUrban</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># call clutter model</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>A_h__db <span class="op">=</span> P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A_h__db <span class="op">==</span> <span class="fl">8.769394261533549</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>The following code examples show how each of the three models from Recommendation ITU-R P.2108 can be called from Python.</p>
+<section id="height-gain-terminal-correction-model" class="level3">
+<h3 class="anchored" data-anchor-id="height-gain-terminal-correction-model">Height Gain Terminal Correction Model</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define inputs</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>f__ghz <span class="op">=</span> <span class="dv">1</span>          <span class="co"># Frequency, in GHz</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>h__meter <span class="op">=</span> <span class="fl">1.5</span>      <span class="co"># Antenna height, in meters</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>w_s__meter <span class="op">=</span> <span class="dv">27</span>     <span class="co"># Street width, in meters</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>R__meter <span class="op">=</span> <span class="dv">20</span>       <span class="co"># Representative clutter height, in meters</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>clutter_type <span class="op">=</span> <span class="dv">6</span>    <span class="co"># Clutter type, enum</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Call height gain terminal correction model (P.2108 Section 3.1)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>A_h__db <span class="op">=</span> P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A_h__db <span class="op">==</span> <span class="fl">8.769394261533549</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># can also use clutter type IntEnum</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>clutter_type <span class="op">=</span> P2108.ClutterType.DenseUrban</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># call clutter model</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>A_h__db <span class="op">=</span> P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(A_h__db <span class="op">==</span> <span class="fl">8.769394261533549</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="terrestrial-statistical-model" class="level2">
-<h2 class="anchored" data-anchor-id="terrestrial-statistical-model">Terrestrial Statistical Model</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define inputs</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>f__ghz <span class="op">=</span> <span class="dv">3</span>          <span class="co"># Frequency, in GHz</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>d__km <span class="op">=</span> <span class="fl">0.5</span>         <span class="co"># Path distance, in km</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">50</span>              <span class="co"># Percentage of locations, in %</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># call terrestrial statistical model</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>L_ctt__db <span class="op">=</span> P2108.TerrestrialStatisticalModel(f__ghz, d__km, p)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(L_ctt__db <span class="op">==</span> <span class="fl">26.10075036783342</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="terrestrial-statistical-model" class="level3">
+<h3 class="anchored" data-anchor-id="terrestrial-statistical-model">Terrestrial Statistical Model</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define inputs</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>f__ghz <span class="op">=</span> <span class="dv">3</span>          <span class="co"># Frequency, in GHz</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>d__km <span class="op">=</span> <span class="fl">0.5</span>         <span class="co"># Path distance, in km</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">50</span>              <span class="co"># Percentage of locations, in %</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># call terrestrial statistical model</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>L_ctt__db <span class="op">=</span> P2108.TerrestrialStatisticalModel(f__ghz, d__km, p)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(L_ctt__db <span class="op">==</span> <span class="fl">26.10075036783342</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="aeronautical-statistical-model" class="level2">
-<h2 class="anchored" data-anchor-id="aeronautical-statistical-model">Aeronautical Statistical Model</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define inputs</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>f__ghz <span class="op">=</span> <span class="dv">15</span>         <span class="co"># Frequency, in GHz</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>theta__deg <span class="op">=</span> <span class="dv">10</span>     <span class="co"># Elevation angle, in degrees</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">50</span>              <span class="co"># Percentage of locations, in %</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># call clutter model</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>L_ces__db <span class="op">=</span> P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(L_ces__db <span class="op">==</span> <span class="fl">14.333686040067786</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="aeronautical-statistical-model" class="level3">
+<h3 class="anchored" data-anchor-id="aeronautical-statistical-model">Aeronautical Statistical Model</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define inputs</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>f__ghz <span class="op">=</span> <span class="dv">15</span>         <span class="co"># Frequency, in GHz</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>theta__deg <span class="op">=</span> <span class="dv">10</span>     <span class="co"># Elevation angle, in degrees</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">50</span>              <span class="co"># Percentage of locations, in %</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># call clutter model</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>L_ces__db <span class="op">=</span> P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(L_ces__db <span class="op">==</span> <span class="fl">14.333686040067786</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -373,7 +400,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/NTIA\.github\.io\/propagation-library-wiki\/");
+      var filterRegex = new RegExp("https:\/\/ntia\.github\.io\/propagation-library-wiki");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -702,6 +729,83 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="usa-footer usa-footer-big">
+    <div class="usa-footer-primary-section additionallinks">
+        <div class="usa-grid">
+            <div class="usa-footer-nav ">
+                <div class="region region-footer-menu">
+                    <ol class="dotsbetween linesbetween">
+                        
+                        <li>
+                            <a href="https://www.ntia.gov/page/2011/ntia-privacy-policy" target="_blank">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="https://www.ntia.gov/page/2011/foia-information" target="_blank">FOIA</a>
+                        </li>
+                        <li>
+                            <a href="https://www.ntia.gov/page/2011/about-ntias-web-site-accessibility-policy" target="_blank">Accessibility</a>
+                        </li>
+                        <li>
+                            <a href="https://www.ntia.gov/page/2011/information-quality-guidelines" target="_blank">Information Quality</a>
+                        </li>
+                        <li>
+                            <a href="https://www.commerce.gov/vulnerability-disclosure-policy" target="_blank">Vulnerability Disclosure Policy</a>
+                        </li>
+                        
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="usa-footer-secondary_section usa-background-dark">
+        <div class="usa-grid">
+            <div class="usa-grid usa-width-one-half">
+                <div class="usa-footer-logo usa-width-two-thirds">
+                    
+                    <div class="footer-title">
+                        <div>
+                            Institute for Telecommunication Sciences
+                        </div>
+                        <div>
+                            <a href="https://www.ntia.gov/" target="_blank">
+                                National Telecommunications and Information Administration
+                            </a>
+                        </div>
+                        <div>
+                            <a href="https://www.commerce.gov/" target="_blank">
+                                United States Department of Commerce
+                            </a>
+                        </div>
+                        <div>
+                            325 Broadway, Boulder, CO 80305-3337
+                        </div>
+                        <div>
+                            (303) 497-3571 <a href="mailto:itsinfo@ntia.gov">itsinfo@ntia.gov</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="usa-grid usa-width-one-half">
+                <div class="region region-footer-secondary">
+                    <ol class="dotsbetween">
+                        
+                        <li><a href="../../about-its/visiting-its.aspx" title="Visiting ITS">Visiting the Boulder Labs</a></li>
+                        <li><a rel="noopener" href="https://www.boulder.doc.gov/docstatus.php" target="_blank">Boulder Labs Site Status</a></li>
+                    </ol>
+                </div>
+                <div>
+                    Have a question about government services? Contact <a href="https://usa.gov" target="_blank">USA.gov</a>.
+                </div>
+            </div>
+        </div>
+        <div class="bottom-image">
+            <img src="../../images/ITSlogoOnly400.png" id="its_logo" width="256" height="40" alt="Institute for Telecommunication Sciences Logo">
+        </div>
+    </div>
+
+</footer>
 
 
 
