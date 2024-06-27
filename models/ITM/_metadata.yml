@@ -1,6 +1,15 @@
 format:
   html:
     code-links:
-      - text: GitHub Repository
+      - text: NTIA/itm
         icon: github
-        href: https://github.com/NTIA/ITM
+        href: https://github.com/NTIA/itm
+      - text: NTIA/itm-dotnet
+        icon: github
+        href: https://github.com/NTIA/itm-dotnet
+      - text: NTIA/itm-matlab
+        icon: github
+        href: https://github.com/NTIA/itm-matlab
+      - text: NTIA/itm-python
+        icon: github
+        href: https://github.com/NTIA/itm-python

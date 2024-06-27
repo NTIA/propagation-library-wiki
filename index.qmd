@@ -56,6 +56,6 @@ in the meantime.
 | **P.528**  | [Repo](https://github.com/NTIA/P528)  | Docs                           | A propagation prediction method for aeronautical mobile and |
 |            |                                       |                                | radionavigation services using the VHF, UHF, and SHF bands  |
 +------------+---------------------------------------+--------------------------------+-------------------------------------------------------------+
-| **P.2108** | [Repo](https://github.com/NTIA/P2108) | [Docs](models/P2108/index.qmd) | Prediction of clutter loss                                  |
+| **P.2108** | [Repo](https://github.com/NTIA/p2108) | [Docs](models/P2108/index.qmd) | Prediction of clutter loss                                  |
 +------------+---------------------------------------+--------------------------------+-------------------------------------------------------------+
 : ITU-R Recommendations implemented in the ITS Propagation Library {tbl-colwidths="[15,10,10,65]"}

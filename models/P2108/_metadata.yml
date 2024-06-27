@@ -1,6 +1,15 @@
 format:
   html:
     code-links:
-      - text: GitHub Repository
+      - text: NTIA/p2108
         icon: github
-        href: https://github.com/NTIA/P2108
+        href: https://github.com/NTIA/p2108
+      - text: NTIA/p2108-dotnet
+        icon: github
+        href: https://github.com/NTIA/p2108-dotnet
+      - text: NTIA/p2108-matlab
+        icon: github
+        href: https://github.com/NTIA/p2108-matlab
+      - text: NTIA/p2108-python
+        icon: github
+        href: https://github.com/NTIA/p2108-python

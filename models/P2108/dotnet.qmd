@@ -10,7 +10,7 @@ title: "ITU-R P.2108 - C#/.NET"
 
 To begin, install the NuGet package, `P2108`, from the NTIA NuGet repository
 
-![p2108 nuget install screenshot](images/p2108_nuget.jpg)
+![Screenshot of P.2108 NuGet package to install](images/p2108_nuget.jpg)
 
 All of the below code snippets requires the including the following `using` statement.
 
