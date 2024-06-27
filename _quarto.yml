@@ -43,25 +43,9 @@ website:
         menu:
           - models/P2108/index.qmd
       - about.qmd
-  page-footer:
-    border: true
-    background: footer-bg-color
-    foreground: primary
-    left: |
-      Institute for Telecommunication Sciences<br>
-      [National Telecommunications and Information Administration](https://www.ntia.gov)<br>
-      [United States Department of Commerce](https://www.commerce.gov)<br>
-      325 Broadway, Boulder, CO 80305-3337<br>
-      (303) 497-3571 [itsinfo@ntia.gov](mailto:itsinfo@ntia.gov)
-    right: |
-      [Visiting the Boulder Labs](https://its.ntia.gov/about-its/visiting-its.aspx)<br>
-      [Boulder Labs Site Status](https://www.boulder.doc.gov/docstatus.php)<br><br>
-      Have a question about government services? Contact [USA.gov](https://usa.gov/)
-    center: |
-      [Privacy Policy](https://www.ntia.gov/page/ntia-privacy-policy)<br>
-      [FOIA](https://www.ntia.gov/page/freedom-information-act-information)<br>
-      [Accessibility](https://www.ntia.gov/page/about-ntias-web-site-accessibility-policy)<br>
-      [Information Quality](https://www.ntia.gov/page/information-quality-guidelines)
+  google-analytics:
+    tracking-id: G-48B5WEZDBS
+    version: 4
 
 format:
   html:
@@ -71,8 +55,8 @@ format:
     code-fold: false
     theme: [cosmo, theme.scss]
     include-in-header: header.html
-    includes: 
-      after_body: footer.html
+    include-after-body: 
+      file: footer.html
 
 jupyter: python3
 bibliography: references.bib
