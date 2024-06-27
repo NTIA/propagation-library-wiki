@@ -73,7 +73,4 @@ format:
     include-in-header: header.html
     include-after-body: 
       file: footer.html
-    # Metadata
-    keywords: [its, ntia, propagation, proplib, rf, radio, itu-r, radiocommunications]
-    license: Testing this is a license text
-    
+
