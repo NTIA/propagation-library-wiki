@@ -6,12 +6,8 @@ $link-color: #0066CC;
 $light: #fff;
 $black: rgba(0, 0, 0, 0.8);
 
-
 // Theming reference:
 // https://quarto.org/docs/output-formats/html-themes.html
-
-// Basic Options
-
 
 // Colors
 $body-bg: $light;
@@ -31,11 +27,8 @@ $navbar-hl: $link-color;
 header nav {
     font-weight: bold;
 }
-.navbar-title {
-    font-family: "Merriweather", "Georgia", "Cambria", "Times New Roman", "Times", serif;
-}
 
-// Other
+// Page titles/headers
 h1 {
     border-bottom: 3px solid $secondary;
     display: inline-block;
@@ -46,7 +39,6 @@ h1 {
 
 
 // Footer
-
 footer div .usa-footer-nav {
     background-color: $primary !important;
     color: #fff;
