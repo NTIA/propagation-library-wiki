@@ -66,7 +66,7 @@ format:
     # Links
     link-external-icon: true
     link-external-newwindow: true
-    link-external-filter: .*ntia\.gov.*
+    link-external-filter: .*ntia\.gov.*|.*ntia\.github.io.*|.*pages\.github.io.*
     # References
     bibliography: references.bib
     csl: ieee.csl
