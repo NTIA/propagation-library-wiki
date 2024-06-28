@@ -7,9 +7,10 @@
 
 This repository hosts wiki pages for the suite of softwares comprising the
 ITS Propagation Library. The wiki is generated with [Quarto](https://quarto.org/)
-and hosted using [GitHub Pages](https://pages.github.com/). Additional styling
-uses the [U.S. Web Design System (USWDS)](https://designsystem.digital.gov/). The
-live version of the wiki is available [ntia.github.io/propagation-library-wiki](https://ntia.github.io/propagation-library-wiki)
+and hosted using [GitHub Pages](https://pages.github.com/). Additional static assets
+are used from the [United States Web Design System (USWDS)](https://designsystem.digital.gov/).
+
+### Visit the live wiki: [ntia.github.io/propagation-library-wiki](https://ntia.github.io/propagation-library-wiki)
 
 ## Contributing
 
