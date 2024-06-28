@@ -115,14 +115,6 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 
-<!-- Webfont from Google -->
-<!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap"
-  rel="stylesheet"
-/> -->
-
 <!-- USWDS Initializer -->
 <script src="../uswds/js/uswds-init.min.js"></script>
 
@@ -303,17 +295,17 @@ TO DO
 <div class="sourceCode" id="cb1"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>conda create -<span class="at">-name</span> prop</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>conda activate prop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Install <code>numpy</code> as it’s a dependency of the <code>itm</code> package</p>
-<pre><code>pip install numpy</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pip install numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or</p>
-<pre><code>conda install -c anaconda numpy</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>conda install <span class="at">-c</span> anaconda numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Install <code>pythonnet</code> as it’s a dependency of the <code>ohiopyle</code> package</p>
-<pre><code>pip install -i https://pypi.anaconda.org/pythonnet/simple pythonnet</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pip install <span class="at">-i</span> https:/<span class="at">/pypi</span>.anaconda.org<span class="at">/pythonnet/simple</span> pythonnet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or</p>
-<pre><code>conda install -c pythonnet pythonnet=2.5.2</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>conda install <span class="at">-c</span> pythonnet pythonnet=2.5.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Install <code>itm</code> from the local repository</p>
-<pre><code>pip install itm --no-index --find-links file://itsfs01/Tools/Python/pip</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pip install itm -<span class="at">-no-index</span> -<span class="at">-find-links</span> file:/<span class="at">/itsfs01/Tools/Python/pip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Install <code>ohiopyle</code> from the local repository</p>
-<pre><code>pip install ohiopyle --no-index --find-links file://itsfs01/Tools/Python/pip</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pip install ohiopyle -<span class="at">-no-index</span> -<span class="at">-find-links</span> file:/<span class="at">/itsfs01/Tools/Python/pip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="calling-propcore-in-python" class="level2">
 <h2 class="anchored" data-anchor-id="calling-propcore-in-python">Calling PropCore in Python</h2>
