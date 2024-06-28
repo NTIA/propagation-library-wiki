@@ -43,9 +43,11 @@ website:
 
 format:
   html:
-    # Format options
+    # Format/theme options
     theme: [cosmo, theme.scss]
-    # css: uswds/dist/css/uswds.min.css  # Maybe compile from SASS instead?
+    css: uswds/css/uswds.min.css  # Maybe compile from SASS instead?
+    mainfont: $source-sans-pro    # Defined in theme.scss
+    fontcolor: $semi-black        # Defined in theme.scss
     # Table of Contents
     toc: true
     toc-title: On this page
@@ -58,14 +60,13 @@ format:
     code-fold: false
     code-overflow: scroll
     code-copy: true
-    code-block-border-left: $secondary
-    code-block-bg: rgba(233, 236, 239, 0.65) # default restored after enabling border
     # Figures
     fig-align: center
     fig-responsive: true
     # Links
     link-external-icon: true
     link-external-newwindow: true
+    link-external-filter: .*ntia\.gov.*
     # References
     bibliography: references.bib
     csl: ieee.csl

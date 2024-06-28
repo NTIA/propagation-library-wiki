@@ -17,7 +17,7 @@ The `itm` package requires `numpy`.
 
 Use the following command to install `itm` from the local pip repo:
 
-```
+```cmd
 pip install itm --no-index --find-links file://itsfs01/Tools/Python/pip
 ```
 

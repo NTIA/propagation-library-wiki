@@ -1,19 +1,38 @@
 /*-- scss:defaults --*/
-$primary: #162e51;   // ITS blue (NTIA is 162d51)
-$secondary: #D63E04; // ITS orange
-$footer-bg-color: #c6cace;
-$link-color: #0066CC;
-$light: #fff;
-$black: rgba(0, 0, 0, 0.8);
+// These style adjustments aim to create branding consistent
+// with the ITS website: https://its.ntia.gov and in line with
+// USWDS principles.
+// Last updated 6/27/2024
 
-// Theming reference:
+// Quarto theming reference:
 // https://quarto.org/docs/output-formats/html-themes.html
 
 // Colors
+$primary: #162e51;   // ITS blue (NTIA is 162d51)
+$secondary: #D63E04; // ITS orange
+$footer-bg-color: #c6cace;
+$light: #fff;
+$semi-black: rgba(0, 0, 0, 0.8);
 $body-bg: $light;
-$body-color: rgba(0,0,0,0.8);
+$body-color: $semi-black;
+$link-color: #0066CC;
+$popover-bg: $light;
 
-// Table of Contents
+// Fonts: Define some USWDS font family tokens
+// https://designsystem.digital.gov/design-tokens/typesetting/font/
+$source-sans-pro: 'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
+$merriweather: 'Merriweather Web', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
+$roboto-mono: 'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace;
+$font-family-sans-serif: $merriweather !important;
+$font-family-monospace: $roboto-mono !important;
+
+// Code blocks and inline code
+$code-block-border-left: $secondary;
+$code-block-bg: rgba(233, 236, 239, 0.4);
+$btn-code-copy-color-active: $primary;
+$code-color: $primary;
+
+// Table of contents
 $toc-color: $secondary;
 $toc-active-border: $secondary;
 nav#TOC.toc-active ul li a.nav-link.active {
@@ -22,25 +41,35 @@ nav#TOC.toc-active ul li a.nav-link.active {
 
 // Navigation
 $navbar-fg: $light;
-$navbar-hl: $link-color;
+$navbar-hl: rgb(129, 174, 252);  // Match ITS website
 
 header nav {
     font-weight: bold;
 }
+
+// Callouts
+$callout-color-note: $primary;
+$callout-color-warning: $secondary;
 
 // Page titles/headers
 h1 {
     border-bottom: 3px solid $secondary;
     display: inline-block;
     padding-bottom: 10px;
-    color: $black;
-    font-family: "Merriweather", "Georgia", "Cambria", "Times New Roman", "Times", serif;
+    color: $semi-black;
+    font-family: $merriweather;
 }
-
 
 // Footer
 footer div .usa-footer-nav {
     background-color: $primary !important;
     color: #fff;
-    font-family: "Source Sans Pro Web", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+    font-family: $source-sans-pro;
+}
+
+// Disable "external link" icons for social media links
+footer div.usa-footer__social-links {
+    a::after {
+        display: none !important;
+    }
 }

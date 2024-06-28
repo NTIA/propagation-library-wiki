@@ -64,7 +64,7 @@ For OSM (or HCHB) users,
 
 Once the installion has completed, you can verify and update the package location of `matpak`.  To do this, open "Windows Explorer" and nagivate to "Documents".  Inside the "MATLAB" directory, you should see a "matpak" subdirectory which contains a `settings.ini` file.  Open this file in a text editor.  The default setting should be:
 
-```
+```cmd
 SOURCE=\\itsfs01\tools\Matpak\packages
 ```
 
@@ -74,7 +74,7 @@ This is the location that `matpak` will use to search for packages.  Update this
 
 Installing packages requires only a single command.  To install the PropCore package, run:
 
-```
+```cmd
 >> matpak install propcore
 Matpak: Package 'PropCore' (Version 1.0.0) has been installed.
 >> 
@@ -88,7 +88,7 @@ Matpak: Package 'PropCore' (Version 1.0.0) has been installed.
 
 In a script file or the Command Window, copy the following snippet of code:
 
-```MATLAB
+```matlab
 theta = Terrestrial.TakeoffAngle(5, 1, 100, 8400)
 ```
 

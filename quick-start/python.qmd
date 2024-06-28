@@ -32,7 +32,7 @@ Modify example to avoid use of `conda`
 
 Create a new conda environment:
 
-```
+```cmd
 conda create --name prop
 conda activate prop
 ```
