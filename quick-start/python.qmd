@@ -39,31 +39,31 @@ conda activate prop
 
 Install `numpy` as it's a dependency of the `itm` package
 
-```
+```cmd
 pip install numpy
 ```
 or
-```
+```cmd
 conda install -c anaconda numpy
 ```
 
 Install `pythonnet` as it's a dependency of the `ohiopyle` package
-```
+```cmd
 pip install -i https://pypi.anaconda.org/pythonnet/simple pythonnet
 ```
 or
-```
+```cmd
 conda install -c pythonnet pythonnet=2.5.2
 ```
 
 Install `itm` from the local repository
 
-```
+```cmd
 pip install itm --no-index --find-links file://itsfs01/Tools/Python/pip
 ```
 
 Install `ohiopyle` from the local repository
-```
+```cmd
 pip install ohiopyle --no-index --find-links file://itsfs01/Tools/Python/pip
 ```
 
