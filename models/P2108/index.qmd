@@ -1,8 +1,8 @@
 ---
 title: "ITU-R P.2108"
+date: 2024-06-28
+date-modified: 2024-06-28
 ---
-
-{{< include /includes/_under_construction.qmd >}}
 
 Recommendation ITU-R P.2108 _Prediction of clutter loss_ contains three methods for the prediction of clutter loss: the [Height Gain Terminal Correction Model](#height-gain-terminal-correction-model), [Terrestrial Statistical Model](#terrestrial-statistical-model), and [Aeronautical Statistical Model](#aeronautical-statistical-model) [@p2108-1, Sections 3.1-3.3]. This software implements each of the three models.
 
@@ -43,10 +43,10 @@ This table also provides the integer values mapped to each clutter type in the e
 
 {{< include /includes/_code_examples.qmd >}}
 
-[C++](cpp.qmd#height-gain-terminal-correction){.btn .btn-secondary role="button"}
-[C#/.NET](dotnet.qmd#height-gain-terminal-correction){.btn .btn-secondary role="button"}
-[MATLAB](matlab.qmd#height-gain-terminal-correction){.btn .btn-secondary role="button"}
-[Python](python.qmd#height-gain-terminal-correction){.btn .btn-secondary role="button"}
+[C++](cpp.qmd#height-gain-terminal-correction-model){.btn .btn-secondary role="button"}
+[C#/.NET](dotnet.qmd#height-gain-terminal-correction-model){.btn .btn-secondary role="button"}
+[MATLAB](matlab.qmd#height-gain-terminal-correction-model){.btn .btn-secondary role="button"}
+[Python](python.qmd#height-gain-terminal-correction-model){.btn .btn-secondary role="button"}
 
 ### Terrestrial Statistical Model
 
