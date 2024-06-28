@@ -280,9 +280,9 @@ Table&nbsp;1: Inputs for the height gain terminal correction model
 <colgroup>
 <col style="width: 18%">
 <col style="width: 9%">
-<col style="width: 8%">
-<col style="width: 24%">
-<col style="width: 40%">
+<col style="width: 7%">
+<col style="width: 25%">
+<col style="width: 39%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -298,7 +298,7 @@ Table&nbsp;1: Inputs for the height gain terminal correction model
 <td><code>f__ghz</code></td>
 <td>double</td>
 <td>GHz</td>
-<td><span class="math inline">\(0.3 \leq f \leq 3\)</span></td>
+<td><span class="math inline">\(0.03 \leq f \leq 3\)</span></td>
 <td>Frequency</td>
 </tr>
 <tr class="even">
@@ -404,10 +404,10 @@ Table&nbsp;3: Inputs for the terrestrial statistical model
 <table class="caption-top table">
 <colgroup>
 <col style="width: 16%">
-<col style="width: 13%">
+<col style="width: 12%">
 <col style="width: 11%">
-<col style="width: 33%">
-<col style="width: 25%">
+<col style="width: 35%">
+<col style="width: 24%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -423,7 +423,7 @@ Table&nbsp;3: Inputs for the terrestrial statistical model
 <td><code>f__ghz</code></td>
 <td>double</td>
 <td>GHz</td>
-<td><span class="math inline">\(2 \leq f \leq 67\)</span></td>
+<td><span class="math inline">\(0.5 \leq f \leq 67\)</span></td>
 <td>Frequency</td>
 </tr>
 <tr class="even">
@@ -431,7 +431,7 @@ Table&nbsp;3: Inputs for the terrestrial statistical model
 <td>double</td>
 <td>km</td>
 <td><span class="math inline">\(0.25 \leq d\)</span></td>
-<td>Path distance</td>
+<td>Path distance. Must be <span class="math inline">\(\geq 1\)</span> km to apply the correction at both ends of the path.</td>
 </tr>
 <tr class="odd">
 <td><code>p</code></td>
