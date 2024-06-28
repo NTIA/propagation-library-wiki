@@ -21,62 +21,6 @@
     "text": "A Pioneer in Propagation Software\nIn the 1960s and 1970s, the first wave of ITS-developed computer programs for propagation prediction was published. Perhaps the most famous and influential was Anita G. Longley and Philip L. Rice’s “Prediction of Tropospheric Radio Transmission Loss Over Irregular Terrain: A Computer Method - 1968” [1]. The technical report provided the mathematical algorithms, flow charts, and logic used to develop the code, and the FORTRAN code was printed out in an Annex. The Longley-Rice model, which is more commonly referred to as the Irregular Terrain Model or ITM, is a general purpose model that can be applied to a large variety of engineering problems to predict propagation for radio frequencies between 20 MHz and 20 GHz, and is still in widespread use today. Since that time, ITS has continued to develop and refine computer programs for propagation prediction based on electromagnetic theory and on statistical analyses of both terrain features and radio measurements. The iterative cycle of modeling and measurement, with constant reference to first principles, produced models that are highly regarded. At the beginning of the 21st Century, ITS embarked on a systematic program of updating these software implementations. Today, ITS continues to develop and publish open-source propagation model software implementations at the NTIA GitHub Repository. There, too, ITS provides other open-source software tools used in our research. The ITS Open Source Software list provides direct links to individual repositories. Legacy FORTRAN implementations of ITS propagation models are no longer maintained, but can be found on the ITS website here."
   },
   {
-    "objectID": "quick-start/dotnet.html",
-    "href": "quick-start/dotnet.html",
-    "title": "Quick Start - C#/.NET",
-    "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThis page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from the .NET development environment."
-  },
-  {
-    "objectID": "quick-start/dotnet.html#dependencies-and-limitations",
-    "href": "quick-start/dotnet.html#dependencies-and-limitations",
-    "title": "Quick Start - C#/.NET",
-    "section": "Dependencies and Limitations",
-    "text": "Dependencies and Limitations\nUsers are assumed to be developing in .NET Framework 4.7 or greater. Explicit support is not present at this time for .NET Core, although it is being considered in the near future (if this is a requested feature, please reach out to code@ntia.gov to bump its priority)."
-  },
-  {
-    "objectID": "quick-start/dotnet.html#internal-package-repository",
-    "href": "quick-start/dotnet.html#internal-package-repository",
-    "title": "Quick Start - C#/.NET",
-    "section": "Internal Package Repository",
-    "text": "Internal Package Repository\n\n\n\n\n\n\nWarning\n\n\n\nInternal Repository to be Superceded\nSoon, PropLib packages will migrate to public-facing package repositories. Check back later for updates.\n\n\nAll packages are hosted on an internal NTIA NuGet Server. The location of the server is dependent on your office (packages are cloned between the two locations):\nITS/Boulder: \\\\ntinetapp001g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\NuGet or \\\\itsfs01\\Tools\\NuGet\nOSM/HCHB: \\\\nthnetapp002g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\NuGet\n\nConfiguring Visual Studio\n\nOpen Visual Studio.\nOpen Options and Select Package Sources under NuGet Package Manager\n\n\n\nAccessing NuGet package manager settings in Visual Studio\n\n\nClick the green plus symbol to create a new package source\nFor the newly created package source, fill in the details for Name and Source as follows:\n\nName: NTIA NuGet\nSource: &lt;package repository path, see above&gt;\n\n\n\n\n\nConfiguring the NuGet package source\n\n\n\nClick Update to confirm the configuration of the new package source\n\n\n\n\nUpdating the list of NuGet package sources"
-  },
-  {
-    "objectID": "quick-start/python.html",
-    "href": "quick-start/python.html",
-    "title": "Quick Start - Python",
-    "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThis page provides a walkthrough on how to quickly get up and running installing and running ITS PropLib software in a Python development environment."
-  },
-  {
-    "objectID": "quick-start/python.html#dependencies-and-limitations",
-    "href": "quick-start/python.html#dependencies-and-limitations",
-    "title": "Quick Start - Python",
-    "section": "Dependencies and Limitations",
-    "text": "Dependencies and Limitations\nUsers are assumed to be using a current version of Python 3. All officially-released versions of Python which have not reached end-of-life are supported. Package dependencies are defined on a per-package basis in each project’s pyproject.toml file, which will allow your package manager (e.g., pip) to discover and install required dependencies automatically when you install a PropLib package."
-  },
-  {
-    "objectID": "quick-start/python.html#getting-packages",
-    "href": "quick-start/python.html#getting-packages",
-    "title": "Quick Start - Python",
-    "section": "Getting Packages",
-    "text": "Getting Packages\n\n\n\n\n\n\nTO DO\n\n\n\nUpdate this section when packages are available on PyPi"
-  },
-  {
-    "objectID": "quick-start/python.html#installing-packages",
-    "href": "quick-start/python.html#installing-packages",
-    "title": "Quick Start - Python",
-    "section": "Installing Packages",
-    "text": "Installing Packages\n\n\n\n\n\n\nTO DO\n\n\n\nModify example to avoid use of conda\n\n\nCreate a new conda environment:\nconda create --name prop\nconda activate prop\nInstall numpy as it’s a dependency of the itm package\npip install numpy\nor\nconda install -c anaconda numpy\nInstall pythonnet as it’s a dependency of the ohiopyle package\npip install -i https://pypi.anaconda.org/pythonnet/simple pythonnet\nor\nconda install -c pythonnet pythonnet=2.5.2\nInstall itm from the local repository\npip install itm --no-index --find-links file://itsfs01/Tools/Python/pip\nInstall ohiopyle from the local repository\npip install ohiopyle --no-index --find-links file://itsfs01/Tools/Python/pip"
-  },
-  {
-    "objectID": "quick-start/python.html#calling-propcore-in-python",
-    "href": "quick-start/python.html#calling-propcore-in-python",
-    "title": "Quick Start - Python",
-    "section": "Calling PropCore in Python",
-    "text": "Calling PropCore in Python\n\n\n\n\n\n\nTO DO\n\n\n\nReplace with an interactive Jupyter example\n\n\nOpen Spyder (or your Python IDE of choice) and copy the following snippet of code:\nimport itm\n\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 3500;                      # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_TLS(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, \n    time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 105.85899333756423) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 103.33136088700552 dB."
-  },
-  {
     "objectID": "models/ITM/matlab.html",
     "href": "models/ITM/matlab.html",
     "title": "Irregular Terrain Model (ITM) – MATLAB",
@@ -455,73 +399,10 @@
     "text": "The ITS Propagation Library (“PropLib”) is a collection of open source software developed by ITS, focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements."
   },
   {
-    "objectID": "index.html#quick-start",
-    "href": "index.html#quick-start",
-    "title": "ITS Propagation Library Wiki",
-    "section": "Quick Start",
-    "text": "Quick Start\nFor each supported programming language, we’ve prepared “quick start” guides to help you get up and running with PropLib software. These pages should be helpful regardless of which specific package(s) you may be interested in using. Choose your programming language below to get started.\nC++ C#/.NET MATLAB Python"
-  },
-  {
     "objectID": "index.html#packages",
     "href": "index.html#packages",
     "title": "ITS Propagation Library Wiki",
     "section": "Packages",
     "text": "Packages\nCurrently, PropLib includes implementations of propagation models developed by the U.S. (NTIA/ITS) and by the International Telecommunication Union Radiocommunication Sector (ITU-R). The following are categorized lists of available packages within PropLib.\n\nU.S. Propagation Models\nDocumentation pages are being worked on, and will soon be available through links in the following table, for the following U.S. propagation models:\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThe listed U.S. propagation models have public code repositories, but documentation is not yet available on this website. Please check back later, and contact code@ntia.gov with questions in the meantime.\n\n\n\nU.S. propagation models available in the ITS Propagation Library\n\n\n\n\n\n\n\n\neHata\nRepo\nDocs\nExtended Hata Urban Propagation Model\n\n\nITM\nRepo\nDocs\nIrregular Terrain Model\n\n\nLFMF\nRepo\nDocs\nLow Frequency / Medium Frequency Propagation Model\n\n\n\n\n\nITU-R Recommendations\nThe ITU-R Recommendations constitute a set of international technical standards developed by the Radiocommunication Sector (formerly CCIR) of the ITU [1]. A subset of these have been implemented in software as a part of this library by ITS.\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThe P.528 model has a public code repository, but documentation is not yet available on this website. Please check back later, and contact code@ntia.gov with questions in the meantime.\n\n\n\nITU-R Recommendations implemented in the ITS Propagation Library\n\n\n\n\n\n\n\n\nP.528\nRepo\nDocs\nA propagation prediction method for aeronautical mobile and radionavigation services using the VHF, UHF, and SHF bands\n\n\nP.2108\nRepo\nDocs\nPrediction of clutter loss"
-  },
-  {
-    "objectID": "quick-start/cpp.html",
-    "href": "quick-start/cpp.html",
-    "title": "Quick Start - C++",
-    "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "quick-start/matlab.html",
-    "href": "quick-start/matlab.html",
-    "title": "Quick Start - MATLAB",
-    "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThis page provides a walkthrough on how to quickly get up and running calling the ITS Propagation Library packages from a MATLAB development environment. Included in this is a brief introduction to the internal MATLAB package manager, matpak."
-  },
-  {
-    "objectID": "quick-start/matlab.html#dependencies-and-limitations",
-    "href": "quick-start/matlab.html#dependencies-and-limitations",
-    "title": "Quick Start - MATLAB",
-    "section": "Dependencies and Limitations",
-    "text": "Dependencies and Limitations\nAny reasonably newer version of MATLAB should work. Backwards compatibility with older versions of MATLAB is not possible due to not having access to the software. However, versions starting in 2019 have not shown to have any issues.\nSupport is currently limited to Windows users only. This is due to MATLAB’s use of the .NET Framework, as opposed to the cross-platform .NET Core. MATLAB currently has not given a timeline to switch to .NET Core, however, as Microsoft is moving everything onto .NET Core in the near future, this implies that as some (hopefully soon) future date, cross-platform support can be achieved."
-  },
-  {
-    "objectID": "quick-start/matlab.html#getting-packages",
-    "href": "quick-start/matlab.html#getting-packages",
-    "title": "Quick Start - MATLAB",
-    "section": "Getting Packages",
-    "text": "Getting Packages\n\n\n\n\n\n\nTO DO\n\n\n\nAdd section detailing workflow for installing new packages"
-  },
-  {
-    "objectID": "quick-start/matlab.html#system-setup",
-    "href": "quick-start/matlab.html#system-setup",
-    "title": "Quick Start - MATLAB",
-    "section": "System Setup",
-    "text": "System Setup\nMATLAB support for the ITS Propagation Library relies on an internally developed package manager called matpak. Generally speaking, matpak allows users to download, update, and manage library packages in MATLAB. More information on matpak can be found here.\n\n\n\nmatpak install screenshot\n\n\nTo install matpak, from the below location:\nFor ITS users, * \\\\itsfs01\\Tools\\Matpak\\installers\nFor OSM (or HCHB) users, * \\\\nthnetapp002g.ntiadc.ntia.doc.gov\\ntiadropbox\\itsdata\\Matlab\\installers\nInstall the most recent version. Run the installer with User access (not as Admin). Accept the default file location for install. The installer assumes that MATLAB has been installed onto your machine in the default locations (if this is not true, reach out to Billy Kozma)."
-  },
-  {
-    "objectID": "quick-start/matlab.html#setting-the-correct-package-location",
-    "href": "quick-start/matlab.html#setting-the-correct-package-location",
-    "title": "Quick Start - MATLAB",
-    "section": "Setting the Correct Package Location",
-    "text": "Setting the Correct Package Location\nNote: If you are an ITS user, you should be able to skip this step.\nOnce the installion has completed, you can verify and update the package location of matpak. To do this, open “Windows Explorer” and nagivate to “Documents”. Inside the “MATLAB” directory, you should see a “matpak” subdirectory which contains a settings.ini file. Open this file in a text editor. The default setting should be:\nSOURCE=\\\\itsfs01\\tools\\Matpak\\packages\nThis is the location that matpak will use to search for packages. Update this location according to the package source you have access to (listed in previous subsection)."
-  },
-  {
-    "objectID": "quick-start/matlab.html#installing-packages",
-    "href": "quick-start/matlab.html#installing-packages",
-    "title": "Quick Start - MATLAB",
-    "section": "Installing Packages",
-    "text": "Installing Packages\nInstalling packages requires only a single command. To install the PropCore package, run:\n&gt;&gt; matpak install propcore\nMatpak: Package 'PropCore' (Version 1.0.0) has been installed.\n&gt;&gt; \n\n\n\nmatpak install screenshot\n\n\nmatpak will install the package files in the current directory. The files can be instead installed into a different location and that directory added to the path at runtime."
-  },
-  {
-    "objectID": "quick-start/matlab.html#calling-propcore-in-matlab",
-    "href": "quick-start/matlab.html#calling-propcore-in-matlab",
-    "title": "Quick Start - MATLAB",
-    "section": "Calling PropCore in MATLAB",
-    "text": "Calling PropCore in MATLAB\nIn a script file or the Command Window, copy the following snippet of code:\ntheta = Terrestrial.TakeoffAngle(5, 1, 100, 8400)\nIt should result in: theta = -0.0459"
   }
 ]
