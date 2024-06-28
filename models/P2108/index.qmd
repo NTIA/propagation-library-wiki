@@ -19,13 +19,13 @@ Selection and use of the appropriate model is required to obtain meaningful outp
 The height gain terminal correction model is described in @p2108-1 [Section 3.1]. This model calculates an additional loss, $A_h$, which can be added to the basic transmission loss of a path calculated above the clutter. Therefore basic transmission loss should be calculated to/from the height of the representative clutter height used. This model can be applied to both transmitting and receiving ends of the path.
 
 
-| Variable       | Type   | Units | Limits              | Description                       |
-|----------------|--------|-------|---------------------|-----------------------------------|
-| `f__ghz`       | double | GHz   | $0.3 \leq f \leq 3$ | Frequency                         |
-| `h__meter`     | double | meter | $0 \leq h$          | Antenna height                    |
-| `w_s__meter`   | double | meter | $0 < w_s$           | Street width                      |
-| `R__meter`     | double | meter | $0 < R$             | Representative clutter height     |
-| `clutter_type` | `ClutterType` enum | N/A | enum      | See @tbl-p2108-3p1-clutter-types  |
+| Variable       | Type   | Units | Limits               | Description                       |
+|----------------|--------|-------|----------------------|-----------------------------------|
+| `f__ghz`       | double | GHz   | $0.03 \leq f \leq 3$ | Frequency                         |
+| `h__meter`     | double | meter | $0 \leq h$           | Antenna height                    |
+| `w_s__meter`   | double | meter | $0 < w_s$            | Street width                      |
+| `R__meter`     | double | meter | $0 < R$              | Representative clutter height     |
+| `clutter_type` | `ClutterType` enum | N/A | enum       | See @tbl-p2108-3p1-clutter-types  |
 : Inputs for the height gain terminal correction model {#tbl-p2108-3p1-inputs}
 
 The values for $w_s$ and $R$ should be set based upon local information. If local information is not available, @p2108-1 [Section 3.1.1] defines appropriate default values: $w_s=27$ and a set of values for $R$ based on the clutter type, which are reproduced in @tbl-p2108-3p1-clutter-types.
@@ -54,11 +54,11 @@ The terrestrial statistical model is described in @p2108-1 [Section 3.2]. The mo
 
 This model calculates an additional loss, $L_{ctt}$, which can be added to the transmission loss or basic transmission loss. As this is a statistical model, the term $L_{ctt}$ is the clutter loss not exceeded for $p$ percent of locations for a terrestial path of length $d$. If the transmission loss or basic transmission loss has been calculated using a model that inherently accounts for clutter over the entire path then this model should not be applied.
 
-| Variable | Type   | Units | Limits             | Description   |
-|----------|--------|-------|--------------------|---------------|
-| `f__ghz` | double | GHz   | $2 \leq f \leq 67$ | Frequency     |
-| `d__km`  | double | km    | $0.25 \leq d$      | Path distance |
-| `p`      | double | %     | $0 < p < 100$      | Percentage of locations at which predicted clutter loss will not be exceeded |
+| Variable | Type   | Units | Limits               | Description   |
+|----------|--------|-------|----------------------|---------------|
+| `f__ghz` | double | GHz   | $0.5 \leq f \leq 67$ | Frequency     |
+| `d__km`  | double | km    | $0.25 \leq d$ | Path distance. Must be $\geq 1$ km to apply the correction at both ends of the path. |
+| `p`      | double | %     | $0 < p < 100$ | Percentage of locations at which predicted clutter loss will not be exceeded         |
 : Inputs for the terrestrial statistical model {#tbl-p2108-3p2-inputs}
 
 {{< include /includes/_code_examples.qmd >}}
