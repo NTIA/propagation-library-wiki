@@ -172,14 +172,14 @@
     "href": "models/P2108/index.html",
     "title": "ITU-R P.2108",
     "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nRecommendation ITU-R P.2108 Prediction of clutter loss contains three methods for the prediction of clutter loss: the Height Gain Terminal Correction Model, Terrestrial Statistical Model, and Aeronautical Statistical Model [1, Secs. 3.1–3.3]. This software implements each of the three models."
+    "text": "Recommendation ITU-R P.2108 Prediction of clutter loss contains three methods for the prediction of clutter loss: the Height Gain Terminal Correction Model, Terrestrial Statistical Model, and Aeronautical Statistical Model [1, Secs. 3.1–3.3]. This software implements each of the three models."
   },
   {
     "objectID": "models/P2108/index.html#getting-started",
     "href": "models/P2108/index.html#getting-started",
     "title": "ITU-R P.2108",
     "section": "Getting Started",
-    "text": "Getting Started\nLanguage-specific information on getting started using this library, including installation instructions, is available by following these links:\nC++ C#/.NET MATLAB Python"
+    "text": "Getting Started\nThis page documents the inputs, outputs, and primary functions of this software in a language-agnostic way. Language-specific documentation is additionally provided for this library. The pages linked below include installation instructions as well as usage examples for each supported language.\nC++ C#/.NET MATLAB Python"
   },
   {
     "objectID": "models/P2108/index.html#model-selection",
@@ -312,7 +312,7 @@
     "href": "models/ITM/index.html#getting-started",
     "title": "Irregular Terrain Model (ITM)",
     "section": "Getting Started",
-    "text": "Getting Started\nLanguage-specific information on getting started using this library, including installation instructions, is available by following these links:\nC++ C#/.NET MATLAB Python"
+    "text": "Getting Started\nThis page documents the inputs, outputs, and primary functions of this software in a language-agnostic way. Language-specific documentation is additionally provided for this library. The pages linked below include installation instructions as well as usage examples for each supported language.\nC++ C#/.NET MATLAB Python"
   },
   {
     "objectID": "models/ITM/index.html#point-to-point-basic-transmission-loss-tls",
