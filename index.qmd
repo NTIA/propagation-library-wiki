@@ -6,15 +6,6 @@ date-modified: 2024-06-11
 
 The ITS Propagation Library (**"PropLib"**) is a collection of open source software developed by [ITS](about.qmd), focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements.
 
-## Quick Start
-
-For each supported programming language, we've prepared "quick start" guides to help you get up and running with PropLib software. These pages should be helpful regardless of which specific package(s) you may be interested in using. Choose your programming language below to get started.
-
-[C++](quick-start/cpp.qmd){.btn .btn-secondary role="button"}
-[C#/.NET](quick-start/dotnet.qmd){.btn .btn-secondary role="button"}
-[MATLAB](quick-start/matlab.qmd){.btn .btn-secondary role="button"}
-[Python](quick-start/python.qmd){.btn .btn-secondary role="button"}
-
 ## Packages
 
 Currently, PropLib includes implementations of propagation models developed by the U.S. (NTIA/ITS) and by the International Telecommunication Union Radiocommunication Sector (ITU-R). The following are categorized lists of available packages within PropLib. 
