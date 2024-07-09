@@ -8,66 +8,20 @@ title: "ITU-R P.2108 – C#/.NET"
 
 {{< include /includes/_package_install_not_ready.qmd >}}
 
-To begin, install the NuGet package, `P2108`, from the NTIA NuGet repository
-
-![Screenshot of P.2108 NuGet package to install](images/p2108_nuget.jpg)
-
-All of the below code snippets requires the including the following `using` statement.
-
-```csharp
-using ITS.Propagation;
-```
-
 ## Documentation
 
-The `p2108` library is packaged to support IntelliSense when developing in Visual Studio.  This documentation will provide the developer with information on function descriptions, variable details, etc.
+{{< include /includes/_under_construction.qmd >}}
 
 # Examples
 
 ## Height Gain Terminal Correction Model
 
-```csharp
-// define inputs
-double f__ghz = 1;         // GHz
-double h__meter = 1.5;     // meters
-double w_s__meter = 27;    // meters (default value)
-double R__meter = 20;      // meters (Dense urban default value)
-int clutter_type = 6;      // Dense urban
-
-// call clutter model
-int rtn = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type, out double A_h__db);
-// A_h__db = 8.76939426153355
-
-// can also use clutter type enum
-var clutterType = P2108.ClutterType.DenseUrban;
-
-// call clutter model
-rtn = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, (int)clutterType, out double A_h__db2);
-// A_h__db = 8.76939426153355
-```
+{{< include /includes/_under_construction.qmd >}}
 
 ## Terrestrial Statistical Model
 
-```csharp
-// define inputs
-double f__ghz = 3;         // GHz
-double d__km = 0.5;        // km
-double p = 50;             // %
-
-// call clutter model
-int rtn = P2108.TerrestrialStatisticalModel(f__ghz, d__km, p, out double L_ctt__db);
-// L_ctt__db = 26.1007503678334
-```
+{{< include /includes/_under_construction.qmd >}}
 
 ## Aeronautical Statistical Model
 
-```csharp
-// define inputs
-double f__ghz = 15;        // GHz
-double theta__deg = 10;    // degrees
-double p = 50;             // %
-
-// call clutter model
-int rtn = P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p, out double L_ces__db);
-// L_ces__db = 14.3336860400678
-```
+{{< include /includes/_under_construction.qmd >}}
