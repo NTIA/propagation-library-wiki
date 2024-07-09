@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.557">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2024-06-28">
 
-<title>ITS Propagation Library Wiki - ITU-R P.2108</title>
+<title>ITU-R P.2108 – ITS Propagation Library Wiki</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,13 +135,13 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../uswds/css/uswds.min.css">
-<meta property="og:title" content="ITS Propagation Library Wiki - ITU-R P.2108">
+<meta property="og:title" content="ITU-R P.2108 – ITS Propagation Library Wiki">
 <meta property="og:description" content="The NTIA/ITS Propagation Library: a versatile and robust set of tools for propagation modeling. Learn more on our wiki.">
 <meta property="og:image" content="https://ntia.github.io/propagation-library-wiki/models/P2108/images/ntia-logo-300px.png">
 <meta property="og:site_name" content="ITS Propagation Library Wiki">
 <meta property="og:image:alt" content="National Telecommunications and Information Administration Logo">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="ITS Propagation Library Wiki - ITU-R P.2108">
+<meta name="twitter:title" content="ITU-R P.2108 – ITS Propagation Library Wiki">
 <meta name="twitter:description" content="The NTIA/ITS Propagation Library: a versatile and robust set of tools for propagation modeling. Learn more on our wiki.">
 <meta name="twitter:image" content="https://ntia.github.io/propagation-library-wiki/models/P2108/images/ntia-logo-300px.png">
 <meta name="twitter:image:alt" content="National Telecommunications and Information Administration Logo">
@@ -162,7 +162,7 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -172,7 +172,7 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-u.s.-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-u.s.-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">U.S. Models</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-u.s.-models">    
@@ -180,7 +180,7 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-itu-r-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-itu-r-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">ITU-R Models</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-itu-r-models">    
@@ -196,7 +196,7 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -259,7 +259,7 @@ window.Quarto = {
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
 <p>This page documents the inputs, outputs, and primary functions of this software in a language-agnostic way. Language-specific documentation is additionally provided for this library. The pages linked below include installation instructions as well as usage examples for each supported language.</p>
-<p><a href="../../models/P2108/cpp.html" class="btn btn-secondary" role="button">C++</a> <a href="../../models/P2108/dotnet.html" class="btn btn-secondary" role="button">C#/.NET</a> <a href="../../models/P2108/matlab.html" class="btn btn-secondary" role="button">MATLAB</a> <a href="../../models/P2108/python.html" class="btn btn-secondary" role="button">Python</a></p>
+<p><a href="../../models/P2108/cpp.html" class="btn btn-secondary" role="button">C++</a> <a href="../../models/P2108/dotnet.html">C#/.NET</a>{.btn .btn-secondary disabled role=“button”} <a href="../../models/P2108/matlab.html">MATLAB</a>{.btn .btn-secondary disabled role=“button”} <a href="../../models/P2108/python.html" class="btn btn-secondary" role="button">Python</a></p>
 </section>
 <section id="model-selection" class="level2">
 <h2 class="anchored" data-anchor-id="model-selection">Model Selection</h2>
@@ -270,7 +270,7 @@ window.Quarto = {
 <section id="height-gain-terminal-correction-model" class="level3">
 <h3 class="anchored" data-anchor-id="height-gain-terminal-correction-model">Height Gain Terminal Correction Model</h3>
 <p>The height gain terminal correction model is described in <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 3.1]</a></span>. This model calculates an additional loss, <span class="math inline">\(A_h\)</span>, which can be added to the basic transmission loss of a path calculated above the clutter. Therefore basic transmission loss should be calculated to/from the height of the representative clutter height used. This model can be applied to both transmitting and receiving ends of the path.</p>
-<div id="tbl-p2108-3p1-inputs" class="quarto-float anchored">
+<div id="tbl-p2108-3p1-inputs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-p2108-3p1-inputs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Inputs for the height gain terminal correction model
@@ -335,7 +335,7 @@ Table&nbsp;1: Inputs for the height gain terminal correction model
 </figure>
 </div>
 <p>The values for <span class="math inline">\(w_s\)</span> and <span class="math inline">\(R\)</span> should be set based upon local information. If local information is not available, <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 3.1.1]</a></span> defines appropriate default values: <span class="math inline">\(w_s=27\)</span> and a set of values for <span class="math inline">\(R\)</span> based on the clutter type, which are reproduced in <a href="#tbl-p2108-3p1-clutter-types" class="quarto-xref">Table&nbsp;2</a>. This table also provides the integer values mapped to each clutter type in the enumeration objects are provided by the software for ease of use.</p>
-<div id="tbl-p2108-3p1-clutter-types" class="quarto-float anchored">
+<div id="tbl-p2108-3p1-clutter-types" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-p2108-3p1-clutter-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2: Clutter types for the <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 3.1]</a></span> model
@@ -388,14 +388,14 @@ Table&nbsp;2: Clutter types for the <span class="citation" data-cites="p2108-1">
 <section id="examples" class="level4">
 <h4 class="anchored" data-anchor-id="examples">Examples</h4>
 <p>Language-specific code examples showing the use of this function are available by following these links:</p>
-<p><a href="../../models/P2108/cpp.html#height-gain-terminal-correction-model" class="btn btn-secondary" role="button">C++</a> <a href="../../models/P2108/dotnet.html#height-gain-terminal-correction-model" class="btn btn-secondary" role="button">C#/.NET</a> <a href="../../models/P2108/matlab.html#height-gain-terminal-correction-model" class="btn btn-secondary" role="button">MATLAB</a> <a href="../../models/P2108/python.html#height-gain-terminal-correction-model" class="btn btn-secondary" role="button">Python</a></p>
+<p><a href="../../models/P2108/cpp.html#height-gain-terminal-correction-model" class="btn btn-secondary" role="button">C++</a> <a href="../../models/P2108/dotnet.html#height-gain-terminal-correction-model">C#/.NET</a>{.btn .btn-secondary disabled role=“button”} <a href="../../models/P2108/matlab.html#height-gain-terminal-correction-model">MATLAB</a>{.btn .btn-secondary disabled role=“button”} <a href="../../models/P2108/python.html#height-gain-terminal-correction-model" class="btn btn-secondary" role="button">Python</a></p>
 </section>
 </section>
 <section id="terrestrial-statistical-model" class="level3">
 <h3 class="anchored" data-anchor-id="terrestrial-statistical-model">Terrestrial Statistical Model</h3>
 <p>The terrestrial statistical model is described in <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 3.2]</a></span>. The model can be applied for urban and suburban environments provided terminal heights are well below the clutter height. The correction produced by this model can be applied at one terminal, or, if the path length is at least 1 km, at both terminals.</p>
 <p>This model calculates an additional loss, <span class="math inline">\(L_{ctt}\)</span>, which can be added to the transmission loss or basic transmission loss. As this is a statistical model, the term <span class="math inline">\(L_{ctt}\)</span> is the clutter loss not exceeded for <span class="math inline">\(p\)</span> percent of locations for a terrestial path of length <span class="math inline">\(d\)</span>. If the transmission loss or basic transmission loss has been calculated using a model that inherently accounts for clutter over the entire path then this model should not be applied.</p>
-<div id="tbl-p2108-3p2-inputs" class="quarto-float anchored">
+<div id="tbl-p2108-3p2-inputs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-p2108-3p2-inputs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;3: Inputs for the terrestrial statistical model
@@ -448,7 +448,7 @@ Table&nbsp;3: Inputs for the terrestrial statistical model
 <section id="examples-1" class="level4">
 <h4 class="anchored" data-anchor-id="examples-1">Examples</h4>
 <p>Language-specific code examples showing the use of this function are available by following these links:</p>
-<p><a href="../../models/P2108/cpp.html#terrestrial-statistical-model" class="btn btn-secondary" role="button">C++</a> <a href="../../models/P2108/dotnet.html#terrestrial-statistical-model" class="btn btn-secondary" role="button">C#/.NET</a> <a href="../../models/P2108/matlab.html#terrestrial-statistical-model" class="btn btn-secondary" role="button">MATLAB</a> <a href="../../models/P2108/python.html#terrestrial-statistical-model" class="btn btn-secondary" role="button">Python</a></p>
+<p><a href="../../models/P2108/cpp.html#terrestrial-statistical-model" class="btn btn-secondary" role="button">C++</a> <a href="../../models/P2108/dotnet.html#terrestrial-statistical-model">C#/.NET</a>{.btn .btn-secondary .btn disabled role=“button”} <a href="../../models/P2108/matlab.html#terrestrial-statistical-model">MATLAB</a>{.btn .btn-secondary disabled .btn role=“button”} <a href="../../models/P2108/python.html#terrestrial-statistical-model" class="btn btn-secondary" role="button">Python</a></p>
 </section>
 </section>
 <section id="aeronautical-statistical-model" class="level3">
@@ -456,7 +456,7 @@ Table&nbsp;3: Inputs for the terrestrial statistical model
 <p>The Earth-space and aeronautical statistical clutter loss model is described in <span class="citation" data-cites="p2108-1"><a href="#ref-p2108-1" role="doc-biblioref">[1, Sec. 3.3]</a></span>. This model is applicable when one terminal is within man-made clutter and the other is a satellite, aeroplane, or other platform above the surface of the Earth. The model is applicable to urban and suburban clutter environments.</p>
 <p>This model calculates an additional loss, <span class="math inline">\(L_{ces}\)</span>, which can be added to the basic transmission loss of a path calculated. As this is a statistical model, the term <span class="math inline">\(L_{ces}\)</span> is the clutter loss not exceeded for <span class="math inline">\(p\)</span> percent of locations.</p>
 <p>The method used to develop this model is described in <span class="citation" data-cites="p2402-0"><a href="#ref-p2402-0" role="doc-biblioref">[2]</a></span>.</p>
-<div id="tbl-p2108-3p3-inputs" class="quarto-float anchored">
+<div id="tbl-p2108-3p3-inputs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-p2108-3p3-inputs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4: Inputs for the aeronautical statistical model
@@ -509,7 +509,7 @@ Table&nbsp;4: Inputs for the aeronautical statistical model
 <section id="examples-2" class="level4">
 <h4 class="anchored" data-anchor-id="examples-2">Examples</h4>
 <p>Language-specific code examples showing the use of this function are available by following these links:</p>
-<p><a href="../../models/P2108/cpp.html#aeronautical-statistical-model" class="btn btn-secondary" role="button">C++</a> <a href="../../models/P2108/dotnet.html#aeronautical-statistical-model" class="btn btn-secondary" role="button">C#/.NET</a> <a href="../../models/P2108/matlab.html#aeronautical-statistical-model" class="btn btn-secondary" role="button">MATLAB</a> <a href="../../models/P2108/python.html#aeronautical-statistical-model" class="btn btn-secondary" role="button">Python</a></p>
+<p><a href="../../models/P2108/cpp.html#aeronautical-statistical-model" class="btn btn-secondary" role="button">C++</a> <a href="../../models/P2108/dotnet.html#aeronautical-statistical-model">C#/.NET</a>{.btn .btn-secondary .btn disabled role=“button”} <a href="../../models/P2108/matlab.html#aeronautical-statistical-model">MATLAB</a>{.btn .btn-secondary .btn disabled role=“button”} <a href="../../models/P2108/python.html#aeronautical-statistical-model" class="btn btn-secondary" role="button">Python</a></p>
 
 
 
@@ -560,18 +560,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -603,7 +592,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp(".*ntia\.gov.*|.*ntia\.github.io.*|.*pages\.github.io.*");
@@ -611,7 +622,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

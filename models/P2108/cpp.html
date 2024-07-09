@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.557">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ITS Propagation Library Wiki - ITU-R P.2108 – C++</title>
+<title>ITU-R P.2108 – C++ – ITS Propagation Library Wiki</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -85,13 +119,13 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../uswds/css/uswds.min.css">
-<meta property="og:title" content="ITS Propagation Library Wiki - ITU-R P.2108 – C++">
+<meta property="og:title" content="ITU-R P.2108 – C++ – ITS Propagation Library Wiki">
 <meta property="og:description" content="The NTIA/ITS Propagation Library: a versatile and robust set of tools for propagation modeling. Learn more on our wiki.">
 <meta property="og:image" content="https://ntia.github.io/propagation-library-wiki/models/P2108/images/ntia-logo-300px.png">
 <meta property="og:site_name" content="ITS Propagation Library Wiki">
 <meta property="og:image:alt" content="National Telecommunications and Information Administration Logo">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="ITS Propagation Library Wiki - ITU-R P.2108 – C++">
+<meta name="twitter:title" content="ITU-R P.2108 – C++ – ITS Propagation Library Wiki">
 <meta name="twitter:description" content="The NTIA/ITS Propagation Library: a versatile and robust set of tools for propagation modeling. Learn more on our wiki.">
 <meta name="twitter:image" content="https://ntia.github.io/propagation-library-wiki/models/P2108/images/ntia-logo-300px.png">
 <meta name="twitter:image:alt" content="National Telecommunications and Information Administration Logo">
@@ -112,7 +146,7 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -122,7 +156,7 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-u.s.-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-u.s.-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">U.S. Models</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-u.s.-models">    
@@ -130,7 +164,7 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-itu-r-models" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-itu-r-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">ITU-R Models</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-itu-r-models">    
@@ -146,7 +180,7 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -156,8 +190,21 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/NTIA/p2108"><i class="bi bi-github"></i>NTIA/p2108</a></li><li><a href="https://github.com/NTIA/p2108-dotnet"><i class="bi bi-github"></i>NTIA/p2108-dotnet</a></li><li><a href="https://github.com/NTIA/p2108-matlab"><i class="bi bi-github"></i>NTIA/p2108-matlab</a></li><li><a href="https://github.com/NTIA/p2108-python"><i class="bi bi-github"></i>NTIA/p2108-python</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
+  <ul class="collapse">
+  <li><a href="#height-gain-terminal-correction-model" id="toc-height-gain-terminal-correction-model" class="nav-link" data-scroll-target="#height-gain-terminal-correction-model">Height Gain Terminal Correction Model</a></li>
+  <li><a href="#terrestrial-statistical-model" id="toc-terrestrial-statistical-model" class="nav-link" data-scroll-target="#terrestrial-statistical-model">Terrestrial Statistical Model</a></li>
+  <li><a href="#aeronautical-statistical-model" id="toc-aeronautical-statistical-model" class="nav-link" data-scroll-target="#aeronautical-statistical-model">Aeronautical Statistical Model</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/NTIA/p2108"><i class="bi bi-github"></i>NTIA/p2108</a></li><li><a href="https://github.com/NTIA/p2108-dotnet"><i class="bi bi-github"></i>NTIA/p2108-dotnet</a></li><li><a href="https://github.com/NTIA/p2108-matlab"><i class="bi bi-github"></i>NTIA/p2108-matlab</a></li><li><a href="https://github.com/NTIA/p2108-python"><i class="bi bi-github"></i>NTIA/p2108-python</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -193,8 +240,111 @@ Page Under Construction
 <p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
 </div>
 </div>
+<p>This page details the installation and usage of the C++ version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.</p>
+<p>The home page for this model contains language-agnostic background and usage information for the routines implemented by this software, and provides links to additional documentation for implementations in other programming languages.</p>
+<p><a href="../../models/P2108/index.html" class="btn btn-secondary" role="button">Model Home</a></p>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Package Not Yet Available
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This package is not yet being publicly distributed. Check back later, or contact <a href="mailto:code@ntia.gov">code@ntia.gov</a>.</p>
+</div>
+</div>
+<p>To use the C++ library in your code, you’ll need to download the dynamic library (<code>.dll</code> on Windows, <code>.dylib</code> on macOS, or <code>.so</code> on Linux) and the header file. These are distributed for each platform as part of the <a href="https://github.com/NTIA/p2108/releases/">GitHub Releases</a> starting with v1.0. Prior to v1.0, support was only provided for Windows platforms.</p>
+<p>To use the dynamic library in your project, you’ll need to link against it. The details for this process differ depending on your compiler and/or IDE, but generally you will need to somehow provide the path to the files you downloaded from the GitHub release.</p>
+<p>Once you’ve linked the dynamic library to your project, all you need to do is include the appropriate header file and, optionally, use its namespace:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"P2108.h"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> ITS<span class="op">::</span>ITU<span class="op">::</span>PSeries<span class="op">:</span>P2108<span class="op">;</span>  <span class="co">// Optional: makes later code more concise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This library has no external C++ dependencies.</p>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>All functions and/or objects provided by this C++ library are documented using <a href="https://www.doxygen.nl/">Doxygen</a>. These auto-generated documentation pages constitute an API reference which documents any available functions, classes, structs, etc. For functions, the documentation details the input, output, and return types and describes all parameters. Visit the C++ API reference documentation site using the button below.</p>
+<p><a href="https://ntia.github.io/p2108" class="btn btn-secondary" role="button">Docs</a></p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>The following code examples show how each of the three models from Recommendation ITU-R P.2108 can be called from Python.</p>
+<section id="height-gain-terminal-correction-model" class="level3">
+<h3 class="anchored" data-anchor-id="height-gain-terminal-correction-model">Height Gain Terminal Correction Model</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"P2108.h"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> ITS<span class="op">::</span>ITU<span class="op">::</span>PSeries<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Define inputs</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> f__ghz <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>                       <span class="co">// Frequency, in GHz</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> h__meter <span class="op">=</span> <span class="fl">1.5</span><span class="op">;</span>                   <span class="co">// Antenna height, in meters</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> w_s__meter <span class="op">=</span> <span class="dv">27</span><span class="op">;</span>                  <span class="co">// Street width, in meters</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> R__meter <span class="op">=</span> <span class="dv">20</span><span class="op">;</span>                    <span class="co">// Representative clutter height, in meters</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    P2108<span class="op">::</span>ClutterType <span class="dt">clutter_type</span> <span class="op">=</span> DENSE_URBAN<span class="op">;</span>  <span class="co">// Clutter type, enum</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Create variables to store outputs</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> A_h__db<span class="op">;</span>  <span class="co">// Predicted additional loss, in dB</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> rtn<span class="op">;</span>         <span class="co">// Return code</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Call height gain terminal correction model (P.2108 Section 3.1)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    rtn <span class="op">=</span> P2108<span class="op">::</span>HeightGainTerminalCorrectionModel<span class="op">(</span>f__ghz<span class="op">,</span> h__meter<span class="op">,</span> w_s__meter<span class="op">,</span> R__meter<span class="op">,</span> <span class="dt">clutter_type</span><span class="op">,</span> <span class="op">&amp;</span>A_h__db<span class="op">);</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">// rtn is 0 (SUCCESS)</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">// A_h__dB is approx. 8.8 dB</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="terrestrial-statistical-model" class="level3">
+<h3 class="anchored" data-anchor-id="terrestrial-statistical-model">Terrestrial Statistical Model</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"P2108.h"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> ITS<span class="op">::</span>ITU<span class="op">::</span>PSeries<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Define inputs</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> f__ghz <span class="op">=</span> <span class="dv">3</span><span class="op">;</span>   <span class="co">// Frequency, in GHz</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> d__km <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span>  <span class="co">// Path distance, in km</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> p <span class="op">=</span> <span class="dv">50</span><span class="op">;</span>       <span class="co">// Percentage of locations, in %</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Create variables to store outputs</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> L_ctt__db<span class="op">;</span>  <span class="co">// Predicted additional loss, in dB</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> rtn<span class="op">;</span>           <span class="co">// Return code</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Call terrestrial statistical model (P.2108 Section 3.2)</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    rtn <span class="op">=</span> P2108<span class="op">::</span>TerrestrialStatisticalModel<span class="op">(</span>f__ghz<span class="op">,</span> d__km<span class="op">,</span> p<span class="op">,</span> <span class="op">&amp;</span>L_ctt__db<span class="op">);</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// rtn is 0 (SUCCESS)</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// L_ctt__db is approx. 26.1 dB</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="aeronautical-statistical-model" class="level3">
+<h3 class="anchored" data-anchor-id="aeronautical-statistical-model">Aeronautical Statistical Model</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"P2108.h"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> ITS<span class="op">::</span>ITU<span class="op">::</span>PSeries<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Define inputs</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> f__ghz <span class="op">=</span> <span class="dv">15</span><span class="op">;</span>      <span class="co">// Frequency, in GHz</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> theta__deg <span class="op">=</span> <span class="dv">10</span><span class="op">;</span>  <span class="co">// Elevation angle, in degrees</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> p <span class="op">=</span> <span class="dv">50</span><span class="op">;</span>           <span class="co">// Percentage of locations, in %</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Create variables to store outputs</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> L_ces__db<span class="op">;</span>  <span class="co">// Predicted additional loss, in dB</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> rtn<span class="op">;</span>           <span class="co">// Return code</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Call aeronautical statistical model (P.2108 Section 3.3)</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    rtn <span class="op">=</span> P2108<span class="op">::</span>AeronauticalStatisticalModel<span class="op">(</span>f__ghz<span class="op">,</span> theta__deg<span class="op">,</span> p<span class="op">,</span> <span class="op">&amp;</span>L_ces__db<span class="op">);</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// rtn is 0 (SUCCESS)</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// L_ces__db is approx. 14.3 dB</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -232,18 +382,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -275,7 +414,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp(".*ntia\.gov.*|.*ntia\.github.io.*|.*pages\.github.io.*");
@@ -283,7 +444,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
