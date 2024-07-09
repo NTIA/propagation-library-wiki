@@ -1,0 +1,3 @@
+## Documentation
+
+All functions and/or objects provided by this C++ library are documented using [Doxygen](https://www.doxygen.nl/). These auto-generated documentation pages constitute an API reference which documents any available functions, classes, structs, etc. For functions, the documentation details the input, output, and return types and describes all parameters. Visit the C++ API reference documentation site using the button below.

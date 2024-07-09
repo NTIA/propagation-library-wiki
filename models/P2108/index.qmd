@@ -44,8 +44,8 @@ This table also provides the integer values mapped to each clutter type in the e
 {{< include /includes/_code_examples.qmd >}}
 
 [C++](cpp.qmd#height-gain-terminal-correction-model){.btn .btn-secondary role="button"}
-[C#/.NET](dotnet.qmd#height-gain-terminal-correction-model){.btn .btn-secondary role="button"}
-[MATLAB](matlab.qmd#height-gain-terminal-correction-model){.btn .btn-secondary role="button"}
+[C#/.NET](dotnet.qmd#height-gain-terminal-correction-model){.btn .btn-secondary disabled role="button"}
+[MATLAB](matlab.qmd#height-gain-terminal-correction-model){.btn .btn-secondary disabled role="button"}
 [Python](python.qmd#height-gain-terminal-correction-model){.btn .btn-secondary role="button"}
 
 ### Terrestrial Statistical Model
@@ -64,8 +64,8 @@ This model calculates an additional loss, $L_{ctt}$, which can be added to the t
 {{< include /includes/_code_examples.qmd >}}
 
 [C++](cpp.qmd#terrestrial-statistical-model){.btn .btn-secondary .btn role="button"}
-[C#/.NET](dotnet.qmd#terrestrial-statistical-model){.btn .btn-secondary .btn role="button"}
-[MATLAB](matlab.qmd#terrestrial-statistical-model){.btn .btn-secondary .btn role="button"}
+[C#/.NET](dotnet.qmd#terrestrial-statistical-model){.btn .btn-secondary .btn disabled role="button"}
+[MATLAB](matlab.qmd#terrestrial-statistical-model){.btn .btn-secondary disabled .btn role="button"}
 [Python](python.qmd#terrestrial-statistical-model){.btn .btn-secondary .btn role="button"}
 
 ### Aeronautical Statistical Model
@@ -86,6 +86,6 @@ The method used to develop this model is described in @p2402-0.
 {{< include /includes/_code_examples.qmd >}}
 
 [C++](cpp.qmd#aeronautical-statistical-model){.btn .btn-secondary .btn role="button"}
-[C#/.NET](dotnet.qmd#aeronautical-statistical-model){.btn .btn-secondary .btn role="button"}
-[MATLAB](matlab.qmd#aeronautical-statistical-model){.btn .btn-secondary .btn role="button"}
+[C#/.NET](dotnet.qmd#aeronautical-statistical-model){.btn .btn-secondary .btn disabled role="button"}
+[MATLAB](matlab.qmd#aeronautical-statistical-model){.btn .btn-secondary .btn disabled role="button"}
 [Python](python.qmd#aeronautical-statistical-model){.btn .btn-secondary .btn role="button"}

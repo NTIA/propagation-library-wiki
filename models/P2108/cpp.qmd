@@ -3,3 +3,107 @@ title: "ITU-R P.2108 – C++"
 ---
 
 {{< include /includes/_under_construction.qmd >}}
+
+This page details the installation and usage of the C++ version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+## Installation
+
+{{< include /includes/_package_install_not_ready.qmd >}}
+
+To use the C++ library in your code, you'll need to download the dynamic library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux) and the header file. These are distributed for each platform as part of the [GitHub Releases](https://github.com/NTIA/p2108/releases/) starting with v1.0. Prior to v1.0, support was only provided for Windows platforms.
+
+To use the dynamic library in your project, you'll need to link against it. The details for this process differ depending on your compiler and/or IDE, but generally you will need to somehow provide the path to the files you downloaded from the GitHub release.
+
+Once you've linked the dynamic library to your project, all you need to do is include the appropriate header file and, optionally, use its namespace:
+
+```cpp
+#include "P2108.h"
+
+using namespace ITS::ITU::PSeries:P2108;  // Optional: makes later code more concise
+```
+
+This library has no external C++ dependencies.
+
+{{< include /includes/_cpp_documentation_block.qmd >}}
+
+[Docs](https://ntia.github.io/p2108){.btn .btn-secondary .btn role="button"}
+
+## Examples
+
+The following code examples show how each of the three models from Recommendation ITU-R P.2108 can be called from Python.
+
+### Height Gain Terminal Correction Model
+
+```cpp
+#include "P2108.h"
+using namespace ITS::ITU::PSeries;
+
+int main() {
+    // Define inputs
+    double f__ghz = 1;                       // Frequency, in GHz
+    double h__meter = 1.5;                   // Antenna height, in meters
+    double w_s__meter = 27;                  // Street width, in meters
+    double R__meter = 20;                    // Representative clutter height, in meters
+    P2108::ClutterType clutter_type = DENSE_URBAN;  // Clutter type, enum
+
+    // Create variables to store outputs
+    double A_h__db;  // Predicted additional loss, in dB
+    int rtn;         // Return code
+
+    // Call height gain terminal correction model (P.2108 Section 3.1)
+    rtn = P2108::HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type, &A_h__db);
+
+    // rtn is 0 (SUCCESS)
+    // A_h__dB is approx. 8.8 dB
+}
+```
+
+### Terrestrial Statistical Model
+
+```cpp
+#include "P2108.h"
+using namespace ITS::ITU::PSeries;
+
+int main() {
+    // Define inputs
+    double f__ghz = 3;   // Frequency, in GHz
+    double d__km = 0.5;  // Path distance, in km
+    double p = 50;       // Percentage of locations, in %
+
+    // Create variables to store outputs
+    double L_ctt__db;  // Predicted additional loss, in dB
+    int rtn;           // Return code
+
+    // Call terrestrial statistical model (P.2108 Section 3.2)
+    rtn = P2108::TerrestrialStatisticalModel(f__ghz, d__km, p, &L_ctt__db);
+
+    // rtn is 0 (SUCCESS)
+    // L_ctt__db is approx. 26.1 dB
+}
+```
+
+### Aeronautical Statistical Model
+
+```cpp
+#include "P2108.h"
+using namespace ITS::ITU::PSeries;
+
+int main() {
+    // Define inputs
+    double f__ghz = 15;      // Frequency, in GHz
+    double theta__deg = 10;  // Elevation angle, in degrees
+    double p = 50;           // Percentage of locations, in %
+
+    // Create variables to store outputs
+    double L_ces__db;  // Predicted additional loss, in dB
+    int rtn;           // Return code
+
+    // Call aeronautical statistical model (P.2108 Section 3.3)
+    rtn = P2108::AeronauticalStatisticalModel(f__ghz, theta__deg, p, &L_ces__db);
+
+    // rtn is 0 (SUCCESS)
+    // L_ces__db is approx. 14.3 dB
+}
+```
