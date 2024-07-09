@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -255,63 +221,72 @@ Package Not Yet Available
 <p>This package is not yet being publicly distributed. Check back later, or contact <a href="mailto:code@ntia.gov">code@ntia.gov</a>.</p>
 </div>
 </div>
-<p>To begin, install the NuGet package, <code>P2108</code>, from the NTIA NuGet repository</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/p2108_nuget.jpg" class="img-fluid figure-img"></p>
-<figcaption>Screenshot of P.2108 NuGet package to install</figcaption>
-</figure>
-</div>
-<p>All of the below code snippets requires the including the following <code>using</code> statement.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> ITS<span class="op">.</span><span class="fu">Propagation</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<p>The <code>p2108</code> library is packaged to support IntelliSense when developing in Visual Studio. This documentation will provide the developer with information on function descriptions, variable details, etc.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Page Under Construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+</div>
+</div>
 </section>
 <section id="examples" class="level1">
 <h1>Examples</h1>
 <section id="height-gain-terminal-correction-model" class="level2">
 <h2 class="anchored" data-anchor-id="height-gain-terminal-correction-model">Height Gain Terminal Correction Model</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// define inputs</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> f__ghz <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>         <span class="co">// GHz</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> h__meter <span class="op">=</span> <span class="fl">1.5</span><span class="op">;</span>     <span class="co">// meters</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> w_s__meter <span class="op">=</span> <span class="dv">27</span><span class="op">;</span>    <span class="co">// meters (default value)</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> R__meter <span class="op">=</span> <span class="dv">20</span><span class="op">;</span>      <span class="co">// meters (Dense urban default value)</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> clutter_type <span class="op">=</span> <span class="dv">6</span><span class="op">;</span>      <span class="co">// Dense urban</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">// call clutter model</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> rtn <span class="op">=</span> P2108<span class="op">.</span><span class="fu">HeightGainTerminalCorrectionModel</span><span class="op">(</span>f__ghz<span class="op">,</span> h__meter<span class="op">,</span> w_s__meter<span class="op">,</span> R__meter<span class="op">,</span> clutter_type<span class="op">,</span> <span class="kw">out</span> <span class="dt">double</span> A_h__db<span class="op">);</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">// A_h__db = 8.76939426153355</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">// can also use clutter type enum</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dt">var</span> clutterType <span class="op">=</span> P2108<span class="op">.</span><span class="fu">ClutterType</span><span class="op">.</span><span class="fu">DenseUrban</span><span class="op">;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">// call clutter model</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>rtn <span class="op">=</span> P2108<span class="op">.</span><span class="fu">HeightGainTerminalCorrectionModel</span><span class="op">(</span>f__ghz<span class="op">,</span> h__meter<span class="op">,</span> w_s__meter<span class="op">,</span> R__meter<span class="op">,</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span>clutterType<span class="op">,</span> <span class="kw">out</span> <span class="dt">double</span> A_h__db2<span class="op">);</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">// A_h__db = 8.76939426153355</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Page Under Construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+</div>
+</div>
 </section>
 <section id="terrestrial-statistical-model" class="level2">
 <h2 class="anchored" data-anchor-id="terrestrial-statistical-model">Terrestrial Statistical Model</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// define inputs</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> f__ghz <span class="op">=</span> <span class="dv">3</span><span class="op">;</span>         <span class="co">// GHz</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> d__km <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span>        <span class="co">// km</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> p <span class="op">=</span> <span class="dv">50</span><span class="op">;</span>             <span class="co">// %</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">// call clutter model</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> rtn <span class="op">=</span> P2108<span class="op">.</span><span class="fu">TerrestrialStatisticalModel</span><span class="op">(</span>f__ghz<span class="op">,</span> d__km<span class="op">,</span> p<span class="op">,</span> <span class="kw">out</span> <span class="dt">double</span> L_ctt__db<span class="op">);</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">// L_ctt__db = 26.1007503678334</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Page Under Construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+</div>
+</div>
 </section>
 <section id="aeronautical-statistical-model" class="level2">
 <h2 class="anchored" data-anchor-id="aeronautical-statistical-model">Aeronautical Statistical Model</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// define inputs</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> f__ghz <span class="op">=</span> <span class="dv">15</span><span class="op">;</span>        <span class="co">// GHz</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> theta__deg <span class="op">=</span> <span class="dv">10</span><span class="op">;</span>    <span class="co">// degrees</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> p <span class="op">=</span> <span class="dv">50</span><span class="op">;</span>             <span class="co">// %</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">// call clutter model</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> rtn <span class="op">=</span> P2108<span class="op">.</span><span class="fu">AeronauticalStatisticalModel</span><span class="op">(</span>f__ghz<span class="op">,</span> theta__deg<span class="op">,</span> p<span class="op">,</span> <span class="kw">out</span> <span class="dt">double</span> L_ces__db<span class="op">);</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">// L_ces__db = 14.3336860400678</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Page Under Construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
+</div>
+</div>
 
 
 </section>
