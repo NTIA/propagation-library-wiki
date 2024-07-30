@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Irregular Terrain Model (ITM) – C++ – ITS Propagation Library Wiki</title>
+<title>githubrepopublicreleaseapproval – ITS Propagation Library Wiki</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,28 +76,32 @@ gtag('js', new Date());
 gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
 </script>
 <!-- ITS Favicon -->
-<link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
 
 <!-- USWDS Initializer -->
-<script src="../../uswds/js/uswds-init.min.js"></script>
+<script src="./uswds/js/uswds-init.min.js"></script>
 
 
-<link rel="stylesheet" href="../../uswds/css/uswds.min.css">
-<meta property="og:title" content="Irregular Terrain Model (ITM) – C++ – ITS Propagation Library Wiki">
+<link rel="stylesheet" href="uswds/css/uswds.min.css">
+<meta property="og:title" content="ITS Propagation Library Wiki">
 <meta property="og:description" content="The NTIA/ITS Propagation Library: a versatile and robust set of tools for propagation modeling. Learn more on our wiki.">
-<meta property="og:image" content="https://ntia.github.io/propagation-library-wiki/models/ITM/images/ntia-logo-300px.png">
+<meta property="og:image" content="https://ntia.github.io/propagation-library-wiki/images/ntia-logo-300px.png">
 <meta property="og:site_name" content="ITS Propagation Library Wiki">
 <meta property="og:image:alt" content="National Telecommunications and Information Administration Logo">
+<meta property="og:image:height" content="300">
+<meta property="og:image:width" content="300">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="Irregular Terrain Model (ITM) – C++ – ITS Propagation Library Wiki">
+<meta name="twitter:title" content="ITS Propagation Library Wiki">
 <meta name="twitter:description" content="The NTIA/ITS Propagation Library: a versatile and robust set of tools for propagation modeling. Learn more on our wiki.">
-<meta name="twitter:image" content="https://ntia.github.io/propagation-library-wiki/models/ITM/images/ntia-logo-300px.png">
+<meta name="twitter:image" content="https://ntia.github.io/propagation-library-wiki/images/ntia-logo-300px.png">
 <meta name="twitter:image:alt" content="National Telecommunications and Information Administration Logo">
 <meta name="twitter:creator" content="@NTIA">
 <meta name="twitter:site" content="@NTIA">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="300">
+<meta name="twitter:image-width" content="300">
 </head>
 
 <body class="nav-fixed">
@@ -107,7 +111,7 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">ITS PropLib Wiki</span>
     </a>
   </div>
@@ -118,7 +122,7 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -135,13 +139,13 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-itu-r-models">    
         <li>
-    <a class="dropdown-item" href="../../models/P2108/index.html">
+    <a class="dropdown-item" href="./models/P2108/index.html">
  <span class="dropdown-text">ITU-R P.2108</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -156,45 +160,53 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/NTIA/itm"><i class="bi bi-github"></i>NTIA/itm</a></li><li><a href="https://github.com/NTIA/itm-dotnet"><i class="bi bi-github"></i>NTIA/itm-dotnet</a></li><li><a href="https://github.com/NTIA/itm-matlab"><i class="bi bi-github"></i>NTIA/itm-matlab</a></li><li><a href="https://github.com/NTIA/itm-python"><i class="bi bi-github"></i>NTIA/itm-python</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#github-repository-public-release-approval" id="toc-github-repository-public-release-approval" class="nav-link active" data-scroll-target="#github-repository-public-release-approval">GitHub Repository Public Release Approval</a>
+  <ul class="collapse">
+  <li><a href="#project-name-osm-research-development" id="toc-project-name-osm-research-development" class="nav-link" data-scroll-target="#project-name-osm-research-development">Project Name: OSM Research &amp; Development</a></li>
+  <li><a href="#software-name-ntiaits-propagation-library-wiki" id="toc-software-name-ntiaits-propagation-library-wiki" class="nav-link" data-scroll-target="#software-name-ntiaits-propagation-library-wiki">Software Name: NTIA/ITS Propagation Library Wiki</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Irregular Terrain Model (ITM) – C++</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
+<section id="github-repository-public-release-approval" class="level1">
+<h1>GitHub Repository Public Release Approval</h1>
+<section id="project-name-osm-research-development" class="level3">
+<h3 class="anchored" data-anchor-id="project-name-osm-research-development">Project Name: OSM Research &amp; Development</h3>
+</section>
+<section id="software-name-ntiaits-propagation-library-wiki" class="level3">
+<h3 class="anchored" data-anchor-id="software-name-ntiaits-propagation-library-wiki">Software Name: NTIA/ITS Propagation Library Wiki</h3>
+<p>The project identified above, which is contained within the repository this document is stored in, has met the following criteria for public release:</p>
+<ol type="1">
+<li><label><input type="checkbox" checked="">The project, including the test criteria, meets the requirements defined in the ITS Software Development Publication Policy for making a repository public. The major pre-established criteria for publication are listed below, and the check mark next to each attests that the criterion has been met.</label>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Site builds from source and successfully deploys to GitHub Pages</label></li>
+<li><label><input type="checkbox" checked="">Site has passed editorial inspection by ITS Publications Office</label></li>
+<li><label><input type="checkbox" checked="">Disclaimers are included where applicable to indicate under-development pages, sections, examples, and links.</label></li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Any test data necessary for the code to function is included in this GitHub repository.</label></li>
+<li><label><input type="checkbox" checked="">The README.md file is complete.</label></li>
+<li><label><input type="checkbox" checked="">The project complies with the ITS Code Style Guide or an appropriate style guide as agreed to by the sponsor, project lead, or Supervising Division Chief.</label></li>
+<li><label><input type="checkbox" checked="">Approved disclaimer and licensing language has been included.</label></li>
+</ol>
+<p>In order to complete this approval, please create a new branch, upload and commit your version of this Markdown document to that branch, then create a pull request for that branch. The following must login to GitHub and approve that pull request before the pull request can be merged and this repo made public:</p>
+<ul>
+<li>Project Lead</li>
+<li>Supervising Division Chief or Release Authority</li>
+</ul>
 
-    
-  
-    
-  </div>
-  
 
-
-</header>
-
-
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Page Under Construction
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact <a href="mailto:code@ntia.gov">code@ntia.gov</a> with any questions.</p>
-</div>
-</div>
-
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -652,7 +664,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="grid-row grid-gap">
         <div class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2">
           <div class="mobile-lg:grid-col-auto">
-            <img class="" src="../../images/ITSlogoOnly400.png" alt="Institute for Telecommunication Sciences logo">
+            <img class="" src="./images/ITSlogoOnly400.png" alt="Institute for Telecommunication Sciences logo">
             <p class="usa-footer__logo-heading">
               Institute for Telecommunication Sciences
             </p>
@@ -672,22 +684,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           <div class="usa-footer__social-links grid-row grid-gap-1">
             <div class="grid-col-auto">
               <a class="usa-social-link" href="https://its.ntia.gov">
-                <img class="usa-social-link__icon" src="../../uswds/img/usa-icons/home.svg" alt="ITS Homepage">
+                <img class="usa-social-link__icon" src="./uswds/img/usa-icons/home.svg" alt="ITS Homepage">
               </a>
             </div>
             <div class="grid-col-auto">
               <a class="usa-social-link" href="https://github.com/NTIA">
-                <img class="usa-social-link__icon" src="../../uswds/img/usa-icons/github.svg" alt="NTIA organization on GitHub">
+                <img class="usa-social-link__icon" src="./uswds/img/usa-icons/github.svg" alt="NTIA organization on GitHub">
               </a>
             </div>
             <div class="grid-col-auto">
               <a class="usa-social-link" href="https://www.linkedin.com/company/institute-for-telecommunication-sciences/">
-                <img class="usa-social-link__icon" src="../../uswds/img/usa-icons/linkedin.svg" alt="ITS profile on LinkedIn">
+                <img class="usa-social-link__icon" src="./uswds/img/usa-icons/linkedin.svg" alt="ITS profile on LinkedIn">
               </a>
             </div>
             <div class="grid-col-auto">
               <a class="usa-social-link" href="https://youtube.com/playlist?list=PLO2lqCK7WyTBV5JZrCd77CvJT6LhU_XJv&amp;si=TGJIbvDeJYGRLIKz">
-                <img class="usa-social-link__icon" src="../../uswds/img/usa-icons/youtube.svg" alt="ITS playlist on NTIA YouTube profile">
+                <img class="usa-social-link__icon" src="./uswds/img/usa-icons/youtube.svg" alt="ITS playlist on NTIA YouTube profile">
               </a>
             </div>
           </div>
@@ -713,7 +725,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <!-- USWDS Library -->
-<script src="../../uswds/js/uswds.min.js"></script>
+<script src="./uswds/js/uswds.min.js"></script>
 
 
 
