@@ -1,6 +1,6 @@
 # GitHub Repository Public Release Approval
 
-### Project Name: OSM Research & Development
+### Project Name: ITS Propagation Library
 ### Software Name: NTIA/ITS Propagation Library Wiki
 
 The project identified above, which is contained within the repository this document
@@ -26,5 +26,5 @@ your version of this Markdown document to that branch, then create a pull reques
 for that branch. The following must login to GitHub and approve that pull request
 before the pull request can be merged and this repo made public:
 
-* Project Lead
-* Supervising Division Chief or Release Authority
+* Project Lead: William Kozma, Jr.
+* Supervising Division Chief or Release Authority: Christopher Anderson
