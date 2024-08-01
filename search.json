@@ -1,17 +1,17 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ITS Propagation Library Wiki",
+    "objectID": "GitHubRepoPublicReleaseApproval.html",
+    "href": "GitHubRepoPublicReleaseApproval.html",
+    "title": "GitHub Repository Public Release Approval",
     "section": "",
-    "text": "The ITS Propagation Library (“PropLib”) is a collection of open source software developed by ITS, focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements."
+    "text": "GitHub Repository Public Release Approval\n\nProject Name: ITS Propagation Library\n\n\nSoftware Name: NTIA/ITS Propagation Library Wiki\nThe project identified above, which is contained within the repository this document is stored in, has met the following criteria for public release:\n\nThe project, including the test criteria, meets the requirements defined in the ITS Software Development Publication Policy for making a repository public. The major pre-established criteria for publication are listed below, and the check mark next to each attests that the criterion has been met.\n\nSite builds from source and successfully deploys to GitHub Pages\nSite has passed editorial inspection by ITS Publications Office\nDisclaimers are included where applicable to indicate under-development pages, sections, examples, and links.\n\nAny test data necessary for the code to function is included in this GitHub repository.\nThe README.md file is complete.\nThe project complies with the ITS Code Style Guide or an appropriate style guide as agreed to by the sponsor, project lead, or Supervising Division Chief.\nApproved disclaimer and licensing language has been included.\n\nIn order to complete this approval, please create a new branch, upload and commit your version of this Markdown document to that branch, then create a pull request for that branch. The following must login to GitHub and approve that pull request before the pull request can be merged and this repo made public:\n\nProject Lead: William Kozma, Jr.\nSupervising Division Chief or Release Authority: Christopher Anderson"
   },
   {
-    "objectID": "index.html#packages",
-    "href": "index.html#packages",
-    "title": "ITS Propagation Library Wiki",
-    "section": "Packages",
-    "text": "Packages\nCurrently, PropLib includes implementations of propagation models developed by the U.S. (NTIA/ITS) and by the International Telecommunication Union Radiocommunication Sector (ITU-R). The following are categorized lists of available packages within PropLib.\n\nU.S. Propagation Models\nDocumentation pages are being worked on, and will soon be available through links in the following table, for the following U.S. propagation models:\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThe listed U.S. propagation models have public code repositories, but documentation is not yet available on this website. Please check back later, and contact code@ntia.gov with questions in the meantime.\n\n\n\nU.S. propagation models available in the ITS Propagation Library\n\n\n\n\n\n\n\n\neHata\nRepo\nDocs\nExtended Hata Urban Propagation Model\n\n\nITM\nRepo\nDocs\nIrregular Terrain Model\n\n\nLFMF\nRepo\nDocs\nLow Frequency / Medium Frequency Propagation Model\n\n\n\n\n\nITU-R Recommendations\nThe ITU-R Recommendations constitute a set of international technical standards developed by the Radiocommunication Sector (formerly CCIR) of the ITU [1]. A subset of these have been implemented in software as a part of this library by ITS.\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThe P.528 model has a public code repository, but documentation is not yet available on this website. Please check back later, and contact code@ntia.gov with questions in the meantime.\n\n\n\nITU-R Recommendations implemented in the ITS Propagation Library\n\n\n\n\n\n\n\n\nP.528\nRepo\nDocs\nA propagation prediction method for aeronautical mobile and radionavigation services using the VHF, UHF, and SHF bands\n\n\nP.2108\nRepo\nDocs\nPrediction of clutter loss"
+    "objectID": "models/ITM/cpp.html",
+    "href": "models/ITM/cpp.html",
+    "title": "Irregular Terrain Model (ITM) – C++",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
   },
   {
     "objectID": "models/ITM/dotnet.html",
@@ -63,46 +63,270 @@
     "text": "Area Mode Basic Transmission Loss (CR)\n// define link parameters\ndouble f__mhz = 5000;                      // MHz\ndouble h_tx__meter = 10;                   // meters, AGL\ndouble h_rx__meter = 5;                    // meters, AGL\ndouble N_0 = 301;                          // N-Units\ndouble epsilon = 15;                       // average ground\ndouble sigma = 0.005;                      // average ground\ndouble d__km = 100;                        // km\ndouble delta_h__meter = 40;                // meter\nvar tx_site_criteria = ITM.SitingCriteria.Careful;\nvar rx_site_criteria = ITM.SitingCriteria.Careful;\nvar climate = ITM.Climate.ContinentalTemperate;\nvar pol = ITM.Polarization.Horizontal;\n\n// define variability parameters\nint mdvar = 13;\ndouble confidence = 50;                    // median\ndouble reliability = 50;                   // median\n\n// call ITM\nint rtn = ITM.ITM_AREA_CR_Ex(h_tx__meter, h_rx__meter,\n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter,\n    climate, N_0, f__mhz, pol, epsilon, sigma, mdvar,\n    confidence, reliability, out double A__db,\n    out ITM.Warnings warnings, out ITM.IntermediateValues ivals);\n// rtn = 0                                 // no errors\n// A__db = 205.7474                        // basic transmission loss, in dB\n// warnings = 0                            // no warnings\n\n// can use the intermediate values object to access additional information\n// from the ITM prediction\nConsole.WriteLine($\"The mode of propagation is {ivals.Mode}\");\nConsole.WriteLine($\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\");\nConsole.WriteLine($\"The free space basic transmission loss is {ivals.A_fs__db} dB.\");\n// The mode of propagation is Troposcatter\n// The effective height of the TX is 13.032653 meters.\n// The free space basic transmission loss is 146.429400 dB."
   },
   {
-    "objectID": "models/ITM/index.html",
-    "href": "models/ITM/index.html",
-    "title": "Irregular Terrain Model (ITM)",
+    "objectID": "models/ITM/python.html",
+    "href": "models/ITM/python.html",
+    "title": "Irregular Terrain Model (ITM) – Python",
     "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nA description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the public GitHub repo."
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
   },
   {
-    "objectID": "models/ITM/index.html#getting-started",
-    "href": "models/ITM/index.html#getting-started",
-    "title": "Irregular Terrain Model (ITM)",
+    "objectID": "models/ITM/python.html#getting-started",
+    "href": "models/ITM/python.html#getting-started",
+    "title": "Irregular Terrain Model (ITM) – Python",
+    "section": "Getting Started",
+    "text": "Getting Started\n\n\n\n\n\n\nPackage Not Yet Available\n\n\n\nThis package is not yet being publicly distributed. Check back later, or contact code@ntia.gov.\n\n\n\nDependencies\nThe itm package requires numpy.\n\n\nInstalling Package\nUse the following command to install itm from the local pip repo:\npip install itm --no-index --find-links file://itsfs01/Tools/Python/pip\nImporting itm is as simple as including the following in your .py file:\nimport itm"
+  },
+  {
+    "objectID": "models/ITM/python.html#documentation",
+    "href": "models/ITM/python.html#documentation",
+    "title": "Irregular Terrain Model (ITM) – Python",
+    "section": "Documentation",
+    "text": "Documentation\nAll itm functions contain built-in docstring help. This means that if your python development editor supports it, it can provide you with assistance on information such as function description, parameter types and descriptions, and return details.\nThis also means that help() is supported in the console to provide information."
+  },
+  {
+    "objectID": "models/ITM/python.html#site-specific-basic-transmission-loss-tls",
+    "href": "models/ITM/python.html#site-specific-basic-transmission-loss-tls",
+    "title": "Irregular Terrain Model (ITM) – Python",
+    "section": "Site Specific Basic Transmission Loss (TLS)",
+    "text": "Site Specific Basic Transmission Loss (TLS)\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 3500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_TLS(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, \n    time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 105.85899333756423) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 103.33136088700552 dB."
+  },
+  {
+    "objectID": "models/ITM/python.html#site-specific-basic-transmission-loss-cr",
+    "href": "models/ITM/python.html#site-specific-basic-transmission-loss-cr",
+    "title": "Irregular Terrain Model (ITM) – Python",
+    "section": "Site Specific Basic Transmission Loss (CR)",
+    "text": "Site Specific Basic Transmission Loss (CR)\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 1500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\nconfidence = 50                     # median\nreliability = 50                    # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_CR(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, \n    reliability)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 99.97444366973738)  # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 95.97182518111363 dB."
+  },
+  {
+    "objectID": "models/ITM/python.html#area-mode-basic-transmission-loss-tls",
+    "href": "models/ITM/python.html#area-mode-basic-transmission-loss-tls",
+    "title": "Irregular Terrain Model (ITM) – Python",
+    "section": "Area Mode Basic Transmission Loss (TLS)",
+    "text": "Area Mode Basic Transmission Loss (TLS)\n# define link parameters\nf__mhz = 1500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nd__km = 100                         # km\ndelta_h__meter = 40                 # meter\ntx_site_criteria = itm.SitingCriteria.Careful\nrx_site_criteria = itm.SitingCriteria.Careful\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_AREA_TLS(h_tx__meter, h_rx__meter, \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, \n    N_0, f__mhz, pol, epsilon, sigma, mdvar, time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 191.02659749297175) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is Troposcatter\n# The effective height of the TX is 13.032653298563167 meters.\n# The free space basic transmission loss is 135.97182518111362 dB."
+  },
+  {
+    "objectID": "models/ITM/python.html#area-mode-basic-transmission-loss-cr",
+    "href": "models/ITM/python.html#area-mode-basic-transmission-loss-cr",
+    "title": "Irregular Terrain Model (ITM) – Python",
+    "section": "Area Mode Basic Transmission Loss (CR)",
+    "text": "Area Mode Basic Transmission Loss (CR)\n# define link parameters\nf__mhz = 5000                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nd__km = 100                         # km\ndelta_h__meter = 40                 # meter\ntx_site_criteria = itm.SitingCriteria.Careful\nrx_site_criteria = itm.SitingCriteria.Careful\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\nconfidence = 50                     # median\nreliability = 50                    # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_AREA_CR(h_tx__meter, h_rx__meter, \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, \n    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 205.7473567880463)  # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is Troposcatter\n# The effective height of the TX is 13.032653298563167 meters.\n# The free space basic transmission loss is 146.42940008672036 dB."
+  },
+  {
+    "objectID": "models/P2108/index.html",
+    "href": "models/P2108/index.html",
+    "title": "ITU-R P.2108",
+    "section": "",
+    "text": "Recommendation ITU-R P.2108 Prediction of clutter loss contains three methods for the prediction of clutter loss: the Height Gain Terminal Correction Model, Terrestrial Statistical Model, and Aeronautical Statistical Model [1, Secs. 3.1–3.3]. This software implements each of the three models."
+  },
+  {
+    "objectID": "models/P2108/index.html#getting-started",
+    "href": "models/P2108/index.html#getting-started",
+    "title": "ITU-R P.2108",
     "section": "Getting Started",
     "text": "Getting Started\nThis page documents the inputs, outputs, and primary functions of this software in a language-agnostic way. Language-specific documentation is additionally provided for this library. The pages linked below include installation instructions as well as usage examples for each supported language.\nC++ C#/.NET MATLAB Python"
   },
   {
-    "objectID": "models/ITM/index.html#point-to-point-basic-transmission-loss-tls",
-    "href": "models/ITM/index.html#point-to-point-basic-transmission-loss-tls",
-    "title": "Irregular Terrain Model (ITM)",
-    "section": "Point-to-Point Basic Transmission Loss (TLS)",
-    "text": "Point-to-Point Basic Transmission Loss (TLS)\nGenerate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as time, location, and situation percentages.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/index.html#model-selection",
+    "href": "models/P2108/index.html#model-selection",
+    "title": "ITU-R P.2108",
+    "section": "Model Selection",
+    "text": "Model Selection\nSelection and use of the appropriate model is required to obtain meaningful outputs. Refer to Table 1 from [1, Sec. 2] for a summary of the applicable scenarios for each model. Further details about the applicability and assumptions of each of the P.2108 models are available in the sections of the Recommendation in which they are described."
   },
   {
-    "objectID": "models/ITM/index.html#point-to-point-basic-transmission-loss-cr",
-    "href": "models/ITM/index.html#point-to-point-basic-transmission-loss-cr",
-    "title": "Irregular Terrain Model (ITM)",
-    "section": "Point-to-Point Basic Transmission Loss (CR)",
-    "text": "Point-to-Point Basic Transmission Loss (CR)\nGenerate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as confidence and reliability percentages.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/index.html#functions",
+    "href": "models/P2108/index.html#functions",
+    "title": "ITU-R P.2108",
+    "section": "Functions",
+    "text": "Functions\n\nHeight Gain Terminal Correction Model\nThe height gain terminal correction model is described in [1, Sec. 3.1]. This model calculates an additional loss, \\(A_h\\), which can be added to the basic transmission loss of a path calculated above the clutter. Therefore basic transmission loss should be calculated to/from the height of the representative clutter height used. This model can be applied to both transmitting and receiving ends of the path.\n\n\n\nTable 1: Inputs for the height gain terminal correction model\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nType\nUnits\nLimits\nDescription\n\n\n\n\nf__ghz\ndouble\nGHz\n\\(0.03 \\leq f \\leq 3\\)\nFrequency\n\n\nh__meter\ndouble\nmeter\n\\(0 \\leq h\\)\nAntenna height\n\n\nw_s__meter\ndouble\nmeter\n\\(0 &lt; w_s\\)\nStreet width\n\n\nR__meter\ndouble\nmeter\n\\(0 &lt; R\\)\nRepresentative clutter height\n\n\nclutter_type\nClutterType enum\nN/A\nenum\nSee Table 2\n\n\n\n\n\n\nThe values for \\(w_s\\) and \\(R\\) should be set based upon local information. If local information is not available, [1, Sec. 3.1.1] defines appropriate default values: \\(w_s=27\\) and a set of values for \\(R\\) based on the clutter type, which are reproduced in Table 2. This table also provides the integer values mapped to each clutter type in the enumeration objects are provided by the software for ease of use.\n\n\n\nTable 2: Clutter types for the [1, Sec. 3.1] model\n\n\n\n\n\nClutter Type\nEnum Value\nDefault \\(R\\) (m)\n\n\n\n\nWater/sea\n1\n10\n\n\nOpen/rural\n2\n10\n\n\nSuburban\n3\n10\n\n\nUrban\n4\n15\n\n\nTrees/forest\n5\n15\n\n\nDense urban\n6\n20\n\n\n\n\n\n\n\nExamples\nLanguage-specific code examples showing the use of this function are available by following these links:\nC++ C#/.NET MATLAB Python\n\n\n\nTerrestrial Statistical Model\nThe terrestrial statistical model is described in [1, Sec. 3.2]. The model can be applied for urban and suburban environments provided terminal heights are well below the clutter height. The correction produced by this model can be applied at one terminal, or, if the path length is at least 1 km, at both terminals.\nThis model calculates an additional loss, \\(L_{ctt}\\), which can be added to the transmission loss or basic transmission loss. As this is a statistical model, the term \\(L_{ctt}\\) is the clutter loss not exceeded for \\(p\\) percent of locations for a terrestial path of length \\(d\\). If the transmission loss or basic transmission loss has been calculated using a model that inherently accounts for clutter over the entire path then this model should not be applied.\n\n\n\nTable 3: Inputs for the terrestrial statistical model\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nType\nUnits\nLimits\nDescription\n\n\n\n\nf__ghz\ndouble\nGHz\n\\(0.5 \\leq f \\leq 67\\)\nFrequency\n\n\nd__km\ndouble\nkm\n\\(0.25 \\leq d\\)\nPath distance. Must be \\(\\geq 1\\) km to apply the correction at both ends of the path.\n\n\np\ndouble\n%\n\\(0 &lt; p &lt; 100\\)\nPercentage of locations at which predicted clutter loss will not be exceeded\n\n\n\n\n\n\n\nExamples\nLanguage-specific code examples showing the use of this function are available by following these links:\nC++ C#/.NET MATLAB Python\n\n\n\nAeronautical Statistical Model\nThe Earth-space and aeronautical statistical clutter loss model is described in [1, Sec. 3.3]. This model is applicable when one terminal is within man-made clutter and the other is a satellite, aeroplane, or other platform above the surface of the Earth. The model is applicable to urban and suburban clutter environments.\nThis model calculates an additional loss, \\(L_{ces}\\), which can be added to the basic transmission loss of a path calculated. As this is a statistical model, the term \\(L_{ces}\\) is the clutter loss not exceeded for \\(p\\) percent of locations.\nThe method used to develop this model is described in [2].\n\n\n\nTable 4: Inputs for the aeronautical statistical model\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nType\nUnits\nLimits\nDescription\n\n\n\n\nf__ghz\ndouble\nGHz\n\\(10 \\leq f \\leq 100\\)\nFrequency\n\n\ntheta__deg\ndouble\ndegree\n\\(0 \\leq \\theta \\leq 90\\)\nElevation angle\n\n\np\ndouble\n%\n\\(0 &lt; p &lt; 100\\)\nPercentage of locations at which predicted clutter loss will not be exceeded\n\n\n\n\n\n\n\nExamples\nLanguage-specific code examples showing the use of this function are available by following these links:\nC++ C#/.NET MATLAB Python"
   },
   {
-    "objectID": "models/ITM/index.html#area-mode-basic-transmission-loss-tls",
-    "href": "models/ITM/index.html#area-mode-basic-transmission-loss-tls",
-    "title": "Irregular Terrain Model (ITM)",
-    "section": "Area Mode Basic Transmission Loss (TLS)",
-    "text": "Area Mode Basic Transmission Loss (TLS)\nGenerate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as time, location, and situation percentages.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/matlab.html",
+    "href": "models/P2108/matlab.html",
+    "title": "ITU-R P.2108 – MATLAB",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
   },
   {
-    "objectID": "models/ITM/index.html#area-mode-basic-transmission-loss-cr",
-    "href": "models/ITM/index.html#area-mode-basic-transmission-loss-cr",
-    "title": "Irregular Terrain Model (ITM)",
-    "section": "Area Mode Basic Transmission Loss (CR)",
-    "text": "Area Mode Basic Transmission Loss (CR)\nGenerate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as confidence and reliability percentages.\nExample: C# | MATLAB | Python"
+    "objectID": "models/P2108/matlab.html#getting-started",
+    "href": "models/P2108/matlab.html#getting-started",
+    "title": "ITU-R P.2108 – MATLAB",
+    "section": "Getting Started",
+    "text": "Getting Started\n\n\n\n\n\n\nPackage Not Yet Available\n\n\n\nThis package is not yet being publicly distributed. Check back later, or contact code@ntia.gov."
+  },
+  {
+    "objectID": "models/P2108/matlab.html#documentation",
+    "href": "models/P2108/matlab.html#documentation",
+    "title": "ITU-R P.2108 – MATLAB",
+    "section": "Documentation",
+    "text": "Documentation\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "models/P2108/matlab.html#height-gain-terminal-correction-model",
+    "href": "models/P2108/matlab.html#height-gain-terminal-correction-model",
+    "title": "ITU-R P.2108 – MATLAB",
+    "section": "Height Gain Terminal Correction Model",
+    "text": "Height Gain Terminal Correction Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "models/P2108/matlab.html#terrestrial-statistical-model",
+    "href": "models/P2108/matlab.html#terrestrial-statistical-model",
+    "title": "ITU-R P.2108 – MATLAB",
+    "section": "Terrestrial Statistical Model",
+    "text": "Terrestrial Statistical Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "models/P2108/matlab.html#aeronautical-statistical-model",
+    "href": "models/P2108/matlab.html#aeronautical-statistical-model",
+    "title": "ITU-R P.2108 – MATLAB",
+    "section": "Aeronautical Statistical Model",
+    "text": "Aeronautical Statistical Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "about.html#the-nations-spectrum-and-communications-lab",
+    "href": "about.html#the-nations-spectrum-and-communications-lab",
+    "title": "About",
+    "section": "The Nation’s Spectrum and Communications Lab",
+    "text": "The Nation’s Spectrum and Communications Lab\nThe Institute for Telecommunication Sciences (ITS) is the research and engineering laboratory of the National Telecommunications and Information Administration (NTIA), an agency of the U.S. Department of Commerce (DOC). ITS basic research in radio science provides the technical foundation for NTIA’s policy development and spectrum management activities and enhances scientific knowledge and understanding in cutting-edge areas of telecommunications technology. ITS also addresses other federal agencies’ telecommunications and spectrum research needs via Interagency Agreements (IAAs) and engages directly with industry and academia via Cooperative Research and Development Agreements (CRADAs).\nMore information about the role of ITS can be found on our website."
+  },
+  {
+    "objectID": "about.html#a-pioneer-in-propagation-software",
+    "href": "about.html#a-pioneer-in-propagation-software",
+    "title": "About",
+    "section": "A Pioneer in Propagation Software",
+    "text": "A Pioneer in Propagation Software\nIn the 1960s and 1970s, the first wave of ITS-developed computer programs for propagation prediction was published. Perhaps the most famous and influential was Anita G. Longley and Philip L. Rice’s “Prediction of Tropospheric Radio Transmission Loss Over Irregular Terrain: A Computer Method - 1968” [1]. The technical report provided the mathematical algorithms, flow charts, and logic used to develop the code, and the FORTRAN code was printed out in an Annex. The Longley-Rice model, which is more commonly referred to as the Irregular Terrain Model or ITM, is a general purpose model that can be applied to a large variety of engineering problems to predict propagation for radio frequencies between 20 MHz and 20 GHz, and is still in widespread use today. Since that time, ITS has continued to develop and refine computer programs for propagation prediction based on electromagnetic theory and on statistical analyses of both terrain features and radio measurements. The iterative cycle of modeling and measurement, with constant reference to first principles, produced models that are highly regarded. At the beginning of the 21st Century, ITS embarked on a systematic program of updating these software implementations. Today, ITS continues to develop and publish open-source propagation model software implementations at the NTIA GitHub Repository. There, too, ITS provides other open-source software tools used in our research. The ITS Open Source Software list provides direct links to individual repositories. Legacy FORTRAN implementations of ITS propagation models are no longer maintained, but can be found on the ITS website here."
+  },
+  {
+    "objectID": "LICENSE.html",
+    "href": "LICENSE.html",
+    "title": "SOFTWARE DISCLAIMER / RELEASE",
+    "section": "",
+    "text": "SOFTWARE DISCLAIMER / RELEASE\nThis software was developed by employees of the National Telecommunications and Information Administration (NTIA), an agency of the Federal Government and is provided to you as a public service. Pursuant to Title 15 United States Code Section 105, works of NTIA employees are not subject to copyright protection within the United States.\nThe software is provided by NTIA “AS IS.” NTIA MAKES NO WARRANTY OF ANY KIND, EXPRESS, IMPLIED OR STATUTORY, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT AND DATA ACCURACY. NTIA does not warrant or make any representations regarding the use of the software or the results thereof, including but not limited to the correctness, accuracy, reliability or usefulness of the software.\nTo the extent that NTIA holds rights in countries other than the United States, you are hereby granted the non-exclusive irrevocable and unconditional right to print, publish, prepare derivative works and distribute the NTIA software, in any medium, or authorize others to do so on your behalf, on a royalty-free basis throughout the World.\nYou may improve, modify, and create derivative works of the software or any portion of the software, and you may copy and distribute such modifications or works. Modified works should carry a notice stating that you changed the software and should note the date and nature of any such change.\nYou are solely responsible for determining the appropriateness of using and distributing the software and you assume all risks associated with its use, including but not limited to the risks and costs of program errors, compliance with applicable laws, damage to or loss of data, programs or equipment, and the unavailability or interruption of operation. This software is not intended to be used in any situation where a failure could cause risk of injury or damage to property.\nPlease provide appropriate acknowledgments of NTIA’s creation of the software in any copies or derivative works of this software."
+  },
+  {
+    "objectID": "CONTRIBUTING.html",
+    "href": "CONTRIBUTING.html",
+    "title": "ITS Propagation Library Wiki Contribution Guide",
+    "section": "",
+    "text": "Thank you for your interest in contributing to this wiki. This document was adapted from GitHub’s own, and provides guidelines and helpful links.\nIn this guide you will get an overview of the contribution workflow from opening an issue, creating a PR, reviewing, and merging the PR. The workflow we recommend and describe here follows from best and common practices in the Git and GitHub ecosystems. We aim to leverage this workflow, especially the elements of code review and approval, to enable open source development of a robust, high quality wiki for the ITS Propagation Library.\n\n\nHere are some resources to help you get started with open source contributions:\n\nSet up Git\nGitHub flow\nCollaborating with pull requests\n\n\n\n\n\n\n\n\nIf you spot a problem with the wiki, search if an issue already exists. If a related issue doesn’t exist, we encourage you to open one (even if you don’t plan to contribute a resolution yourself). Issues may be opened for content requests, typos, erroneous content, or anything else which you think should be changed.\n\n\n\nScan through our existing issues to find one that interests you. You can narrow down the search using labels as filters. You may wish to comment on the issue to let others know if you plan to resolve it with a pull request.\n\n\n\n\n\nFork the repository.\n\nUsing GitHub Desktop:\n\nGetting started with GitHub Desktop will guide you through setting up Desktop.\nOnce Desktop is set up, you can use it to fork the repo!\n\nUsing the command line:\n\nFork the repo so that you can make your changes without affecting the original project until you’re ready to merge them.\n\n\nInstall and set up Quarto by following their guide.\nCreate a working branch and start with your changes! Use Quarto to preview how the changes will render when the site is deployed.\n\n\n\n\nCommit the changes once you are happy with them.\n\n\n\nWhen you’re finished with the changes, create a pull request, also known as a PR.\n\nWrite a meaningful description of the changes you’ve made.\nDon’t forget to link PR to issue if you are solving one.\nEnable the checkbox to allow maintainer edits so the branch can be updated for a merge. Once you submit your PR, a Docs team member will review your proposal. We may ask questions or request additional information.\nWe may ask for changes to be made before a PR can be merged, either using suggested changes or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.\nAs you update your PR and apply changes, mark each conversation as resolved.\nIf you run into any merge issues, checkout this git tutorial to help you resolve merge conflicts and other issues.\n\n\n\n\nWhen your PR is approved and merged, your changes will automatically be deployed to the live wiki site."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#background-for-new-contributors",
+    "href": "CONTRIBUTING.html#background-for-new-contributors",
+    "title": "ITS Propagation Library Wiki Contribution Guide",
+    "section": "",
+    "text": "Here are some resources to help you get started with open source contributions:\n\nSet up Git\nGitHub flow\nCollaborating with pull requests"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#getting-started",
+    "href": "CONTRIBUTING.html#getting-started",
+    "title": "ITS Propagation Library Wiki Contribution Guide",
+    "section": "",
+    "text": "If you spot a problem with the wiki, search if an issue already exists. If a related issue doesn’t exist, we encourage you to open one (even if you don’t plan to contribute a resolution yourself). Issues may be opened for content requests, typos, erroneous content, or anything else which you think should be changed.\n\n\n\nScan through our existing issues to find one that interests you. You can narrow down the search using labels as filters. You may wish to comment on the issue to let others know if you plan to resolve it with a pull request.\n\n\n\n\n\nFork the repository.\n\nUsing GitHub Desktop:\n\nGetting started with GitHub Desktop will guide you through setting up Desktop.\nOnce Desktop is set up, you can use it to fork the repo!\n\nUsing the command line:\n\nFork the repo so that you can make your changes without affecting the original project until you’re ready to merge them.\n\n\nInstall and set up Quarto by following their guide.\nCreate a working branch and start with your changes! Use Quarto to preview how the changes will render when the site is deployed.\n\n\n\n\nCommit the changes once you are happy with them.\n\n\n\nWhen you’re finished with the changes, create a pull request, also known as a PR.\n\nWrite a meaningful description of the changes you’ve made.\nDon’t forget to link PR to issue if you are solving one.\nEnable the checkbox to allow maintainer edits so the branch can be updated for a merge. Once you submit your PR, a Docs team member will review your proposal. We may ask questions or request additional information.\nWe may ask for changes to be made before a PR can be merged, either using suggested changes or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.\nAs you update your PR and apply changes, mark each conversation as resolved.\nIf you run into any merge issues, checkout this git tutorial to help you resolve merge conflicts and other issues.\n\n\n\n\nWhen your PR is approved and merged, your changes will automatically be deployed to the live wiki site."
+  },
+  {
+    "objectID": "models/P2108/python.html",
+    "href": "models/P2108/python.html",
+    "title": "ITU-R P.2108 – Python",
+    "section": "",
+    "text": "This page details the installation and usage of the Python version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.\nThe home page for this model contains language-agnostic background and usage information for the routines implemented by this software, and provides links to additional documentation for implementations in other programming languages.\nModel Home"
+  },
+  {
+    "objectID": "models/P2108/python.html#installation",
+    "href": "models/P2108/python.html#installation",
+    "title": "ITU-R P.2108 – Python",
+    "section": "Installation",
+    "text": "Installation\n\n\n\n\n\n\nPackage Not Yet Available\n\n\n\nThis package is not yet being publicly distributed. Check back later, or contact code@ntia.gov.\n\n\nThe following code snippet shows how to import the package and check the installed version:\nfrom ITS.ITU.PSeries import P2108\nprint(P2108.__version__)\nThis package has no external Python dependencies."
+  },
+  {
+    "objectID": "models/P2108/python.html#documentation",
+    "href": "models/P2108/python.html#documentation",
+    "title": "ITU-R P.2108 – Python",
+    "section": "Documentation",
+    "text": "Documentation\nAll functions and/or objects provided by this Python package contain built-in docstring help. This means that your Python development editor should be able to provide you with assistance on information such as function description, parameter types and descriptions, and return details. Regardless of your editor, you can always use Python’s help() function in the console to provide information. For example:\nhelp(P2108.TerrestrialStatisticalModel)"
+  },
+  {
+    "objectID": "models/P2108/python.html#examples",
+    "href": "models/P2108/python.html#examples",
+    "title": "ITU-R P.2108 – Python",
+    "section": "Examples",
+    "text": "Examples\nThe following code examples show how each of the three models from Recommendation ITU-R P.2108 can be called from Python.\n\nHeight Gain Terminal Correction Model\n# define inputs\nf__ghz = 1          # Frequency, in GHz\nh__meter = 1.5      # Antenna height, in meters\nw_s__meter = 27     # Street width, in meters\nR__meter = 20       # Representative clutter height, in meters\nclutter_type = 6    # Clutter type, enum\n\n# Call height gain terminal correction model (P.2108 Section 3.1)\nA_h__db = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)\nassert(A_h__db == 8.769394261533549)\n\n# can also use clutter type IntEnum\nclutter_type = P2108.ClutterType.DenseUrban\n\n# call clutter model\nA_h__db = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)\nassert(A_h__db == 8.769394261533549)\n\n\nTerrestrial Statistical Model\n# define inputs\nf__ghz = 3          # Frequency, in GHz\nd__km = 0.5         # Path distance, in km\np = 50              # Percentage of locations, in %\n\n# call terrestrial statistical model\nL_ctt__db = P2108.TerrestrialStatisticalModel(f__ghz, d__km, p)\nassert(L_ctt__db == 26.10075036783342)\n\n\nAeronautical Statistical Model\n# define inputs\nf__ghz = 15         # Frequency, in GHz\ntheta__deg = 10     # Elevation angle, in degrees\np = 50              # Percentage of locations, in %\n\n# call clutter model\nL_ces__db = P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p)\nassert(L_ces__db == 14.333686040067786)"
+  },
+  {
+    "objectID": "models/P2108/dotnet.html",
+    "href": "models/P2108/dotnet.html",
+    "title": "ITU-R P.2108 – C#/.NET",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "models/P2108/dotnet.html#getting-started",
+    "href": "models/P2108/dotnet.html#getting-started",
+    "title": "ITU-R P.2108 – C#/.NET",
+    "section": "Getting Started",
+    "text": "Getting Started\n\n\n\n\n\n\nPackage Not Yet Available\n\n\n\nThis package is not yet being publicly distributed. Check back later, or contact code@ntia.gov."
+  },
+  {
+    "objectID": "models/P2108/dotnet.html#documentation",
+    "href": "models/P2108/dotnet.html#documentation",
+    "title": "ITU-R P.2108 – C#/.NET",
+    "section": "Documentation",
+    "text": "Documentation\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "models/P2108/dotnet.html#height-gain-terminal-correction-model",
+    "href": "models/P2108/dotnet.html#height-gain-terminal-correction-model",
+    "title": "ITU-R P.2108 – C#/.NET",
+    "section": "Height Gain Terminal Correction Model",
+    "text": "Height Gain Terminal Correction Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "models/P2108/dotnet.html#terrestrial-statistical-model",
+    "href": "models/P2108/dotnet.html#terrestrial-statistical-model",
+    "title": "ITU-R P.2108 – C#/.NET",
+    "section": "Terrestrial Statistical Model",
+    "text": "Terrestrial Statistical Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "models/P2108/dotnet.html#aeronautical-statistical-model",
+    "href": "models/P2108/dotnet.html#aeronautical-statistical-model",
+    "title": "ITU-R P.2108 – C#/.NET",
+    "section": "Aeronautical Statistical Model",
+    "text": "Aeronautical Statistical Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+  },
+  {
+    "objectID": "models/P2108/cpp.html",
+    "href": "models/P2108/cpp.html",
+    "title": "ITU-R P.2108 – C++",
+    "section": "",
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThis page details the installation and usage of the C++ version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.\nThe home page for this model contains language-agnostic background and usage information for the routines implemented by this software, and provides links to additional documentation for implementations in other programming languages.\nModel Home"
+  },
+  {
+    "objectID": "models/P2108/cpp.html#installation",
+    "href": "models/P2108/cpp.html#installation",
+    "title": "ITU-R P.2108 – C++",
+    "section": "Installation",
+    "text": "Installation\n\n\n\n\n\n\nPackage Not Yet Available\n\n\n\nThis package is not yet being publicly distributed. Check back later, or contact code@ntia.gov.\n\n\nTo use the C++ library in your code, you’ll need to download the dynamic library (.dll on Windows, .dylib on macOS, or .so on Linux) and the header file. These are distributed for each platform as part of the GitHub Releases starting with v1.0. Prior to v1.0, support was only provided for Windows platforms.\nTo use the dynamic library in your project, you’ll need to link against it. The details for this process differ depending on your compiler and/or IDE, but generally you will need to somehow provide the path to the files you downloaded from the GitHub release.\nOnce you’ve linked the dynamic library to your project, all you need to do is include the appropriate header file and, optionally, use its namespace:\n#include \"P2108.h\"\n\nusing namespace ITS::ITU::PSeries:P2108;  // Optional: makes later code more concise\nThis library has no external C++ dependencies."
+  },
+  {
+    "objectID": "models/P2108/cpp.html#documentation",
+    "href": "models/P2108/cpp.html#documentation",
+    "title": "ITU-R P.2108 – C++",
+    "section": "Documentation",
+    "text": "Documentation\nAll functions and/or objects provided by this C++ library are documented using Doxygen. These auto-generated documentation pages constitute an API reference which documents any available functions, classes, structs, etc. For functions, the documentation details the input, output, and return types and describes all parameters. Visit the C++ API reference documentation site using the button below.\nDocs"
+  },
+  {
+    "objectID": "models/P2108/cpp.html#examples",
+    "href": "models/P2108/cpp.html#examples",
+    "title": "ITU-R P.2108 – C++",
+    "section": "Examples",
+    "text": "Examples\nThe following code examples show how each of the three models from Recommendation ITU-R P.2108 can be called from Python.\n\nHeight Gain Terminal Correction Model\n#include \"P2108.h\"\nusing namespace ITS::ITU::PSeries;\n\nint main() {\n    // Define inputs\n    double f__ghz = 1;                       // Frequency, in GHz\n    double h__meter = 1.5;                   // Antenna height, in meters\n    double w_s__meter = 27;                  // Street width, in meters\n    double R__meter = 20;                    // Representative clutter height, in meters\n    P2108::ClutterType clutter_type = DENSE_URBAN;  // Clutter type, enum\n\n    // Create variables to store outputs\n    double A_h__db;  // Predicted additional loss, in dB\n    int rtn;         // Return code\n\n    // Call height gain terminal correction model (P.2108 Section 3.1)\n    rtn = P2108::HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type, &A_h__db);\n\n    // rtn is 0 (SUCCESS)\n    // A_h__dB is approx. 8.8 dB\n}\n\n\nTerrestrial Statistical Model\n#include \"P2108.h\"\nusing namespace ITS::ITU::PSeries;\n\nint main() {\n    // Define inputs\n    double f__ghz = 3;   // Frequency, in GHz\n    double d__km = 0.5;  // Path distance, in km\n    double p = 50;       // Percentage of locations, in %\n\n    // Create variables to store outputs\n    double L_ctt__db;  // Predicted additional loss, in dB\n    int rtn;           // Return code\n\n    // Call terrestrial statistical model (P.2108 Section 3.2)\n    rtn = P2108::TerrestrialStatisticalModel(f__ghz, d__km, p, &L_ctt__db);\n\n    // rtn is 0 (SUCCESS)\n    // L_ctt__db is approx. 26.1 dB\n}\n\n\nAeronautical Statistical Model\n#include \"P2108.h\"\nusing namespace ITS::ITU::PSeries;\n\nint main() {\n    // Define inputs\n    double f__ghz = 15;      // Frequency, in GHz\n    double theta__deg = 10;  // Elevation angle, in degrees\n    double p = 50;           // Percentage of locations, in %\n\n    // Create variables to store outputs\n    double L_ces__db;  // Predicted additional loss, in dB\n    int rtn;           // Return code\n\n    // Call aeronautical statistical model (P.2108 Section 3.3)\n    rtn = P2108::AeronauticalStatisticalModel(f__ghz, theta__deg, p, &L_ces__db);\n\n    // rtn is 0 (SUCCESS)\n    // L_ces__db is approx. 14.3 dB\n}"
   },
   {
     "objectID": "models/ITM/matlab.html",
@@ -154,283 +378,59 @@
     "text": "Area Mode Basic Transmission Loss (CR)\n% define link parameters\nf__mhz = 5000;                      % MHz\nh_tx__meter = 10;                   % meters, AGL\nh_rx__meter = 5;                    % meters, AGL\nN_0 = 301;                          % N-Units\nepsilon = 15;                       % average ground\nsigma = 0.005;                      % average ground\nd__km = 100;                        % km\ndelta_h__meter = 40;                % meter\ntx_site_criteria = ITMSitingCriteria.Careful;\nrx_site_criteria = ITMSitingCriteria.Careful;\nclimate = ITMClimate.ContinentalTemperate;\npol = ITMPolarization.Horizontal;\n\n% define variability parameters\nmdvar = 13;\nconfidence = 50;                    % median\nreliability = 50;                   % median\n\n% call ITM\n[rtn, A__db, warnings, ivals] = ITM.ITM_AREA_CR(h_tx__meter, h_rx__meter, ... \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, ...\n    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)\n% rtn = 0                           % no errors\n% A__db = 205.7474                  % basic transmission loss, in dB\n% warnings = 0                      % no warnings\n\n% can use the intermediate values object to access additional information\n% from the ITM prediction\nfprintf('The mode of propagation is %s\\n', ivals.Mode)\nfprintf('The effective height of the TX is %f meters.\\n', ivals.h_e__meter(1))\nfprintf('The free space basic transmission loss is %f dB.\\n', ivals.A_fs__db)\n% The mode of propagation is Troposcatter\n% The effective height of the TX is 13.032653 meters.\n% The free space basic transmission loss is 146.429400 dB."
   },
   {
-    "objectID": "models/P2108/cpp.html",
-    "href": "models/P2108/cpp.html",
-    "title": "ITU-R P.2108 – C++",
+    "objectID": "models/ITM/index.html",
+    "href": "models/ITM/index.html",
+    "title": "Irregular Terrain Model (ITM)",
     "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nThis page details the installation and usage of the C++ version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.\nThe home page for this model contains language-agnostic background and usage information for the routines implemented by this software, and provides links to additional documentation for implementations in other programming languages.\nModel Home"
+    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions.\nA description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the public GitHub repo."
   },
   {
-    "objectID": "models/P2108/cpp.html#installation",
-    "href": "models/P2108/cpp.html#installation",
-    "title": "ITU-R P.2108 – C++",
-    "section": "Installation",
-    "text": "Installation\n\n\n\n\n\n\nPackage Not Yet Available\n\n\n\nThis package is not yet being publicly distributed. Check back later, or contact code@ntia.gov.\n\n\nTo use the C++ library in your code, you’ll need to download the dynamic library (.dll on Windows, .dylib on macOS, or .so on Linux) and the header file. These are distributed for each platform as part of the GitHub Releases starting with v1.0. Prior to v1.0, support was only provided for Windows platforms.\nTo use the dynamic library in your project, you’ll need to link against it. The details for this process differ depending on your compiler and/or IDE, but generally you will need to somehow provide the path to the files you downloaded from the GitHub release.\nOnce you’ve linked the dynamic library to your project, all you need to do is include the appropriate header file and, optionally, use its namespace:\n#include \"P2108.h\"\n\nusing namespace ITS::ITU::PSeries:P2108;  // Optional: makes later code more concise\nThis library has no external C++ dependencies."
-  },
-  {
-    "objectID": "models/P2108/cpp.html#documentation",
-    "href": "models/P2108/cpp.html#documentation",
-    "title": "ITU-R P.2108 – C++",
-    "section": "Documentation",
-    "text": "Documentation\nAll functions and/or objects provided by this C++ library are documented using Doxygen. These auto-generated documentation pages constitute an API reference which documents any available functions, classes, structs, etc. For functions, the documentation details the input, output, and return types and describes all parameters. Visit the C++ API reference documentation site using the button below.\nDocs"
-  },
-  {
-    "objectID": "models/P2108/cpp.html#examples",
-    "href": "models/P2108/cpp.html#examples",
-    "title": "ITU-R P.2108 – C++",
-    "section": "Examples",
-    "text": "Examples\nThe following code examples show how each of the three models from Recommendation ITU-R P.2108 can be called from Python.\n\nHeight Gain Terminal Correction Model\n#include \"P2108.h\"\nusing namespace ITS::ITU::PSeries;\n\nint main() {\n    // Define inputs\n    double f__ghz = 1;                       // Frequency, in GHz\n    double h__meter = 1.5;                   // Antenna height, in meters\n    double w_s__meter = 27;                  // Street width, in meters\n    double R__meter = 20;                    // Representative clutter height, in meters\n    P2108::ClutterType clutter_type = DENSE_URBAN;  // Clutter type, enum\n\n    // Create variables to store outputs\n    double A_h__db;  // Predicted additional loss, in dB\n    int rtn;         // Return code\n\n    // Call height gain terminal correction model (P.2108 Section 3.1)\n    rtn = P2108::HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type, &A_h__db);\n\n    // rtn is 0 (SUCCESS)\n    // A_h__dB is approx. 8.8 dB\n}\n\n\nTerrestrial Statistical Model\n#include \"P2108.h\"\nusing namespace ITS::ITU::PSeries;\n\nint main() {\n    // Define inputs\n    double f__ghz = 3;   // Frequency, in GHz\n    double d__km = 0.5;  // Path distance, in km\n    double p = 50;       // Percentage of locations, in %\n\n    // Create variables to store outputs\n    double L_ctt__db;  // Predicted additional loss, in dB\n    int rtn;           // Return code\n\n    // Call terrestrial statistical model (P.2108 Section 3.2)\n    rtn = P2108::TerrestrialStatisticalModel(f__ghz, d__km, p, &L_ctt__db);\n\n    // rtn is 0 (SUCCESS)\n    // L_ctt__db is approx. 26.1 dB\n}\n\n\nAeronautical Statistical Model\n#include \"P2108.h\"\nusing namespace ITS::ITU::PSeries;\n\nint main() {\n    // Define inputs\n    double f__ghz = 15;      // Frequency, in GHz\n    double theta__deg = 10;  // Elevation angle, in degrees\n    double p = 50;           // Percentage of locations, in %\n\n    // Create variables to store outputs\n    double L_ces__db;  // Predicted additional loss, in dB\n    int rtn;           // Return code\n\n    // Call aeronautical statistical model (P.2108 Section 3.3)\n    rtn = P2108::AeronauticalStatisticalModel(f__ghz, theta__deg, p, &L_ces__db);\n\n    // rtn is 0 (SUCCESS)\n    // L_ces__db is approx. 14.3 dB\n}"
-  },
-  {
-    "objectID": "models/P2108/python.html",
-    "href": "models/P2108/python.html",
-    "title": "ITU-R P.2108 – Python",
-    "section": "",
-    "text": "This page details the installation and usage of the Python version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.\nThe home page for this model contains language-agnostic background and usage information for the routines implemented by this software, and provides links to additional documentation for implementations in other programming languages.\nModel Home"
-  },
-  {
-    "objectID": "models/P2108/python.html#installation",
-    "href": "models/P2108/python.html#installation",
-    "title": "ITU-R P.2108 – Python",
-    "section": "Installation",
-    "text": "Installation\n\n\n\n\n\n\nPackage Not Yet Available\n\n\n\nThis package is not yet being publicly distributed. Check back later, or contact code@ntia.gov.\n\n\nThe following code snippet shows how to import the package and check the installed version:\nfrom ITS.ITU.PSeries import P2108\nprint(P2108.__version__)\nThis package has no external Python dependencies."
-  },
-  {
-    "objectID": "models/P2108/python.html#documentation",
-    "href": "models/P2108/python.html#documentation",
-    "title": "ITU-R P.2108 – Python",
-    "section": "Documentation",
-    "text": "Documentation\nAll functions and/or objects provided by this Python package contain built-in docstring help. This means that your Python development editor should be able to provide you with assistance on information such as function description, parameter types and descriptions, and return details. Regardless of your editor, you can always use Python’s help() function in the console to provide information. For example:\nhelp(P2108.TerrestrialStatisticalModel)"
-  },
-  {
-    "objectID": "models/P2108/python.html#examples",
-    "href": "models/P2108/python.html#examples",
-    "title": "ITU-R P.2108 – Python",
-    "section": "Examples",
-    "text": "Examples\nThe following code examples show how each of the three models from Recommendation ITU-R P.2108 can be called from Python.\n\nHeight Gain Terminal Correction Model\n# define inputs\nf__ghz = 1          # Frequency, in GHz\nh__meter = 1.5      # Antenna height, in meters\nw_s__meter = 27     # Street width, in meters\nR__meter = 20       # Representative clutter height, in meters\nclutter_type = 6    # Clutter type, enum\n\n# Call height gain terminal correction model (P.2108 Section 3.1)\nA_h__db = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)\nassert(A_h__db == 8.769394261533549)\n\n# can also use clutter type IntEnum\nclutter_type = P2108.ClutterType.DenseUrban\n\n# call clutter model\nA_h__db = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)\nassert(A_h__db == 8.769394261533549)\n\n\nTerrestrial Statistical Model\n# define inputs\nf__ghz = 3          # Frequency, in GHz\nd__km = 0.5         # Path distance, in km\np = 50              # Percentage of locations, in %\n\n# call terrestrial statistical model\nL_ctt__db = P2108.TerrestrialStatisticalModel(f__ghz, d__km, p)\nassert(L_ctt__db == 26.10075036783342)\n\n\nAeronautical Statistical Model\n# define inputs\nf__ghz = 15         # Frequency, in GHz\ntheta__deg = 10     # Elevation angle, in degrees\np = 50              # Percentage of locations, in %\n\n# call clutter model\nL_ces__db = P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p)\nassert(L_ces__db == 14.333686040067786)"
-  },
-  {
-    "objectID": "GitHubRepoPublicReleaseApproval.html",
-    "href": "GitHubRepoPublicReleaseApproval.html",
-    "title": "GitHub Repository Public Release Approval",
-    "section": "",
-    "text": "GitHub Repository Public Release Approval\n\nProject Name: OSM Research & Development\n\n\nSoftware Name: NTIA/ITS Propagation Library Wiki\nThe project identified above, which is contained within the repository this document is stored in, has met the following criteria for public release:\n\nThe project, including the test criteria, meets the requirements defined in the ITS Software Development Publication Policy for making a repository public. The major pre-established criteria for publication are listed below, and the check mark next to each attests that the criterion has been met.\n\nSite builds from source and successfully deploys to GitHub Pages\nSite has passed editorial inspection by ITS Publications Office\nDisclaimers are included where applicable to indicate under-development pages, sections, examples, and links.\n\nAny test data necessary for the code to function is included in this GitHub repository.\nThe README.md file is complete.\nThe project complies with the ITS Code Style Guide or an appropriate style guide as agreed to by the sponsor, project lead, or Supervising Division Chief.\nApproved disclaimer and licensing language has been included.\n\nIn order to complete this approval, please create a new branch, upload and commit your version of this Markdown document to that branch, then create a pull request for that branch. The following must login to GitHub and approve that pull request before the pull request can be merged and this repo made public:\n\nProject Lead\nSupervising Division Chief or Release Authority"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "about.html#the-nations-spectrum-and-communications-lab",
-    "href": "about.html#the-nations-spectrum-and-communications-lab",
-    "title": "About",
-    "section": "The Nation’s Spectrum and Communications Lab",
-    "text": "The Nation’s Spectrum and Communications Lab\nThe Institute for Telecommunication Sciences (ITS) is the research and engineering laboratory of the National Telecommunications and Information Administration (NTIA), an agency of the U.S. Department of Commerce (DOC). ITS basic research in radio science provides the technical foundation for NTIA’s policy development and spectrum management activities and enhances scientific knowledge and understanding in cutting-edge areas of telecommunications technology. ITS also addresses other federal agencies’ telecommunications and spectrum research needs via Interagency Agreements (IAAs) and engages directly with industry and academia via Cooperative Research and Development Agreements (CRADAs).\nMore information about the role of ITS can be found on our website."
-  },
-  {
-    "objectID": "about.html#a-pioneer-in-propagation-software",
-    "href": "about.html#a-pioneer-in-propagation-software",
-    "title": "About",
-    "section": "A Pioneer in Propagation Software",
-    "text": "A Pioneer in Propagation Software\nIn the 1960s and 1970s, the first wave of ITS-developed computer programs for propagation prediction was published. Perhaps the most famous and influential was Anita G. Longley and Philip L. Rice’s “Prediction of Tropospheric Radio Transmission Loss Over Irregular Terrain: A Computer Method - 1968” [1]. The technical report provided the mathematical algorithms, flow charts, and logic used to develop the code, and the FORTRAN code was printed out in an Annex. The Longley-Rice model, which is more commonly referred to as the Irregular Terrain Model or ITM, is a general purpose model that can be applied to a large variety of engineering problems to predict propagation for radio frequencies between 20 MHz and 20 GHz, and is still in widespread use today. Since that time, ITS has continued to develop and refine computer programs for propagation prediction based on electromagnetic theory and on statistical analyses of both terrain features and radio measurements. The iterative cycle of modeling and measurement, with constant reference to first principles, produced models that are highly regarded. At the beginning of the 21st Century, ITS embarked on a systematic program of updating these software implementations. Today, ITS continues to develop and publish open-source propagation model software implementations at the NTIA GitHub Repository. There, too, ITS provides other open-source software tools used in our research. The ITS Open Source Software list provides direct links to individual repositories. Legacy FORTRAN implementations of ITS propagation models are no longer maintained, but can be found on the ITS website here."
-  },
-  {
-    "objectID": "LICENSE.html",
-    "href": "LICENSE.html",
-    "title": "SOFTWARE DISCLAIMER / RELEASE",
-    "section": "",
-    "text": "SOFTWARE DISCLAIMER / RELEASE\nThis software was developed by employees of the National Telecommunications and Information Administration (NTIA), an agency of the Federal Government and is provided to you as a public service. Pursuant to Title 15 United States Code Section 105, works of NTIA employees are not subject to copyright protection within the United States.\nThe software is provided by NTIA “AS IS.” NTIA MAKES NO WARRANTY OF ANY KIND, EXPRESS, IMPLIED OR STATUTORY, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT AND DATA ACCURACY. NTIA does not warrant or make any representations regarding the use of the software or the results thereof, including but not limited to the correctness, accuracy, reliability or usefulness of the software.\nTo the extent that NTIA holds rights in countries other than the United States, you are hereby granted the non-exclusive irrevocable and unconditional right to print, publish, prepare derivative works and distribute the NTIA software, in any medium, or authorize others to do so on your behalf, on a royalty-free basis throughout the World.\nYou may improve, modify, and create derivative works of the software or any portion of the software, and you may copy and distribute such modifications or works. Modified works should carry a notice stating that you changed the software and should note the date and nature of any such change.\nYou are solely responsible for determining the appropriateness of using and distributing the software and you assume all risks associated with its use, including but not limited to the risks and costs of program errors, compliance with applicable laws, damage to or loss of data, programs or equipment, and the unavailability or interruption of operation. This software is not intended to be used in any situation where a failure could cause risk of injury or damage to property.\nPlease provide appropriate acknowledgments of NTIA’s creation of the software in any copies or derivative works of this software."
-  },
-  {
-    "objectID": "models/P2108/matlab.html",
-    "href": "models/P2108/matlab.html",
-    "title": "ITU-R P.2108 – MATLAB",
-    "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/P2108/matlab.html#getting-started",
-    "href": "models/P2108/matlab.html#getting-started",
-    "title": "ITU-R P.2108 – MATLAB",
-    "section": "Getting Started",
-    "text": "Getting Started\n\n\n\n\n\n\nPackage Not Yet Available\n\n\n\nThis package is not yet being publicly distributed. Check back later, or contact code@ntia.gov."
-  },
-  {
-    "objectID": "models/P2108/matlab.html#documentation",
-    "href": "models/P2108/matlab.html#documentation",
-    "title": "ITU-R P.2108 – MATLAB",
-    "section": "Documentation",
-    "text": "Documentation\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/P2108/matlab.html#height-gain-terminal-correction-model",
-    "href": "models/P2108/matlab.html#height-gain-terminal-correction-model",
-    "title": "ITU-R P.2108 – MATLAB",
-    "section": "Height Gain Terminal Correction Model",
-    "text": "Height Gain Terminal Correction Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/P2108/matlab.html#terrestrial-statistical-model",
-    "href": "models/P2108/matlab.html#terrestrial-statistical-model",
-    "title": "ITU-R P.2108 – MATLAB",
-    "section": "Terrestrial Statistical Model",
-    "text": "Terrestrial Statistical Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/P2108/matlab.html#aeronautical-statistical-model",
-    "href": "models/P2108/matlab.html#aeronautical-statistical-model",
-    "title": "ITU-R P.2108 – MATLAB",
-    "section": "Aeronautical Statistical Model",
-    "text": "Aeronautical Statistical Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/P2108/index.html",
-    "href": "models/P2108/index.html",
-    "title": "ITU-R P.2108",
-    "section": "",
-    "text": "Recommendation ITU-R P.2108 Prediction of clutter loss contains three methods for the prediction of clutter loss: the Height Gain Terminal Correction Model, Terrestrial Statistical Model, and Aeronautical Statistical Model [1, Secs. 3.1–3.3]. This software implements each of the three models."
-  },
-  {
-    "objectID": "models/P2108/index.html#getting-started",
-    "href": "models/P2108/index.html#getting-started",
-    "title": "ITU-R P.2108",
+    "objectID": "models/ITM/index.html#getting-started",
+    "href": "models/ITM/index.html#getting-started",
+    "title": "Irregular Terrain Model (ITM)",
     "section": "Getting Started",
     "text": "Getting Started\nThis page documents the inputs, outputs, and primary functions of this software in a language-agnostic way. Language-specific documentation is additionally provided for this library. The pages linked below include installation instructions as well as usage examples for each supported language.\nC++ C#/.NET MATLAB Python"
   },
   {
-    "objectID": "models/P2108/index.html#model-selection",
-    "href": "models/P2108/index.html#model-selection",
-    "title": "ITU-R P.2108",
-    "section": "Model Selection",
-    "text": "Model Selection\nSelection and use of the appropriate model is required to obtain meaningful outputs. Refer to Table 1 from [1, Sec. 2] for a summary of the applicable scenarios for each model. Further details about the applicability and assumptions of each of the P.2108 models are available in the sections of the Recommendation in which they are described."
+    "objectID": "models/ITM/index.html#point-to-point-basic-transmission-loss-tls",
+    "href": "models/ITM/index.html#point-to-point-basic-transmission-loss-tls",
+    "title": "Irregular Terrain Model (ITM)",
+    "section": "Point-to-Point Basic Transmission Loss (TLS)",
+    "text": "Point-to-Point Basic Transmission Loss (TLS)\nGenerate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as time, location, and situation percentages.\nExample: C# | MATLAB | Python"
   },
   {
-    "objectID": "models/P2108/index.html#functions",
-    "href": "models/P2108/index.html#functions",
-    "title": "ITU-R P.2108",
-    "section": "Functions",
-    "text": "Functions\n\nHeight Gain Terminal Correction Model\nThe height gain terminal correction model is described in [1, Sec. 3.1]. This model calculates an additional loss, \\(A_h\\), which can be added to the basic transmission loss of a path calculated above the clutter. Therefore basic transmission loss should be calculated to/from the height of the representative clutter height used. This model can be applied to both transmitting and receiving ends of the path.\n\n\n\nTable 1: Inputs for the height gain terminal correction model\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nType\nUnits\nLimits\nDescription\n\n\n\n\nf__ghz\ndouble\nGHz\n\\(0.03 \\leq f \\leq 3\\)\nFrequency\n\n\nh__meter\ndouble\nmeter\n\\(0 \\leq h\\)\nAntenna height\n\n\nw_s__meter\ndouble\nmeter\n\\(0 &lt; w_s\\)\nStreet width\n\n\nR__meter\ndouble\nmeter\n\\(0 &lt; R\\)\nRepresentative clutter height\n\n\nclutter_type\nClutterType enum\nN/A\nenum\nSee Table 2\n\n\n\n\n\n\nThe values for \\(w_s\\) and \\(R\\) should be set based upon local information. If local information is not available, [1, Sec. 3.1.1] defines appropriate default values: \\(w_s=27\\) and a set of values for \\(R\\) based on the clutter type, which are reproduced in Table 2. This table also provides the integer values mapped to each clutter type in the enumeration objects are provided by the software for ease of use.\n\n\n\nTable 2: Clutter types for the [1, Sec. 3.1] model\n\n\n\n\n\nClutter Type\nEnum Value\nDefault \\(R\\) (m)\n\n\n\n\nWater/sea\n1\n10\n\n\nOpen/rural\n2\n10\n\n\nSuburban\n3\n10\n\n\nUrban\n4\n15\n\n\nTrees/forest\n5\n15\n\n\nDense urban\n6\n20\n\n\n\n\n\n\n\nExamples\nLanguage-specific code examples showing the use of this function are available by following these links:\nC++ C#/.NET MATLAB Python\n\n\n\nTerrestrial Statistical Model\nThe terrestrial statistical model is described in [1, Sec. 3.2]. The model can be applied for urban and suburban environments provided terminal heights are well below the clutter height. The correction produced by this model can be applied at one terminal, or, if the path length is at least 1 km, at both terminals.\nThis model calculates an additional loss, \\(L_{ctt}\\), which can be added to the transmission loss or basic transmission loss. As this is a statistical model, the term \\(L_{ctt}\\) is the clutter loss not exceeded for \\(p\\) percent of locations for a terrestial path of length \\(d\\). If the transmission loss or basic transmission loss has been calculated using a model that inherently accounts for clutter over the entire path then this model should not be applied.\n\n\n\nTable 3: Inputs for the terrestrial statistical model\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nType\nUnits\nLimits\nDescription\n\n\n\n\nf__ghz\ndouble\nGHz\n\\(0.5 \\leq f \\leq 67\\)\nFrequency\n\n\nd__km\ndouble\nkm\n\\(0.25 \\leq d\\)\nPath distance. Must be \\(\\geq 1\\) km to apply the correction at both ends of the path.\n\n\np\ndouble\n%\n\\(0 &lt; p &lt; 100\\)\nPercentage of locations at which predicted clutter loss will not be exceeded\n\n\n\n\n\n\n\nExamples\nLanguage-specific code examples showing the use of this function are available by following these links:\nC++ C#/.NET MATLAB Python\n\n\n\nAeronautical Statistical Model\nThe Earth-space and aeronautical statistical clutter loss model is described in [1, Sec. 3.3]. This model is applicable when one terminal is within man-made clutter and the other is a satellite, aeroplane, or other platform above the surface of the Earth. The model is applicable to urban and suburban clutter environments.\nThis model calculates an additional loss, \\(L_{ces}\\), which can be added to the basic transmission loss of a path calculated. As this is a statistical model, the term \\(L_{ces}\\) is the clutter loss not exceeded for \\(p\\) percent of locations.\nThe method used to develop this model is described in [2].\n\n\n\nTable 4: Inputs for the aeronautical statistical model\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nType\nUnits\nLimits\nDescription\n\n\n\n\nf__ghz\ndouble\nGHz\n\\(10 \\leq f \\leq 100\\)\nFrequency\n\n\ntheta__deg\ndouble\ndegree\n\\(0 \\leq \\theta \\leq 90\\)\nElevation angle\n\n\np\ndouble\n%\n\\(0 &lt; p &lt; 100\\)\nPercentage of locations at which predicted clutter loss will not be exceeded\n\n\n\n\n\n\n\nExamples\nLanguage-specific code examples showing the use of this function are available by following these links:\nC++ C#/.NET MATLAB Python"
+    "objectID": "models/ITM/index.html#point-to-point-basic-transmission-loss-cr",
+    "href": "models/ITM/index.html#point-to-point-basic-transmission-loss-cr",
+    "title": "Irregular Terrain Model (ITM)",
+    "section": "Point-to-Point Basic Transmission Loss (CR)",
+    "text": "Point-to-Point Basic Transmission Loss (CR)\nGenerate a basic transmission loss prediction by operating ITM in point-to-point mode. Variabilities are provided as confidence and reliability percentages.\nExample: C# | MATLAB | Python"
   },
   {
-    "objectID": "models/P2108/dotnet.html",
-    "href": "models/P2108/dotnet.html",
-    "title": "ITU-R P.2108 – C#/.NET",
-    "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/P2108/dotnet.html#getting-started",
-    "href": "models/P2108/dotnet.html#getting-started",
-    "title": "ITU-R P.2108 – C#/.NET",
-    "section": "Getting Started",
-    "text": "Getting Started\n\n\n\n\n\n\nPackage Not Yet Available\n\n\n\nThis package is not yet being publicly distributed. Check back later, or contact code@ntia.gov."
-  },
-  {
-    "objectID": "models/P2108/dotnet.html#documentation",
-    "href": "models/P2108/dotnet.html#documentation",
-    "title": "ITU-R P.2108 – C#/.NET",
-    "section": "Documentation",
-    "text": "Documentation\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/P2108/dotnet.html#height-gain-terminal-correction-model",
-    "href": "models/P2108/dotnet.html#height-gain-terminal-correction-model",
-    "title": "ITU-R P.2108 – C#/.NET",
-    "section": "Height Gain Terminal Correction Model",
-    "text": "Height Gain Terminal Correction Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/P2108/dotnet.html#terrestrial-statistical-model",
-    "href": "models/P2108/dotnet.html#terrestrial-statistical-model",
-    "title": "ITU-R P.2108 – C#/.NET",
-    "section": "Terrestrial Statistical Model",
-    "text": "Terrestrial Statistical Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/P2108/dotnet.html#aeronautical-statistical-model",
-    "href": "models/P2108/dotnet.html#aeronautical-statistical-model",
-    "title": "ITU-R P.2108 – C#/.NET",
-    "section": "Aeronautical Statistical Model",
-    "text": "Aeronautical Statistical Model\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/ITM/python.html",
-    "href": "models/ITM/python.html",
-    "title": "Irregular Terrain Model (ITM) – Python",
-    "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
-  },
-  {
-    "objectID": "models/ITM/python.html#getting-started",
-    "href": "models/ITM/python.html#getting-started",
-    "title": "Irregular Terrain Model (ITM) – Python",
-    "section": "Getting Started",
-    "text": "Getting Started\n\n\n\n\n\n\nPackage Not Yet Available\n\n\n\nThis package is not yet being publicly distributed. Check back later, or contact code@ntia.gov.\n\n\n\nDependencies\nThe itm package requires numpy.\n\n\nInstalling Package\nUse the following command to install itm from the local pip repo:\npip install itm --no-index --find-links file://itsfs01/Tools/Python/pip\nImporting itm is as simple as including the following in your .py file:\nimport itm"
-  },
-  {
-    "objectID": "models/ITM/python.html#documentation",
-    "href": "models/ITM/python.html#documentation",
-    "title": "Irregular Terrain Model (ITM) – Python",
-    "section": "Documentation",
-    "text": "Documentation\nAll itm functions contain built-in docstring help. This means that if your python development editor supports it, it can provide you with assistance on information such as function description, parameter types and descriptions, and return details.\nThis also means that help() is supported in the console to provide information."
-  },
-  {
-    "objectID": "models/ITM/python.html#site-specific-basic-transmission-loss-tls",
-    "href": "models/ITM/python.html#site-specific-basic-transmission-loss-tls",
-    "title": "Irregular Terrain Model (ITM) – Python",
-    "section": "Site Specific Basic Transmission Loss (TLS)",
-    "text": "Site Specific Basic Transmission Loss (TLS)\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 3500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_TLS(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, \n    time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 105.85899333756423) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 103.33136088700552 dB."
-  },
-  {
-    "objectID": "models/ITM/python.html#site-specific-basic-transmission-loss-cr",
-    "href": "models/ITM/python.html#site-specific-basic-transmission-loss-cr",
-    "title": "Irregular Terrain Model (ITM) – Python",
-    "section": "Site Specific Basic Transmission Loss (CR)",
-    "text": "Site Specific Basic Transmission Loss (CR)\n# define the terrain profile in PFL format\npfl = [5, 200, 5, 7, 2, 4, 7, 5]\n\n# define link parameters\nf__mhz = 1500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\nconfidence = 50                     # median\nreliability = 50                    # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_P2P_CR(h_tx__meter, h_rx__meter, \n    pfl, climate, N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, \n    reliability)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 99.97444366973738)  # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is LineOfSight\n# The effective height of the TX is 10.222222222222221 meters.\n# The free space basic transmission loss is 95.97182518111363 dB."
-  },
-  {
-    "objectID": "models/ITM/python.html#area-mode-basic-transmission-loss-tls",
-    "href": "models/ITM/python.html#area-mode-basic-transmission-loss-tls",
-    "title": "Irregular Terrain Model (ITM) – Python",
+    "objectID": "models/ITM/index.html#area-mode-basic-transmission-loss-tls",
+    "href": "models/ITM/index.html#area-mode-basic-transmission-loss-tls",
+    "title": "Irregular Terrain Model (ITM)",
     "section": "Area Mode Basic Transmission Loss (TLS)",
-    "text": "Area Mode Basic Transmission Loss (TLS)\n# define link parameters\nf__mhz = 1500                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nd__km = 100                         # km\ndelta_h__meter = 40                 # meter\ntx_site_criteria = itm.SitingCriteria.Careful\nrx_site_criteria = itm.SitingCriteria.Careful\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\ntime = 50                           # median\nlocation = 50                       # median\nsituation = 50                      # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_AREA_TLS(h_tx__meter, h_rx__meter, \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, \n    N_0, f__mhz, pol, epsilon, sigma, mdvar, time, location, situation)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 191.02659749297175) # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is Troposcatter\n# The effective height of the TX is 13.032653298563167 meters.\n# The free space basic transmission loss is 135.97182518111362 dB."
+    "text": "Area Mode Basic Transmission Loss (TLS)\nGenerate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as time, location, and situation percentages.\nExample: C# | MATLAB | Python"
   },
   {
-    "objectID": "models/ITM/python.html#area-mode-basic-transmission-loss-cr",
-    "href": "models/ITM/python.html#area-mode-basic-transmission-loss-cr",
-    "title": "Irregular Terrain Model (ITM) – Python",
+    "objectID": "models/ITM/index.html#area-mode-basic-transmission-loss-cr",
+    "href": "models/ITM/index.html#area-mode-basic-transmission-loss-cr",
+    "title": "Irregular Terrain Model (ITM)",
     "section": "Area Mode Basic Transmission Loss (CR)",
-    "text": "Area Mode Basic Transmission Loss (CR)\n# define link parameters\nf__mhz = 5000                       # MHz\nh_tx__meter = 10                    # meters, AGL\nh_rx__meter = 5                     # meters, AGL\nN_0 = 301                           # N-Units\nepsilon = 15                        # average ground\nsigma = 0.005                       # average ground\nd__km = 100                         # km\ndelta_h__meter = 40                 # meter\ntx_site_criteria = itm.SitingCriteria.Careful\nrx_site_criteria = itm.SitingCriteria.Careful\nclimate = itm.Climate.ContinentalTemperate\npol = itm.Polarization.Horizontal\n\n# define variability parameters\nmdvar = 13\nconfidence = 50                     # median\nreliability = 50                    # median\n\n# call ITM\nrtn, A__db, warnings, ivals = itm.ITM_AREA_CR(h_tx__meter, h_rx__meter, \n    tx_site_criteria, rx_site_criteria, d__km, delta_h__meter, climate, \n    N_0, f__mhz, pol, epsilon, sigma, mdvar, confidence, reliability)\n\nassert(rtn == 0)                    # no errors\nassert(A__db == 205.7473567880463)  # basic transmission loss, in dB\nassert(warnings == 0)               # no warnings\n\n# can use the intermediate values object to access additional information\n# from the ITM prediction\nprint(f\"The mode of propagation is {ivals.mode.name}\")\nprint(f\"The effective height of the TX is {ivals.h_e__meter[0]} meters.\")\nprint(f\"The free space basic transmission loss is {ivals.A_fs__db} dB.\")\n# The mode of propagation is Troposcatter\n# The effective height of the TX is 13.032653298563167 meters.\n# The free space basic transmission loss is 146.42940008672036 dB."
+    "text": "Area Mode Basic Transmission Loss (CR)\nGenerate a basic transmission loss prediction by operating ITM in area mode. Variabilities are provided as confidence and reliability percentages.\nExample: C# | MATLAB | Python"
   },
   {
-    "objectID": "models/ITM/cpp.html",
-    "href": "models/ITM/cpp.html",
-    "title": "Irregular Terrain Model (ITM) – C++",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ITS Propagation Library Wiki",
     "section": "",
-    "text": "Page Under Construction\n\n\n\nThis page is still under construction and has not yet been finalized. Information may be outdated, incorrect, or missing. While this message is visible, contact code@ntia.gov with any questions."
+    "text": "The ITS Propagation Library (“PropLib”) is a collection of open source software developed by ITS, focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, C#/.NET, MATLAB, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements."
   },
   {
-    "objectID": "CONTRIBUTING.html",
-    "href": "CONTRIBUTING.html",
-    "title": "ITS Propagation Library Wiki Contribution Guide",
-    "section": "",
-    "text": "Thank you for your interest in contributing to this wiki. This document was adapted from GitHub’s own, and provides guidelines and helpful links.\nIn this guide you will get an overview of the contribution workflow from opening an issue, creating a PR, reviewing, and merging the PR. The workflow we recommend and describe here follows from best and common practices in the Git and GitHub ecosystems. We aim to leverage this workflow, especially the elements of code review and approval, to enable open source development of a robust, high quality wiki for the ITS Propagation Library.\n\n\nHere are some resources to help you get started with open source contributions:\n\nSet up Git\nGitHub flow\nCollaborating with pull requests\n\n\n\n\n\n\n\n\nIf you spot a problem with the wiki, search if an issue already exists. If a related issue doesn’t exist, we encourage you to open one (even if you don’t plan to contribute a resolution yourself). Issues may be opened for content requests, typos, erroneous content, or anything else which you think should be changed.\n\n\n\nScan through our existing issues to find one that interests you. You can narrow down the search using labels as filters. You may wish to comment on the issue to let others know if you plan to resolve it with a pull request.\n\n\n\n\n\nFork the repository.\n\nUsing GitHub Desktop:\n\nGetting started with GitHub Desktop will guide you through setting up Desktop.\nOnce Desktop is set up, you can use it to fork the repo!\n\nUsing the command line:\n\nFork the repo so that you can make your changes without affecting the original project until you’re ready to merge them.\n\n\nInstall and set up Quarto by following their guide.\nCreate a working branch and start with your changes! Use Quarto to preview how the changes will render when the site is deployed.\n\n\n\n\nCommit the changes once you are happy with them.\n\n\n\nWhen you’re finished with the changes, create a pull request, also known as a PR.\n\nWrite a meaningful description of the changes you’ve made.\nDon’t forget to link PR to issue if you are solving one.\nEnable the checkbox to allow maintainer edits so the branch can be updated for a merge. Once you submit your PR, a Docs team member will review your proposal. We may ask questions or request additional information.\nWe may ask for changes to be made before a PR can be merged, either using suggested changes or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.\nAs you update your PR and apply changes, mark each conversation as resolved.\nIf you run into any merge issues, checkout this git tutorial to help you resolve merge conflicts and other issues.\n\n\n\n\nWhen your PR is approved and merged, your changes will automatically be deployed to the live wiki site."
-  },
-  {
-    "objectID": "CONTRIBUTING.html#background-for-new-contributors",
-    "href": "CONTRIBUTING.html#background-for-new-contributors",
-    "title": "ITS Propagation Library Wiki Contribution Guide",
-    "section": "",
-    "text": "Here are some resources to help you get started with open source contributions:\n\nSet up Git\nGitHub flow\nCollaborating with pull requests"
-  },
-  {
-    "objectID": "CONTRIBUTING.html#getting-started",
-    "href": "CONTRIBUTING.html#getting-started",
-    "title": "ITS Propagation Library Wiki Contribution Guide",
-    "section": "",
-    "text": "If you spot a problem with the wiki, search if an issue already exists. If a related issue doesn’t exist, we encourage you to open one (even if you don’t plan to contribute a resolution yourself). Issues may be opened for content requests, typos, erroneous content, or anything else which you think should be changed.\n\n\n\nScan through our existing issues to find one that interests you. You can narrow down the search using labels as filters. You may wish to comment on the issue to let others know if you plan to resolve it with a pull request.\n\n\n\n\n\nFork the repository.\n\nUsing GitHub Desktop:\n\nGetting started with GitHub Desktop will guide you through setting up Desktop.\nOnce Desktop is set up, you can use it to fork the repo!\n\nUsing the command line:\n\nFork the repo so that you can make your changes without affecting the original project until you’re ready to merge them.\n\n\nInstall and set up Quarto by following their guide.\nCreate a working branch and start with your changes! Use Quarto to preview how the changes will render when the site is deployed.\n\n\n\n\nCommit the changes once you are happy with them.\n\n\n\nWhen you’re finished with the changes, create a pull request, also known as a PR.\n\nWrite a meaningful description of the changes you’ve made.\nDon’t forget to link PR to issue if you are solving one.\nEnable the checkbox to allow maintainer edits so the branch can be updated for a merge. Once you submit your PR, a Docs team member will review your proposal. We may ask questions or request additional information.\nWe may ask for changes to be made before a PR can be merged, either using suggested changes or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.\nAs you update your PR and apply changes, mark each conversation as resolved.\nIf you run into any merge issues, checkout this git tutorial to help you resolve merge conflicts and other issues.\n\n\n\n\nWhen your PR is approved and merged, your changes will automatically be deployed to the live wiki site."
+    "objectID": "index.html#packages",
+    "href": "index.html#packages",
+    "title": "ITS Propagation Library Wiki",
+    "section": "Packages",
+    "text": "Packages\nCurrently, PropLib includes implementations of propagation models developed by the U.S. (NTIA/ITS) and by the International Telecommunication Union Radiocommunication Sector (ITU-R). The following are categorized lists of available packages within PropLib.\n\nU.S. Propagation Models\nDocumentation pages are being worked on, and will soon be available through links in the following table, for the following U.S. propagation models:\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThe listed U.S. propagation models have public code repositories, but documentation is not yet available on this website. Please check back later, and contact code@ntia.gov with questions in the meantime.\n\n\n\nU.S. propagation models available in the ITS Propagation Library\n\n\n\n\n\n\n\n\neHata\nRepo\nDocs\nExtended Hata Urban Propagation Model\n\n\nITM\nRepo\nDocs\nIrregular Terrain Model\n\n\nLFMF\nRepo\nDocs\nLow Frequency / Medium Frequency Propagation Model\n\n\n\n\n\nITU-R Recommendations\nThe ITU-R Recommendations constitute a set of international technical standards developed by the Radiocommunication Sector (formerly CCIR) of the ITU [1]. A subset of these have been implemented in software as a part of this library by ITS.\n\n\n\n\n\n\nPage Under Construction\n\n\n\nThe P.528 model has a public code repository, but documentation is not yet available on this website. Please check back later, and contact code@ntia.gov with questions in the meantime.\n\n\n\nITU-R Recommendations implemented in the ITS Propagation Library\n\n\n\n\n\n\n\n\nP.528\nRepo\nDocs\nA propagation prediction method for aeronautical mobile and radionavigation services using the VHF, UHF, and SHF bands\n\n\nP.2108\nRepo\nDocs\nPrediction of clutter loss"
   }
 ]
