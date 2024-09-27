@@ -6,30 +6,77 @@ title: Irregular Terrain Model (ITM)
 
 A description of the Irregular Terrain Model (ITM), as well as details on input parameters, can be found at the [public GitHub repo](https://github.com/NTIA/itm).
 
+ITM predicts terrestrial radiowave propagation for frequencies between 20 MHz and 20 GHz based on electromagnetic theory and empirical models developed by Anita Longley and Phil Rice. Propagation mechanisms considered include free space loss, diffraction, and troposcatter. Specifically, ITM predicts attenuation as a function of distance (greater than 1 km), terminal heights, meteorological conditions, terrain effects, and the variability of the signal in time and in space.
+
+ITM can be called in either [Area Mode]() or [Point-to-Point Mode](). Additionally, variabilities can be defined by either time/location/situation (TLS) or confidence/reliability (CR). The documentation blocks below are organized according to these modes of usage.
+
 {{< include /includes/_getting_started.qmd >}}
+
+# Usage Modes
+
+TODO
+
+For details about using ITM in Area Mode, refer to the [@itm-area-mode-guide-to-the-use].
 
 # Functions
 
-## Point-to-Point Basic Transmission Loss (TLS)
+## Point-to-Point Mode (TLS)
 
 Generate a basic transmission loss prediction by operating ITM in point-to-point mode.  Variabilities are provided as time, location, and situation percentages.
 
-Example: [C#](ITM-(.NET)#point-to-point-basic-transmission-loss-tls) | [MATLAB](ITM-(MATLAB)#point-to-point-basic-transmission-loss-tls) | [Python](ITM-(Python)#site-specific-basic-transmission-loss-tls)
+| Variable      | Type     | Units | Limits                      | Description                          |
+|---------------|----------|-------|-----------------------------|--------------------------------------|
+| `h_tx__meter` | double   | meter | $0.5 \leq h_{tx} \leq 3000$ | Structural height of the transmitter |
+| `h_rx__meter` | double   | meter | $0.5 \leq h_{rx} \leq 3000$ | Structural height of the receiver    |
+| `pfl`         | double[] | N/A   | N/A                         | TODO                                 |
+| `climate`     | `RadioClimate` enum | N/A | enum               | Radio climate of the path, see @tbl-itm-climate |
+| `N_0`         | double   | N-Units | $250 \leq N_0 \leq 400$   | Minimum monthly mean surface refractivity reduced to sea level |
+| `f__mhz`      | double   | MHz     | $20 \leq f \leq 20000$    | Frequency                            |
+| `pol`         | `Polarization` enum | N/A | enum               | Polarization, see @tbl-itm-pol       |
+| `epsilon`     | double   | none  | $\epsilon \geq 1$           | Relative permittivity                |
+| `sigma`       | double   | siemens per meter | $\sigma \gt 0$  | Conductivity                         |
+| `mdvar`       | `VariabilityMode` enum | N/A | enum            | Mode of variability, see @tbl-itm-mdvar |
+| `time`        | double   | %     | $0 \lt t \lt 100$           | Time variability                     |
+| `location`    | double   | %     | $0 \lt l \lt 100$           | Location variability                 |
+| `situation`   | double   | %     | $0 \lt s \lt 100$           | Situation variability                |
 
-## Point-to-Point Basic Transmission Loss (CR)
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#point-to-point-mode-tls){.btn .btn-secondary .btn role="button"}
+[C#/.NET](dotnet.qmd#point-to-point-mode-tls){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#point-to-point-mode-tls){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#point-to-point-mode-tls){.btn .btn-secondary .btn role="button"}
+
+## Point-to-Point Mode (CR)
 
 Generate a basic transmission loss prediction by operating ITM in point-to-point mode.  Variabilities are provided as confidence and reliability percentages.
 
-Example: [C#](ITM-(.NET)#point-to-point-basic-transmission-loss-cr) | [MATLAB](ITM-(MATLAB)#point-to-point-basic-transmission-loss-cr) | [Python](ITM-(Python)#site-specific-basic-transmission-loss-cr)
+{{< include /includes/_code_examples.qmd >}}
 
-## Area Mode Basic Transmission Loss (TLS)
+[C++](cpp.qmd#point-to-point-mode-cr){.btn .btn-secondary .btn role="button"}
+[C#/.NET](dotnet.qmd#point-to-point-mode-cr){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#point-to-point-mode-cr){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#point-to-point-mode-cr){.btn .btn-secondary .btn role="button"}
+
+## Area Mode (TLS)
 
 Generate a basic transmission loss prediction by operating ITM in area mode.  Variabilities are provided as time, location, and situation percentages.
 
-Example: [C#](ITM-(.NET)#area-mode-basic-transmission-loss-tls) | [MATLAB](ITM-(MATLAB)#area-mode-basic-transmission-loss-tls) | [Python](ITM-(Python)#area-mode-basic-transmission-loss-tls)
+{{< include /includes/_code_examples.qmd >}}
 
-## Area Mode Basic Transmission Loss (CR)
+[C++](cpp.qmd#area-mode-tls){.btn .btn-secondary .btn role="button"}
+[C#/.NET](dotnet.qmd#area-mode-tls){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#area-mode-tls){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#area-mode-tls){.btn .btn-secondary .btn role="button"}
+
+## Area Mode (CR)
 
 Generate a basic transmission loss prediction by operating ITM in area mode.  Variabilities are provided as confidence and reliability percentages.
 
-Example: [C#](ITM-(.NET)#area-mode-basic-transmission-loss-cr) | [MATLAB](ITM-(MATLAB)#area-mode-basic-transmission-loss-cr) | [Python](ITM-(Python)#area-mode-basic-transmission-loss-cr)
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#area-mode-cr){.btn .btn-secondary .btn role="button"}
+[C#/.NET](dotnet.qmd#area-mode-cr){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#area-mode-cr){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#area-mode-cr){.btn .btn-secondary .btn role="button"}
