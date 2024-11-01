@@ -1,7 +1,7 @@
 ---
 title: "ITU-R P.2108 – Python"
 date: 2024-06-25
-date-modified: 2024-06-25
+date-modified: 2024-11-01
 ---
 
 This page details the installation and usage of the Python version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.
@@ -10,7 +10,11 @@ This page details the installation and usage of the Python version of the U.S. R
 
 ## Installation
 
-{{< include /includes/_package_install_not_ready.qmd >}}
+{{< include /includes/_pypi_distribution.qmd >}}
+
+```default
+pip install proplib-p2108
+```
 
 The following code snippet shows how to import the package and check the installed version:
 
@@ -18,8 +22,6 @@ The following code snippet shows how to import the package and check the install
 from ITS.ITU.PSeries import P2108
 print(P2108.__version__)
 ```
-
-This package has no external Python dependencies.
 
 {{< include /includes/_py_documentation_block.qmd >}}
 

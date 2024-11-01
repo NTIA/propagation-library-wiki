@@ -1,0 +1,5 @@
+This Python package is distributed through the
+[Python Package Index (PyPI)](https://pypi.org/). All ITS PropLib Python
+packages required a [currently-supported](https://devguide.python.org/versions/)
+version of Python. Run the following command to install the package, and any required dependencies, into your Python environment:
+
