@@ -175,6 +175,7 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
   <li><a href="#pull-request" id="toc-pull-request" class="nav-link" data-scroll-target="#pull-request">Pull Request</a></li>
   <li><a href="#your-pr-is-merged" id="toc-your-pr-is-merged" class="nav-link" data-scroll-target="#your-pr-is-merged">Your PR is merged</a></li>
   </ul></li>
+  <li><a href="#updating-uswds" id="toc-updating-uswds" class="nav-link" data-scroll-target="#updating-uswds">Updating USWDS</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -249,9 +250,21 @@ gtag('config', 'G-48B5WEZDBS', { 'anonymize_ip': true});
 <section id="your-pr-is-merged" class="level3">
 <h3 class="anchored" data-anchor-id="your-pr-is-merged">Your PR is merged</h3>
 <p>When your PR is approved and merged, your changes will automatically be deployed to the live wiki site.</p>
-
-
 </section>
+</section>
+<section id="updating-uswds" class="level2">
+<h2 class="anchored" data-anchor-id="updating-uswds">Updating USWDS</h2>
+<p>This repository contains static elements from the <a href="https://designsystem.digital.gov/">U.S. Web Design System</a>, but does not use the recommended installation method with Node and npm. Instead, the static files are included directly from GitHub. To update to a newer release of USWDS, follow these steps:</p>
+<ol type="1">
+<li><p>Check the current version of the USWDS assets included in this repository. The version number is shown in a comment at the top of <code>uswds/css/usdws.css</code>.</p></li>
+<li><p>Check if a newer version of the USWDS is available <a href="https://github.com/uswds/uswds/releases">here</a></p></li>
+<li><p>If a new release is available, review the included changelog to determine if any breaking changes need to be accounted for as part of your update. Most likely, there will not be any, since this site uses relatively few USWDS components. If there are, make the necessary modifications to support the newer version of the USWDS.</p></li>
+<li><p>Download the new release (<code>.tgz</code>) and extract it. Copy the contents of <code>package/dist/</code> to this repository’s <code>usdws</code> directory. Overwrite all conflicted files. The rest of the files from the downloaded release can be discarded.</p></li>
+<li><p>Test the site by rendering with Quarto. Ensure that the USWDS components have not broken.</p></li>
+<li><p>Commit your changes, and open a pull request.</p></li>
+</ol>
+
+
 </section>
 </section>
 
