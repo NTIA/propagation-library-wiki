@@ -4,13 +4,17 @@ date: 2024-06-25
 date-modified: 2024-11-20
 ---
 
-This page details the installation and usage of the Python version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.
+This page details the installation and usage of the Python version of the PropLib implementation of Recommendation ITU-R P.2108.
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
 ## Installation
 
-{{< include /includes/_package_install_not_ready.qmd >}}
+{{< include /includes/_pypi_distribution.qmd >}}
+
+```default
+pip install proplib-p2108
+```
 
 The following code snippet shows how to import the package and check the installed version:
 
@@ -18,8 +22,6 @@ The following code snippet shows how to import the package and check the install
 from ITS.ITU.PSeries import P2108
 print(P2108.__version__)
 ```
-
-This package has no external Python dependencies.
 
 {{< include /includes/_py_documentation_block.qmd >}}
 
@@ -43,14 +45,12 @@ clutter_type = 6    # Clutter type, enum
 
 # Call height gain terminal correction model (P.2108 Section 3.1)
 A_h__db = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)
-assert(A_h__db == 8.769394261533549)
+# A_h__db is approximately 25.54 dB
 
-# can also use clutter type IntEnum
-clutter_type = P2108.ClutterType.DenseUrban
-
-# call clutter model
+# can also use enum to provide clutter type
+clutter_type = P2108.ClutterType.DenseUrban  # int value is 6
 A_h__db = P2108.HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type)
-assert(A_h__db == 8.769394261533549)
+# A_h__db is approximately 25.54 dB
 ```
 
 ### Terrestrial Statistical Model
@@ -63,7 +63,7 @@ p = 50              # Percentage of locations, in %
 
 # call terrestrial statistical model
 L_ctt__db = P2108.TerrestrialStatisticalModel(f__ghz, d__km, p)
-assert(L_ctt__db == 26.10075036783342)
+# L_ctt__db is approximately 26.63 dB
 ```
 
 ### Aeronautical Statistical Model
@@ -76,5 +76,5 @@ p = 50              # Percentage of locations, in %
 
 # call clutter model
 L_ces__db = P2108.AeronauticalStatisticalModel(f__ghz, theta__deg, p)
-assert(L_ces__db == 14.333686040067786)
+# L_ces__db is approximately 14.33 dB
 ```
