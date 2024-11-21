@@ -1,5 +1,5 @@
 ---
-title: "ITU-R P.2108 – C#/.NET"
+title: "Recommendation ITU-R P.2108 – .NET"
 ---
 
 {{< include /includes/_under_construction.qmd >}}
@@ -13,6 +13,8 @@ title: "ITU-R P.2108 – C#/.NET"
 {{< include /includes/_under_construction.qmd >}}
 
 # Examples
+
+The following code examples show how to use C# to call P.2108 functions from the .NET package.
 
 ## Height Gain Terminal Correction Model
 

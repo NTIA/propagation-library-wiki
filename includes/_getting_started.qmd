@@ -3,6 +3,6 @@
 This page documents the inputs, outputs, and primary functions of this software in a language-agnostic way. Language-specific documentation is additionally provided for this library. The pages linked below include installation instructions as well as usage examples for each supported language.
 
 [C++](cpp.qmd){.btn .btn-secondary role="button"}
-[C#/.NET](dotnet.qmd){.btn .btn-secondary role="button"}
+[.NET](dotnet.qmd){.btn .btn-secondary role="button"}
 [MATLAB](matlab.qmd){.btn .btn-secondary role="button"}
 [Python](python.qmd){.btn .btn-secondary role="button"}

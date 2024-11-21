@@ -1,4 +1,7 @@
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -30,7 +33,14 @@ jobs:
         python-version: '3.10'
     - run: pip install jupyter
 
-    - name: Publish to GitHub Pages (and render) 
+    - name: Render Quarto Project
+      if: ${{ github.event_name == 'pull_request' }}
+      uses: quarto-dev/quarto-actions/render@v2
+      with:
+        to: html
+
+    - name: Publish to GitHub Pages
+      if: ${{ github.event_name == 'push' }}
       uses: quarto-dev/quarto-actions/publish@v2
       with:
         target: gh-pages
