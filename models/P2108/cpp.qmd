@@ -6,7 +6,7 @@ date-modified: 2024-11-21
 
 {{< include /includes/_under_construction.qmd >}}
 
-This page details the installation and usage of the C++ version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.
+This page details the installation and usage of the C++ version of the PropLib implementation of Recommendation ITU-R P.2108.
 
 {{< include /includes/_link_to_model_home.qmd >}}
 

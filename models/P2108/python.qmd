@@ -4,7 +4,7 @@ date: 2024-06-25
 date-modified: 2024-11-20
 ---
 
-This page details the installation and usage of the Python version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.
+This page details the installation and usage of the Python version of the PropLib implementation of Recommendation ITU-R P.2108.
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
