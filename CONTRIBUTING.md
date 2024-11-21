@@ -84,3 +84,27 @@ resolve merge conflicts and other issues.
 
 When your PR is approved and merged, your changes will automatically be deployed
 to the live wiki site.
+
+## Updating USWDS
+
+This repository contains static elements from the [U.S. Web Design System](https://designsystem.digital.gov/),
+but does not use the recommended installation method with Node and npm. Instead, the static files are
+included directly from GitHub. To update to a newer release of USWDS, follow these steps:
+
+1. Check the current version of the USWDS assets included in this repository.
+The version number is shown in a comment at the top of `uswds/css/usdws.css`.
+
+1. Check if a newer version of the USWDS is available [here](https://github.com/uswds/uswds/releases)
+
+1. If a new release is available, review the included changelog to determine if any breaking changes
+need to be accounted for as part of your update. Most likely, there will not be any, since this site
+uses relatively few USWDS components. If there are, make the necessary modifications to support the
+newer version of the USWDS.
+
+1. Download the new release (`.tgz`) and extract it. Copy the contents of `package/dist/` to this
+repository's `usdws` directory. Overwrite all conflicted files. The rest of the files from the downloaded
+release can be discarded.
+
+1. Test the site by rendering with Quarto. Ensure that the USWDS components have not broken.
+
+1. Commit your changes, and open a pull request.

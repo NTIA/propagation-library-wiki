@@ -1,7 +1,7 @@
 ---
-title: "ITU-R P.2108 – Python"
+title: "Recommendation ITU-R P.2108 – Python"
 date: 2024-06-25
-date-modified: 2024-11-01
+date-modified: 2024-11-20
 ---
 
 This page details the installation and usage of the Python version of the U.S. Reference Implementation of Recommendation ITU-R P.2108.
