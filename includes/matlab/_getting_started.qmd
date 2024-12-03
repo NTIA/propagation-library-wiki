@@ -1,0 +1,31 @@
+There are two easy ways to install the toolbox: [from a browser](#installing-from-a-browser) or [from within MATLAB](#installing-from-within-matlab).
+
+### Installation from a Browser
+
+1. Open this package's page on the File Exchange using the link provided [above](#getting-started).
+
+1. In the upper-right, click **Download > Toolbox** as shown in @fig-matlab-install-online. A file with a `.mltbx` extension will download.
+
+    ![](/images/matlab/install-online.png){#fig-matlab-install-online fig-alt="Screenshot showing the 'Download Toolbox' option on the MathWorks File Exchange website" width=250 fig-align="left"}
+
+1. Optionally, move the downloaded file into your project directory.
+
+1. Within MATLAB, navigate to the `.mltbx` file and double-click it.
+
+### Installation from Within MATLAB
+
+1. Open MATLAB and select **Add-Ons > Get Add-Ons** in the toolbar, as shown in @fig-matlab-add-ons-menu. The Add-On Explorer window will open.
+    
+    ![](/images/matlab/add-ons-menu.png){#fig-matlab-add-ons-menu fig-alt="A screenshot showing the MATLAB 'Get Add-Ons' menu option" width=300 fig-align="left"}
+
+1. Search for this package by its name.
+
+1. In the upper-right, click **Add > Add to MATLAB** as shown in @fig-matlab-add-to-matlab-menu.
+
+    ![](/images/matlab/add-to-matlab-menu.png){#fig-matlab-add-to-matlab-menu fig-alt="A screenshot showing the 'Add to MATLAB' option for a toolbox within the Add-On Explorer" width=200 fig-align="left"}
+
+### Uninstallation
+
+Regardless of how you installed the toolbox, you can uninstall it at any time from the **Add-Ons > Manage Add-Ons** menu. This is available in the MATLAB toolbar as shown in @fig-matlab-manage-add-ons-menu.
+
+![](/images/matlab/manage-add-ons-menu.png){#fig-matlab-manage-add-ons-menu fig-alt="A screenshot showing the MATLAB 'Manage Add-Ons' menu option" width=300 fig-align="left"}
