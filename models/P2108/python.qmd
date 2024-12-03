@@ -8,22 +8,32 @@ This page details the installation and usage of the Python version of the PropLi
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
-## Installation
+{{< include /includes/python/_getting_started.qmd >}}
 
-{{< include /includes/_pypi_distribution.qmd >}}
+### Installation
+
+This Python package is distributed through the
+[Python Package Index (PyPI)](https://pypi.org/project/proplib-p2108).
+Run the following command to install the package, and any required dependencies, into your Python environment.
 
 ```default
 pip install proplib-p2108
 ```
 
-The following code snippet shows how to import the package and check the installed version:
+The following code snippet shows how to import the package and check the installed version.
 
 ```python
 from ITS.ITU.PSeries import P2108
 print(P2108.__version__)
 ```
 
-{{< include /includes/_py_documentation_block.qmd >}}
+{{< include /includes/python/_uninstallation.qmd >}}
+
+```default
+pip uninstall proplib-p2108
+```
+
+{{< include /includes/python/_documentation.qmd >}}
 
 ```python
 help(P2108.TerrestrialStatisticalModel)

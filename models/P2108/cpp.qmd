@@ -1,7 +1,7 @@
 ---
 title: "Recommendation ITU-R P.2108 – C++"
 date: 2024-07-09
-date-modified: 2024-11-21
+date-modified: 2024-12-03
 ---
 
 {{< include /includes/_under_construction.qmd >}}
@@ -28,7 +28,7 @@ using namespace ITS::ITU::PSeries:P2108;  // Optional: makes later code more con
 
 This library has no external C++ dependencies.
 
-{{< include /includes/_cpp_documentation_block.qmd >}}
+{{< include /includes/cpp/_documentation.qmd >}}
 
 [Docs](https://ntia.github.io/p2108){.btn .btn-secondary .btn role="button"}
 
