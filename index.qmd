@@ -1,7 +1,7 @@
 ---
 title: "ITS Propagation Library Wiki"
 date: 2024-06-11
-date-modified: 2024-11-20
+date-modified: 2024-12-02
 ---
 
 The ITS Propagation Library (**"PropLib"**) is a collection of open source software developed by [ITS](about.qmd), focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, .NET, MATLAB®, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements.
@@ -12,25 +12,35 @@ Currently, PropLib includes implementations of propagation models developed by t
 
 ### U.S. Propagation Models
 
+Over the years, ITS has developed and refined various programs for the prediction of radio propagation in a wide range of situations.  
+
 Documentation pages are being worked on, and will soon be available through links in the following table, for the following U.S. propagation models:
 
 ::: {.callout-warning}
 ## Page Under Construction
 
-The listed U.S. propagation models have public code repositories, but
+The HF, IF77, and MPM models are distributed as legacy software, and do not
+yet have public GitHub repositories.
+The eHata and ITM models have public code repositories, but
 documentation is not yet available on this website. Please check back
 later, and contact [code@ntia.gov](mailto:code@ntia.gov) with questions
 in the meantime.
 :::
 
-+----------:+:-------------------------------------:+:----:+:---------------------------------------------------+
-| **eHata** | [Repo](https://github.com/NTIA/eHata) | Docs | Extended Hata Urban Propagation Model              |
-+-----------+---------------------------------------+------+----------------------------------------------------+
-| **ITM**   | [Repo](https://github.com/NTIA/ITM)   | Docs | Irregular Terrain Model                            |
-+-----------+---------------------------------------+------+----------------------------------------------------+
-| **LFMF**  | [Repo](https://github.com/NTIA/LFMF)  | Docs | Low Frequency / Medium Frequency Propagation Model |
-+-----------+---------------------------------------+------+----------------------------------------------------+
-: U.S. propagation models available in the ITS Propagation Library {tbl-colwidths="[15,10,10,65]"}
++----------:+:-------------------------------------:+:-----------------------------------------------------------------------:+:---------------------------------------------------+
+| **eHata** | [Repo](https://github.com/NTIA/eHata) | Docs                                                                    | Extended Hata Urban Propagation Model              |
++-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
+| **HF**    | [Legacy Software](https://its.ntia.gov/software/high-frequency/high-frequency-propagation-models/)              | High Frequency Propagation Models                  |
++-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
+| **IF77**  | [Legacy Software](https://its.ntia.gov/software/if-77-electromagnetic-wave-propagation-model-gierhart-johnson/) | The IF-77 Electromagnetic Wave Propagation Model   |
++-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
+| **ITM**   | [Repo](https://github.com/NTIA/ITM)   | Docs                                                                    | Irregular Terrain Model                            |
++-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
+| **LFMF**  | [Repo](https://github.com/NTIA/LFMF)  | [Docs](models/LFMF/)                                                    | Low Frequency / Medium Frequency Propagation Model |
++-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
+| **MPM**   | [Legacy Software](https://its.ntia.gov/software/millimeter-wave-propagation-model-mpm/)                         | Millimeter-wave Propagation Model                  |
++-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
+: U.S. propagation models available in the ITS Propagation Library {tbl-colwidths="[15,20,10,55]"}
 
 ### ITU-R Recommendations
 
@@ -43,10 +53,10 @@ The P.528 model has a public code repository, but documentation is not yet avail
 in the meantime.
 :::
 
-+-----------:+:-------------------------------------:+:------------------------------:+:------------------------------------------------------------+
-| **P.528**  | [Repo](https://github.com/NTIA/P528)  | Docs                           | A propagation prediction method for aeronautical mobile and |
-|            |                                       |                                | radionavigation services using the VHF, UHF, and SHF bands  |
-+------------+---------------------------------------+--------------------------------+-------------------------------------------------------------+
-| **P.2108** | [Repo](https://github.com/NTIA/p2108) | [Docs](models/P2108/index.qmd) | Prediction of clutter loss                                  |
-+------------+---------------------------------------+--------------------------------+-------------------------------------------------------------+
++-----------:+:-------------------------------------:+:---------------------:+:------------------------------------------------------------+
+| **P.528**  | [Repo](https://github.com/NTIA/P528)  | Docs                  | A propagation prediction method for aeronautical mobile and |
+|            |                                       |                       | radionavigation services using the VHF, UHF, and SHF bands  |
++------------+---------------------------------------+-----------------------+-------------------------------------------------------------+
+| **P.2108** | [Repo](https://github.com/NTIA/p2108) | [Docs](models/P2108/) | Prediction of clutter loss                                  |
++------------+---------------------------------------+-----------------------+-------------------------------------------------------------+
 : ITU-R Recommendations implemented in the ITS Propagation Library {tbl-colwidths="[15,10,10,65]"}
