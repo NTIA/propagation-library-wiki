@@ -4,8 +4,6 @@ date: 2024-07-09
 date-modified: 2024-12-03
 ---
 
-{{< include /includes/_under_construction.qmd >}}
-
 This page details the installation and usage of the C++ version of the PropLib implementation of Recommendation ITU-R P.2108.
 
 {{< include /includes/_link_to_model_home.qmd >}}
@@ -14,9 +12,9 @@ This page details the installation and usage of the C++ version of the PropLib i
 
 {{< include /includes/_package_install_not_ready.qmd >}}
 
-To use the C++ library in your code, you'll need to download the dynamic library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux) and the header file. These are distributed for each platform as part of the [GitHub Releases](https://github.com/NTIA/p2108/releases/) starting with v1.0. Prior to v1.0, support was only provided for Windows platforms.
+To use the C++ library in your code, you'll need to download the shared library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux) and the header file. These are distributed for each platform as part of the [GitHub Releases](https://github.com/NTIA/p2108/releases/) starting with v1.0. Prior to v1.0, support was only provided for Windows platforms.
 
-To use the dynamic library in your project, you'll need to link against it. The details for this process differ depending on your compiler and/or IDE, but generally you will need to somehow provide the path to the files you downloaded from the GitHub release.
+To use the shared library in your project, you'll need to link against it. The details for this process differ depending on your compiler and/or IDE, but generally you will need to somehow provide the path to the files you downloaded from the GitHub release.
 
 Once you've linked the dynamic library to your project, all you need to do is include the appropriate header file and, optionally, use its namespace:
 
