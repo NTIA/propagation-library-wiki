@@ -1,0 +1,4 @@
+Each model in the Propagation Library is distributed with an accompanying command-line driver program.
+This program allows the user to run the model from the command line on Windows, macOS, or Linux.
+The model inputs and outputs are handled using simple text files. No programming experience is required to
+use the command-line driver.
