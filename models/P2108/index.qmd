@@ -52,7 +52,7 @@ This table also provides the integer values mapped to each clutter type in the e
 
 The terrestrial statistical model is described in @p2108-1 [Section 3.2]. The model can be applied for urban and suburban environments provided terminal heights are well below the clutter height. The correction produced by this model can be applied at one terminal, or, if the path length is at least 1 km, at both terminals.
 
-This model calculates an additional loss, $L_{ctt}$, which can be added to the transmission loss or basic transmission loss. As this is a statistical model, the term $L_{ctt}$ is the clutter loss not exceeded for $p$ percent of locations for a terrestial path of length $d$. If the transmission loss or basic transmission loss has been calculated using a model that inherently accounts for clutter over the entire path then this model should not be applied.
+This model calculates an additional loss, $L_{ctt}$, which can be added to the transmission loss or basic transmission loss. As this is a statistical model, the term $L_{ctt}$ is the clutter loss not exceeded for $p$ percent of locations for a terrestrial path of length $d$. If the transmission loss or basic transmission loss has been calculated using a model that inherently accounts for clutter over the entire path then this model should not be applied.
 
 | Variable | Type   | Units | Limits               | Description   |
 |----------|--------|-------|----------------------|---------------|

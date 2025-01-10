@@ -1,0 +1,4 @@
+### Uninstallation
+
+Uninstalling this Python package is also simple. Run the following
+command in your Python environment.

@@ -1,0 +1,13 @@
+## Examples
+
+The code examples provided here are also included in the toolbox itself, as MATLAB Live Scripts. To access these, view the toolbox "Getting Started" guide as follows.
+
+1. Once installed, view the toolbox in the **Add-Ons > Manage Add-Ons** menu as shown in @fig-matlab-manage-add-ons-menu-2.
+
+    ![](/images/matlab/manage-add-ons-menu.png){#fig-matlab-manage-add-ons-menu-2 fig-alt="A screenshot showing the MATLAB 'Manage Add-Ons' menu option" width=300 fig-align="left"}
+
+1. Find the installed toolbox in the list, and click the **⋮** icon and select **View Getting Started Guide** as shown in @fig-matlab-manage-add-ons-context-menu.
+
+    ![](/images/matlab/manage-add-ons-context-menu.png){#fig-matlab-manage-add-ons-context-menu fig-alt="A screenshot showing the context menu for an installed toolbox in the MATLAB 'Manage Add-Ons' menu" width=300 fig-align="left"}
+
+1. Under the **Examples** heading, links are provided for Live Script example programs which demonstrate usage of the toolbox in an interactive way. The same code examples are additionally provided below.

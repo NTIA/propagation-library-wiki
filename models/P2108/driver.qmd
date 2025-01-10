@@ -1,0 +1,156 @@
+---
+title: "Recommendation ITU-R P.2108 – Command-Line Driver"
+date: 2024-12-17
+date-modified: 2024-12-17
+---
+
+This page details the usage of the cross-platform command-line driver version of Recommendation ITU-R P.2108.
+
+{{< include /includes/driver/_intro_and_installation.qmd >}}
+
+{{< include /includes/driver/_general_usage.qmd >}}
+
+# Command-Line Arguments
+
+Executing the command-line driver requires specifying input arguments, defined in @tbl-p2108-driver-input-args below.
+
+
+| Flag     | Type   | Required | Description                                                  |
+|----------|--------|----------|--------------------------------------------------------------|
+| `-i`     | string | true     | File specifying model input parameters in `key,value` format |
+| `-model` | string | true     | Which model to run, one of `HGTCM`, `TSM`, or `ASM`          |
+| `-o`     | string | true     | Filename where output results should be written              |
+: Arguments for the Recommendation ITU-R P.2108 command-line driver {#tbl-p2108-driver-input-args}
+
+Additional arguments are available to print help text and version information without running any model.
+When using these options, none of the arguments from @tbl-p2108-driver-input-args are required.
+The additional arguments are defined in @tbl-p2108-driver-additional-args
+
+| Flag | Description                                            |
+|------|--------------------------------------------------------|
+| `-h` | Display help text                                      |
+| `-v` | Display version information for the library and driver |
+: Additional arguments for the Recommendation ITU-R P.2108 command-line driver {#tbl-p2108-driver-additional-args}
+
+# Examples
+
+## Height Gain Terminal Correction Model
+
+The Height Gain Terminal Correction Model can be run by providing the `-model HGTCM` flag on the command line.
+For example:
+
+```cmd
+# Windows
+P2108Driver.exe -i input.txt -model HGTCM -o output.txt
+
+# Linux & macOS
+./P2108Driver -i input.txt -model HGTCM -o output.txt
+```
+
+A corresponding pair of input and output files for the Height Gain Terminal Correction Model are provided below.
+
+```{.default filename="Input File Contents"}
+f__ghz,1.5
+h__meter,2
+w_s__meter,27
+R__meter,15
+clutter_type,4
+```
+
+```{.default filename="Output File Contents"}
+Model                    P2108
+Model Variant            Height Gain Terminal Correction Model
+Library Version          v1.0
+Driver Version           v1.0.0
+Date Generated           Thu Oct 31 17:31:08 2024
+Input Arguments          -i .\i_hgtcm.txt -model HGTCM -o .\o_hgtcm.txt 
+
+Inputs
+f__ghz                   1.5          (gigahertz)
+h__meter                 2            (meters)
+w_s__meter               27           (meters)
+r__meter                 15           (meters)
+clutter_type             4            [Urban clutter type]
+
+Results
+Return Code              0            [P2108 Status: Successful execution]
+Clutter loss             24.5         (dB)
+```
+
+## Terrestrial Statistical Model
+
+The Terrestrial Statistical Model can be run by providing the `-model TSM` flag on the command line.
+For example:
+
+```cmd
+# Windows
+P2108Driver.exe -i input.txt -model TSM -o output.txt
+
+# Linux & macOS
+./P2108Driver -i input.txt -model TSM -o output.txt
+```
+
+A corresponding pair of input and output files for the Terrestrial Statistical Model are provided below.
+
+```{.default filename="Input File Contents"}
+f__ghz,26.6
+d__km,15.8
+p,45
+```
+
+```{.default filename="Output File Contents"}
+Model                    P2108
+Model Variant            Terrestrial Statistical Model
+Library Version          v1.0
+Driver Version           v1.0.0
+Date Generated           Thu Oct 31 17:30:55 2024
+Input Arguments          -i .\i_tsm.txt -model TSM -o .\o_tsm.txt 
+
+Inputs
+f__ghz                   26.6         (gigahertz)
+d__km                    15.8         (kilometers)
+p                        45           (%)
+
+Results
+Return Code              0            [P2108 Status: Successful execution]
+Clutter loss             32.5         (dB)
+```
+
+## Aeronautical Statistical Model
+
+The Aeronautical Statistical Model can be run by providing the `-model ASM` flag on the command line.
+For example:
+
+```cmd
+# Windows
+P2108Driver.exe -i input.txt -model ASM -o output.txt
+
+# Linux & macOS
+./P2108Driver -i input.txt -model ASM -o output.txt
+```
+
+A corresponding pair of input and output files for the Aeronautical Statistical Model are provided below.
+
+```{.default filename="Input File Contents"}
+f__ghz,10
+theta__deg,10.5
+p,45
+```
+
+```{.default filename="Output File Contents"}
+Model                    P2108
+Model Variant            Aeronautical Statistical Model
+Library Version          v1.0
+Driver Version           v1.0.0
+Date Generated           Thu Oct 31 17:30:41 2024
+Input Arguments          -i .\i_asm.txt -model ASM -o .\o_asm.txt 
+
+Inputs
+f__ghz                   10           (gigahertz)
+theta__deg               10.5         (degrees)
+p                        45           (%)
+
+Results
+Return Code              0            [P2108 Status: Successful execution]
+Clutter loss             12.4         (dB)
+```
