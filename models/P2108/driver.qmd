@@ -40,11 +40,14 @@ The Height Gain Terminal Correction Model can be run by providing the `-model HG
 For example:
 
 ```cmd
-# Windows
-P2108Driver.exe -i input.txt -model HGTCM -o output.txt
+# Windows (64-bit)
+P2108Driver-1.0.0-Windows-x64.exe -i input.txt -model HGTCM -o output.txt
 
-# Linux & macOS
-./P2108Driver -i input.txt -model HGTCM -o output.txt
+# macOS
+./P2108Driver-1.0.0-Darwin-universal -i input.txt -model HGTCM -o output.txt
+
+# Linux
+./P2108Driver-1.0.0-Linux-x86_64 -i input.txt -model HGTCM -o output.txt
 ```
 
 A corresponding pair of input and output files for the Height Gain Terminal Correction Model are provided below.
@@ -83,11 +86,14 @@ The Terrestrial Statistical Model can be run by providing the `-model TSM` flag 
 For example:
 
 ```cmd
-# Windows
-P2108Driver.exe -i input.txt -model TSM -o output.txt
+# Windows (64-bit)
+P2108Driver-1.0.0-Windows-x64.exe -i input.txt -model TSM -o output.txt
 
-# Linux & macOS
-./P2108Driver -i input.txt -model TSM -o output.txt
+# macOS
+./P2108Driver-1.0.0-Darwin-universal -i input.txt -model TSM -o output.txt
+
+# Linux
+./P2108Driver-1.0.0-Linux-x86_64 -i input.txt -model TSM -o output.txt
 ```
 
 A corresponding pair of input and output files for the Terrestrial Statistical Model are provided below.
@@ -122,11 +128,14 @@ The Aeronautical Statistical Model can be run by providing the `-model ASM` flag
 For example:
 
 ```cmd
-# Windows
-P2108Driver.exe -i input.txt -model ASM -o output.txt
+# Windows (64-bit)
+P2108Driver-1.0.0-Windows-x64.exe -i input.txt -model ASM -o output.txt
 
-# Linux & macOS
-./P2108Driver -i input.txt -model ASM -o output.txt
+# macOS
+./P2108Driver-1.0.0-Darwin-universal -i input.txt -model ASM -o output.txt
+
+# Linux
+./P2108Driver-1.0.0-Linux-x86_64 -i input.txt -model ASM -o output.txt
 ```
 
 A corresponding pair of input and output files for the Aeronautical Statistical Model are provided below.
