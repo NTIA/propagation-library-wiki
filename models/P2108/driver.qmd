@@ -6,9 +6,7 @@ date-modified: 2024-12-17
 
 This page details the usage of the cross-platform command-line driver version of Recommendation ITU-R P.2108.
 
-{{< include /includes/driver/_intro.qmd >}}
-
-{{< include /includes/_link_to_model_home.qmd >}}
+{{< include /includes/driver/_intro_and_installation.qmd >}}
 
 {{< include /includes/driver/_general_usage.qmd >}}
 
