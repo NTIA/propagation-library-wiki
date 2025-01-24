@@ -32,7 +32,7 @@ website:
         text: Home
       - text: "U.S. Models"
         menu:
-          - Coming Soon
+          - models/LFMF/index.qmd
       - text: "ITU-R Models"
         menu:
           - models/P2108/index.qmd

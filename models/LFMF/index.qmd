@@ -1,0 +1,67 @@
+---
+title: "Low Frequency / Medium Frequency Propagation Model"
+date: 2024-12-02
+date-modified: 2024-12-02
+---
+
+The Low Frequency / Medium Frequency (LF/MF) Propagation Model predicts basic transmission loss in the frequency range 0.01 - 30 MHz for propagation paths over a smooth Earth and antenna heights less than 50 meters. [@ntia-tr-99-368]
+
+{{< include /includes/_getting_started.qmd >}}
+
+## Model Usage
+
+TODO Background information about how and when to use this model.
+
+## Functions
+
+### Low Frequency / Mid Frequency Propagation Model
+
+This model's functionality is exposed through a single function. The inputs for this function are shown below in @tbl-lfmf-inputs.
+The model outputs are provided in @tbl-lfmf-outputs.
+TODO refine this table and add more detail
+
+| Variable      | Type   | Units  | Limits                  | Description                  |
+|---------------|--------|--------|-------------------------|------------------------------|
+| `h_tx__meter` | double | meter  | $0 \leq h_{tx} \leq 50$ | Height of the transmitter    |
+| `h_rx__meter` | double | meter  | $0 \leq h_{rx} \leq 50$ | Height of the receiver       |
+| `f__mhz`      | double | MHz    | $0.01 \leq f \leq 30$   | Frequency                    |
+| `P_tx__watt`  | double | watt   | $0 < P_{tx}$            | Transmitter power            |
+| `N_s`         | double | N-Unit | $250 \leq N_s \leq 400$ | Surface refractivity         |
+| `d__km`       | double | kilometer | $0 < d$              | Path distance                |
+| `epsilon`     | double | none   | $1 \leq \epsilon$       | Relative permittivity        |
+| `sigma`       | double | siemens per meter | $0 < \sigma$ | Conductivity                 |
+| `pol`         | `Polarization` enum | N/A | enum          | See @tbl-lfmf-polarizations  | 
+: Inputs for the LF/MF model {#tbl-lfmf-inputs}
+
+The `pol` input must be one of the two valid supported polarization types, as defined in @tbl-lfmf-polarizations.
+
+| Enum Value | Polarization |
+|------------|--------------|
+| 0          | Horizontal   |
+| 1          | Vertical     |
+: Allowed polarization values for the LF/MF model {#tbl-lfmf-polarizations}
+
+TODO add more information
+
+| Variable    | Type    | Units             | Description             |
+|-------------|---------|-------------------|-------------------------|
+| `A_btl__db` | double  | dB                | Basic transmission loss |
+| `E_dBuVm`   | double  | dB(μV/m)          | Electric field strength |
+| `P_rx__dbm` | double  | dBm               | Received power          |
+| `method`    | `SolutionMethod` enum | N/A | Solution method; see @tbl-lfmf-solution-methods |
+: Outputs of the LF/MF model {#tbl-lfmf-outputs}
+
+The `method` output indicates the solution method used internally by the model while generating the other outputs. The possible returned values are provided in @tbl-lfmf-solution-methods.
+
+| Enum Value | Solution Method                  |
+|------------|----------------------------------|
+| 0          | Flat earth with curve correction |
+| 1          | Residue series                   |
+: Possible solution methods used by the LF/MF model {#tbl-lfmf-solution-methods}
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
