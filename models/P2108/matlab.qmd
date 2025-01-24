@@ -1,27 +1,85 @@
 ---
 title: "Recommendation ITU-R P.2108 – MATLAB"
+date: 2025-01-24
+date-modified: 2025-01-25
 ---
 
+This page details the installation and usage of the MATLAB® version of the PropLib implementation of Recommendation ITU-R P.2108.
+
 {{< include /includes/_under_construction.qmd >}}
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+<!--
 
 ## Getting Started
 
-{{< include /includes/_package_install_not_ready.qmd >}}
+This MATLAB® Toolbox is distributed on [MathWorks® File Exchange](#TODO).
 
-## Documentation
+{{< include /includes/matlab/_getting_started.qmd >}}
 
-{{< include /includes/_under_construction.qmd >}}
+{{< include /includes/matlab/_documentation.qmd >}}
 
-# Examples
+```matlab
+help ITS.ITU.PSeries.P2108.AeronauticalStatisticalModel
 
-## Height Gain Terminal Correction Model
+% Prints detailed usage information!
+```
 
-{{< include /includes/_under_construction.qmd >}}
+{{< include /includes/matlab/_examples.qmd >}}
 
-## Terrestrial Statistical Model
+### Height Gain Terminal Correction Model
 
-{{< include /includes/_under_construction.qmd >}}
+This example shows multiple equivalent ways to specify the clutter type input.
 
-## Aeronautical Statistical Model
+```matlab
+import ITS.ITU.PSeries.P2108.*
 
-{{< include /includes/_under_construction.qmd >}}
+% Define inputs
+f__ghz = 1;        % Frequency, in GHz
+h__meter = 1.5;    % Antenna height, in meters
+w_s__meter = 27;   % Street width, in meters
+R__meter = 20;     % Representative clutter height, in meters
+clutter_type = 6;  % Clutter type enum value
+clutter_type = ClutterType.DENSE_URBAN;
+clutter_type = "DENSE_URBAN";
+
+% Call the model
+A_h__db = HeightGainTerminalCorrectionModel(f__ghz, h__meter, w_s__meter, R__meter, clutter_type);
+
+% A_h__db is approximately 25.5 dB
+```
+
+### Terrestrial Statistical Model
+
+```matlab
+import ITS.ITU.PSeries.P2108.*
+
+% Define inputs
+f__ghz = 3;   % Frequency, in GHz
+d__km = 0.5;  % Path distance, in km
+p = 50;       % Percentage of locations, in %
+
+% Call the model
+L_ctt__db = TerrestrialStatisticalModel(f__ghz, d__km, p);
+
+% L_ctt__db is approximately 26.6 dB
+```
+
+### Aeronautical Statistical Model
+
+```matlab
+import ITS.ITU.PSeries.P2108.*
+
+% Define inputs
+f__ghz = 15;      % Frequency, in GHz
+theta__deg = 10;  % Elevation angle, in degrees
+p = 50;           % Percentage of locations, in %
+
+% Call the model
+L_ces__db = AeronauticalStatisticalModel(f__ghz, theta__deg, p);
+
+% L_ces__db is approximately 14.3 dB
+```
+
+->

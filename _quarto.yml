@@ -9,7 +9,7 @@ website:
     description: |
       The NTIA/ITS Propagation Library: a versatile and robust set of
       tools for propagation modeling. Learn more on our wiki.
-    image: images/ntia-logo-300px.png
+    image: images/ntia-logo-dark-bg-1946px.png
     image-alt: National Telecommunications and Information Administration Logo
     image-width: 300
     image-height: 300
@@ -19,7 +19,7 @@ website:
     description: |
       The NTIA/ITS Propagation Library: a versatile and robust set of
       tools for propagation modeling. Learn more on our wiki.
-    image: images/ntia-logo-300px.png
+    image: images/ntia-logo-dark-bg-1200x630.png
     image-alt: National Telecommunications and Information Administration Logo
     image-width: 300
     image-height: 300
@@ -32,7 +32,7 @@ website:
         text: Home
       - text: "U.S. Models"
         menu:
-          - Coming Soon
+          - models/LFMF/index.qmd
       - text: "ITU-R Models"
         menu:
           - models/P2108/index.qmd

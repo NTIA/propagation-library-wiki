@@ -1,0 +1,15 @@
+format:
+  html:
+    code-links:
+      - text: NTIA/LFMF
+        icon: github
+        href: https://github.com/NTIA/LFMF
+      - text: NTIA/LFMF-dotnet
+        icon: github
+        href: https://github.com/NTIA/LFMF-dotnet
+      - text: NTIA/LFMF-matlab
+        icon: github
+        href: https://github.com/NTIA/LFMF-matlab
+      - text: NTIA/LFMF-python
+        icon: github
+        href: https://github.com/NTIA/LFMF-python
