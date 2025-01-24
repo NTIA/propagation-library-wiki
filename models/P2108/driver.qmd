@@ -1,7 +1,7 @@
 ---
 title: "Recommendation ITU-R P.2108 – Command-Line Driver"
 date: 2024-12-17
-date-modified: 2024-12-17
+date-modified: 2025-01-24
 ---
 
 This page details the usage of the cross-platform command-line driver version of Recommendation ITU-R P.2108.
@@ -41,13 +41,13 @@ For example:
 
 ```cmd
 # Windows (64-bit)
-P2108Driver-1.0.0-Windows-x64.exe -i input.txt -model HGTCM -o output.txt
+P2108Driver-1.1.0-Windows-x64.exe -i input.txt -model HGTCM -o output.txt
 
 # macOS
-./P2108Driver-1.0.0-Darwin-universal -i input.txt -model HGTCM -o output.txt
+./P2108Driver-1.1.0-Darwin-universal -i input.txt -model HGTCM -o output.txt
 
 # Linux
-./P2108Driver-1.0.0-Linux-x86_64 -i input.txt -model HGTCM -o output.txt
+./P2108Driver-1.1.0-Linux-x86_64 -i input.txt -model HGTCM -o output.txt
 ```
 
 A corresponding pair of input and output files for the Height Gain Terminal Correction Model are provided below.
@@ -63,8 +63,8 @@ clutter_type,4
 ```{.default filename="Output File Contents"}
 Model                    P2108
 Model Variant            Height Gain Terminal Correction Model
-Library Version          v1.0
-Driver Version           v1.0.0
+Library Version          v1.1
+Driver Version           v1.1.0
 Date Generated           Thu Oct 31 17:31:08 2024
 Input Arguments          -i .\i_hgtcm.txt -model HGTCM -o .\o_hgtcm.txt 
 
@@ -87,13 +87,13 @@ For example:
 
 ```cmd
 # Windows (64-bit)
-P2108Driver-1.0.0-Windows-x64.exe -i input.txt -model TSM -o output.txt
+P2108Driver-1.1.0-Windows-x64.exe -i input.txt -model TSM -o output.txt
 
 # macOS
-./P2108Driver-1.0.0-Darwin-universal -i input.txt -model TSM -o output.txt
+./P2108Driver-1.1.0-Darwin-universal -i input.txt -model TSM -o output.txt
 
 # Linux
-./P2108Driver-1.0.0-Linux-x86_64 -i input.txt -model TSM -o output.txt
+./P2108Driver-1.1.0-Linux-x86_64 -i input.txt -model TSM -o output.txt
 ```
 
 A corresponding pair of input and output files for the Terrestrial Statistical Model are provided below.
@@ -107,8 +107,8 @@ p,45
 ```{.default filename="Output File Contents"}
 Model                    P2108
 Model Variant            Terrestrial Statistical Model
-Library Version          v1.0
-Driver Version           v1.0.0
+Library Version          v1.1
+Driver Version           v1.1.0
 Date Generated           Thu Oct 31 17:30:55 2024
 Input Arguments          -i .\i_tsm.txt -model TSM -o .\o_tsm.txt 
 
@@ -129,13 +129,13 @@ For example:
 
 ```cmd
 # Windows (64-bit)
-P2108Driver-1.0.0-Windows-x64.exe -i input.txt -model ASM -o output.txt
+P2108Driver-1.1.0-Windows-x64.exe -i input.txt -model ASM -o output.txt
 
 # macOS
-./P2108Driver-1.0.0-Darwin-universal -i input.txt -model ASM -o output.txt
+./P2108Driver-1.1.0-Darwin-universal -i input.txt -model ASM -o output.txt
 
 # Linux
-./P2108Driver-1.0.0-Linux-x86_64 -i input.txt -model ASM -o output.txt
+./P2108Driver-1.1.0-Linux-x86_64 -i input.txt -model ASM -o output.txt
 ```
 
 A corresponding pair of input and output files for the Aeronautical Statistical Model are provided below.
@@ -149,8 +149,8 @@ p,45
 ```{.default filename="Output File Contents"}
 Model                    P2108
 Model Variant            Aeronautical Statistical Model
-Library Version          v1.0
-Driver Version           v1.0.0
+Library Version          v1.1
+Driver Version           v1.1.0
 Date Generated           Thu Oct 31 17:30:41 2024
 Input Arguments          -i .\i_asm.txt -model ASM -o .\o_asm.txt 
 

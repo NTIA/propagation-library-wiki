@@ -1,10 +1,10 @@
 ---
-title: "Low Frequency / Medium Frequency Propagation Model  – Command-Line Driver"
+title: "Low Frequency / Medium Frequency Propagation Model – Command-Line Driver"
 date: 2025-01-10
 date-modified: 2025-01-10
 ---
 
-This page details the usage of the cross-platform command-line driver version of the Low Frequency / Medium Frequency (LF/MF) Propagation Model.
+This page details the usage of the cross-platform command-line driver version of the Low Frequency / Medium Frequency (LF/MF) propagation model.
 
 {{< include /includes/driver/_intro_and_installation.qmd >}}
 
@@ -19,7 +19,7 @@ Executing the command-line driver requires specifying input arguments, defined i
 |----------|--------|----------|--------------------------------------------------------------|
 | `-i`     | string | true     | File specifying model input parameters in `key,value` format |
 | `-o`     | string | true     | Filename where output results should be written              |
-: Arguments for the Recommendation ITU-R P.2108 command-line driver {#tbl-lfmf-driver-input-args}
+: Arguments for the LF/MF command-line driver {#tbl-lfmf-driver-input-args}
 
 Additional arguments are available to print help text and version information without running any model.
 When using these options, none of the arguments from @tbl-lfmf-driver-input-args are required.
@@ -33,7 +33,7 @@ The additional arguments are defined in @tbl-lfmf-driver-additional-args
 
 # Examples
 
-The LF/MF Propagation Model can be run by simply providing the input and output files on the command line.
+The LF/MF model can be run by simply providing the input and output files on the command line.
 For example:
 
 ```cmd

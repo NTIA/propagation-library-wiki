@@ -1,16 +1,29 @@
 ---
 title: "Low Frequency / Medium Frequency Propagation Model"
 date: 2024-12-02
-date-modified: 2024-12-02
+date-modified: 2025-01-25
 ---
 
-The Low Frequency / Medium Frequency (LF/MF) Propagation Model predicts basic transmission loss in the frequency range 0.01 - 30 MHz for propagation paths over a smooth Earth and antenna heights less than 50 meters. [@ntia-tr-99-368]
+The Low Frequency / Medium Frequency (LF/MF) propagation model predicts basic transmission loss in the frequency range 0.01 - 30 MHz for propagation paths over a smooth Earth and antenna heights less than 50 meters. [@ntia-tr-99-368]
 
 {{< include /includes/_getting_started.qmd >}}
 
-## Model Usage
+## Model Background
 
-TODO Background information about how and when to use this model.
+This model fundamentally predicts basic transmission loss using @eq-lfmf-btl.
+
+$$
+\begin{align}
+\text{BTL (dB)} =&\ 10\log(P_{tx} \cdot G_{tx}) + 10\log(\eta_0) + 20\log(f) \\
+&-20\log(E_{gw}) - 20\log(c)
+\end{align}
+$$ {#eq-lfmf-btl}
+
+In @eq-lfmf-btl, $P_{tx}$ and $f$ are model inputs, where $P_{tx}$ is in watts and $f$ has been converted to hertz. The constants $\eta_0$ and $c$ are the impedance of free space and the speed of light in vacuum, respectively. $G_{tx}$ is the linear conversion of the transmitter antenna gain, which is set to 4.77 dBi. This factor is included to remove the impacts of an equivalent scaling factor which is used when calculating the ground wave. Finally, $E_{gw}$ is the internally-computed ground wave field strength, in volts per meter.
+
+This smooth earth model implements two different methods to compute the ground wave, depending on the path distance and frequency. A cutoff distance for the use of the flat earth approximation is determined using the method described in the ITU-R Ground Wave Propagation handbook [@itu-r-sg3-ground-wave-handbook, pp. 7]. Up to this distance, a flat-Earth approximation with curvature correction is used [@ntia-tr-99-368, pp. 13; @wait-radiation-from-vertical-antenna]. Beyond this distance,  the ground wave strength is calculated by evaluating the full-wave theory integral using the residue series.
+
+The model additionally outputs the predicted electric field strength of the ground wave, the received power, and the method used to calculate the ground wave.
 
 ## Functions
 
@@ -18,7 +31,6 @@ TODO Background information about how and when to use this model.
 
 This model's functionality is exposed through a single function. The inputs for this function are shown below in @tbl-lfmf-inputs.
 The model outputs are provided in @tbl-lfmf-outputs.
-TODO refine this table and add more detail
 
 | Variable      | Type   | Units  | Limits                  | Description                  |
 |---------------|--------|--------|-------------------------|------------------------------|
@@ -41,7 +53,7 @@ The `pol` input must be one of the two valid supported polarization types, as de
 | 1          | Vertical     |
 : Allowed polarization values for the LF/MF model {#tbl-lfmf-polarizations}
 
-TODO add more information
+The LF/MF model produces an output which contains four values. These results indicate the predicted basic transmission loss, the ground wave electric field strength, the received power and the solution method used to calculate the ground wave.
 
 | Variable    | Type    | Units             | Description             |
 |-------------|---------|-------------------|-------------------------|
