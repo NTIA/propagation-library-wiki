@@ -4,7 +4,7 @@ date: 2024-06-11
 date-modified: 2024-12-02
 ---
 
-The ITS Propagation Library (**"PropLib"**) is a collection of open source software developed by [ITS](about.qmd), focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, .NET, MATLAB®, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements.
+The ITS Propagation Library (**"PropLib"**) is a collection of open source software developed by [ITS](about.qmd), focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, .NET, MATLAB&reg;, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements.
 
 ## Packages
 
@@ -53,10 +53,16 @@ The P.528 model has a public code repository, but documentation is not yet avail
 in the meantime.
 :::
 
-+-----------:+:-------------------------------------:+:---------------------:+:------------------------------------------------------------+
-| **P.528**  | [Repo](https://github.com/NTIA/P528)  | Docs                  | A propagation prediction method for aeronautical mobile and |
-|            |                                       |                       | radionavigation services using the VHF, UHF, and SHF bands  |
-+------------+---------------------------------------+-----------------------+-------------------------------------------------------------+
-| **P.2108** | [Repo](https://github.com/NTIA/p2108) | [Docs](models/P2108/) | Prediction of clutter loss                                  |
-+------------+---------------------------------------+-----------------------+-------------------------------------------------------------+
++-----------:+:-------------------------------------:+:---------------------:+:-----------------------------------------------------------------+
+| **P.528**  | [Repo](https://github.com/NTIA/P528)  | Docs                  | A propagation prediction method for aeronautical mobile and      |
+|            |                                       |                       | radionavigation services using the VHF, UHF, and SHF bands       |
++------------+---------------------------------------+-----------------------+------------------------------------------------------------------+
+| **P.676**  | [Repo](https://github.com/NTIA/P676)  | [Docs](models/P676/)  | Prediction methods for the specific attenuation, terrestrial and |
+|            |                                       |                       | slant path gaseous attenuation due to oxygen and water vapour    |
++------------+---------------------------------------+-----------------------+------------------------------------------------------------------+
+| **P.835**  | [Repo](https://github.com/NTIA/P835)  | [Docs](models/P835/)  | Expressions and data for reference standard atmospheres required |
+|            |                                       |                       | for the calculation of gaseous attenuation on Earth-space paths  |
++------------+---------------------------------------+-----------------------+------------------------------------------------------------------+
+| **P.2108** | [Repo](https://github.com/NTIA/p2108) | [Docs](models/P2108/) | Prediction of clutter loss                                       |
++------------+---------------------------------------+-----------------------+------------------------------------------------------------------+
 : ITU-R Recommendations implemented in the ITS Propagation Library {tbl-colwidths="[15,10,10,65]"}
