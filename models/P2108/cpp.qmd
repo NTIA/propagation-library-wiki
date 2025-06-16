@@ -8,7 +8,7 @@ This page details the installation and usage of the C++ version of the PropLib i
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
-# Installation
+## Installation
 
 {{< include /includes/_package_install_not_ready.qmd >}}
 
@@ -30,11 +30,11 @@ This library has no external C++ dependencies.
 
 [Docs](https://ntia.github.io/p2108){.btn .btn-secondary .btn role="button"}
 
-# Examples
+## Examples
 
 The following code examples show how each of the three models from Recommendation ITU-R P.2108 can be called from Python.
 
-## Height Gain Terminal Correction Model
+### Height Gain Terminal Correction Model
 
 ```cpp
 #include "P2108.h"
@@ -60,7 +60,7 @@ int main() {
 }
 ```
 
-## Terrestrial Statistical Model
+### Terrestrial Statistical Model
 
 ```cpp
 #include "P2108.h"
@@ -84,7 +84,7 @@ int main() {
 }
 ```
 
-## Aeronautical Statistical Model
+### Aeronautical Statistical Model
 
 ```cpp
 #include "P2108.h"

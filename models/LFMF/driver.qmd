@@ -16,7 +16,7 @@ To use the command-line driver program, you'll need to download the driver progr
 
 {{< include /includes/driver/_general_usage.qmd >}}
 
-# Command-Line Arguments
+## Command-Line Arguments
 
 Executing the command-line driver requires specifying input arguments, defined in @tbl-lfmf-driver-input-args below.
 
@@ -37,7 +37,7 @@ The additional arguments are defined in @tbl-lfmf-driver-additional-args
 | `-v` | Display version information for the library and driver |
 : Additional arguments for the LF/MF command-line driver {#tbl-lfmf-driver-additional-args}
 
-# Examples
+## Examples
 
 The LF/MF model can be run by simply providing the input and output files on the command line.
 For example:
@@ -55,7 +55,7 @@ LFMFDriver-1.1.0-Windows-x64.exe -i input.txt -o output.txt
 
 Three example sets of input/output file pairs are provided below.
 
-## Example 1
+### Example 1
 
 ```{.default filename="Input File Contents"}
 h_tx__meter,0
@@ -95,7 +95,7 @@ Received power                -114.93      [dB]
 Solution method               1            [0 = Flat earth with curve correction, 1 = Residue series]
 ```
 
-## Example 2
+### Example 2
 
 ```{.default filename="Input File Contents"}
 h_tx__meter,5.5
@@ -135,7 +135,7 @@ Received power                -84.78       [dB]
 Solution method               0            [0 = Flat earth with curve correction, 1 = Residue series]
 ```
 
-## Example 3
+### Example 3
 
 ```{.default filename="Input File Contents"}
 h_tx__meter,1
