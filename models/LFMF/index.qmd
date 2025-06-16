@@ -1,7 +1,7 @@
 ---
 title: "Low Frequency / Medium Frequency Propagation Model"
 date: 2024-12-02
-date-modified: 2025-01-25
+date-modified: 2025-06-12
 ---
 
 The Low Frequency / Medium Frequency (LF/MF) propagation model predicts basic transmission loss in the frequency range 0.01 - 30 MHz for propagation paths over a smooth Earth and antenna heights less than 50 meters. [@ntia-tr-99-368]
