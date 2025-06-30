@@ -1,7 +1,7 @@
 ---
 title: "Low Frequency / Medium Frequency Propagation Model – C++"
 date: 2024-12-02
-date-modified: 2025-01-24
+date-modified: 2025-06-12
 ---
 
 This page details the installation and usage of the C++ version of the PropLib implementation of the Low Frequency / Medium Frequency (LF/MF) propagation model.

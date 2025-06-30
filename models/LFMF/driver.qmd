@@ -1,7 +1,7 @@
 ---
 title: "Low Frequency / Medium Frequency Propagation Model – Command-Line Driver"
 date: 2025-01-10
-date-modified: 2025-01-10
+date-modified: 2025-06-12
 ---
 
 This page details the usage of the cross-platform command-line driver version of the Low Frequency / Medium Frequency (LF/MF) propagation model.
