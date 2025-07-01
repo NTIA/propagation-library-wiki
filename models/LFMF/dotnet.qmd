@@ -8,66 +8,47 @@ This page details the installation and usage of the .NET version of the PropLib 
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
-<!-- TODO: Remove this include and uncomment the sections below -->
+<!-- TODO: Remove this include -->
 {{< include /includes/_under_construction.qmd >}}
 
 ### Installation
 
-This Python package is distributed through the
-[Python Package Index (PyPI)](https://pypi.org/project/proplib-lfmf).
-Run the following command to install the package, and any required dependencies, into your Python environment.
+This .NET package is distributed on 
+[NuGet](https://www.nuget.org/packages/ITS.Propagation.LFMF).
 
-```default
-pip install proplib-lfmf
-```
-
-The following code snippet shows how to import the package and check the installed version.
-
-```python
-from ITS.Propagation import LFMF
-print(LFMF.__version__)
-```
-
-{{< include /includes/python/_uninstallation.qmd >}}
-
-```default
-pip uninstall proplib-lfmf
-```
-
-{{< include /includes/python/_documentation.qmd >}}
-
-```python
-help(LFMF.LFMF)
-```
+{{< include /includes/dotnet/_getting_started.qmd >}}
 
 ## Examples
 
-The following code examples show how the LF/MF model can be called from Python.
+The following code examples show how the LF/MF model can be called from .NET project.
 
 ### Calling the Model
 
-```python
-from ITS.Propagation import LFMF
+```default
+using ITS.Propagation;
 
 # define inputs
-h_tx__meter = 0.0    # Height of the transmitter
-h_rx__meter = 0.0    # Height of the receiver
-f__mhz = 0.01        # Frequency
-P_tx__watt = 1000.0  # Transmitter power   
-N_s = 301.0          # Surface refractivity
-d__km = 1000.0       # Path distance
-epsilon = 15.0       # Relative permittivity
-sigma = 0.005        # Conductivity
-pol = 0              # Polarization (enum value)
+double h_tx__meter = 0;     # Height of the transmitter
+double h_rx__meter = 0;     # Height of the receiver
+double f__mhz = 0.01;       # Frequency
+double P_tx__watt = 1000.0; # Transmitter power   
+double N_s = 301.0;         # Surface refractivity
+double d__km = 1000.0;      # Path distance
+double epsilon = 15.0;      # Relative permittivity
+double sigma = 0.005;       # Conductivity
+int pol = 0;                # Polarization (enum value)
 # Alternately, `pol` can be specified using the enum:
-pol = LFMF.Polarization.Horizontal
+LFMF.Polarization pol = LFMF.Polarization.Horizontal;
 
 # Call the LF/MF model
-result = LFMF.LFMF(h_tx__meter, h_rx__meter, f__mhz, P_tx__watt, N_s, d__km, epsilon, sigma, pol)
+LFMF.Result result = new LFMF.Result();
+var r = LFMF.LFMFModel(h_tx__meter, h_rx__meter, f__mhz, P_tx__watt, N_s,
+    d__km, epsilon, sigma, pol, out result);
 
 # The result is a data structure containing four elements:
 # result.A_btl__db  is approximately  184.49
 # result.E__dBuVm   is approximately  -82.50
-# result.P_rx__dbm  is approximately  -115.93
-# result.method     is                1 (enum value)
+# result.P_rx__dbm  is approximately  -114.93
+# result.method     is ITS.Propagation.LFMF.SolutionMethod.ResidueSeries
+#                       (SolutionMethod enum value 1)
 ```

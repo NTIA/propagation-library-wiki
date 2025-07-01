@@ -67,6 +67,6 @@ result = LFMF.LFMF(h_tx__meter, h_rx__meter, f__mhz, P_tx__watt, N_s, d__km, eps
 # The result is a data structure containing four elements:
 # result.A_btl__db  is approximately  184.49
 # result.E__dBuVm   is approximately  -82.50
-# result.P_rx__dbm  is approximately  -115.93
-# result.method     is                1 (enum value)
+# result.P_rx__dbm  is approximately  -114.93
+# result.method     is <SolutionMethod.ResidueSeries: 1>
 ```

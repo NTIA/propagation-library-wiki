@@ -73,14 +73,14 @@ pol,0
 Model                         LFMF
 Library Version               v1.1
 Driver Version                v1.1.0
-Date Generated                Mon Nov 18 13:56:29 2024
-Input Arguments               -i i_lfmf_01.txt -o o_lfmf_01.txt 
+Date Generated                Tue Jul 01 13:38:18 2025
+Input Arguments               -i input.txt -o results.txt 
 
 Inputs:
-h_tx__meter                   0            [meter]
-h_rx__meter                   0            [meter]
+h_tx__meter                   0            [meters]
+h_rx__meter                   0            [meters]
 f__mhz                        0.01         [MHz]
-p_tx__watt                    1000         [Watts]
+p_tx__watt                    1000         [watts]
 n_s                           301          [N-Units]
 d__km                         1000         [km]
 epsilon                       15           
@@ -88,7 +88,7 @@ sigma                         0.005
 pol                           0            [0 = Horizontal, 1 = Vertical]
 
 Results:
-Return Code                   0            [LFMF v1.0 Status: Successful execution]
+Return Code                   0            [LFMF v1.1 Status: Successful execution]
 Basic transmission loss       184.49       [dB]
 Electric field strength       -82.50       [dB(uV/m)]
 Received power                -114.93      [dB]

@@ -1,4 +1,4 @@
-There are two easy ways to install the toolbox: [from a browser](#installing-from-a-browser) or [from within MATLAB](#installing-from-within-matlab).
+There are two easy ways to install the toolbox: [from a browser](#installation-from-a-browser) or [from within MATLAB](#installation-from-within-matlab).
 
 ### Installation from a Browser
 

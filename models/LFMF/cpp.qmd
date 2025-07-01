@@ -10,8 +10,6 @@ This page details the installation and usage of the C++ version of the PropLib i
 
 ## Installation
 
-{{< include /includes/_package_install_not_ready.qmd >}}
-
 To use the C++ library in your code, you'll need to download the shared library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux) and the header file. These are distributed for each supported platform as part of the [GitHub Releases](https://github.com/NTIA/LFMF/releases/) starting with v1.1. Prior to v1.1, support was only provided for Windows platforms.
 
 To use the shared library in your project, you'll need to link against it. The details for this process differ depending on your compiler and/or IDE, but generally you will need to somehow provide the path to the files you downloaded from the GitHub release.

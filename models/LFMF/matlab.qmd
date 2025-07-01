@@ -8,7 +8,7 @@ This page details the installation and usage of the MATLAB&reg; version of the P
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
-<!-- TODO: Remove this include and uncomment the sections below -->
+<!-- TODO: Remove this include -->
 {{< include /includes/_under_construction.qmd >}}
 
 
@@ -55,6 +55,6 @@ pol = Polarization.HORIZONTAL;  % An equivalent way to specify the polarization
 
 % A_btl__db  is approximately  184.49
 % E__dBuVm   is approximately  -82.50
-% P_rx__dbm  is approximately  -115.93
-% method     is                1 (SolutionMethod enum value)
+% P_rx__dbm  is approximately  -114.93
+% method     is RESIDUE_SERIES (SolutionMethod enum value 1)
 ```
