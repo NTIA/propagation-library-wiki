@@ -8,6 +8,12 @@ This page details the usage of the cross-platform command-line driver version of
 
 {{< include /includes/driver/_intro_and_installation.qmd >}}
 
+To use the command-line driver program, you'll need to download the driver program
+(`P2108Driver-Windows-x64.exe` or `P2108Driver-Windows-x86.exe` on Windows, `P2108Driver-Darwin-universal` on macOS, or `P2108Driver-Linux-x86_64` on Linux)
+ and the shared library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux). 
+ These are distributed for each supported platform as part of the [GitHub Releases](https://github.com/NTIA/p2108/releases/) starting with v1.1. 
+ Prior to v1.1, support was only provided for Windows platforms.
+
 {{< include /includes/driver/_general_usage.qmd >}}
 
 ## Command-Line Arguments
