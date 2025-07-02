@@ -8,6 +8,8 @@ This page details the installation and usage of the .NET version of the PropLib 
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
+## Getting Started
+
 <!-- TODO: Remove this include -->
 {{< include /includes/_under_construction.qmd >}}
 
