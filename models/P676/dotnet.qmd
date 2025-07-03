@@ -1,0 +1,82 @@
+---
+title: "Low Frequency / Medium Frequency Propagation Model – .NET"
+date: 2025-01-24
+date-modified: 2025-06-12
+---
+
+This page details the installation and usage of the .NET version of the PropLib implementation of the Low Frequency / Medium Frequency (LF/MF) propagation model.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+<!-- TODO: Remove this include -->
+{{< include /includes/_under_construction.qmd >}}
+
+## Installation
+
+This .NET package is distributed on 
+[NuGet](https://www.nuget.org/packages/ITS.Propagation.LFMF).
+
+There are two easy ways to install the NuGet package: [dotnet CLI](#installation-with-dotnet-cli) or [Visual Studio](#installation-with-visual-studio).
+
+### Installation with dotnet CLI
+
+1. Run the following command to install the package.
+
+    ```default
+    dotnet add package ITS.Propagation.LFMF
+    ```
+
+1. After the command completes, open the project csproj file to see the added NuGet package reference:
+
+    ```default
+    <ItemGroup>
+        <PackageReference Include="ITS.Propagation.LFMF" Version="1.1.0" />
+    </ItemGroup>
+    ```
+
+### Installation with Visual Studio
+
+1. Open your project in **Visual Studio** and select **Project > Manage NuGet Packages**.
+
+1. In the **NuGet Package Manager** page, choose **nuget.org** as the **Package source**.
+
+1. From the **Browse** tab, search for **ITS.Propagation.LFMF**, select ITS.Propagation.LFMF in the list, and then select Install as shown in @fig-dotnet-add-nuget.
+
+    ![](/images/dotnet/dotnet-add-nuget.png){#fig-dotnet-add-nuget fig-alt="A screenshot showing the 'NuGet Package Manager'" width=600 fig-align="left"}
+
+1. If you're prompted to verify the installation, select OK.
+
+## Examples
+
+The following code examples show how the LF/MF model can be called from .NET project.
+
+### Calling the Model
+
+```default
+using ITS.Propagation;
+
+# define inputs
+double h_tx__meter = 0;     # Height of the transmitter
+double h_rx__meter = 0;     # Height of the receiver
+double f__mhz = 0.01;       # Frequency
+double P_tx__watt = 1000.0; # Transmitter power   
+double N_s = 301.0;         # Surface refractivity
+double d__km = 1000.0;      # Path distance
+double epsilon = 15.0;      # Relative permittivity
+double sigma = 0.005;       # Conductivity
+int pol = 0;                # Polarization (enum value)
+# Alternately, `pol` can be specified using the enum:
+LFMF.Polarization pol = LFMF.Polarization.Horizontal;
+
+# Call the LF/MF model
+LFMF.Result result = new LFMF.Result();
+var r = LFMF.LFMFModel(h_tx__meter, h_rx__meter, f__mhz, P_tx__watt, N_s,
+    d__km, epsilon, sigma, pol, out result);
+
+# The result is a data structure containing four elements:
+# result.A_btl__db  is approximately  184.49
+# result.E__dBuVm   is approximately  -82.50
+# result.P_rx__dbm  is approximately  -114.93
+# result.method     is ITS.Propagation.LFMF.SolutionMethod.ResidueSeries
+#                       (SolutionMethod enum value 1)
+```
