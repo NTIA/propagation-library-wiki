@@ -32,7 +32,7 @@ This library has no external C++ dependencies.
 
 ## Examples
 
-The following code examples show how each of the three models from Recommendation ITU-R P.2108 can be called from Python.
+The following code examples show how each of the three models from Recommendation ITU-R P.2108 can be called in a C++ program.
 
 ### Height Gain Terminal Correction Model
 

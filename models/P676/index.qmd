@@ -4,7 +4,13 @@ date: 2024-12-02
 date-modified: 2025-06-12
 ---
 
-The Recommendation ITU-R P.676-12 provides methods to estimate the attenuation of atmospheric gases on terrestrial and slant paths [@p676-12].
+The Recommendation ITU-R P.676-12 provides methods to estimate the attenuation of 
+atmospheric gases on terrestrial and slant paths [@p676-12].
+This implementation contains three major methods of predicting the specific and path 
+gaseous attenuation due to oxygen and water vapour: Specific attenuation, Terrestrial 
+path attenuation, and Slant path attenuation. 
+It implements Annex 1 of the Recommendation: Line-by-line calculation of gaseous attenuation. 
+In addition to the three major methods, it also provides some intermedia methods.
 
 {{< include /includes/_getting_started.qmd >}}
 

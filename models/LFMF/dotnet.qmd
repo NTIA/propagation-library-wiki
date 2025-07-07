@@ -50,7 +50,7 @@ There are two easy ways to install the NuGet package: [dotnet CLI](#installation
 
 The following code examples show how the LF/MF model can be called from .NET project.
 
-### Calling the Model
+### Calling the LFMF Model
 
 ```default
 using ITS.Propagation;

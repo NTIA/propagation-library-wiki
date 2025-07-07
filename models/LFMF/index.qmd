@@ -73,7 +73,7 @@ The `method` output indicates the solution method used internally by the model w
 
 {{< include /includes/_code_examples.qmd >}}
 
-[C++](cpp.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
-[.NET](dotnet.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
-[MATLAB](matlab.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
-[Python](python.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
+[C++](cpp.qmd#calling-the-lfmf-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#calling-the-lfmf-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#calling-the-lfmf-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#calling-the-lfmf-model){.btn .btn-secondary .btn role="button"}

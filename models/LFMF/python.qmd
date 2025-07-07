@@ -43,7 +43,7 @@ help(LFMF.LFMF)
 
 The following code examples show how the LF/MF model can be called from Python.
 
-### Calling the Model
+### Calling the LFMF Model
 
 ```python
 from ITS.Propagation import LFMF
