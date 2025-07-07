@@ -1,5 +1,5 @@
 ---
-title: "Low Frequency / Medium Frequency Propagation Model – Command-Line Driver"
+title: "The Recommendation ITU-R P.676-12 – Command-Line Driver"
 date: 2025-01-10
 date-modified: 2025-06-12
 ---

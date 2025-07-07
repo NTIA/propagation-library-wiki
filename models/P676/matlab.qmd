@@ -1,5 +1,5 @@
 ---
-title: "Low Frequency / Medium Frequency Propagation Model – MATLAB"
+title: "The Recommendation ITU-R P.676-12 – MATLAB"
 date: 2025-01-24
 date-modified: 2025-06-12
 ---
