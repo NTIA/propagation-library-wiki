@@ -51,7 +51,7 @@ int main() {
     Polarization pol = Polarization::HORIZONTAL;    // Polarization
 
     // Create struct to store outputs
-    Result result;
+    Result result;      // LFMF result structure
     ReturnCode rtn;     // Return code
 
     // Call the model
@@ -61,6 +61,6 @@ int main() {
     // result.A_btl__db is 184.49 dB
     // result.E_dBuVm is -82.50 dB(uV/m)
     // result.P_rx__dbm is -114.93 dBm
-    // result.method is 1 (residue series)
+    // result.method is 1 (RESIDUE_SERIES)
 }
 ```

@@ -64,12 +64,13 @@ using namespace ITS::ITU::PSeries::P676;
 int main() {
     // Define inputs
     double f__ghz = 26.0;       // Frequency, in GHz
-    Atmosphere atmosphere = Atmosphere::ATMOSPHERE__MAGRA;  // Reference atmosphere from P.835, enum
+    Atmosphere atmosphere = Atmosphere::
+        ATMOSPHERE__MAGRA;      // Reference atmosphere from P.835, enum
     double r_0__km = 10.5;      // Path length, in km
 
     // Create variables to store outputs
-    double A_gas;   // Gaseous attenuation, in dB
-    ReturnCode rtn;
+    double A_gas;       // Gaseous attenuation, in dB
+    ReturnCode rtn;     // Return code
 
     // Call Terrestrial Path Attenuation Function
     rtn = TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km, A_gas);
@@ -92,11 +93,11 @@ int main() {
     double h_2__km = 95;        // Height of the high terminal, in km
     double beta_1__rad = 0.75;  // Elevation angle (from zenith), in rad
     Atmosphere atmosphere = Atmosphere::
-        ATMOSPHERE__HIGH_LAT_WINTER;  // Reference atmosphere from P.835, enum
+        ATMOSPHERE__HIGH_LAT_WINTER;    // Reference atmosphere from P.835, enum
     
     // Create variables to store outputs
     SlantPathAttenuationResult result;  // Slant path result structure
-    ReturnCode rtn;
+    ReturnCode rtn;     // Return code
 
     // Call Slant Path Attenuation Function
     rtn = SlantPathAttenuation(f__ghz, h_1__km, h_2__km, beta_1__rad, atmosphere, result);
