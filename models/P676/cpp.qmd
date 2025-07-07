@@ -30,9 +30,9 @@ This library has no external C++ dependencies.
 
 ## Examples
 
-The following code example shows how each of the three major models from Recommendation ITU-R P.676 can be called in a C++ program.
+The following code example shows how each of the three major methods from the Recommendation ITU-R P.676 can be called in a C++ program.
 
-### Specific Attenuation Function
+### Specific Attenuation Model
 
 ```cpp
 #include "P676.h"
@@ -48,14 +48,14 @@ int main() {
     // Create variables to store outputs
     double gamma;   // Specific gaseous attenuation, in dB/km
 
-    // Call Specific Attenuation Function
+    // Call Specific Attenuation Model
     gamma = SpecificAttenuation(f__ghz, T__kelvin, e__hPa, p__hPa);
 
     // gamma is approx. 14.7783
 }
 ```
 
-### Terrestrial Path Attenuation Function
+### Terrestrial Path Attenuation Model
 
 ```cpp
 #include "P676.h"
@@ -72,7 +72,7 @@ int main() {
     double A_gas;       // Gaseous attenuation, in dB
     ReturnCode rtn;     // Return code
 
-    // Call Terrestrial Path Attenuation Function
+    // Call Terrestrial Path Attenuation Model
     rtn = TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km, A_gas);
 
     // rtn is 0 (SUCCESS)
@@ -80,7 +80,7 @@ int main() {
 }
 ```
 
-### Slant Path Attenuation Function
+### Slant Path Attenuation Model
 
 ```cpp
 #include "P676.h"
@@ -99,7 +99,7 @@ int main() {
     SlantPathAttenuationResult result;  // Slant path result structure
     ReturnCode rtn;     // Return code
 
-    // Call Slant Path Attenuation Function
+    // Call Slant Path Attenuation Model
     rtn = SlantPathAttenuation(f__ghz, h_1__km, h_2__km, beta_1__rad, atmosphere, result);
 
     // rtn is 0 (SUCCESS)

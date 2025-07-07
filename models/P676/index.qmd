@@ -16,9 +16,9 @@ In addition to the three major methods, it also provides some intermedia methods
 
 ## Functions
 
-### Specific attenuation
+### Specific Attenuation Model
 
-This function implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex 1 Section 1 Equation (1). The inputs for this function are shown below in @tbl-p676-inputs-specific-attenuation.
+This model implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex 1 Section 1 Equation (1). The inputs for this model are shown below in @tbl-p676-inputs-specific-attenuation.
 
 | Variable    | Type   | Units  | Limits               | Description                   |
 |-------------|--------|--------|----------------------|-------------------------------|
@@ -26,27 +26,27 @@ This function implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex
 | `T__kelvin` | double | Kelvin | $T \geq 0$           | Temperature                   |
 | `e__hPa`    | double | hPa    | $e \geq 0$           | Water vapour partial pressure |
 | `p__hPa`    | double | hPa    | $p \geq 0$           | Dry air pressure              |
-: Inputs for the specific attenuation function {#tbl-p676-inputs-specific-attenuation}
+: Inputs for the specific attenuation model {#tbl-p676-inputs-specific-attenuation}
 
-The output of this function is a double value in dB/km.
+The output of this model is a double value in dB/km.
 
 {{< include /includes/_code_examples.qmd >}}
 
-[C++](cpp.qmd#specific-attenuation-function){.btn .btn-secondary .btn role="button"}
-[.NET](dotnet.qmd#specific-attenuation-function){.btn .btn-secondary .btn role="button"}
-[MATLAB](matlab.qmd#specific-attenuation-function){.btn .btn-secondary .btn role="button"}
-[Python](python.qmd#specific-attenuation-function){.btn .btn-secondary .btn role="button"}
+[C++](cpp.qmd#specific-attenuation-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#specific-attenuation-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#specific-attenuation-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#specific-attenuation-model){.btn .btn-secondary .btn role="button"}
 
-### Terrestrial path gaseous attenuation
+### Terrestrial Path Gaseous Attenuation Model
 
-This function implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex 1 Section 2.1 Equation (10). The inputs for this function are shown below in @tbl-p676-inputs-terrestrial-path-attenuation.
+This model implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex 1 Section 2.1 Equation (10). The inputs for this model are shown below in @tbl-p676-inputs-terrestrial-path-attenuation.
 
 | Variable     | Type   | Units | Limits                   | Description                     |
 |--------------|--------|-------|--------------------------|---------------------------------|
 | `f__ghz`     | double | GHz   | $0 \leq f \leq 1000$     | Frequency                       |
 | `atmosphere` | enum   | N/A   | See @tbl-p676-atmosphere | Reference atmosphere from P.835 |
 | `r_0__km`    | double | km    | $r_0 \geq 0$             | Path length                     |
-: Inputs for the terrestrial path gaseous attenuation function {#tbl-p676-inputs-terrestrial-path-attenuation}
+: Inputs for the terrestrial path gaseous attenuation model {#tbl-p676-inputs-terrestrial-path-attenuation}
 
 The `atmosphere` input must be one of the following valid supported reference atmosphere from P.835 [@p835-6], as defined in @tbl-p676-atmosphere.
 
@@ -60,18 +60,18 @@ The `atmosphere` input must be one of the following valid supported reference at
 | 5          | ATMOSPHERE__LOW_LAT         | Low-latitude annual reference atmosphere  |
 : Allowed reference atmosphere from P.835 {#tbl-p676-atmosphere}
 
-The output of this function is a double value in dB.
+The output of this model is a double value in dB.
 
 {{< include /includes/_code_examples.qmd >}}
 
-[C++](cpp.qmd#terrestrial-path-attenuation-function){.btn .btn-secondary .btn role="button"}
-[.NET](dotnet.qmd#terrestrial-path-attenuation-function){.btn .btn-secondary .btn role="button"}
-[MATLAB](matlab.qmd#terrestrial-path-attenuation-function){.btn .btn-secondary .btn role="button"}
-[Python](python.qmd#terrestrial-path-attenuation-function){.btn .btn-secondary .btn role="button"}
+[C++](cpp.qmd#terrestrial-path-attenuation-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#terrestrial-path-attenuation-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#terrestrial-path-attenuation-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#terrestrial-path-attenuation-model){.btn .btn-secondary .btn role="button"}
 
-### Slant path gaseous attenuation
+### Slant Path Gaseous Attenuation Model
 
-This function implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex 1 Section 2.2. The inputs for this function are shown below in @tbl-p676-inputs-slant-path-attenuation.
+This model implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex 1 Section 2.2. The inputs for this model are shown below in @tbl-p676-inputs-slant-path-attenuation.
 
 | Variable      | Type   | Units | Limits                   | Description                     |
 |---------------|--------|-------|--------------------------|---------------------------------|
@@ -80,9 +80,9 @@ This function implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex
 | `h_2__km`     | double | km    | $h_2 \geq 0$             | Height of the high terminal     |
 | `beta_1__rad` | double | rad   | $beta_1 \geq 0$          | Elevation angle (from zenith)   |
 | `atmosphere`  | enum   | N/A   | See @tbl-p676-atmosphere | Reference atmosphere from P.835 |
-: Inputs for the slant path gaseous attenuation function {#tbl-p676-inputs-slant-path-attenuation}
+: Inputs for the slant path gaseous attenuation model {#tbl-p676-inputs-slant-path-attenuation}
 
-The slant path gaseous attenuation function produces an output which contains five values, as defined in @tbl-p676-outputs.
+The slant path gaseous attenuation model produces an output which contains five values, as defined in @tbl-p676-outputs.
 
 | Variable        | Type    | Units | Description                    |
 |-----------------|---------|-------|--------------------------------|
@@ -91,11 +91,11 @@ The slant path gaseous attenuation function produces an output which contains fi
 | `a__km`         | double  | km    | Ray length                     |
 | `incident__rad` | double  | rad   | Incident angle at h_2          |
 | `delta_L__km`   | double  | km    | Excess atmospheric path length |
-: Outputs of the slant path gaseous attenuation function {#tbl-p676-outputs}
+: Outputs of the slant path gaseous attenuation model {#tbl-p676-outputs}
 
 {{< include /includes/_code_examples.qmd >}}
 
-[C++](cpp.qmd#slant-path-attenuation-function){.btn .btn-secondary .btn role="button"}
-[.NET](dotnet.qmd#slant-path-attenuation-function){.btn .btn-secondary .btn role="button"}
-[MATLAB](matlab.qmd#slant-path-attenuation-function){.btn .btn-secondary .btn role="button"}
-[Python](python.qmd#slant-path-attenuation-function){.btn .btn-secondary .btn role="button"}
+[C++](cpp.qmd#slant-path-attenuation-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#slant-path-attenuation-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#slant-path-attenuation-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#slant-path-attenuation-model){.btn .btn-secondary .btn role="button"}

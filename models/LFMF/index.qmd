@@ -27,7 +27,7 @@ The model additionally outputs the predicted electric field strength of the grou
 
 ## Functions
 
-### Low Frequency / Mid Frequency Propagation Model
+### Low Frequency / Medium Frequency (LF/MF) Propagation Model
 
 This model's functionality is exposed through a single function. The inputs for this function are shown below in @tbl-lfmf-inputs.
 The model outputs are provided in @tbl-lfmf-outputs.
