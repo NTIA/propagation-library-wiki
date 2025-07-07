@@ -36,7 +36,7 @@ The following code example shows how each of the three major models from Recomme
 
 ```cpp
 #include "P676.h"
-using namespace ITS::ITU::PSeries;
+using namespace ITS::ITU::PSeries::P676;
 
 int main() {
     // Define inputs
@@ -46,10 +46,10 @@ int main() {
     double p__hPa = 1013.25;    // Dry air pressure, in hPa
 
     // Create variables to store outputs
-    double gamma;  // Specific gaseous attenuation, in dB/km
+    double gamma;   // Specific gaseous attenuation, in dB/km
 
     // Call Specific Attenuation Function
-    gamma = P676::SpecificAttenuation(f__ghz, T__kelvin, e__hPa, p__hPa);
+    gamma = SpecificAttenuation(f__ghz, T__kelvin, e__hPa, p__hPa);
 
     // gamma is approx. 14.7783
 }
@@ -59,23 +59,53 @@ int main() {
 
 ```cpp
 #include "P676.h"
-using namespace ITS::ITU::PSeries;
+using namespace ITS::ITU::PSeries::P676;
 
 int main() {
     // Define inputs
-    double f__ghz = 60.0;       // Frequency, in GHz
-    double T__kelvin = 288.15;  // Temperature, in Kelvin
-    double e__hPa = 9.97288879; // Water vapour partial pressure, in hPa
-    double p__hPa = 1013.25;    // Dry air pressure, in hPa
+    double f__ghz = 26.0;       // Frequency, in GHz
+    Atmosphere atmosphere = Atmosphere::ATMOSPHERE__MAGRA;  // Reference atmosphere from P.835, enum
+    double r_0__km = 10.5;      // Path length, in km
 
     // Create variables to store outputs
-    double gamma;  // Specific gaseous attenuation, in dB/km
+    double A_gas;   // Gaseous attenuation, in dB
+    ReturnCode rtn;
 
-    // Call Specific Attenuation Function
-    gamma = P676::SpecificAttenuation(f__ghz, T__kelvin, e__hPa, p__hPa);
+    // Call Terrestrial Path Attenuation Function
+    rtn = TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km, A_gas);
 
-    // gamma is approx. 14.7783
+    // rtn is 0 (SUCCESS)
+    // A_gas is approx. 1.3128
 }
 ```
 
 ### Slant Path Attenuation Function
+
+```cpp
+#include "P676.h"
+using namespace ITS::ITU::PSeries::P676;
+
+int main() {
+    // Define inputs
+    double f__ghz = 48.0;       // Frequency, in GHz
+    double h_1__km = 10;        // Height of the low terminal, in km
+    double h_2__km = 95;        // Height of the high terminal, in km
+    double beta_1__rad = 0.75;  // Elevation angle (from zenith), in rad
+    Atmosphere atmosphere = Atmosphere::
+        ATMOSPHERE__HIGH_LAT_WINTER;  // Reference atmosphere from P.835, enum
+    
+    // Create variables to store outputs
+    SlantPathAttenuationResult result;  // Slant path result structure
+    ReturnCode rtn;
+
+    // Call Slant Path Attenuation Function
+    rtn = SlantPathAttenuation(f__ghz, h_1__km, h_2__km, beta_1__rad, atmosphere, result);
+
+    // rtn is 0 (SUCCESS)
+    // result.A_gas__db	is approx. 0.1014 dB
+    // bending__rad is approx. 8.0309e-05 rad
+    // a__km is approx. 115.5221 km
+    // incident__rad is approx. 0.7379 rad
+    // delta_L__km is approx. 0.0008058 km
+}
+```
