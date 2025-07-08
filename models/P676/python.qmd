@@ -13,60 +13,101 @@ This page details the installation and usage of the Python version of the PropLi
 ### Installation
 
 This Python package is distributed through the
-[Python Package Index (PyPI)](https://pypi.org/project/proplib-lfmf).
+[Python Package Index (PyPI)](https://pypi.org/project/proplib-p676).
 Run the following command to install the package, and any required dependencies, into your Python environment.
 
 ```default
-pip install proplib-lfmf
+pip install proplib-p676
 ```
 
 The following code snippet shows how to import the package and check the installed version.
 
 ```python
-from ITS.Propagation import LFMF
-print(LFMF.__version__)
+from ITS.ITU.PSeries import P676
+print(P676.__version__)
 ```
 
 {{< include /includes/python/_uninstallation.qmd >}}
 
 ```default
-pip uninstall proplib-lfmf
+pip uninstall proplib-p676
 ```
 
 {{< include /includes/python/_documentation.qmd >}}
 
 ```python
-help(LFMF.LFMF)
+from ITS.ITU.PSeries import P676
+help(P676.SpecificAttenuation)
 ```
 
 ## Examples
 
-The following code examples show how the LF/MF model can be called from Python.
+The following code examples show how each of the three models from Recommendation ITU-R P.676 can be called from Python.
 
-### Calling the Model
+### Specific Attenuation Model
 
 ```python
-from ITS.Propagation import LFMF
+from ITS.ITU.PSeries import P676
 
 # define inputs
-h_tx__meter = 0.0    # Height of the transmitter
-h_rx__meter = 0.0    # Height of the receiver
-f__mhz = 0.01        # Frequency
-P_tx__watt = 1000.0  # Transmitter power   
-N_s = 301.0          # Surface refractivity
-d__km = 1000.0       # Path distance
-epsilon = 15.0       # Relative permittivity
-sigma = 0.005        # Conductivity
-pol = 0              # Polarization (enum value)
-# Alternately, `pol` can be specified using the enum:
-pol = LFMF.Polarization.Horizontal
+f__ghz = 60.0           # Frequency, in GHz.
+T__kelvin = 288.15      # Temperature, in Kelvin.
+e__hPa = 9.97288879     # Water vapour partial pressure, in hPa.
+p__hPa = 1013.25        # Dry air pressure, in hPa.
 
-# Call the LF/MF model
-result = LFMF.LFMF(h_tx__meter, h_rx__meter, f__mhz, P_tx__watt, N_s, d__km, epsilon, sigma, pol)
+# Call Specific Attenuation Model
+gamma = P676.SpecificAttenuation(f__ghz, T__kelvin, e__hPa, p__hPa)
+# gamma is approximately 14.77832 dB/km
+```
 
-# The result is a data structure containing four elements:
-# result.A_btl__db  is approximately  184.49
-# result.E__dBuVm   is approximately  -82.50
-# result.P_rx__dbm  is approximately  -114.93
-# result.method     is <SolutionMethod.ResidueSeries: 1>
+### Terrestrial Path Attenuation Model
+
+```python
+from ITS.ITU.PSeries import P676
+
+# define inputs
+f__ghz = 56.0       # Frequency, in GHz.
+atmosphere = 5      # Reference atmosphere from P.835.
+r_0__km = 15.6      # Path length, in km.
+
+# Call Terrestrial Path Attenuation Model
+A_gas__db = P676.TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km)
+# A_gas__db is approximately 109.41314 dB
+
+# can also use enum to provide reference atmosphere
+atmosphere = P676.ReferenceAtmosphere.LowLatitude   # int value is 5
+A_h__db = P676.TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km)
+# A_h__db is approximately 109.41314 dB
+```
+
+### Slant Path Attenuation Model
+
+```python
+from ITS.ITU.PSeries import P676
+
+# define inputs
+f__ghz = 26.0       # Frequency, in GHz.
+h_1__km = 0.0       # Height of the low terminal, in km.
+h_2__km = 30.0      # Height of the high terminal, in km.
+beta_1__rad = 1.55  # Elevation angle (from zenith), in rad.
+atmosphere = 3      # Reference atmosphere from P.835.
+
+# Call Slant Path Attenuation Model
+result = P676.SlantPathAttenuation(f__ghz, h_1__km, h_2__km, beta_1__rad, atmosphere)
+# The result is a data structure containing five elements:
+# result.A_gas__db is approximately 16.90827 dB
+# result.bending__rad is approximately 0.00950 rad
+# result.a__km is approximately 538.16348 km
+# result.incident__rad is approximately 1.47533 rad
+# result.delta_L__km is approximately 0.06565 km
+
+# can also use enum to provide reference atmosphere
+atmosphere = P676.ReferenceAtmosphere.MidLatitudeSummer # int value is 3
+result = P676.SlantPathAttenuation(f__ghz, h_1__km, h_2__km, beta_1__rad, atmosphere)
+# The result is a data structure containing five elements:
+# result.A_gas__db is approximately 16.90827 dB
+# result.bending__rad is approximately 0.00950 rad
+# result.a__km is approximately 538.16348 km
+# result.incident__rad is approximately 1.47533 rad
+# result.delta_L__km is approximately 0.06565 km
 ```
