@@ -8,10 +8,6 @@ This page details the installation and usage of the MATLAB&reg; version of the P
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
-<!-- TODO: Remove this include -->
-{{< include /includes/_under_construction.qmd >}}
-
-
 ## Getting Started
 
 This MATLAB&reg; Toolbox is distributed on [MathWorks&reg; File Exchange](#TODO).

@@ -9,7 +9,7 @@ This page details the usage of the cross-platform command-line driver version of
 {{< include /includes/driver/_intro_and_installation.qmd >}}
 
 To use the command-line driver program, you'll need to download the driver program
-(`LFMFDriver-Windows-x64.exe` or `LFMFDriver-Windows-x86.exe` on Windows, `LFMFDriver-Darwin-universal` on macOS, or `LFMFDriver-Linux-x86_64` on Linux)
+(`LFMFDriver-1.1.0-Windows-x64.exe` or `LFMFDriver-1.1.0-Windows-x86.exe` on Windows, `LFMFDriver-1.1.0-Darwin-universal` on macOS, or `LFMFDriver-1.1.0-Linux-x86_64` on Linux)
  and the shared library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux). 
  These are distributed for each supported platform as part of the [GitHub Releases](https://github.com/NTIA/LFMF/releases/) starting with v1.1. 
  Prior to v1.1, support was only provided for Windows platforms.
