@@ -52,28 +52,28 @@ The following code examples show how the LF/MF model can be called from .NET pro
 ```c#
 using ITS.Propagation;
 
-# define inputs
-double h_tx__meter = 0;     # Height of the transmitter
-double h_rx__meter = 0;     # Height of the receiver
-double f__mhz = 0.01;       # Frequency
-double P_tx__watt = 1000.0; # Transmitter power   
-double N_s = 301.0;         # Surface refractivity
-double d__km = 1000.0;      # Path distance
-double epsilon = 15.0;      # Relative permittivity
-double sigma = 0.005;       # Conductivity
-int pol = 0;                # Polarization (enum value)
-# Alternately, `pol` can be specified using the enum:
-LFMF.Polarization pol = LFMF.Polarization.Horizontal;
+// define inputs
+double h_tx__meter = 0;     // Height of the transmitter
+double h_rx__meter = 0;     // Height of the receiver
+double f__mhz = 0.01;       // Frequency
+double P_tx__watt = 1000.0; // Transmitter power   
+double N_s = 301.0;         // Surface refractivity
+double d__km = 1000.0;      // Path distance
+double epsilon = 15.0;      // Relative permittivity
+double sigma = 0.005;       // Conductivity
+int pol = 0;                // Polarization (enum value)
+// Alternately, `pol` can be specified using the enum:
+// LFMF.Polarization pol = LFMF.Polarization.Horizontal;
 
-# Call the LF/MF model
-LFMF.Result result = new LFMF.Result();
-var r = LFMF.LFMFModel(h_tx__meter, h_rx__meter, f__mhz, P_tx__watt, N_s,
-    d__km, epsilon, sigma, pol, out result);
+// Call the LF/MF model
+int rtn = LFMF.LFMFModel(h_tx__meter, h_rx__meter, f__mhz, P_tx__watt, N_s,
+    d__km, epsilon, sigma, pol, out LFMF.Result result);
 
-# The result is a data structure containing four elements:
-# result.A_btl__db  is approximately  184.49
-# result.E__dBuVm   is approximately  -82.50
-# result.P_rx__dbm  is approximately  -114.93
-# result.method     is ITS.Propagation.LFMF.SolutionMethod.ResidueSeries
-#                       (SolutionMethod enum value 1)
+// rtn is 0 (SUCCESS)
+// The result is a data structure containing four elements:
+// result.A_btl__db  is approximately  184.49
+// result.E__dBuVm   is approximately  -82.50
+// result.P_rx__dbm  is approximately  -114.93
+// result.method     is ITS.Propagation.LFMF.SolutionMethod.ResidueSeries
+//                       (SolutionMethod enum value 1)
 ```
