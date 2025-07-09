@@ -4,13 +4,9 @@ date: 2025-01-24
 date-modified: 2025-06-12
 ---
 
-This page details the installation and usage of the MATLAB&reg; version of the PropLib implementation of the Low Frequency / Medium Frequency (LF/MF) propagation model.
+This page details the installation and usage of the MATLAB&reg; version of the PropLib implementation of Recommendation ITU-R P.676-12.
 
 {{< include /includes/_link_to_model_home.qmd >}}
-
-<!-- TODO: Remove this include -->
-{{< include /includes/_under_construction.qmd >}}
-
 
 ## Getting Started
 
@@ -21,40 +17,82 @@ This MATLAB&reg; Toolbox is distributed on [MathWorks&reg; File Exchange](#TODO)
 {{< include /includes/matlab/_documentation.qmd >}}
 
 ```matlab
-help ITS.Propagation.LFMF.LFMFModel
+help ITS.ITU.PSeries.P676.SpecificAttenuation
 
 % Prints detailed usage information!
 ```
 
 {{< include /includes/matlab/_examples.qmd >}}
 
-### Calling the LFMF Model
-
-This example shows multiple equivalent ways to specify the polarization input.
+### Specific Attenuation Model
 
 ```matlab
-import ITS.Propagation.LFMF.*
+import ITS.ITU.PSeries.P676.*
 
 % Define inputs
-h_tx__meter = 0.0;    % Height of the transmitter
-h_rx__meter = 0.0;    % Height of the receiver
-f__mhz = 0.01;        % Frequency
-P_tx__watt = 1000.0;  % Transmitter power   
-N_s = 301.0;          % Surface refractivity
-d__km = 1000.0;       % Path distance
-epsilon = 15.0;       % Relative permittivity
-sigma = 0.005;        % Conductivity
-pol = 0;              % Polarization (enum value)
-pol = Polarization.HORIZONTAL;  % An equivalent way to specify the polarization
+f__ghz = 60.0;          % Frequency, in GHz.
+T__kelvin = 288.15;     % Temperature, in Kelvin.
+e__hPa = 9.97288879;    % Water vapour partial pressure, in hPa.
+p__hPa = 1013.25;       % Dry air pressure, in hPa.
 
-% Call the LF/MF model
-[A_btl__db, E__dBuVm, P_rx__dbm, method] = LFMF(
-    h_tx__meter, h_rx__meter, f__mhz, P_tx__watt,
-    N_s, d__km, epsilon, sigma, pol
-);
+% Call Specific Attenuation Model
+gamma = SpecificAttenuation(f__ghz, T__kelvin, e__hPa, p__hPa);
+% gamma is approximately 14.7783 dB/km
+```
 
-% A_btl__db  is approximately  184.49
-% E__dBuVm   is approximately  -82.50
-% P_rx__dbm  is approximately  -114.93
-% method     is RESIDUE_SERIES (SolutionMethod enum value 1)
+### Terrestrial Path Attenuation Model
+
+This example shows multiple equivalent ways to specify the clutter type input.
+
+```matlab
+import ITS.ITU.PSeries.P676.*
+
+% Define inputs
+f__ghz = 56.0;      % Frequency, in GHz.
+atmosphere = 5;     % Reference atmosphere from P.835.
+r_0__km = 15.6;     % Path length, in km.
+
+% Call Terrestrial Path Attenuation Model
+A_gas__db = TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km);
+% A_gas__db is approximately 109.4131 dB
+
+% can also use enum to provide reference atmosphere
+atmosphere = ReferenceAtmosphere.LowLatitude;   % int value is 5
+A_gas__db = TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km);
+
+% another way to provide the enum value:
+atmosphere = "LowLatitude";     % int value is 5
+A_gas__db = TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km);
+```
+
+### Slant Path Attenuation Model
+
+```matlab
+import ITS.ITU.PSeries.P676.*
+
+% define inputs
+f__ghz = 26.0;          % Frequency, in GHz.
+h_1__km = 0.0;          % Height of the low terminal, in km.
+h_2__km = 30.0;         % Height of the high terminal, in km.
+beta_1__rad = 1.55;     % Elevation angle (from zenith), in rad.
+atmosphere = 3;         % Reference atmosphere from P.835.
+
+% Call Slant Path Attenuation Model
+result = SlantPathAttenuation(f__ghz, h_1__km, h_2__km, beta_1__rad, atmosphere);
+% The result is a data structure containing five elements:
+% result.A_gas__db is approximately 16.9083 dB
+% result.bending__rad is approximately 0.0095 rad
+% result.a__km is approximately 538.1633 km
+% result.incident__rad is approximately 1.4753 rad
+% result.delta_L__km is approximately 0.0657 km
+
+% can also use enum to provide reference atmosphere
+atmosphere = ReferenceAtmosphere.MidLatitudeSummer;     % int value is 3
+result = SlantPathAttenuation(f__ghz, h_1__km, h_2__km, beta_1__rad, atmosphere);
+% The result is a data structure containing five elements:
+% result.A_gas__db is approximately 16.9083 dB
+% result.bending__rad is approximately 0.0095 rad
+% result.a__km is approximately 538.1633 km
+% result.incident__rad is approximately 1.4753 rad
+% result.delta_L__km is approximately 0.0657 km
 ```

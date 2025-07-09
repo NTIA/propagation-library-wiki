@@ -76,8 +76,8 @@ A_gas__db = P676.TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km)
 
 # can also use enum to provide reference atmosphere
 atmosphere = P676.ReferenceAtmosphere.LowLatitude   # int value is 5
-A_h__db = P676.TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km)
-# A_h__db is approximately 109.41314 dB
+A_gas__db = P676.TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km)
+# A_gas__db is approximately 109.41314 dB
 ```
 
 ### Slant Path Attenuation Model
