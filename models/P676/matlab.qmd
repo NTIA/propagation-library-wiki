@@ -42,7 +42,7 @@ gamma = SpecificAttenuation(f__ghz, T__kelvin, e__hPa, p__hPa);
 
 ### Terrestrial Path Attenuation Model
 
-This example shows multiple equivalent ways to specify the clutter type input.
+This example shows multiple equivalent ways to specify the reference atmosphere input.
 
 ```matlab
 import ITS.ITU.PSeries.P676.*

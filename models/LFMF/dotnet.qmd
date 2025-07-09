@@ -49,7 +49,7 @@ The following code examples show how the LF/MF model can be called from .NET pro
 
 ### Calling the LFMF Model
 
-```default
+```c#
 using ITS.Propagation;
 
 # define inputs
