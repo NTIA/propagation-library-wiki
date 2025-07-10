@@ -90,7 +90,7 @@ rtn = P676.TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km, out double A_
 ### Slant Path Attenuation Model
 
 ```c#
-import ITS.ITU.PSeries.P676.*
+using ITS.ITU.PSeries;
 
 // define inputs
 double f__ghz = 26.0;       // Frequency, in GHz.
