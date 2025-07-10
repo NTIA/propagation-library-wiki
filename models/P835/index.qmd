@@ -44,7 +44,7 @@ The output of this function is a double value in g/m<sup>3</sup>.
 | Variable      | Type   | Units           | Limits              | Description                                                 |
 |---------------|--------|-----------------|---------------------|-------------------------------------------------------------|
 | `h__km`       | double | km              | $0 \leq h \leq 100$ | Geometric height                                            |
-| `rho_0__g_m3` | double | g/m<sup>3</sup> | $rho_0 \geq 0$      | Ground-level water vapour density, optional, default is 7.5 |
+| `rho_0__g_m3` | double | g/m<sup>3</sup> | $rho_0 \geq 0$      | Ground-level water vapour density, default is 7.5 |
 : Water Vapour inputs {#tbl-p835-inputs-water-vapour}
 
 **Global Water Vapour Pressure**

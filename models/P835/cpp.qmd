@@ -40,11 +40,21 @@ using namespace ITS::ITU::PSeries::P835;
 
 int main() {
     // Define inputs
-    double h__km = 60.0;       // Frequency, in GHz
+    double h__km = 15.0;  // Geometric height, in km
+    double rho_0__g_m3 = 7.5;
 
-    // Call Specific Attenuation Model
-    double T = P835.MeanAnnualGlobalReferenceAtmosphere.GlobalTemperature(h__km);
+    // Call Mean Annual Global Reference Atmosphere
+    double T__kelvin
+        = GlobalTemperature(h__km);
+    // T__kelvin is approx. 216.65 Kelvin
 
-    // T is approx. 14.7783
+    double p__hPa = GlobalPressure(h__km);
+    // p__hPa is approx. 121.1193 hPa
+
+    double rho__g_m3 = GlobalWaterVapourDensity(h__km, rho_0__g_m3);
+    // rho__g_m3 is approx. 0.004148 g/m^3
+
+    double e__hPa = GlobalWaterVapourPressure(h__km, rho_0__g_m3);
+    // e__hPa is approx.  hPa
 }
 ```
