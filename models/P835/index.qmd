@@ -132,7 +132,7 @@ The output of this function is a double value in hPa.
 
 ### Mid-latitude Winter Annual Reference Atmosphere
 
-This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.3.1]. 
+This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.3.2]. 
 
 **Mid-latitude Winter Temperature**
 
@@ -167,7 +167,7 @@ The output of this function is a double value in hPa.
 
 ### High-latitude Summer Annual Reference Atmosphere
 
-This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.3.1]. 
+This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.4.1]. 
 
 **High-latitude Summer Temperature**
 
@@ -202,7 +202,7 @@ The output of this function is a double value in hPa.
 
 ### High-latitude Winter Annual Reference Atmosphere
 
-This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.3.1]. 
+This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.4.2]. 
 
 **High-latitude Winter Temperature**
 

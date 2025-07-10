@@ -18,7 +18,7 @@ In addition to the three major methods, it also provides some intermedia methods
 
 ### Specific Attenuation Model
 
-This model implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex 1 Section 1 Equation (1). The inputs for this model are shown below in @tbl-p676-inputs-specific-attenuation.
+This model implements Recommendation ITU-R P.676-12(08/2019) [@p676-12, Annex1.1 Equation (1)]. The inputs for this model are shown below in @tbl-p676-inputs-specific-attenuation.
 
 | Variable    | Type   | Units  | Limits               | Description                   |
 |-------------|--------|--------|----------------------|-------------------------------|
@@ -39,7 +39,7 @@ The output of this model is a double value in dB/km.
 
 ### Terrestrial Path Gaseous Attenuation Model
 
-This model implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex 1 Section 2.1 Equation (10). The inputs for this model are shown below in @tbl-p676-inputs-terrestrial-path-attenuation.
+This model implements Recommendation ITU-R P.676-12(08/2019) [@p676-12, Annex1.2.1 Equation (10)]. The inputs for this model are shown below in @tbl-p676-inputs-terrestrial-path-attenuation.
 
 | Variable     | Type   | Units | Limits                   | Description                     |
 |--------------|--------|-------|--------------------------|---------------------------------|
@@ -71,7 +71,7 @@ The output of this model is a double value in dB.
 
 ### Slant Path Gaseous Attenuation Model
 
-This model implements Recommendation ITU-R P.676-12(08/2019) [@p676-12] Annex 1 Section 2.2. The inputs for this model are shown below in @tbl-p676-inputs-slant-path-attenuation.
+This model implements Recommendation ITU-R P.676-12(08/2019) [@p676-12, Annex1.2.2]. The inputs for this model are shown below in @tbl-p676-inputs-slant-path-attenuation.
 
 | Variable      | Type   | Units | Limits                   | Description                     |
 |---------------|--------|-------|--------------------------|---------------------------------|
