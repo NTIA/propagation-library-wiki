@@ -40,12 +40,11 @@ using namespace ITS::ITU::PSeries::P835;
 
 int main() {
     // Define inputs
-    double h__km = 15.0;  // Geometric height, in km
-    double rho_0__g_m3 = 7.5;
+    double h__km = 15.0;        // Geometric height, in km
+    double rho_0__g_m3 = 7.5;   // Ground-level water vapour density, in g/m^3
 
-    // Call Mean Annual Global Reference Atmosphere
-    double T__kelvin
-        = GlobalTemperature(h__km);
+    // Call Mean Annual Global Reference Atmosphere functions
+    double T__kelvin = GlobalTemperature(h__km);
     // T__kelvin is approx. 216.65 Kelvin
 
     double p__hPa = GlobalPressure(h__km);
@@ -55,6 +54,131 @@ int main() {
     // rho__g_m3 is approx. 0.004148 g/m^3
 
     double e__hPa = GlobalWaterVapourPressure(h__km, rho_0__g_m3);
-    // e__hPa is approx.  hPa
+    // e__hPa is approx. 0.004147 hPa
+}
+```
+
+### Low-latitude Annual Reference Atmosphere
+
+```cpp
+#include "P835.h"
+using namespace ITS::ITU::PSeries::P835;
+
+int main() {
+    // Define inputs
+    double h__km = 10.0;    // Geometric height, in km
+
+    // Call Low-latitude Annual Reference Atmosphere functions
+    double T__kelvin = LowLatitudeTemperature(h__km);
+    // T__kelvin is approx. 237.478 Kelvin
+
+    double p__hPa = LowLatitudePressure(h__km);
+    // p__hPa is approx. 284.853 hPa
+
+    double rho__g_m3 = LowLatitudeWaterVapourDensity(h__km);
+    // rho__g_m3 is approx. 0.051421 g/m^3
+
+    double e__hPa = LowLatitudeWaterVapourPressure(h__km);
+    // e__hPa is approx. 0.0563514 hPa
+}
+```
+
+### Mid-latitude Summer Reference Atmosphere
+
+```cpp
+#include "P835.h"
+using namespace ITS::ITU::PSeries::P835;
+
+int main() {
+    // Define inputs
+    double h__km = 10.0;  // Geometric height, in km
+
+    // Call Mid-latitude Summer Reference Atmosphere functions
+    double T__kelvin = MidLatitudeSummerTemperature(h__km);
+    // T__kelvin is approx. 235.716 Kelvin
+
+    double p__hPa = MidLatitudeSummerPressure(h__km);
+    // p__hPa is approx. 283.71 hPa
+
+    double rho__g_m3 = MidLatitudeSummerWaterVapourDensity(h__km);
+    // rho__g_m3 is approx. 0.0612398 g/m^3
+
+    double e__hPa = MidLatitudeSummerWaterVapourPressure(h__km);
+    // e__hPa is approx. 0.0666137 hPa
+}
+```
+
+### Mid-latitude Winter Reference Atmosphere
+
+```cpp
+#include "P835.h"
+using namespace ITS::ITU::PSeries::P835;
+
+int main() {
+    // Define inputs
+    double h__km = 10.0;  // Geometric height, in km
+
+    // Call Mid-latitude Winter Reference Atmosphere functions
+    double T__kelvin = MidLatitudeWinterTemperature(h__km);
+    // T__kelvin is approx. 218 Kelvin
+
+    double p__hPa = MidLatitudeWinterPressure(h__km);
+    // p__hPa is approx. 258.979 hPa
+
+    double rho__g_m3 = MidLatitudeWinterWaterVapourDensity(h__km);
+    // rho__g_m3 is approx. 0.00998436 g/m^3
+
+    double e__hPa = MidLatitudeWinterWaterVapourPressure(h__km);
+    // e__hPa is approx. 0.0100443 hPa
+}
+```
+
+### High-latitude Summer Reference Atmosphere
+
+```cpp
+#include "P835.h"
+using namespace ITS::ITU::PSeries::P835;
+
+int main() {
+    // Define inputs
+    double h__km = 8.0;  // Geometric height, in km
+
+    // Call High-latitude Summer Reference Atmosphere functions
+    double T__kelvin = HighLatitudeSummerTemperature(h__km);
+    // T__kelvin is approx. 239.621 Kelvin
+
+    double p__hPa = HighLatitudeSummerPressure(h__km);
+    // p__hPa is approx. 354.244 hPa
+
+    double rho__g_m3 = HighLatitudeSummerWaterVapourDensity(h__km);
+    // rho__g_m3 is approx. 0.129769 g/m^3
+
+    double e__hPa = HighLatitudeSummerWaterVapourPressure(h__km);
+    // e__hPa is approx. 0.143495 hPa
+}
+```
+
+### High-latitude Winter Reference Atmosphere
+
+```cpp
+#include "P835.h"
+using namespace ITS::ITU::PSeries::P835;
+
+int main() {
+    // Define inputs
+    double h__km = 8.0;  // Geometric height, in km
+
+    // Call High-latitude Winter Reference Atmosphere functions
+    double T__kelvin = HighLatitudeWinterTemperature(h__km);
+    // T__kelvin is approx. 220.53 Kelvin
+
+    double p__hPa = HighLatitudeWinterPressure(h__km);
+    // p__hPa is approx. 324.41 hPa
+
+    double rho__g_m3 = HighLatitudeWinterWaterVapourDensity(h__km);
+    // rho__g_m3 is approx. 0.0177274 g/m^3
+
+    double e__hPa = HighLatitudeWinterWaterVapourPressure(h__km);
+    // e__hPa is approx. 0.0180407 hPa
 }
 ```
