@@ -4,7 +4,7 @@ date: 2025-01-24
 date-modified: 2025-06-12
 ---
 
-This page details the installation and usage of the Python version of the PropLib implementation of the The Recommendation ITU-R P.676-12.
+This page details the installation and usage of the Python version of the PropLib implementation of Recommendation ITU-R P.676-12.
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
