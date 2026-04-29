@@ -19,7 +19,7 @@ Documentation pages are being worked on, and will soon be available through link
 ::: {.callout-warning}
 ## Page Under Construction
 
-The HF, IF77, and MPM models are distributed as legacy software, and do not
+The HF and MPM models are distributed as legacy software, and do not
 yet have public GitHub repositories.
 The eHata and ITM models have public code repositories, but
 documentation is not yet available on this website. Please check back
@@ -32,7 +32,7 @@ in the meantime.
 +-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
 | **HF**    | [Legacy Software](https://its.ntia.gov/software/high-frequency/high-frequency-propagation-models/)              | High Frequency Propagation Models                  |
 +-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
-| **IF77**  | [Legacy Software](https://its.ntia.gov/software/if-77-electromagnetic-wave-propagation-model-gierhart-johnson/) | The IF-77 Electromagnetic Wave Propagation Model   |
+| **IF77**  | [Repo](https://github.com/NTIA/IF77)  | [Docs](models/IF77/)                                                    | The IF-77 Electromagnetic Wave Propagation Model   |
 +-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
 | **ITM**   | [Repo](https://github.com/NTIA/ITM)   | Docs                                                                    | Irregular Terrain Model                            |
 +-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
