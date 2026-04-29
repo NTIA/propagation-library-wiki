@@ -1,0 +1,56 @@
+---
+title: "Low Frequency / Medium Frequency Propagation Model – MATLAB"
+date: 2025-01-24
+date-modified: 2025-06-12
+---
+
+This page details the installation and usage of the MATLAB&reg; version of the PropLib implementation of the Low Frequency / Medium Frequency (LF/MF) propagation model.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+## Getting Started
+
+This MATLAB&reg; Toolbox is distributed on [MathWorks&reg; File Exchange](#TODO).
+
+{{< include /includes/matlab/_getting_started.qmd >}}
+
+{{< include /includes/matlab/_documentation.qmd >}}
+
+```matlab
+help ITS.Propagation.LFMF.LFMFModel
+
+% Prints detailed usage information!
+```
+
+{{< include /includes/matlab/_examples.qmd >}}
+
+### Calling the LFMF Model
+
+This example shows multiple equivalent ways to specify the polarization input.
+
+```matlab
+import ITS.Propagation.LFMF.*
+
+% Define inputs
+h_tx__meter = 0.0;    % Height of the transmitter
+h_rx__meter = 0.0;    % Height of the receiver
+f__mhz = 0.01;        % Frequency
+P_tx__watt = 1000.0;  % Transmitter power   
+N_s = 301.0;          % Surface refractivity
+d__km = 1000.0;       % Path distance
+epsilon = 15.0;       % Relative permittivity
+sigma = 0.005;        % Conductivity
+pol = 0;              % Polarization (enum value)
+pol = Polarization.HORIZONTAL;  % An equivalent way to specify the polarization
+
+% Call the LF/MF model
+[A_btl__db, E__dBuVm, P_rx__dbm, method] = LFMF(
+    h_tx__meter, h_rx__meter, f__mhz, P_tx__watt,
+    N_s, d__km, epsilon, sigma, pol
+);
+
+% A_btl__db  is approximately  184.49
+% E__dBuVm   is approximately  -82.50
+% P_rx__dbm  is approximately  -114.93
+% method     is RESIDUE_SERIES (SolutionMethod enum value 1)
+```

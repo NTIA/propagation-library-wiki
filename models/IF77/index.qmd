@@ -1,0 +1,42 @@
+---
+title: "IF-77 Electromagnetic Wave Propagation Model"
+date: 2024-12-02
+date-modified: 2025-06-12
+---
+
+The IF-77 Electromagnetic Wave propagation model predicts the basic transmission loss in the frequency range 125 MHz – 20 GHz for aeronautical and satellite services. It also calculates power available, power density, and/or a desired-to-undesired signal ratio.
+
+{{< include /includes/_getting_started.qmd >}}
+
+## Functions
+
+### IF77 Model
+
+This model implements . The inputs for this model are shown below in @tbl-if77-inputs-if77.
+
+| Variable      | Type   | Units | Limits                   | Description                     |
+|---------------|--------|-------|--------------------------|---------------------------------|
+| `f__ghz`      | double | GHz   | $0 \leq f \leq 1000$     | Frequency                       |
+| `h_1__km`     | double | km    | $h_1 \geq 0$             | Height of the low terminal      |
+| `h_2__km`     | double | km    | $h_2 \geq 0$             | Height of the high terminal     |
+| `beta_1__rad` | double | rad   | $beta_1 \geq 0$          | Elevation angle (from zenith)   |
+| `atmosphere`  | enum   | N/A   | See @tbl-p676-atmosphere | Reference atmosphere from P.835 |
+: Inputs for the slant path gaseous attenuation model {#tbl-p676-inputs-slant-path-attenuation}
+
+The slant path gaseous attenuation model produces an output which contains five values which are provided in @tbl-if77-outputs-if77.
+
+| Variable        | Type    | Units | Description                    |
+|-----------------|---------|-------|--------------------------------|
+| `A_gas__db`     | double  | dB    | Gaseous attenuation            |
+| `bending__rad`  | double  | rad   | Bending angle                  |
+| `a__km`         | double  | km    | Ray length                     |
+| `incident__rad` | double  | rad   | Incident angle at h_2          |
+| `delta_L__km`   | double  | km    | Excess atmospheric path length |
+: Outputs of the slant path gaseous attenuation model {#tbl-p676-outputs}
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#slant-path-attenuation-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#slant-path-attenuation-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#slant-path-attenuation-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#slant-path-attenuation-model){.btn .btn-secondary .btn role="button"}

@@ -1,7 +1,7 @@
 ---
 title: "ITS Propagation Library Wiki"
-date: 2024-06-11
-date-modified: 2025-06-12
+date: 2026-04-10
+date-modified: 2026-04-29
 ---
 
 The ITS Propagation Library (**"PropLib"**) is a collection of open source software developed by [ITS](about.qmd), focused on modeling radio wave propagation under a wide variety of circumstances. The library currently supports C++, .NET, MATLAB&reg;, and Python users through exposing common functionality across multiple programming environments. One of the key benefits of this approach is that users are assured of identical results across languages, allowing researchers to work in their most efficient development environment while benefitting from common library improvements.
@@ -27,19 +27,19 @@ later, and contact [code@ntia.gov](mailto:code@ntia.gov) with questions
 in the meantime.
 :::
 
-+----------:+:-------------------------------------:+:-----------------------------------------------------------------------:+:---------------------------------------------------+
-| **eHata** | [Repo](https://github.com/NTIA/eHata) | Docs                                                                    | Extended Hata Urban Propagation Model              |
-+-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
-| **HF**    | [Legacy Software](https://its.ntia.gov/software/high-frequency/high-frequency-propagation-models/)              | High Frequency Propagation Models                  |
-+-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
-| **IF77**  | [Repo](https://github.com/NTIA/IF77)  | [Docs](models/IF77/)                                                    | The IF-77 Electromagnetic Wave Propagation Model   |
-+-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
-| **ITM**   | [Repo](https://github.com/NTIA/ITM)   | Docs                                                                    | Irregular Terrain Model                            |
-+-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
-| **LFMF**  | [Repo](https://github.com/NTIA/LFMF)  | [Docs](models/LFMF/)                                                    | Low Frequency / Medium Frequency Propagation Model |
-+-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
-| **MPM**   | [Legacy Software](https://its.ntia.gov/software/millimeter-wave-propagation-model-mpm/)                         | Millimeter-wave Propagation Model                  |
-+-----------+---------------------------------------+-------------------------------------------------------------------------+----------------------------------------------------+
++----------:+:-------------------------------------:+:----------------------------------------------------------:+:---------------------------------------------------+
+| **eHata** | [Repo](https://github.com/NTIA/eHata) | Docs                                                       | Extended Hata Urban Propagation Model              |
++-----------+---------------------------------------+------------------------------------------------------------+----------------------------------------------------+
+| **HF**    | [Legacy Software](https://its.ntia.gov/software/high-frequency/high-frequency-propagation-models/) | High Frequency Propagation Models                  |
++-----------+---------------------------------------+------------------------------------------------------------+----------------------------------------------------+
+| **IF77**  | [Repo](https://github.com/NTIA/IF77)  | [Docs](models/IF77/)                                       | IF-77 Electromagnetic Wave Propagation Model              |
++-----------+---------------------------------------+------------------------------------------------------------+----------------------------------------------------+
+| **ITM**   | [Repo](https://github.com/NTIA/ITM)   | Docs                                                       | Irregular Terrain Model                            |
++-----------+---------------------------------------+------------------------------------------------------------+----------------------------------------------------+
+| **LFMF**  | [Repo](https://github.com/NTIA/LFMF)  | [Docs](models/LFMF/)                                       | Low Frequency / Medium Frequency Propagation Model |
++-----------+---------------------------------------+------------------------------------------------------------+----------------------------------------------------+
+| **MPM**   | [Legacy Software](https://its.ntia.gov/software/millimeter-wave-propagation-model-mpm/)            | Millimeter-wave Propagation Model                  |
++-----------+---------------------------------------+------------------------------------------------------------+----------------------------------------------------+
 : U.S. propagation models available in the ITS Propagation Library {tbl-colwidths="[15,20,10,55]"}
 
 ### ITU-R Recommendations
