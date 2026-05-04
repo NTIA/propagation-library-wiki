@@ -1,0 +1,85 @@
+---
+title: "IF-77 Electromagnetic Wave Propagation Model – Errors and Warnings"
+date: 2026-05-04
+date-modified: 2026-05-04
+---
+
+This page details the return codes and warning flags of the PropLib implementation of the IF-77 electromagnetic wave propagation model.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+## Warning Flags
+
+IF77 supports the following list of warning flags:
+
+| Value  | Const Name                    | Description                          |
+|--------|-------------------------------|--------------------------------------|
+| 0x0001 | `WRN_LOW_ANTENNA_HEIGHT_HIGH` | Warning for Low Antenna Height High  |
+| 0x0002 | `WRN_LOS_ANTENNA_HEIGHT_LOW`  | Warning for Los Antenna Height Low   |
+| 0x0004 | `WRN_HYDROMETEORS`            | Warning for Hydrometers              |
+| 0x0008 | `WRN_ATMOS_ABSORPTION`        | Warning for Atmos Absorption         |
+| 0x0010 | `WRN_LOS_PSI_TUNE`            | Warning for Los Psi Tune             |
+| 0x0020 | `WARNING__DFRAC_TROPO_REGION` | Warning for Diffraction Tropo Region |
+
+## Return Codes
+
+IF77 supports the following list of return codes:
+
+| Value | Const Name                                       | Description                                                         |
+|-------|--------------------------------------------------|---------------------------------------------------------------------|
+| 0     | `SUCCESS`                                        | Successful execution                                                |
+| 1000  | `ERROR__OUTPUT_TYPE`                             | Invalid value for output_type                                       |
+| 1001  | `ERROR__LOBING_FLAG`                             | Invalid value for lobing_flag                                       |
+| 1002  | `ERROR__TIME_AVAILABILITY_FLAG`                  | Invalid value for time_availability_flag                            |
+| 1003  | `ERROR__TIME_PERCENTAGE`                         | Invalid value for time percentage                                   |
+| 1004  | `ERROR__PATH_DISTANCE`                           | Invalid value for path distance                                     |
+| 1005  | `ERROR__TERMINAL_1_HEIGHT`                       | Invalid value for h_1__meter                                        |
+| 1006  | `ERROR__TERMINAL_1_ANTENNA_PATTERN`              | Invalid value for antenna_1_pattern                                 |
+| 1007  | `ERROR__TERMINAL_1_ANTENNA_USE`                  | Invalid value for antenna_1_use                                     |
+| 1008  | `ERROR__TERMINAL_1_POLARIZATION`                 | Invalid value for low_antenna_polarization_type                     |
+| 1009  | `ERROR__TERMINAL_1_TILT`                         | Invalid value for low_antenna_tilt_degrees                          |
+| 1010  | `ERROR__TERMINAL_1_HALF_OF_HALF_POWER_BEAMWIDTH` | Invalid value for low_antenna_half_of_half_power_beamwidth_degrees  |
+| 1011  | `ERROR__TERMINAL_1_SURFACE`                      | Invalid value for low_surface_above_msl                             |
+| 1012  | `ERROR__TERMINAL_1_SURFACE_ABOVE_ANTENNA`        | low_surface_above_msl > low_height_above_msl                        |
+| 1013  | `ERROR__RAINFALL_ZONE`                           | Invalid value for path_rainfall_zone_type                           |
+| 1014  | `ERROR__STORM_SIZE`                              | Invalid value for path_storm_size                                   |
+| 1015  | `ERROR__TERRAIN_TYPE`                            | Invalid value for path_terrain_type                                 |
+| 1016  | `ERROR__TERMINAL_1_HORIZON_INPUT`                | Invalid value for low_horizon_input_flag                            |
+| 1017  | `ERROR__DELTA_H`                                 | Invalid value for path_terrain_irregularity                         |
+| 1018  | `ERROR__TERMINAL_1_HORIZON_DISTANCE`             | Invalid value for low_horizon_distance                              |
+| 1019  | `ERROR__TERMINAL_1_HORIZON_HEIGHT`               | Invalid value for low_horizon_height                                |
+| 1020  | `ERROR__TERMINAL_1_HORIZON_ANGLE_DEGREES`        | Invalid value for low_horizon_angle_degrees                         |
+| 1021  | `ERROR__TERMINAL_1_HORIZON_ANGLE_MINUTES`        | Invalid value for low_horizon_angle_minutes                         |
+| 1022  | `ERROR__TERMINAL_1_HORIZON_ANGLE_SECONDS`        | Invalid value for low_horizon_angle_seconds                         |
+| 1023  | `ERROR__COUNTERPOISE_DIAMETER`                   | Invalid value for low_counterpoise_diameter                         |
+| 1024  | `ERROR__COUNTERPOISE_HEIGHT`                     | Invalid value for low_counterpoise_height                           |
+| 1025  | `ERROR__COUNTERPOISE_MATERIAL`                   | Invalid value for low_counterpoise_material_type                    |
+| 1026  | `ERROR__TERMINAL_2_HEIGHT`                       | Invalid value for high_height_above_msl                             |
+| 1027  | `ERROR__TERMINAL_2_ANTENNA_PATTERN`              | Invalid value for high_antenna_pattern_type                         |
+| 1028  | `ERROR__TERMINAL_2_ANTENNA_USE`                  | Invalid value for high_antenna_use_type                             |
+| 1029  | `ERROR__TERMINAL_2_POLARIZATION`                 | Invalid value for high_antenna_polarization_type                    |
+| 1030  | `ERROR__TERMNAL_2_TILT`                          | Invalid value for high_antenna_tilt_degrees                         |
+| 1031  | `ERROR__TERMINAL_2_HALF_OF_HALF_POWER_BEAMWIDTH` | Invalid value for high_antenna_half_of_half_power_beamwidth_degrees |
+| 1032  | `ERROR__REFRACTIVITY`                            | Invalid value for path_surface_refractivity_msl                     |
+| 1033  | `ERROR__FREQUENCY`                               | Invalid value for frequency_mhz                                     |
+| 1034  | `ERROR__EIRP`                                    | Invalid value for eirp                                              |
+| 1035  | `ERROR__REFLECTION_SURFACE`                      | Invalid value for path_effective_reflection_surface_above_msl       |
+| 1036  | `ERROR__REFLECTION_SURFACE_ABOVE_TERMINAL_1`     | path_effective_reflection_surface_above_msl > low_height_above_msl  |
+| 1037  | `ERROR__REFLECTION_MATERIAL`                     | Invalid value for path_earth_reflection_material_type               |
+| 1038  | `ERROR__WATER_TEMPERATURE`                       | Invalid value for path_water_temperature_celsius                    |
+| 1039  | `ERROR__WATER_WAVE_HEIGHT`                       | Invalid value for path_water_wave_height                            |
+| 1040  | `ERROR__WATER_STATE`                             | Invalid value for path_water_state_type                             |
+| 1041  | `ERROR__WATER_WAVE_HEIGHT_USE`                   | Invalid value for path_water_wave_height_use_flag                   |
+| 1042  | `ERROR__SCINTILLATION`                           | Invalid value for path_scintillation_type                           |
+| 1043  | `ERROR__FREQUENCY_SCALING`                       | Invalid value for frequency_scaling_type                            |
+| 1044  | `ERROR__SCINTILLATION_USE`                       | Invalid value for path_scintillation_use_flag                       |
+| 1045  | `ERROR__TERMINAL_1_CLIMATE`                      | Invalid value for low_climate_time_type                             |
+| 1046  | `ERROR__TERMINAL_1_MIXING`                       | Invalid value for low_climate_mixing_flag                           |
+| 1047  | `ERROR__TERMINAL_2_CLIMATE`                      | Invalid value for high_climate_time_type                            |
+| 1048  | `ERROR__TERMINAL_2_MIXING`                       | Invalid value for high_climate_weighting_factor                     |
+| 1049  | `ERROR__PATH_GEOMETERY`                          | Misc geometry error                                                 |
+| 1050  | `ERROR__DML_LESS_THAN_ZERO`                      | Misc geometry error                                                 |
+| 1052  | `ERROR__PSI`                                     | Line-of-Sight error                                                 |
+| 1053  | `ERROR__BAD_SCAT_1`                              | Troposcatter error                                                  |
+| 1054  | `ERROR__BAD_SCAT_2`                              | Troposcatter error                                                  |
+| 1055  | `ERROR__BAD_SCAT_3`                              | Troposcatter error                                                  |
