@@ -20,6 +20,7 @@ IF77 supports the following list of warning flags:
 | 0x0008 | `WRN_ATMOS_ABSORPTION`        | Warning for Atmos Absorption         |
 | 0x0010 | `WRN_LOS_PSI_TUNE`            | Warning for Los Psi Tune             |
 | 0x0020 | `WARNING__DFRAC_TROPO_REGION` | Warning for Diffraction Tropo Region |
+: Warning flag values {#tbl-if77-warning}
 
 ## Return Codes
 
@@ -83,3 +84,4 @@ IF77 supports the following list of return codes:
 | 1053  | `ERROR__BAD_SCAT_1`                              | Troposcatter error                                                  |
 | 1054  | `ERROR__BAD_SCAT_2`                              | Troposcatter error                                                  |
 | 1055  | `ERROR__BAD_SCAT_3`                              | Troposcatter error                                                  |
+: Return code values {#tbl-if77-return}
