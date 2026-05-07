@@ -32,7 +32,7 @@ This library has no external C++ dependencies.
 
 The following code example shows how the LF/MF model can be called in a C++ program.
 
-### Calling the LFMF Model
+### Calling the IF77 Model
 
 ```cpp
 #include "LFMF.h"

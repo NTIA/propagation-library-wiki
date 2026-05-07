@@ -201,8 +201,8 @@ The `water_temp__celsius` input must be one of the following desired water tempe
 
 The `water_state` input must be one of the following desired water states in **WaterState enum**, as defined in @tbl-if77-water_state.
 
-| Enum Value | Water State enum                         |
-|------------|------------------------------------------|
+| Enum Value | Water State enum                        |
+|------------|-----------------------------------------|
 | 0          | Average wave height range: 0 m          |
 | 1          | Average wave height range: 0 - 0.1 m    |
 | 2          | Average wave height range: 0.1 - 0.5 m  |
@@ -302,10 +302,69 @@ The output of `propagation_mode` is one of the values in `PropagationMode` enum,
 
 {{< include /includes/_code_examples.qmd >}}
 
-[C++](cpp.qmd#if77-model){.btn .btn-secondary .btn role="button"}
-[.NET](dotnet.qmd#if77-model){.btn .btn-secondary .btn role="button"}
-[MATLAB](matlab.qmd#if77-model){.btn .btn-secondary .btn role="button"}
-[Python](python.qmd#if77-model){.btn .btn-secondary .btn role="button"}
+[C++](cpp.qmd#calling-the-if77-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#calling-the-if77-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#calling-the-if77-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#calling-the-if77-model){.btn .btn-secondary .btn role="button"}
+
+### IF77 Extended Model
+
+This function implements the primary method of the IF-77 electromagnetic wave propagation model with Internal results. The inputs for this function are the same as if77 model which are 3 Card structures shown above in @tbl-if77-inputs-if77-card1, @tbl-if77-inputs-if77-card2, @tbl-if77-inputs-if77-card3.
+
+**Internal Outputs**
+
+In additional to the return code (see [here](errors.qmd#return-codes)) and Result structure provided in @tbl-if77-outputs-result, this extended model provides 3 internal outputs contain low/high terminals and path information in Terminal structure shown in @tbl-if77-outputs-terminal and Path structure shown in @tbl-if77-outputs-path.
+
+| Terminal structure | Type   | Units   | Description                                             |
+|--------------------|--------|---------|---------------------------------------------------------|
+| `h__km`            | double | km      | Actual height used in model                             |
+| `h_r__km`          | double | km      | Real height above MSL                                   |
+| `h_e__km`          | double | km      | Effective height above reflecting surface               |
+| `h_rs__km`         | double | km      | Real height above reflecting surface                    |
+| `delta_h__km`      | double | km      | Delta between real height and effective height          |
+| `d__km`            | double | km      | Actual horizon distance used                            |
+| `d_r__km`          | double | km      | Ray traced smooth earth horizon distance                |
+| `d_hzn__km`        | double | km      | Distance to the terminals horizon used in calcs         |
+| `theta_r__rad`     | double | degrees | Terminal geometry angle, in rad                         |
+| `theta_ray__rad`   | double | degrees | Incident angle of the ray, in rad                       |
+| `theta_hzn__rad`   | double | degrees | Angle to the horizon (smooth earth or obstacle), in rad |
+| `theta_TO__rad`    | double | degrees | Takeoff angle of ray, in rad                            |
+| `z_e__km`          | double | km      | Radial from Earth center to top of antenna              |
+: Terminal structure for the if77 propagation model {#tbl-if77-outputs-terminal}
+
+| Path structure          | Type   | Units   | Description                                                                  |
+|-------------------------|--------|---------|------------------------------------------------------------------------------|
+| `h_sur__km`             | double | km      | Height of the reflecting surface                                             |
+| `h_fss__km`             | double | km      | Height of the facility site surface above MSL                                |
+| `h_1fss__km`            | double | km      | Height of the low antenna above the facility site surface                    |
+| `h_hzn__km`             | double | km      | Height of the horizon from the low terminal                                  |
+| `d_ML__km`              | double | km      | Maximum line-of-sight distance                                               |
+| `d__km`                 | double | km      | Great-circle path distance                                                   |
+| `d_0__km`               | double | km      | Largest distance in LOS region where diffraction effects are negligible      |
+| `d_d__km`               | double | km      | Initial estimate of d_0                                                      |
+| `psi_limit__rad`        | double | degrees | Largest angle at which lobing effects are considered, in rad                 |
+| `delta_h__km`           | double | km      | Terrain irregularity parameter                                               |
+| `N_0`                   | double | N-Units | Refractivity                                                                 |
+| `N_s`                   | double | N-Units | Surface refractivity                                                         |
+| `material_enum`         | enum   |         | Ground material, see @tbl-if77-material                                      |
+| `sigma`                 | double | S/m     | Conductivity                                                                 |
+| `epsilon`               | double |         | Relative permittivity                                                        |
+| `a_e__km`               | double | km      | Effective Earth radius                                                       |
+| `water_temp__celsius`   | double | celsius | Water temperature                                                            |
+| `use_user_sigma_h_flag` | enum   |         | Use user defined conductivity flag, see @tbl-if77-water_wave_height_use_flag |
+| `user_sigma_h`          | double | S/m     | User defined conductivity                                                    |
+| `water_state`           | enum   |         | Water state enum for average wave height range, see @tbl-if77-water_state    |
+| `lobing`                | bool   |         | Whether lobing is used                                                       |
+| `psi__rad`              | double | degrees | Reflection angle, in rad                                                     |
+| `terrain_type`          | enum   |         | Terrain type enum, see @tbl-if77-terrain_type                                |
+: Path structure for the if77 propagation model {#tbl-if77-outputs-path}
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#calling-the-if77-extended-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#calling-the-if77-extended-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#calling-the-if77-extended-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#calling-the-if77-extended-model){.btn .btn-secondary .btn role="button"}
 
 ## Error Codes and Warning Flags ##
 
