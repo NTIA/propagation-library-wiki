@@ -1,17 +1,17 @@
 ---
-title: "Low Frequency / Medium Frequency Propagation Model – .NET"
+title: "IF-77 Electromagnetic Wave Propagation Model – .NET"
 date: 2025-01-24
 date-modified: 2025-06-12
 ---
 
-This page details the installation and usage of the .NET version of the PropLib implementation of the Low Frequency / Medium Frequency (LF/MF) propagation model.
+This page details the installation and usage of the .NET version of the PropLib implementation of the Low Frequency / Medium Frequency (IF77) propagation model.
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
 ## Installation
 
 This .NET package is distributed on 
-[NuGet](https://www.nuget.org/packages/ITS.Propagation.LFMF).
+[NuGet](https://www.nuget.org/packages/ITS.Propagation.IF77).
 
 There are two easy ways to install the NuGet package: [dotnet CLI](#installation-with-dotnet-cli) or [Visual Studio](#installation-with-visual-studio).
 
@@ -20,14 +20,14 @@ There are two easy ways to install the NuGet package: [dotnet CLI](#installation
 1. Run the following command to install the package.
 
     ```default
-    dotnet add package ITS.Propagation.LFMF
+    dotnet add package ITS.Propagation.IF77
     ```
 
 1. After the command completes, open the project csproj file to see the added NuGet package reference:
 
     ```default
     <ItemGroup>
-        <PackageReference Include="ITS.Propagation.LFMF" Version="1.1.0" />
+        <PackageReference Include="ITS.Propagation.IF77" Version="1.1.0" />
     </ItemGroup>
     ```
 
@@ -37,7 +37,7 @@ There are two easy ways to install the NuGet package: [dotnet CLI](#installation
 
 1. In the **NuGet Package Manager** page, choose **nuget.org** as the **Package source**.
 
-1. From the **Browse** tab, search for **ITS.Propagation.LFMF**, select ITS.Propagation.LFMF in the list, and then select Install as shown in @fig-dotnet-add-nuget.
+1. From the **Browse** tab, search for **ITS.Propagation.IF77**, select ITS.Propagation.IF77 in the list, and then select Install as shown in @fig-dotnet-add-nuget.
 
     ![](/images/dotnet/dotnet-add-nuget.png){#fig-dotnet-add-nuget fig-alt="A screenshot showing the 'NuGet Package Manager'" width=600 fig-align="left"}
 
@@ -45,9 +45,9 @@ There are two easy ways to install the NuGet package: [dotnet CLI](#installation
 
 ## Examples
 
-The following code examples show how the LF/MF model can be called from .NET project.
+The following code examples show how the IF77 model can be called from .NET project.
 
-### Calling the LFMF Model
+### Calling the IF77 Model
 
 ```c#
 using ITS.Propagation;
@@ -63,17 +63,17 @@ double epsilon = 15.0;      // Relative permittivity
 double sigma = 0.005;       // Conductivity
 int pol = 0;                // Polarization (enum value)
 // Alternately, `pol` can be specified using the enum:
-// LFMF.Polarization pol = LFMF.Polarization.Horizontal;
+// IF77.Polarization pol = IF77.Polarization.Horizontal;
 
-// Call the LF/MF model
-int rtn = LFMF.LFMFModel(h_tx__meter, h_rx__meter, f__mhz, P_tx__watt, N_s,
-    d__km, epsilon, sigma, pol, out LFMF.Result result);
+// Call the IF77 model
+int rtn = IF77.IF77Model(h_tx__meter, h_rx__meter, f__mhz, P_tx__watt, N_s,
+    d__km, epsilon, sigma, pol, out IF77.Result result);
 
 // rtn is 0 (SUCCESS)
 // The result is a data structure containing four elements:
 // result.A_btl__db  is approximately  184.49
 // result.E__dBuVm   is approximately  -82.50
 // result.P_rx__dbm  is approximately  -114.93
-// result.method     is ITS.Propagation.LFMF.SolutionMethod.ResidueSeries
+// result.method     is ITS.Propagation.IF77.SolutionMethod.ResidueSeries
 //                       (SolutionMethod enum value 1)
 ```

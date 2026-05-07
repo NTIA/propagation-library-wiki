@@ -1,56 +1,56 @@
 ---
-title: "Low Frequency / Medium Frequency Propagation Model – Command-Line Driver"
+title: "IF-77 Electromagnetic Wave Propagation Model – Command-Line Driver"
 date: 2025-01-10
 date-modified: 2025-06-12
 ---
 
-This page details the usage of the cross-platform command-line driver version of the Low Frequency / Medium Frequency (LF/MF) propagation model.
+This page details the usage of the cross-platform command-line driver version of the Low Frequency / Medium Frequency (IF77) propagation model.
 
 {{< include /includes/driver/_intro_and_installation.qmd >}}
 
 To use the command-line driver program, you'll need to download the driver program
-(`LFMFDriver-1.1.0-Windows-x64.exe` or `LFMFDriver-1.1.0-Windows-x86.exe` on Windows, `LFMFDriver-1.1.0-Darwin-universal` on macOS, or `LFMFDriver-1.1.0-Linux-x86_64` on Linux)
+(`IF77Driver-1.1.0-Windows-x64.exe` or `IF77Driver-1.1.0-Windows-x86.exe` on Windows, `IF77Driver-1.1.0-Darwin-universal` on macOS, or `IF77Driver-1.1.0-Linux-x86_64` on Linux)
  and the shared library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux). 
- These are distributed for each supported platform as part of the [GitHub Releases](https://github.com/NTIA/LFMF/releases/) starting with v1.1. 
+ These are distributed for each supported platform as part of the [GitHub Releases](https://github.com/NTIA/IF77/releases/) starting with v1.1. 
  Prior to v1.1, support was only provided for Windows platforms.
 
 {{< include /includes/driver/_general_usage.qmd >}}
 
 ## Command-Line Arguments
 
-Executing the command-line driver requires specifying input arguments, defined in @tbl-lfmf-driver-input-args below.
+Executing the command-line driver requires specifying input arguments, defined in @tbl-if77-driver-input-args below.
 
 
 | Flag     | Type   | Required | Description                                                  |
 |----------|--------|----------|--------------------------------------------------------------|
 | `-i`     | string | true     | File specifying model input parameters in `key,value` format |
 | `-o`     | string | true     | Filename where output results should be written              |
-: Arguments for the LF/MF command-line driver {#tbl-lfmf-driver-input-args}
+: Arguments for the IF77 command-line driver {#tbl-if77-driver-input-args}
 
 Additional arguments are available to print help text and version information without running any model.
-When using these options, none of the arguments from @tbl-lfmf-driver-input-args are required.
-The additional arguments are defined in @tbl-lfmf-driver-additional-args
+When using these options, none of the arguments from @tbl-if77-driver-input-args are required.
+The additional arguments are defined in @tbl-if77-driver-additional-args
 
 | Flag | Description                                            |
 |------|--------------------------------------------------------|
 | `-h` | Display help text                                      |
 | `-v` | Display version information for the library and driver |
-: Additional arguments for the LF/MF command-line driver {#tbl-lfmf-driver-additional-args}
+: Additional arguments for the IF77 command-line driver {#tbl-if77-driver-additional-args}
 
 ## Examples
 
-The LF/MF model can be run by simply providing the input and output files on the command line.
+The IF77 model can be run by simply providing the input and output files on the command line.
 For example:
 
 ```cmd
 # Windows (64-bit)
-LFMFDriver-1.1.0-Windows-x64.exe -i input.txt -o output.txt
+IF77Driver-1.1.0-Windows-x64.exe -i input.txt -o output.txt
 
 # macOS
-./LFMFDriver-1.1.0-Darwin-universal -i input.txt -o output.txt
+./IF77Driver-1.1.0-Darwin-universal -i input.txt -o output.txt
 
 # Linux
-./LFMFDriver-1.1.0-Linux-x86_64 -i input.txt -o output.txt
+./IF77Driver-1.1.0-Linux-x86_64 -i input.txt -o output.txt
 ```
 
 Three example sets of input/output file pairs are provided below.
@@ -70,7 +70,7 @@ pol,0
 ```
 
 ```{.default filename="Output File Contents"}
-Model                         LFMF
+Model                         IF77
 Library Version               v1.1
 Driver Version                v1.1.0
 Date Generated                Tue Jul 01 13:38:18 2025
@@ -88,7 +88,7 @@ sigma                         0.005
 pol                           0            [0 = Horizontal, 1 = Vertical]
 
 Results:
-Return Code                   0            [LFMF v1.1 Status: Successful execution]
+Return Code                   0            [IF77 v1.1 Status: Successful execution]
 Basic transmission loss       184.49       [dB]
 Electric field strength       -82.50       [dB(uV/m)]
 Received power                -114.93      [dB]
@@ -110,11 +110,11 @@ pol,0
 ```
 
 ```{.default filename="Output File Contents"}
-Model                         LFMF
+Model                         IF77
 Library Version               v1.1
 Driver Version                v1.1.0
 Date Generated                Mon Nov 18 13:56:51 2024
-Input Arguments               -i i_lfmf_02.txt -o o_lfmf_02.txt 
+Input Arguments               -i i_if77_02.txt -o o_if77_02.txt 
 
 Inputs:
 h_tx__meter                   5.5          [meter]
@@ -128,7 +128,7 @@ sigma                         0.005
 pol                           0            [0 = Horizontal, 1 = Vertical]
 
 Results:
-Return Code                   0            [LFMF v1.1 Status: Successful execution]
+Return Code                   0            [IF77 v1.1 Status: Successful execution]
 Basic transmission loss       151.33       [dB]
 Electric field strength       7.65         [dB(uV/m)]
 Received power                -84.78       [dB]
@@ -150,11 +150,11 @@ pol,1
 ```
 
 ```{.default filename="Output File Contents"}
-Model                         LFMF
+Model                         IF77
 Library Version               v1.1
 Driver Version                v1.1.0
 Date Generated                Mon Nov 18 13:56:57 2024
-Input Arguments               -i i_lfmf_03.txt -o o_lfmf_03.txt 
+Input Arguments               -i i_if77_03.txt -o o_if77_03.txt 
 
 Inputs:
 h_tx__meter                   1            [meter]
@@ -168,7 +168,7 @@ sigma                         0.005
 pol                           1            [0 = Horizontal, 1 = Vertical]
 
 Results:
-Return Code                   0            [LFMF v1.1 Status: Successful execution]
+Return Code                   0            [IF77 v1.1 Status: Successful execution]
 Basic transmission loss       264.33       [dB]
 Electric field strength       -129.28      [dB(uV/m)]
 Received power                -194.77      [dB]
