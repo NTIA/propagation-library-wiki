@@ -14,7 +14,7 @@ The IF-77 Electromagnetic Wave propagation model predicts the basic transmission
 
 This function implements the primary method of the IF-77 electromagnetic wave propagation model. The inputs for this function are 3 Card structures shown below in @tbl-if77-inputs-if77-card1, @tbl-if77-inputs-if77-card2, @tbl-if77-inputs-if77-card3.
 
-**Card1 Inputs**
+**if77 Card1 Inputs**
 
 | Card1 structure          | Type   | Units | Limits                          | Description                                            |
 |--------------------------|--------|-------|---------------------------------|--------------------------------------------------------|
@@ -25,16 +25,16 @@ This function implements the primary method of the IF-77 electromagnetic wave pr
 | `percentage`             | double |       | $0 < percentage < 100$          | Variability time percentage                            |
 : Card1 structure for the if77 propagation model {#tbl-if77-inputs-if77-card1}
 
-The `output_type` input must be one of the following desired output types in `Output` enum, as defined in @tbl-if77-outputs.
+The `output_type` input must be one of the following desired output types in **Output enum**, as defined in @tbl-if77-outputs.
 
-| Enum Value | Type of output desired enum |
+| Enum Value | Output Type enum |
 |------------|-----------------------------|
 | 1          | Calculate power available   |
 | 2          | Calculate power density     |
 | 3          | Calculate transmission loss |
 : Allowed output type values {#tbl-if77-outputs}
 
-The `lobing_flag` input must be one of the following desired lobing flags in `LobingFlag` enum, as defined in @tbl-if77-lobing.
+The `lobing_flag` input must be one of the following desired lobing flags in **LobingFlag enum**, as defined in @tbl-if77-lobing.
 
 | Enum Value | Lobing Flag enum                  |
 |------------|-----------------------------------|
@@ -42,7 +42,7 @@ The `lobing_flag` input must be one of the following desired lobing flags in `Lo
 | 2          | Use lobing in calculations        |
 : Allowed lobing flag values {#tbl-if77-lobing}
 
-The `time_availability_flag` input must be one of the following desired time availability flags in `TimeAvailability` enum, as defined in @tbl-if77-time_availability.
+The `time_availability_flag` input must be one of the following desired time availability flags in **TimeAvailability enum**, as defined in @tbl-if77-time_availability.
 
 | Enum Value | Time Availability enum   |
 |------------|--------------------------|
@@ -50,7 +50,7 @@ The `time_availability_flag` input must be one of the following desired time ava
 | 2          | Instantaneous levels     |
 : Allowed time availability flag values {#tbl-if77-time_availability}
 
-**Card2 Inputs**
+**if77 Card2 Inputs**
 
 | Card2 structure                      | Type   | Units   | Limits                                             | Description                                                        |
 |--------------------------------------|--------|---------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
@@ -58,25 +58,25 @@ The `time_availability_flag` input must be one of the following desired time ava
 | `antenna_1_pattern`                  | enum   |         | See @tbl-if77-antenna_pattern                      | Type of antenna at lower terminal                                  |
 | `antenna_1_use`                      | enum   |         | See @tbl-if77-antenna_use                          | Whether the low antenna is directive or tracking                   |
 | `antenna_1_polarization`             | enum   |         | See @tbl-if77-antenna_polarization                 | Polarization of low antenna                                        |
-| `antenna_1_tilt__deg`                | double | degrees | $-90 \leq$ `antenna_1_tilt` $\leq 90$              | Tilt of the low antenna                                            |
-| `antenna_1_half_half_beamwidth__deg` | double | degrees | $1 \leq$ `antenna_1_half_half_beamwidth` $\leq 45$ | Half of the half power beamwidth of low antenna                    |
-| `h_fss__meter`                       | double | meters  | $0 \leq h_fss \leq 4000$                           | Elevation of the facility site surface above mean sea level        |
+| `antenna_1_tilt__deg`                | double | degrees | $-90 \leq antenna_1\_tilt \leq 90$                 | Tilt of the low antenna                                            |
+| `antenna_1_half_half_beamwidth__deg` | double | degrees | $1 \leq antenna_1\_half\_half\_beamwidth \leq 45$  | Half of the half power beamwidth of low antenna                    |
+| `h_fss__meter`                       | double | meters  | $0 \leq h\_fss \leq 4000$                          | Elevation of the facility site surface above mean sea level        |
 | `rainfall_zone`                      | enum   |         | See @tbl-if77-rainfall_zone                        | Rainfall zone through which the transmission takes place           |
-| `storm_size`                         | int    | km      | $storm_size \geq 0$ (See @tbl-if77-storm_size)     | Size of the rainstorm between antennas                             |
+| `storm_size`                         | int    | km      | $storm\_size \geq 0$ (See @tbl-if77-storm_size)    | Size of the rainstorm between antennas                             |
 | `terrain_type`                       | enum   |         | See @tbl-if77-terrain_type                         | Type of terrain                                                    |
 | `horizon_input`                      | enum   |         | See @tbl-if77-horizon_input                        | How the horizon obstacle will be specified                         |
 | `delta_h__meter`                     | double | meters  | $0 \leq delta_h \leq 700$                          | Interdecile range of the terrain profile                           |
-| `d_hzn__km`                          | double | km      | $d_hzn \geq 0$                                     | Distance to low antenna's horizon                                  |
-| `h_hzn__meter`                       | double | meters  | $0 \leq h_hzn \leq 1500$                           | Height of low antenna's horizon                                    |
-| `low_horizon_angle_degrees`          | int    | degrees | $-12 \leq$ `low_horizon_angle_degrees` $\leq 12$   | Degree portion of the low horizon angle                            |
-| `low_horizon_angle_minutes`          | int    | minutes | $-60 \leq$ `low_horizon_angle_minutes` $\leq 60$   | Minutes portion of the low horizon angle                           |
-| `low_horizon_angle_seconds`          | int    | seconds | $-60 \leq$ `low_horizon_angle_seconds` $\leq 60$   | Seconds portion of the low horizon angle                           |
-| `counterpoise_diameter__meter`       | double | meters  | $counterpoise_diameter \geq 0$                     | Diameter of the low antenna's reflecting counterpoise              |
-| `counterpoise_height__meter`         | double | meters  | $counterpoise_height \geq 0$                       | Height of the low antenna's reflecting counterpoise                |
+| `d_hzn__km`                          | double | km      | $d\_hzn \geq 0$                                    | Distance to low antenna's horizon                                  |
+| `h_hzn__meter`                       | double | meters  | $0 \leq h\_hzn \leq 1500$                          | Height of low antenna's horizon                                    |
+| `low_horizon_angle_degrees`          | int    | degrees | $-12 \leq low\_horizon\_angle\_degrees \leq 12$    | Degree portion of the low horizon angle                            |
+| `low_horizon_angle_minutes`          | int    | minutes | $-60 \leq low\_horizon\_angle\_minutes \leq 60$    | Minutes portion of the low horizon angle                           |
+| `low_horizon_angle_seconds`          | int    | seconds | $-60 \leq low\_horizon\_angle\_seconds \leq 60$    | Seconds portion of the low horizon angle                           |
+| `counterpoise_diameter__meter`       | double | meters  | $counterpoise\_diameter \geq 0$                    | Diameter of the low antenna's reflecting counterpoise              |
+| `counterpoise_height__meter`         | double | meters  | $counterpoise\_height \geq 0$                      | Height of the low antenna's reflecting counterpoise                |
 | `counterpoise_material`              | enum   |         | See @tbl-if77-material                             | Reflective properties of the low antenna's reflecting counterpoise |
 : Card2 structure for the if77 propagation model {#tbl-if77-inputs-if77-card2}
 
-The `antenna_1_pattern` input must be one of the following desired antenna patterns in `AntennaPattern` enum, as defined in @tbl-if77-antenna_pattern.
+The `antenna_1_pattern` input must be one of the following desired antenna patterns in **AntennaPattern enum**, as defined in @tbl-if77-antenna_pattern.
 
 | Enum Value | Antenna Pattern enum                           |
 |------------|------------------------------------------------|
@@ -89,7 +89,7 @@ The `antenna_1_pattern` input must be one of the following desired antenna patte
 | 7          | JTAC with tilted antenna                       |
 : Allowed antenna pattern values {#tbl-if77-antenna_pattern}
 
-The `antenna_1_use` input must be one of the following desired antenna use values in `AntennaUse` enum, as defined in @tbl-if77-antenna_use.
+The `antenna_1_use` input must be one of the following desired antenna use values in **AntennaUse enum**, as defined in @tbl-if77-antenna_use.
 
 | Enum Value | Antenna Use enum  |
 |------------|-------------------|
@@ -97,7 +97,7 @@ The `antenna_1_use` input must be one of the following desired antenna use value
 | 1          | Tracking antenna  |
 : Allowed antenna use values {#tbl-if77-antenna_use}
 
-The `antenna_1_polarization` input must be one of the following desired antenna polarizations in `AntennaPolarization` enum, as defined in @tbl-if77-antenna_polarization.
+The `antenna_1_polarization` input must be one of the following desired antenna polarizations in **AntennaPolarization enum**, as defined in @tbl-if77-antenna_polarization.
 
 | Enum Value | Antenna Polarization enum       |
 |------------|---------------------------------|
@@ -106,7 +106,7 @@ The `antenna_1_polarization` input must be one of the following desired antenna 
 | 3          | Circular antenna polarization   |
 : Allowed antenna polarization values {#tbl-if77-antenna_polarization}
 
-The `rainfall_zone` input must be one of the following desired rainfall zones in `RainfallZone` enum, as defined in @tbl-if77-rainfall_zone.
+The `rainfall_zone` input must be one of the following desired rainfall zones in **RainfallZone enum**, as defined in @tbl-if77-rainfall_zone.
 
 | Enum Value | Rainfall Zone enum                                |
 |------------|---------------------------------------------------|
@@ -130,7 +130,7 @@ The `storm_size` input must be one of the following values if rainfall zone is `
 | 20         | Storm size of 20 km |
 : Allowed storm size values if rainfall zone is 7 {#tbl-if77-storm_size}
 
-The `terrain_type` input must be one of the following desired terrain types in `TerrainType` enum, as defined in @tbl-if77-terrain_type.
+The `terrain_type` input must be one of the following desired terrain types in **TerrainType enum**, as defined in @tbl-if77-terrain_type.
 
 | Enum Value | Terrain Type enum    |
 |------------|----------------------|
@@ -138,7 +138,7 @@ The `terrain_type` input must be one of the following desired terrain types in `
 | 2          | Irregular terrain    |
 : Allowed terrain type values {#tbl-if77-terrain_type}
 
-The `horizon_input` input must be one of the following desired horizon inputs in `HorizonInput` enum, as defined in @tbl-if77-horizon_input.
+The `horizon_input` input must be one of the following desired horizon inputs in **HorizonInput enum**, as defined in @tbl-if77-horizon_input.
 
 | Enum Value | Horizon Input enum                                                    |
 |------------|-----------------------------------------------------------------------|
@@ -148,7 +148,7 @@ The `horizon_input` input must be one of the following desired horizon inputs in
 | 3          | Horizon obstacle specified by both its elevation angle and its height |
 : Allowed horizon input values {#tbl-if77-horizon_input}
 
-The `counterpoise_material` input must be one of the following desired materials in `Material` enum, as defined in @tbl-if77-material.
+The `counterpoise_material` input must be one of the following desired materials in **Material enum**, as defined in @tbl-if77-material.
 
 | Enum Value | Material enum                           |
 |------------|-----------------------------------------|
@@ -162,147 +162,122 @@ The `counterpoise_material` input must be one of the following desired materials
 | 7          | Counterpoise material is metallic       |
 : Allowed material values {#tbl-if77-material}
 
-**Card3 Inputs**
+**if77 Card3 Inputs**
 
-| Card3 structure                      | Type   | Units   | Limits                                              |                                              |
-|--------------------------------------|--------|---------|-----------------------------------------------------|-----------------------------------------------------|
-| `h_2__meter`                         | double | meters  | `h_2__meter` $\geq$ 0                               | Height of the high antenna                                          |
-| `antenna_2_pattern`                  | enum   |         | See @tbl-if77-                                      | Type of antenna at high terminal |
-| `antenna_2_use`                      | enum   |         | See @tbl-if77-                                      | Whether the high antenna is directive or tracking |
-| `antenna_2_polarization`             | enum   |         | See @tbl-if77-                                      | Polarization of high antenna |
-| `antenna_2_tilt__deg`                | double | degrees | -90 $\leq$ `antenna_2_tilt__deg` $\leq$ 90          | Tilt of the high antenna         |
-| `antenna_2_half_half_beamwidth__deg` | double | degrees | $1 \leq antenna_2_half_half_beamwidth__deg \leq 45$ | Half of the half power beamwidth of high antenna  |
-| `N_0`                                | double | N-units | 200 $\leq$ `N_0` $\leq$ 400                         | Surface refractivity of the path referenced to mean sea level       |
-| `f__mhz`                             | double | MHz     | 20 $\leq$ `f__mhz` $\leq$ 100000                    | Frequency                                                           |
-| `eirp`                               | double | dBW     |                                                     | Equivalent isotropic radiated power                                 |
-| `h_sur__meter`                       | double | meters  | 0 $\leq$ `h_sur__meter` $\leq$ 600                  | Average height of earth above MSL between terminals                 |
-| `path_material`                      | enum   |         |                                                     | Material of the reflection surface      |
-| `water_temp__celsius`                | enum   | celsius |                                                     | Temperature of the water <ul><li>0 = Water temperature of 0 degrees Celsius</li><li>10 = Water temperature of 10 degrees Celsius</li><li>20 = Water temperature of 20 degrees Celsius</li></ul>                                                                                                                                                                                                                                                 |
-| `water_wave_height`                  | double |         | 0 $\leq$ `water_wave_height` $\leq$ 99              | Relative crest height of the waves in the water                     |
-| `water_state`                        | enum   |         |                                                     | Roughness of the water <ul><li>0 = Average wave height range: 0 m</li><li>1 = Average wave height range: 0 - 0.1 m</li><li>2 = Average wave height range: 0.1 - 0.5 m</li><li>3 = Average wave height range: 0.5 - 1.25 m</li><li>4 = Average wave height range: 1.25 - 2.5 m</li><li>5 = Average wave height range: 2.5 - 4 m</li><li>6 = Average wave height range: 4 - 6 m</li><li>7 = Average wave height range: 6 - 9 m</li><li>8 = Average wave height range: 9 - 14 m</li><li>9 = Average wave height range: > 14 m</li></ul>                                                                                                                                                         |
-| `path_water_wave_height_use_flag`    | enum   |         |                                                     | Whether to use path_water_wave_height or standard value <ul><li>0 = Use standard value associated with path_water_state_type</li><li>1 = Use value path_water_wave_height</li></ul>                                                                                                                                                                                                                                                             |
-| `scintillation_index_group`          | enum   |         |                                                     | Atmospheric scintillation index group to use <ul><li>0 = Scintillation Index %:  0 - 19</li><li>1 = Scintillation Index %: 20 - 39</li><li>2 = Scintillation Index %: 40 - 59</li><li>3 = Scintillation Index %: 60 - 79</li><li>4 = Scintillation Index %: 80 - 89</li><li>5 = Scintillation Index %: > 90</li></ul>                                                                                                                           |
-| `scintillation_freq_scaling`         | enum   |         |                                                     | Frequency scaling factor <ul><li>0 = No frequency scaling</li><li>1 = Frequency scaling of 136\/f is used</li></ul>                                                                                                                                                                                                                                                                                                                             |
-| `scintillation_use_flag`             | enum   |         |                                                     | Whether to use scintillation <ul><li>0 = Scintillation is not included</li><li>1 = Scintillation is included</li></ul>                                                                                                                                                                                                                                                                                                                          |
-| `climate_1`                          | enum   |         |                                                     | Climate of the low antenna <ul><li>0 = Continental all year</li><li>1 = Equatorial</li><li>2 = Continental subtropical</li><li>3 = Maritime subtropical</li><li>4 = Desert</li><li>5 = Continental temperate</li><li>6 = Maritime temperate overland</li><li>7 = Maritime temperate overseas</li><li>8 = No climate</li><li>9 = May - October, all hours</li><li>10 = November - April, all hours</li><li>11 = November - April, hours 0600 - 1300</li><li>12 = November - April, hours 1300 - 1800</li><li>13 = November - April, hours 1800 - 2400</li><li>14 = May - October, hours 0600 - 1300</li><li>15 = May - October, hours 1300 - 1800</li><li>16 = May - October, hours 1800 - 2400</li><li>17 = May - October, hours 0000 - 0600</li><li>18 = November - April, hours 0000 - 0600</li><li>19 = All time blocks in entire year</li></ul>  |
-| `weight_1`                           | int    |         | `weight_1` $\geq$ 0                                 | Low antenna weighting value for climate mixing                      |
-| `climate_2`                          | enum   |         |                                                     | Climate of the high antenna |
-| `weight_2`                           | int    |         | `weight_2` $\geq$ 0                                 | High antenna weighting value for climate mixing                     |
+| Card3 structure                      | Type   | Units   | Limits                                            |                                                               |
+|--------------------------------------|--------|---------|---------------------------------------------------|---------------------------------------------------------------|
+| `h_2__meter`                         | double | meters  | $h_2 \geq 0$                                      | Height of the high antenna                                    |
+| `antenna_2_pattern`                  | enum   |         | See @tbl-if77-antenna_pattern                     | Type of antenna at high terminal                              |
+| `antenna_2_use`                      | enum   |         | See @tbl-if77-antenna_use                         | Whether the high antenna is directive or tracking             |
+| `antenna_2_polarization`             | enum   |         | See @tbl-if77-antenna_polarization                | Polarization of high antenna                                  |
+| `antenna_2_tilt__deg`                | double | degrees | $-90 \leq antenna_2\_tilt \leq 90$                | Tilt of the high antenna                                      |
+| `antenna_2_half_half_beamwidth__deg` | double | degrees | $1 \leq antenna_2\_half\_half\_beamwidth \leq 45$ | Half of the half power beamwidth of high antenna              |
+| `N_0`                                | double | N-units | $200 \leq N_0 \leq 400$                           | Surface refractivity of the path referenced to mean sea level |
+| `f__mhz`                             | double | MHz     | $20 \leq f \leq 100000$                           | Frequency                                                     |
+| `eirp`                               | double | dBW     |                                                   | Equivalent isotropic radiated power                           |
+| `h_sur__meter`                       | double | meters  | $0 \leq h\_sur \leq 600$                          | Average height of earth above MSL between terminals           |
+| `path_material`                      | enum   |         | See @tbl-if77-material                            | Material of the reflection surface                            |
+| `water_temp__celsius`                | int    | celsius | See @tbl-if77-water_temp                          | Temperature of the water                                      |
+| `water_wave_height`                  | double |         | $0 \leq water\_wave\_height \leq 99$              | Relative crest height of the waves in the water               |
+| `water_state`                        | enum   |         | See @tbl-if77-water_state                         | Roughness of the water                                        |
+| `path_water_wave_height_use_flag`    | enum   |         | See @tbl-if77-water_wave_height_use_flag          | Whether to use path_water_wave_height or standard value       |
+| `scintillation_index_group`          | enum   |         | See @tbl-if77-scintillation_index_group           | Atmospheric scintillation index group to use                  |
+| `scintillation_freq_scaling`         | enum   |         | See @tbl-if77-scintillation_freq_scaling          | Frequency scaling factor                                      |
+| `scintillation_use_flag`             | enum   |         | See @tbl-if77-scintillation_use_flag              | Whether to use scintillation                                  |
+| `climate_1`                          | enum   |         | See @tbl-if77-climate                             | Climate of the low antenna                                    |
+| `weight_1`                           | int    |         | $weight_1 \geq 0$                                 | Low antenna weighting value for climate mixing                |
+| `climate_2`                          | enum   |         | See @tbl-if77-climate                             | Climate of the high antenna                                   |
+| `weight_2`                           | int    |         | $weight_2 \geq 0$                                 | High antenna weighting value for climate mixing               |
 : Card3 structure for the if77 propagation model {#tbl-if77-inputs-if77-card3}
 
-The `material` input must be one of the following desired materials in `Material` enum, as defined in @tbl-if77-material.
+The `water_temp__celsius` input must be one of the following desired water temperature in celsius, as defined in @tbl-if77-water_temp.
 
-| Enum Value | Material enum                           |
+| Enum Value | Water temperature in Celsius            |
 |------------|-----------------------------------------|
-| 0          | No counterpoise                         |
-| 1          | Counterpoise material is sea water      |
-| 2          | Counterpoise material is good ground    |
-| 3          | Counterpoise material is average ground |
-| 4          | Counterpoise material is poor ground    |
-| 5          | Counterpoise material is fresh water    |
-| 6          | Counterpoise material is concrete       |
-| 7          | Counterpoise material is metallic       |
-: Allowed material values {#tbl-if77-material}
+| 0          | Water temperature of 0 degrees Celsius  |
+| 10         | Water temperature of 10 degrees Celsius |
+| 20         | Water temperature of 20 degrees Celsius |
+: Allowed water temperature in celsius values {#tbl-if77-water_temp}
 
-The `material` input must be one of the following desired materials in `Material` enum, as defined in @tbl-if77-material.
+The `water_state` input must be one of the following desired water states in **WaterState enum**, as defined in @tbl-if77-water_state.
 
-| Enum Value | Material enum                           |
-|------------|-----------------------------------------|
-| 0          | No counterpoise                         |
-| 1          | Counterpoise material is sea water      |
-| 2          | Counterpoise material is good ground    |
-| 3          | Counterpoise material is average ground |
-| 4          | Counterpoise material is poor ground    |
-| 5          | Counterpoise material is fresh water    |
-| 6          | Counterpoise material is concrete       |
-| 7          | Counterpoise material is metallic       |
-: Allowed material values {#tbl-if77-material}
+| Enum Value | Water State enum                         |
+|------------|------------------------------------------|
+| 0          | Average wave height range: 0 m          |
+| 1          | Average wave height range: 0 - 0.1 m    |
+| 2          | Average wave height range: 0.1 - 0.5 m  |
+| 3          | Average wave height range: 0.5 - 1.25 m |
+| 4          | Average wave height range: 1.25 - 2.5 m |
+| 5          | Average wave height range: 2.5 - 4 m    |
+| 6          | Average wave height range: 4 - 6 m      |
+| 7          | Average wave height range: 6 - 9 m      |
+| 8          | Average wave height range: 9 - 14 m     |
+| 9          | Average wave height range: > 14 m       |
+: Allowed water state values {#tbl-if77-water_state}
 
-The `material` input must be one of the following desired materials in `Material` enum, as defined in @tbl-if77-material.
+The `water_wave_height_use_flag` input must be one of the following desired water wave height use flags in **WaterWaveHeight enum**, as defined in @tbl-if77-water_wave_height_use_flag.
 
-| Enum Value | Material enum                           |
-|------------|-----------------------------------------|
-| 0          | No counterpoise                         |
-| 1          | Counterpoise material is sea water      |
-| 2          | Counterpoise material is good ground    |
-| 3          | Counterpoise material is average ground |
-| 4          | Counterpoise material is poor ground    |
-| 5          | Counterpoise material is fresh water    |
-| 6          | Counterpoise material is concrete       |
-| 7          | Counterpoise material is metallic       |
-: Allowed material values {#tbl-if77-material}
+| Enum Value | Water Wave Height Use Flag enum                          |
+|------------|----------------------------------------------------------|
+| 0          | Use standard value associated with path_water_state_type |
+| 1          | Use value path_water_wave_height                         |
+: Allowed water wave height use flag values {#tbl-if77-water_wave_height_use_flag}
 
-The `material` input must be one of the following desired materials in `Material` enum, as defined in @tbl-if77-material.
+The `scintillation_index_group` input must be one of the following desired scintillation index groups in **ScintillationIndex enum**, as defined in @tbl-if77-scintillation_index_group.
 
-| Enum Value | Material enum                           |
-|------------|-----------------------------------------|
-| 0          | No counterpoise                         |
-| 1          | Counterpoise material is sea water      |
-| 2          | Counterpoise material is good ground    |
-| 3          | Counterpoise material is average ground |
-| 4          | Counterpoise material is poor ground    |
-| 5          | Counterpoise material is fresh water    |
-| 6          | Counterpoise material is concrete       |
-| 7          | Counterpoise material is metallic       |
-: Allowed material values {#tbl-if77-material}
+| Enum Value | Scintillation Index enum       |
+|------------|--------------------------------|
+| 0          | Scintillation Index %:  0 - 19 |
+| 1          | Scintillation Index %: 20 - 39 |
+| 2          | Scintillation Index %: 40 - 59 |
+| 3          | Scintillation Index %: 60 - 79 |
+| 4          | Scintillation Index %: 80 - 89 |
+| 5          | Scintillation Index %: > 90    |
+: Allowed scintillation index group values {#tbl-if77-scintillation_index_group}
 
-The `material` input must be one of the following desired materials in `Material` enum, as defined in @tbl-if77-material.
+The `scintillation_freq_scaling` input must be one of the following desired frequency scalings in **FrequencyScaling enum**, as defined in @tbl-if77-scintillation_freq_scaling.
 
-| Enum Value | Material enum                           |
-|------------|-----------------------------------------|
-| 0          | No counterpoise                         |
-| 1          | Counterpoise material is sea water      |
-| 2          | Counterpoise material is good ground    |
-| 3          | Counterpoise material is average ground |
-| 4          | Counterpoise material is poor ground    |
-| 5          | Counterpoise material is fresh water    |
-| 6          | Counterpoise material is concrete       |
-| 7          | Counterpoise material is metallic       |
-: Allowed material values {#tbl-if77-material}
+| Enum Value | Frequency Scaling enum              |
+|------------|-------------------------------------|
+| 0          | No frequency scaling                |
+| 1          | Frequency scaling of 136\/f is used |
+: Allowed frequency scaling values {#tbl-if77-scintillation_freq_scaling}
 
-The `material` input must be one of the following desired materials in `Material` enum, as defined in @tbl-if77-material.
+The `scintillation_use_flag` input must be one of the following desired scintillation use flags in **ScintillationUse enum**, as defined in @tbl-if77-scintillation_use_flag.
 
-| Enum Value | Material enum                           |
-|------------|-----------------------------------------|
-| 0          | No counterpoise                         |
-| 1          | Counterpoise material is sea water      |
-| 2          | Counterpoise material is good ground    |
-| 3          | Counterpoise material is average ground |
-| 4          | Counterpoise material is poor ground    |
-| 5          | Counterpoise material is fresh water    |
-| 6          | Counterpoise material is concrete       |
-| 7          | Counterpoise material is metallic       |
-: Allowed material values {#tbl-if77-material}
+| Enum Value | Scintillation Use Flag enum   |
+|------------|-------------------------------|
+| 0          | Scintillation is not included |
+| 1          | Scintillation is included     |
+: Allowed scintillation use flag values {#tbl-if77-scintillation_use_flag}
 
-The `material` input must be one of the following desired materials in `Material` enum, as defined in @tbl-if77-material.
+The `climate` input must be one of the following desired climates in **Climate enum**, as defined in @tbl-if77-climate.
 
-| Enum Value | Material enum                           |
-|------------|-----------------------------------------|
-| 0          | No counterpoise                         |
-| 1          | Counterpoise material is sea water      |
-| 2          | Counterpoise material is good ground    |
-| 3          | Counterpoise material is average ground |
-| 4          | Counterpoise material is poor ground    |
-| 5          | Counterpoise material is fresh water    |
-| 6          | Counterpoise material is concrete       |
-| 7          | Counterpoise material is metallic       |
-: Allowed material values {#tbl-if77-material}
+| Enum Value | Climate enum                        |
+|------------|-------------------------------------|
+| 0          | Continental all year                |
+| 1          | Equatorial                          |
+| 2          | Continental subtropical             |
+| 3          | Maritime subtropical                |
+| 4          | Desert                              |
+| 5          | Continental temperate               |
+| 6          | Maritime temperate overland         |
+| 7          | Maritime temperate overseas         |
+| 8          | No climate                          |
+| 9          | May - October, all hours            |
+| 10         | November - April, all hours         |
+| 11         | November - April, hours 0600 - 1300 |
+| 12         | November - April, hours 1300 - 1800 |
+| 13         | November - April, hours 1800 - 2400 |
+| 14         | May - October, hours 0600 - 1300    |
+| 15         | May - October, hours 1300 - 1800    |
+| 16         | May - October, hours 1800 - 2400    |
+| 17         | May - October, hours 0000 - 0600    |
+| 18         | November - April, hours 0000 - 0600 |
+| 19         | All time blocks in entire year      |
+: Allowed climate values {#tbl-if77-climate}
 
-The `material` input must be one of the following desired materials in `Material` enum, as defined in @tbl-if77-material.
-
-| Enum Value | Material enum                           |
-|------------|-----------------------------------------|
-| 0          | No counterpoise                         |
-| 1          | Counterpoise material is sea water      |
-| 2          | Counterpoise material is good ground    |
-| 3          | Counterpoise material is average ground |
-| 4          | Counterpoise material is poor ground    |
-| 5          | Counterpoise material is fresh water    |
-| 6          | Counterpoise material is concrete       |
-| 7          | Counterpoise material is metallic       |
-: Allowed material values {#tbl-if77-material}
-
-**Outputs**
+**if77 Outputs**
 
 The IF77 model produces an output with a return code (see [here](errors.qmd#return-codes)) and a Result structure which contains five values provided in @tbl-if77-outputs-result.
 
