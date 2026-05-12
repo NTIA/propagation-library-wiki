@@ -4,7 +4,7 @@ date: 2025-01-10
 date-modified: 2025-06-12
 ---
 
-This page details the usage of the cross-platform command-line driver version of the Low Frequency / Medium Frequency (IF77) propagation model.
+This page details the usage of the cross-platform command-line driver version of the IF-77 Electromagnetic Wave Propagation Model.
 
 {{< include /includes/driver/_intro_and_installation.qmd >}}
 
@@ -39,138 +39,336 @@ The additional arguments are defined in @tbl-if77-driver-additional-args
 
 ## Examples
 
-The IF77 model can be run by simply providing the input and output files on the command line.
+### IF77 Model
+
+The IF77 Model can be run by providing the input/output files and `-model IF77` flag on the command line.
 For example:
 
 ```cmd
 # Windows (64-bit)
-IF77Driver-1.1.0-Windows-x64.exe -i input.txt -o output.txt
+IF77Driver-1.1.0-Windows-x64.exe -i input.txt -o output.txt -model IF77
 
 # macOS
-./IF77Driver-1.1.0-Darwin-universal -i input.txt -o output.txt
+./IF77Driver-1.1.0-Darwin-universal -i input.txt -o output.txt -model IF77
 
 # Linux
-./IF77Driver-1.1.0-Linux-x86_64 -i input.txt -o output.txt
+./IF77Driver-1.1.0-Linux-x86_64 -i input.txt -o output.txt -model IF77
 ```
 
-Three example sets of input/output file pairs are provided below.
-
-### Example 1
+A corresponding pair of input and output files for the Specific Attenuation Model are provided below.
 
 ```{.default filename="Input File Contents"}
-h_tx__meter,0
-h_rx__meter,0
-f__mhz,0.01
-P_tx__watt,1000
-N_s,301
-d__km,1000
-epsilon,15
-sigma,0.005
-pol,0
+card1_output_type,3
+card1_lobing_flag,0
+card1_time_availability_flag,2
+card1_d__km,119.3048129015685
+card1_percentage,50
+card2_h_1__meter,292.10976985787516
+card2_antenna_1_pattern,1
+card2_antenna_1_use,0
+card2_antenna_1_polarization,2
+card2_antenna_1_tilt__deg,0
+card2_antenna_1_half_half_beamwidth__deg,0
+card2_h_fss__meter,242.10976985787516
+card2_rainfall_zone,0
+card2_storm_size,5
+card2_terrain_type,2
+card2_horizon_input,2
+card2_delta_h__meter,290.8360817429317
+card2_d_hzn__km,5.8102343919372412
+card2_h_hzn__meter,471
+card2_low_horizon_angle_degrees,1
+card2_low_horizon_angle_minutes,44
+card2_low_horizon_angle_seconds,27
+card2_counterpoise_diameter__meter,0
+card2_counterpoise_height__meter,0
+card2_counterpoise_material,0
+card3_h_2__meter,120000
+card3_antenna_2_pattern,1
+card3_antenna_2_use,0
+card3_antenna_2_polarization,2
+card3_antenna_2_tilt__deg,0
+card3_antenna_2_half_half_beamwidth__deg,0
+card3_N_0,315
+card3_f__mhz,3000
+card3_eirp,0
+card3_h_sur__meter,284
+card3_path_material,3
+card3_water_temp__celsius,10
+card3_water_wave_height,0
+card3_water_state,0
+card3_path_water_wave_height_use_flag,1
+card3_scintillation_index_group,0
+card3_scintillation_freq_scaling,0
+card3_scintillation_use_flag,0
+card3_climate_1,0
+card3_weight_1,0
+card3_climate_2,0
+card3_weight_2,0
 ```
 
 ```{.default filename="Output File Contents"}
-Model                         IF77
-Library Version               v1.1
-Driver Version                v1.1.0
-Date Generated                Tue Jul 01 13:38:18 2025
-Input Arguments               -i input.txt -o results.txt 
+Model                               IF77
+Model Variant                       IF77 Model
+Library Version                     v1.0
+Driver Version                      v1.0.0
+Date Generated                      Tue Aug 26 13:40:21 2025
+Input Arguments                     -i inputIF77.txt -o outputIF77.txt -model IF77 
 
 Inputs:
-h_tx__meter                   0            [meters]
-h_rx__meter                   0            [meters]
-f__mhz                        0.01         [MHz]
-p_tx__watt                    1000         [watts]
-n_s                           301          [N-Units]
-d__km                         1000         [km]
-epsilon                       15           
-sigma                         0.005        
-pol                           0            [0 = Horizontal, 1 = Vertical]
+Crad1:                              
+output_type                         3            [Calculate transmission loss]
+lobing_flag                         0            []
+time_availability_flag              2            [Instantaneous levels]
+d__km                               119.305      [km]
+percentage                          50           [%]
+Crad2:                              
+h_1__meter                          292.11       [meters]
+antenna_1_pattern                   1            [Isotropic antenna]
+antenna_1_use                       0            []
+antenna_1_polarization              2            [Vertical antenna polarization]
+antenna_1_tilt__deg                 0            [degrees]
+antenna_1_half_half_beamwidth__deg  0            [degrees]
+h_fss__meter                        242.11       [meters]
+rainfall_zone                       0            [No rainfall is considered]
+storm_size                          5            []
+terrain_type                        2            [Irregular terrain]
+horizon_input                       2            []
+delta_h__meter                      290.836      [meters]
+d_hzn__km                           5.81023      [km]
+h_hzn__meter                        471          [meters]
+low_horizon_angle_degrees           1            []
+low_horizon_angle_minutes           44           []
+low_horizon_angle_seconds           27           []
+counterpoise_diameter__meter        0            [meters]
+counterpoise_height__meter          0            [meters]
+counterpoise_material               0            []
+Crad3:                              
+h_2__meter                          120000       [meters]
+antenna_2_pattern                   1            [Isotropic antenna]
+antenna_2_use                       0            []
+antenna_2_polarization              2            [Vertical antenna polarization]
+antenna_2_tilt__deg                 0            [degrees]
+antenna_2_half_half_beamwidth__deg  0            [degrees]
+n_0                                 315          [N-units]
+f__mhz                              3000         [MHz]
+eirp                                0            [dBW]
+h_sur__meter                        284          [meters]
+path_material                       3            []
+water_temp__celsius                 10           [Celsius]
+water_wave_height                   0            []
+water_state                         0            [Average wave height range: 0 m]
+path_water_wave_height_use_flag     1            []
+scintillation_index_group           0            []
+scintillation_freq_scaling          0            []
+scintillation_use_flag              0            []
+climate_1                           0            []
+weight_1                            0            []
+climate_2                           0            []
+weight_2                            0            []
 
 Results:
-Return Code                   0            [IF77 v1.1 Status: Successful execution]
-Basic transmission loss       184.49       [dB]
-Electric field strength       -82.50       [dB(uV/m)]
-Received power                -114.93      [dB]
-Solution method               1            [0 = Flat earth with curve correction, 1 = Residue series]
+Return Code                         0            [IF77 v1.0 Status: Successful execution]
+Warning flags                       0            [No Warnings]
+Takeoff angle                       40.86        [degrees]
+Mode of propagation                 1            
+Free space loss                     146.59097    [db]
+Total loss                          -146.63407   [db]
 ```
 
-### Example 2
+### IF77 Extended Model
+
+The IF77 Extended Model can be run by providing the input/output files and `-model IF77_EX` flag on the command line.
+For example:
+
+```cmd
+# Windows (64-bit)
+IF77Driver-1.1.0-Windows-x64.exe -i input.txt -o output.txt -model IF77_EX
+
+# macOS
+./IF77Driver-1.1.0-Darwin-universal -i input.txt -o output.txt -model IF77_EX
+
+# Linux
+./IF77Driver-1.1.0-Linux-x86_64 -i input.txt -o output.txt -model IF77_EX
+```
+
+A corresponding pair of input and output files for the Specific Attenuation Model are provided below.
 
 ```{.default filename="Input File Contents"}
-h_tx__meter,5.5
-h_rx__meter,1.5
-f__mhz,10
-P_tx__watt,500
-N_s,315
-d__km,15
-epsilon,15
-sigma,0.005
-pol,0
+card1_output_type,3
+card1_lobing_flag,0
+card1_time_availability_flag,2
+card1_d__km,119.3048129015685
+card1_percentage,50
+card2_h_1__meter,292.10976985787516
+card2_antenna_1_pattern,1
+card2_antenna_1_use,0
+card2_antenna_1_polarization,2
+card2_antenna_1_tilt__deg,0
+card2_antenna_1_half_half_beamwidth__deg,0
+card2_h_fss__meter,242.10976985787516
+card2_rainfall_zone,0
+card2_storm_size,5
+card2_terrain_type,2
+card2_horizon_input,2
+card2_delta_h__meter,290.8360817429317
+card2_d_hzn__km,5.8102343919372412
+card2_h_hzn__meter,471
+card2_low_horizon_angle_degrees,1
+card2_low_horizon_angle_minutes,44
+card2_low_horizon_angle_seconds,27
+card2_counterpoise_diameter__meter,0
+card2_counterpoise_height__meter,0
+card2_counterpoise_material,0
+card3_h_2__meter,120000
+card3_antenna_2_pattern,1
+card3_antenna_2_use,0
+card3_antenna_2_polarization,2
+card3_antenna_2_tilt__deg,0
+card3_antenna_2_half_half_beamwidth__deg,0
+card3_N_0,315
+card3_f__mhz,3000
+card3_eirp,0
+card3_h_sur__meter,284
+card3_path_material,3
+card3_water_temp__celsius,10
+card3_water_wave_height,0
+card3_water_state,0
+card3_path_water_wave_height_use_flag,1
+card3_scintillation_index_group,0
+card3_scintillation_freq_scaling,0
+card3_scintillation_use_flag,0
+card3_climate_1,0
+card3_weight_1,0
+card3_climate_2,0
+card3_weight_2,0
 ```
 
 ```{.default filename="Output File Contents"}
-Model                         IF77
-Library Version               v1.1
-Driver Version                v1.1.0
-Date Generated                Mon Nov 18 13:56:51 2024
-Input Arguments               -i i_if77_02.txt -o o_if77_02.txt 
+Model                                             IF77
+Model Variant                                     IF77 Model with intermedia results
+Library Version                                   v1.0
+Driver Version                                    v1.0.0
+Date Generated                                    Tue Sep 02 08:22:34 2025
+Input Arguments                                   -i ..\..\..\inputIF77.txt -o ..\..\..\outputIF77Ex.txt -model IF77_EX 
 
 Inputs:
-h_tx__meter                   5.5          [meter]
-h_rx__meter                   1.5          [meter]
-f__mhz                        10           [MHz]
-p_tx__watt                    500          [Watts]
-n_s                           315          [N-Units]
-d__km                         15           [km]
-epsilon                       15           
-sigma                         0.005        
-pol                           0            [0 = Horizontal, 1 = Vertical]
+Crad1:                                            
+output_type                                       3            [Calculate transmission loss]
+lobing_flag                                       0            [Do not use lobing in calculations]
+time_availability_flag                            2            [Instantaneous levels]
+d__km                                             119.305      [km]
+percentage                                        50           [%]
+Crad2:                                            
+h_1__meter                                        292.11       [meters]
+antenna_1_pattern                                 1            [Isotropic antenna]
+antenna_1_use                                     0            [Directive antenna]
+antenna_1_polarization                            2            [Vertical antenna polarization]
+antenna_1_tilt__deg                               0            [degrees]
+antenna_1_half_half_beamwidth__deg                0            [degrees]
+h_fss__meter                                      242.11       [meters]
+rainfall_zone                                     0            [No rainfall is considered]
+storm_size                                        5            [km]
+terrain_type                                      2            [Irregular terrain]
+horizon_input                                     2            [Horizon obstacle specified by its height]
+delta_h__meter                                    290.836      [meters]
+d_hzn__km                                         5.81023      [km]
+h_hzn__meter                                      471          [meters]
+low_horizon_angle_degrees                         1            [degrees]
+low_horizon_angle_minutes                         44           [minutes]
+low_horizon_angle_seconds                         27           [seconds]
+counterpoise_diameter__meter                      0            [meters]
+counterpoise_height__meter                        0            [meters]
+counterpoise_material                             0            [No counterpoise present]
+Crad3:                                            
+h_2__meter                                        120000       [meters]
+antenna_2_pattern                                 1            [Isotropic antenna]
+antenna_2_use                                     0            [Directive antenna]
+antenna_2_polarization                            2            [Vertical antenna polarization]
+antenna_2_tilt__deg                               0            [degrees]
+antenna_2_half_half_beamwidth__deg                0            [degrees]
+n_0                                               315          [N-units]
+f__mhz                                            3000         [MHz]
+eirp                                              0            [dBW]
+h_sur__meter                                      284          [meters]
+path_material                                     3            [Average ground material]
+water_temp__celsius                               10           [Celsius]
+water_wave_height                                 0            
+water_state                                       0            [Average wave height range: 0 m]
+path_water_wave_height_use_flag                   1            [Use value path_water_wave_height]
+scintillation_index_group                         0            [Scintillation Index %:  0 - 19]
+scintillation_freq_scaling                        0            [No frequency scaling]
+scintillation_use_flag                            0            [Scintillation is not included]
+climate_1                                         0            [Continental all year]
+weight_1                                          0            
+climate_2                                         0            [Continental all year]
+weight_2                                          0            
 
 Results:
-Return Code                   0            [IF77 v1.1 Status: Successful execution]
-Basic transmission loss       151.33       [dB]
-Electric field strength       7.65         [dB(uV/m)]
-Received power                -84.78       [dB]
-Solution method               0            [0 = Flat earth with curve correction, 1 = Residue series]
-```
+Return Code                                       0            [IF77 v1.0 Status: Successful execution]
+Warning flags                                     0            [No Warnings]
+Takeoff angle                                     40.86        [degrees]
+Mode of propagation                               1            [Line of sight mode of propagation]
+Free space loss                                   146.59097    [db]
+Total loss                                        -146.63407   [db]
 
-### Example 3
+Intermedia Results:
 
-```{.default filename="Input File Contents"}
-h_tx__meter,1
-h_rx__meter,1
-f__mhz,0.45
-P_tx__watt,1000
-N_s,315
-d__km,3000
-epsilon,15
-sigma,0.005
-pol,1
-```
+Terminal 1:
+Actual height used in model                       0.292        [km]
+Real height above MSL                             0.292        [km]
+Effective height above reflecting surface         0.008        [km]
+Real height above reflecting surface              0.008        [km]
+Delta between real height and effective height    0.000        [km]
+Actual horizon distance used                      11.789       [km]
+Ray traced smooth earth horizon distance          11.936       [km]
+Distance to the terminals horizon used in calcs   5.810        [km]
+Terminal geometry angle                           0.001        [rad]
+Incident angle of the ray                         0.001        [rad]
+Angle to the horizon (smooth earth or obstacle)   0.030        [rad]
+Takeoff angle of ray                              -0.031       [rad]
+Radial from Earth center to top of antenna        8568.621     [km]
 
-```{.default filename="Output File Contents"}
-Model                         IF77
-Library Version               v1.1
-Driver Version                v1.1.0
-Date Generated                Mon Nov 18 13:56:57 2024
-Input Arguments               -i i_if77_03.txt -o o_if77_03.txt 
+Terminal 2:
+Actual height used in model                       99.595       [km]
+Real height above MSL                             120.000      [km]
+Effective height above reflecting surface         99.311       [km]
+Real height above reflecting surface              119.716      [km]
+Delta between real height and effective height    20.405       [km]
+Actual horizon distance used                      1298.320     [km]
+Ray traced smooth earth horizon distance          1298.320     [km]
+Distance to the terminals horizon used in calcs   1072.526     [km]
+Terminal geometry angle                           0.152        [rad]
+Incident angle of the ray                         0.191        [rad]
+Angle to the horizon (smooth earth or obstacle)   -0.193       [rad]
+Takeoff angle of ray                              0.031        [rad]
+Radial from Earth center to top of antenna        8667.923     [km]
 
-Inputs:
-h_tx__meter                   1            [meter]
-h_rx__meter                   1            [meter]
-f__mhz                        0.45         [MHz]
-p_tx__watt                    1000         [Watts]
-n_s                           315          [N-Units]
-d__km                         3000         [km]
-epsilon                       15           
-sigma                         0.005        
-pol                           1            [0 = Horizontal, 1 = Vertical]
-
-Results:
-Return Code                   0            [IF77 v1.1 Status: Successful execution]
-Basic transmission loss       264.33       [dB]
-Electric field strength       -129.28      [dB(uV/m)]
-Received power                -194.77      [dB]
-Solution method               1            [0 = Flat earth with curve correction, 1 = Residue series]
+Path:
+Height of the reflecting surface                  0.284        [km]
+Height of the facility site surface above MSL     0.242        [km]
+Height of the low antenna above the facility      
+    site surface                                  0.050        [km]
+Height of the horizon from the low terminal       0.471        [km]
+Maximum line-of-sight distance                    1078.336     [km]
+Great-circle path distance                        119.305      [km]
+Largest distance in LOS region where diffraction  
+    effects are negligible                        1048.257     [km]
+Initial estimate of d_0                           1048.257     [km]
+Largest angle at which lobing effects are         
+    considered                                    0.003        [rad]
+Terrain irregularity parameter                    0.291        [km]
+Refractivity                                      315.000      [N-Units]
+Surface refractivity                              305.685      [N-Units]
+Ground material                                   3            [Average ground material]
+Conductivity                                      0.005        [S/m]
+Relative permittivity                             15.000       
+Effective Earth radius                            8568.612     [km]
+Water temperature                                 10.000       [Celsius]
+Use user defined conductivity flag                1            [Use value path_water_wave_height]
+User defined conductivity                         0.000        [S/m]
+Water state enum for average wave height range    0            [Average wave height range: 0 m]
+Whether lobing is used                            0            [No]
+Reflection angle                                  0.713        [rad]
+Terrain type enum                                 2            [Irregular terrain]
 ```
