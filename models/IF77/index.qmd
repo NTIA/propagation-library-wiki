@@ -1,7 +1,7 @@
 ---
 title: "IF-77 Electromagnetic Wave Propagation Model"
-date: 2024-12-02
-date-modified: 2025-06-12
+date: 2026-05-01
+date-modified: 2026-05-06
 ---
 
 The IF-77 Electromagnetic Wave propagation model predicts the basic transmission loss in the frequency range 125 MHz – 20 GHz for aeronautical and satellite services. It also calculates power available, power density, and/or a desired-to-undesired signal ratio.

@@ -1,7 +1,7 @@
 ---
 title: "IF-77 Electromagnetic Wave Propagation Model – Command-Line Driver"
-date: 2025-01-10
-date-modified: 2025-06-12
+date: 2026-05-08
+date-modified: 2026-05-12
 ---
 
 This page details the usage of the cross-platform command-line driver version of the IF-77 Electromagnetic Wave Propagation Model.

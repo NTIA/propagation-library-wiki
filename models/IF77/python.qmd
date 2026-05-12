@@ -1,10 +1,10 @@
 ---
 title: "IF-77 Electromagnetic Wave Propagation Model – Python"
-date: 2025-01-24
-date-modified: 2025-06-12
+date: 2026-05-12
+date-modified: 2026-05-12
 ---
 
-This page details the installation and usage of the Python version of the PropLib implementation of the Low Frequency / Medium Frequency (IF77) propagation model.
+This page details the installation and usage of the Python version of the PropLib implementation of the IF-77 Electromagnetic Wave Propagation Model.
 
 {{< include /includes/_link_to_model_home.qmd >}}
 

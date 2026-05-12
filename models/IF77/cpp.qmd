@@ -1,7 +1,7 @@
 ---
 title: "IF-77 Electromagnetic Wave Propagation Model – C++"
-date: 2024-12-02
-date-modified: 2025-06-12
+date: 2026-05-08
+date-modified: 2026-05-12
 ---
 
 This page details the installation and usage of the C++ version of the PropLib implementation of the IF-77 Electromagnetic Wave Propagation Model.
