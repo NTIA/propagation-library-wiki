@@ -1,15 +1,15 @@
 format:
   html:
     code-links:
-      - text: NTIA/LFMF
+      - text: NTIA/if77
         icon: github
-        href: https://github.com/NTIA/LFMF
-      - text: NTIA/LFMF-dotnet
+        href: https://github.com/NTIA/if77
+      - text: NTIA/if77-dotnet
         icon: github
-        href: https://github.com/NTIA/LFMF-dotnet
-      - text: NTIA/LFMF-matlab
+        href: https://github.com/NTIA/if77-dotnet
+      - text: NTIA/if77-matlab
         icon: github
-        href: https://github.com/NTIA/LFMF-matlab
-      - text: NTIA/LFMF-python
+        href: https://github.com/NTIA/if77-matlab
+      - text: NTIA/if77-python
         icon: github
-        href: https://github.com/NTIA/LFMF-python
+        href: https://github.com/NTIA/if77-python
