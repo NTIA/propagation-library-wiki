@@ -49,24 +49,81 @@ The following code examples show how the IF77 model can be called from Python.
 from ITS.Propagation import IF77
 
 # define inputs
-h_tx__meter = 0.0    # Height of the transmitter
-h_rx__meter = 0.0    # Height of the receiver
-f__mhz = 0.01        # Frequency
-P_tx__watt = 1000.0  # Transmitter power   
-N_s = 301.0          # Surface refractivity
-d__km = 1000.0       # Path distance
-epsilon = 15.0       # Relative permittivity
-sigma = 0.005        # Conductivity
-pol = 0              # Polarization (enum value)
-# Alternately, `pol` can be specified using the enum:
-pol = IF77.Polarization.Horizontal
+card1 = IF77.Card1
+card2 = IF77.Card2
+card3 = IF77.Card3
+
+card1.output_type = IF77.OutputType.TransmissionLoss
+card1.lobing_flag = IF77.Lobing.NoLobing
+card1.time_availability_flag = IF77.TimeAvailability.InstantaneousLevels
+card1.d__km = 119.3048129015685
+card1.percentage = 50.
+
+card2.h_1__meter = 292.10976985787516
+card2.antenna_1_pattern = IF77.AntennaPattern.Isotropic
+card2.antenna_1_use = IF77.AntennaUse.Directive
+card2.antenna_1_polarization = IF77.AntennaPolarization.Vertical
+card2.antenna_1_tilt__deg = 0
+card2.antenna_1_half_half_beamwidth__deg = 0
+card2.h_fss__meter = 242.10976985787516
+card2.rainfall_zone = IF77.RainfallZone.NoRainfall
+card2.storm_size = IF77.StormSize.FiveKm
+card2.terrain_type = IF77.TerrainType.IrregularTerrain
+card2.horizon_input = IF77.HorizonInput.Height
+card2.delta_h__meter = 290.8360817429317
+card2.d_hzn__km = 5.8102343919372412
+card2.h_hzn__meter = 471
+card2.low_horizon_angle_degrees = 1
+card2.low_horizon_angle_minutes = 44
+card2.low_horizon_angle_seconds = 27
+card2.counterpoise_diameter__meter = 0
+card2.counterpoise_height__meter = 0
+card2.counterpoise_material = IF77.Material.None
+
+card3.h_2__meter = 120000
+card3.antenna_2_pattern = IF77.AntennaPattern.Isotropic
+card3.antenna_2_use = IF77.AntennaUse.Directive
+card3.antenna_2_polarization = IF77.AntennaPolarization.Vertical
+card3.antenna_2_tilt__deg = 0
+card3.antenna_2_half_half_beamwidth__deg = 0
+card3.N_0 = 315
+card3.f__mhz = 3000
+card3.eirp = 0
+card3.h_sur__meter = 284
+card3.path_material = IF77.Material.AverageGround
+card3.water_temp__celsius = IF77.Temperature.TenDegreesCelsius
+card3.water_wave_height = 0
+card3.water_state = IF77.WaterState.CalmGlassy
+card3.path_water_wave_height_use_flag = IF77.WaterWaveHeight.UseStandard
+card3.scintillation_index_group = IF77.ScintillationIndex.IndexGroup1
+card3.scintillation_freq_scaling = IF77.FrequencyScaling.None
+card3.scintillation_use_flag = IF77.ScintillationUse.NoScintillation
+card3.climate_1 = IF77.Climate.ContinentalAllYear
+card3.weight_1 = 0
+card3.climate_2 = IF77.Climate.ContinentalAllYear
+card3.weight_2 = 0
 
 # Call the IF77 model
-result = IF77.IF77(h_tx__meter, h_rx__meter, f__mhz, P_tx__watt, N_s, d__km, epsilon, sigma, pol)
+result = IF77.IF77(card1, card2, card3)
 
-# The result is a data structure containing four elements:
-# result.A_btl__db  is approximately  184.49
-# result.E__dBuVm   is approximately  -82.50
-# result.P_rx__dbm  is approximately  -114.93
-# result.method     is <SolutionMethod.ResidueSeries: 1>
+# The result is a data structure containing five elements:
+# result.warnings                 is 0
+# result.takeoff_angle__degrees   is approximately  85.63319
+# result.propagation_mode         is ITS.Propagation.IF77.PropagationMode.LightOfSight (PropagationMode enum value 1)
+# result.A_fs__db                 is approximately  102.54639
+# result.A__db                    is approximately  -102.54841
+```
+
+### Calling the IF77 Extended Model.
+
+The inputs for IF77 Extended Model are the same as IF77 Model shown above. The outputs include the terminals and path information in addition to IF77 model results.
+
+```python
+from ITS.Propagation import IF77
+
+# Call the IF77 extended model
+result, terminal1, terminal2, path = IF77.IF77Ex(card1, card2, card3)
+
+# The terminal1 and terminal2 are data structure containing terminal information
+# The path is data structure containing path information
 ```

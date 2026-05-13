@@ -101,7 +101,7 @@ disp(if77_result);
 
 The inputs for IF77 Extended Model are the same as IF77 Model shown above. The outputs include the terminals and path information in addition to IF77 model results.
 
-```
+```matlab
 % Call the IF77 extended model
 [if77_result, if77_terminal1, if77_terminal2, if77_path] = IF77_Ex(if77_card1, if77_card2, if77_card3);
 disp(if77_result);
