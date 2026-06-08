@@ -497,3 +497,39 @@ This function weights and combines two cumulative variability distributions, as 
 : Inputs for the combine and weight distributions function {#tbl-if77-inputs-CombineAndWeightDistributions}
 
 The output of this model is a double array values for resulting distribution.
+
+### Calculate effective ray length function
+
+This function computes the ray distance through an absorbing layer of specified thickness on the surface of the earth. The ray travels from terminal 1 to terminal 2, with the height of terminal 2 being greater than or equal to the height of terminal 1. The inputs for this model are shown below in @tbl-if77-inputs-CalculateEffectiveRayLength.
+
+| Variable    | Type   | Units   | Limits | Description                                               |
+|-------------|--------|---------|--------|-----------------------------------------------------------|
+| `z_1__km`   | double | km      |        | Radial for terminal 1                                     |
+| `z_2__km`   | double | km      |        | Radial for terminal 2                                     |
+| `a_e__km`   | double | km      |        | Effective earth radius                                    |
+| `d_arc__km` | double | km      |        | Distance between terminals along the surface of the earth |
+| `beta__rad` | double | radians |        | Takeoff angle                                             |
+| `T_e__km`   | double | km      |        | Thickness of the absorbing layer                          |
+: Inputs for the calculate effective ray length function {#tbl-if77-inputs-CalculateEffectiveRayLength}
+
+The output of this model is a double value for ray length through absorbing layer, in km.
+
+### Rain function
+
+This function computes the contribution to variability from rain. The inputs for this model are shown below in @tbl-if77-inputs-Rain.
+
+| Variable             | Type   | Units   | Limits | Description                                     |
+|----------------------|--------|---------|--------|-------------------------------------------------|
+| `rainfall_zone_enum` | enum   |         |        | Rainfall zone enum. See @tbl-if77-rainfall_zone |
+| `size_of_storm__km`  | int    | km      |        | Size of storm                                   |
+| `f__mhz`             | double | MHz     |        | Frequency                                       |
+| `d_arc__km`          | double | km      |        | Arc distance                                    |
+| `z_1__km`            | double | km      |        | Radial for terminal 1                           |
+| `z_2__km`            | double | km      |        | Radial for terminal 2                           |
+| `a_e__km`            | double | km      |        | Effective earth radius                          |
+| `theta_tx__rad`      | double | radians |        | Ray takeoff angle                               |
+| `q`                  | double |         |        | Probability                                     |
+: Inputs for the rain function {#tbl-if77-inputs-Rain}
+
+The output of this model is a double value for rain loss, in dB.
+
