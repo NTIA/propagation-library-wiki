@@ -384,11 +384,44 @@ This function computes the time variability statistics. The inputs for this mode
 | `q`       | double |       |                       | Probability               |
 : Inputs for the time variability function {#tbl-p676-inputs-TimeVariability}
 
-The output of this model is a double value in dB.
+The output of this model is a double value for variability, in dB.
 
-{{< include /includes/_code_examples.qmd >}}
+### Inverse complementary cumulative distribution function
 
-[C++](cpp.qmd#calling-the-time-variability-function){.btn .btn-secondary .btn role="button"}
-[.NET](dotnet.qmd#calling-the-time-variability-function){.btn .btn-secondary .btn role="button"}
-[MATLAB](matlab.qmd#calling-the-time-variability-function){.btn .btn-secondary .btn role="button"}
-[Python](python.qmd#calling-the-time-variability-function){.btn .btn-secondary .btn role="button"}
+This function computes the inverse complementary cumulative distribution. The inputs for this model are shown below in @tbl-p676-inputs-InverseComplementaryCumulativeDistribution.
+
+| Variable  | Type   | Units | Limits                | Description               |
+|-----------|--------|-------|-----------------------|---------------------------|
+| `q`       | double |       | $0.0 \lt q \lt 1.0$                      | Quantile               |
+: Inputs for the inverse complementary cumulative distribution function {#tbl-p676-inputs-InverseComplementaryCumulativeDistribution}
+
+The output of this model is a double value.
+
+### Linear interpolation function
+
+This function computes the Linearly interpolate between two points. The inputs for this model are shown below in @tbl-p676-inputs-LinearInterpolation.
+
+| Variable | Type   | Units | Limits                | Description |
+|----------|--------|-------|-----------------------|-------------|
+| `x1`     | double |       |                       | Point 1     |
+| `y1`     | double |       |                       | Point 1     |
+| `x2`     | double |       |                       | Point 2     |
+| `y2`     | double |       |                       | Point 2     |
+| `x`      | double |       |                       | x-value     |
+: Inputs for the linear interpolation function {#tbl-p676-inputs-LinearInterpolation}
+
+The output of this model is a double value for interpolated y-value.
+
+### Climate variability function
+
+This function computes the climate-specific variability. The inputs for this model are shown below in @tbl-p676-inputs-ClimateVariability.
+
+| Variable  | Type   | Units | Limits                | Description               |
+|-----------|--------|-------|-----------------------|---------------------------|
+| `climate` | enum   |       | See @tbl-if77-climate | Climate statistics to use |
+| `d_e__km` | double | km    |                       | Effective distance        |
+| `f__mhz`  | double | MHz   |                       | Frequency                 |
+| `q`       | double |       |                       | Probability               |
+: Inputs for the climate variability function {#tbl-p676-inputs-ClimateVariability}
+
+The output of this model is a double value for variability, in dB.
