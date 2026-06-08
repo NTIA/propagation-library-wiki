@@ -4,7 +4,7 @@ date: 2026-05-01
 date-modified: 2026-05-06
 ---
 
-The IF-77 Electromagnetic Wave propagation model predicts the basic transmission loss in the frequency range 125 MHz – 20 GHz for aeronautical and satellite services. It also calculates power available, power density, and/or a desired-to-undesired signal ratio.
+The IF-77 Electromagnetic Wave propagation model predicts the basic transmission loss in the frequency range 0.1 to 20 GHz for aeronautical and satellite services. It also calculates power available, power density, and/or a desired-to-undesired signal ratio. This library implements M.E. Johnson and G.D. Gierhart's work published in The IF-77 Electromagnetic Wave Propagation Model[@FAA-ES-83/3], NTIA Sponsor Report FAA-ES-83/3, September 1983.
 
 {{< include /includes/_getting_started.qmd >}}
 
@@ -374,7 +374,7 @@ IF77 supports a defined list of error codes and warning flags. A complete list c
 
 ### Time variability function
 
-This function computes the time variability statistics. The inputs for this model are shown below in @tbl-p676-inputs-TimeVariability.
+This function computes the time variability statistics. The inputs for this model are shown below in @tbl-if77-inputs-TimeVariability.
 
 | Variable  | Type   | Units | Limits                | Description               |
 |-----------|--------|-------|-----------------------|---------------------------|
@@ -382,24 +382,24 @@ This function computes the time variability statistics. The inputs for this mode
 | `d_e__km` | double | km    |                       | Effective distance        |
 | `f__mhz`  | double | MHz   |                       | Frequency                 |
 | `q`       | double |       |                       | Probability               |
-: Inputs for the time variability function {#tbl-p676-inputs-TimeVariability}
+: Inputs for the time variability function {#tbl-if77-inputs-TimeVariability}
 
 The output of this model is a double value for variability, in dB.
 
 ### Inverse complementary cumulative distribution function
 
-This function computes the inverse complementary cumulative distribution. The inputs for this model are shown below in @tbl-p676-inputs-InverseComplementaryCumulativeDistribution.
+This function computes the inverse complementary cumulative distribution. The inputs for this model are shown below in @tbl-if77-inputs-InverseComplementaryCumulativeDistribution.
 
 | Variable  | Type   | Units | Limits                | Description               |
 |-----------|--------|-------|-----------------------|---------------------------|
 | `q`       | double |       | $0.0 \lt q \lt 1.0$                      | Quantile               |
-: Inputs for the inverse complementary cumulative distribution function {#tbl-p676-inputs-InverseComplementaryCumulativeDistribution}
+: Inputs for the inverse complementary cumulative distribution function {#tbl-if77-inputs-InverseComplementaryCumulativeDistribution}
 
 The output of this model is a double value.
 
 ### Linear interpolation function
 
-This function computes the Linearly interpolate between two points. The inputs for this model are shown below in @tbl-p676-inputs-LinearInterpolation.
+This function computes the Linearly interpolate between two points. The inputs for this model are shown below in @tbl-if77-inputs-LinearInterpolation.
 
 | Variable | Type   | Units | Limits                | Description |
 |----------|--------|-------|-----------------------|-------------|
@@ -408,13 +408,13 @@ This function computes the Linearly interpolate between two points. The inputs f
 | `x2`     | double |       |                       | Point 2     |
 | `y2`     | double |       |                       | Point 2     |
 | `x`      | double |       |                       | x-value     |
-: Inputs for the linear interpolation function {#tbl-p676-inputs-LinearInterpolation}
+: Inputs for the linear interpolation function {#tbl-if77-inputs-LinearInterpolation}
 
 The output of this model is a double value for interpolated y-value.
 
 ### Climate variability function
 
-This function computes the climate-specific variability. The inputs for this model are shown below in @tbl-p676-inputs-ClimateVariability.
+This function computes the climate-specific variability. The inputs for this model are shown below in @tbl-if77-inputs-ClimateVariability.
 
 | Variable  | Type   | Units | Limits                | Description               |
 |-----------|--------|-------|-----------------------|---------------------------|
@@ -422,6 +422,78 @@ This function computes the climate-specific variability. The inputs for this mod
 | `d_e__km` | double | km    |                       | Effective distance        |
 | `f__mhz`  | double | MHz   |                       | Frequency                 |
 | `q`       | double |       |                       | Probability               |
-: Inputs for the climate variability function {#tbl-p676-inputs-ClimateVariability}
+: Inputs for the climate variability function {#tbl-if77-inputs-ClimateVariability}
 
 The output of this model is a double value for variability, in dB.
+
+### All year continental variability function
+
+This function determine the variability for the all-year continental climate option. The inputs for this model are shown below in @tbl-if77-inputs-AllYearContinentalVariability.
+
+| Variable  | Type   | Units | Limits                | Description               |
+|-----------|--------|-------|-----------------------|---------------------------|
+| `d_e__km` | double | km    |                       | Effective distance        |
+| `f__mhz`  | double | MHz   |                       | Frequency                 |
+| `q`       | double |       |                       | Probability               |
+: Inputs for the all year continental variability function {#tbl-if77-inputs-AllYearContinentalVariability}
+
+The output of this model is a double value for variability, in dB.
+
+### Long term variability function
+
+This function computes the long term variability with support for combining, and weighting, two different climates. The inputs for this model are shown below in @tbl-if77-inputs-LongTermVariability.
+
+| Variable  | Type   | Units | Limits                    | Description               |
+|-----------|--------|-------|---------------------------|---------------------------|
+| `vary`    | struct |       | See @tbl-if77-variability | Variability structure     |
+| `f__mhz`  | double | MHz   |                           | Frequency                 |
+| `q`       | double |       |                           | Probability               |
+: Inputs for the long term variability function {#tbl-if77-inputs-LongTermVariability}
+
+| Variability structure   | Type   | Units | Description                                                        |
+|-------------------------|--------|-------|--------------------------------------------------------------------|
+| `d_e__km`               | enum   | km    | Effective distance                                                 |
+| `climate_1`             | enum   |       | Climate at low terminal. See @tbl-if77-climate                     |
+| `climate_2`             | enum   |       | Climate at high terminal. See @tbl-if77-climate                    |
+| `weight_1`              | int    |       | Climate weight at low terminal                                     |
+| `weight_2`              | int    |       | Climate weight at high terminal                                    |
+| `q`                     | double |       | Time probability                                                   |
+| `d_q__km`               | double | km    | Calculated by [@FAA-ES-83/3, Chapter 10.1 Equation (231)]          |
+| `time_availability`     | enum   |       | Time availability. See @tbl-if77-time_availability                 |
+| `include_scintillation` | bool   |       | Whether include scintillation effects                              |
+| `scint_index_group`     | enum   |       | Scintillation index group. See @tbl-if77-scintillation_index_group |
+| `scint_freq_scaling`    | bool   |       | Whether apply frequency scaling                                    |
+| `rainfall_zone`         | enum   |       | Rainfall zone enum. See @tbl-if77-rainfall_zone                    |
+| `storm_size__km`        | int    | km    | Storm size                                                         |
+: Variability structure for the if77 propagation model {#tbl-if77-variability}
+
+The output of this model is a double value for variability, in dB.
+
+### Combine distributions function
+
+This function combines a given q for two distributions. The inputs for this model are shown below in @tbl-if77-inputs-CombineDistributions.
+
+| Variable     | Type   | Units | Limits | Description                       |
+|--------------|--------|-------|--------|-----------------------------------|
+| `dist_1_med` | double |       |        | Distribution 1, median value      |
+| `dist_1_q`   | double |       |        | Distribution 1, probability value |
+| `dist_2_med` | double |       |        | Distribution 2, median value      |
+| `dist_2_q`   | double |       |        | Distribution 2, probability value |
+| `q`          | double |       |        | Probability                       |
+: Inputs for the combine distributions function {#tbl-if77-inputs-CombineDistributions}
+
+The output of this model is a double value for resulting distribution value.
+
+### Combine and weight distributions function
+
+This function weights and combines two cumulative variability distributions, as described in [@FAA-ES-83/3, Chapter 10.6]. The inputs for this model are shown below in @tbl-if77-inputs-CombineAndWeightDistributions.
+
+| Variable | Type         | Units | Limits | Description               |
+|----------|--------------|-------|--------|---------------------------|
+| `dist_1` | double array |       |        | Distribution 1            |
+| `dist_2` | double array |       |        | Distribution 2            |
+| `w1`     | int          |       |        | Weight for distribution 1 |
+| `w2`     | int          |       |        | Weight for distribution 2 |
+: Inputs for the combine and weight distributions function {#tbl-if77-inputs-CombineAndWeightDistributions}
+
+The output of this model is a double array values for resulting distribution.
