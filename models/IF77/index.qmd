@@ -533,3 +533,79 @@ This function computes the contribution to variability from rain. The inputs for
 
 The output of this model is a double value for rain loss, in dB.
 
+### Scintillation function
+
+This function computes the scintillation variability value. The inputs for this model are shown below in @tbl-if77-inputs-Scintillation.
+
+| Variable            | Type   | Units   | Limits | Description                                                        |
+|---------------------|--------|---------|--------|--------------------------------------------------------------------|
+| `theta_FL__deg`     | double | degrees |        | Angle of the lower terminal location                               |
+| `f__mhz`            | double | MHz     |        | Frequency                                                          |
+| `index_group`       | enum   |         |        | Scintillation index group. See @tbl-if77-scintillation_index_group |
+| `frequency_scaling` | bool   |         |        | Frequency scaling option                                           |
+| `q`                 | double |         |        | Desired percentage value                                           |
+: Inputs for the scintillation function {#tbl-if77-inputs-Scintillation}
+
+The output of this model is a double value for scintillation variability, in dB.
+
+### Antenna gain function
+
+This function computes the gain from the antenna pattern based on the ray geometry. The inputs for this model are shown below in @tbl-if77-inputs-AntennaGain.
+
+| Variable            | Type   | Units   | Limits | Description                                                        |
+|---------------------|--------|---------|--------|--------------------------------------------------------------------|
+| `theta_FL__deg`     | double | degrees |        | Angle of the lower terminal location                               |
+| `f__mhz`            | double | MHz     |        | Frequency                                                          |
+| `index_group`       | enum   |         |        | AntennaGain index group. See @tbl-if77-antennagain_index_group |
+| `frequency_scaling` | bool   |         |        | Frequency scaling option                                           |
+| `q`                 | double |         |        | Desired percentage value                                           |
+: Inputs for the antenn again function {#tbl-if77-inputs-AntennaGain}
+
+The output of this model is three double values for vertical gain, horizontal gain and total gain.
+
+### Atmospheric absorption parameters function
+
+This function computes the atmospheric absorption rates for oxygen and water vapor. The inputs for this model are shown below in @tbl-if77-inputs-AtmosphericAbsorptionParameters.
+
+| Variable            | Type   | Units   | Limits | Description                                                        |
+|---------------------|--------|---------|--------|--------------------------------------------------------------------|
+| `f__mhz`            | double | MHz     |        | Frequency                                                          |
+: Inputs for the atmospheric absorption parameters function {#tbl-if77-inputs-AtmosphericAbsorptionParameters}
+
+The output of this model is two double values for absorption rate of oxygen and absorption rate of water vapor, in dB/km.
+
+### Reflection material properties function
+
+This function computes the material properties for the reflection. The inputs for this model are shown below in @tbl-if77-inputs-ReflectionMaterialProperties.
+
+| Variable              | Type   | Units   | Limits | Description                                |
+|-----------------------|--------|---------|--------|--------------------------------------------|
+| `material_enum`       | enum   |         |        | Material type enum. see @tbl-if77-material |
+| `f__mhz`              | double | MHz     |        | Frequency                                  |
+| `water_temp__celsius` | double | Celsius |        | Water temperature                          |
+: Inputs for the reflection material properties function {#tbl-if77-inputs-ReflectionMaterialProperties}
+
+The output of this model is two double values for conductivity and relative dielectric constant.
+
+### Nakagami-Rice function
+
+This function computes the value of the Nakagami-Rice distribution for K and q. The inputs for this model are shown below in @tbl-if77-inputs-NakagamiRice.
+
+| Variable | Type   | Units | Limits | Description |
+|----------|--------|-------|--------|-------------|
+| `K`      | double |       |        | K-value     |
+| `q`      | double |       |        | Probability |
+: Inputs for the Nakagami-Rice function {#tbl-if77-inputs-NakagamiRice}
+
+The output of this model is a double value for variability, in dB.
+
+### Find K for Ypi at 99 percent function
+
+This function computes the K-value of the Nakagami-Rice distribution for the given value of Y_pi(0.99). The inputs for this model are shown below in @tbl-if77-inputs-FindKForYpiAt99Percent.
+
+| Variable            | Type   | Units   | Limits | Description                                                        |
+|---------------------|--------|---------|--------|--------------------------------------------------------------------|
+| `Y_pi_99__db`     | double | dB |        | Y_pi(0.99)                               |
+: Inputs for the find K for Ypi at 99 percent function {#tbl-if77-inputs-FindKForYpiAt99Percent}
+
+The output of this model is a double value for K-value.
