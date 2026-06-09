@@ -374,7 +374,7 @@ IF77 supports a defined list of error codes and warning flags. A complete list c
 
 ### Time variability function
 
-This function computes the time variability statistics. The inputs for this model are shown below in @tbl-if77-inputs-TimeVariability.
+This function computes the time variability statistics. The inputs for this function are shown below in @tbl-if77-inputs-TimeVariability.
 
 | Variable  | Type   | Units | Limits                | Description               |
 |-----------|--------|-------|-----------------------|---------------------------|
@@ -384,22 +384,22 @@ This function computes the time variability statistics. The inputs for this mode
 | `q`       | double |       |                       | Probability               |
 : Inputs for the time variability function {#tbl-if77-inputs-TimeVariability}
 
-The output of this model is a double value for variability, in dB.
+The output of this function is a double value for variability, in dB.
 
 ### Inverse complementary cumulative distribution function
 
-This function computes the inverse complementary cumulative distribution. The inputs for this model are shown below in @tbl-if77-inputs-InverseComplementaryCumulativeDistribution.
+This function computes the inverse complementary cumulative distribution. The inputs for this function are shown below in @tbl-if77-inputs-InverseComplementaryCumulativeDistribution.
 
 | Variable  | Type   | Units | Limits                | Description               |
 |-----------|--------|-------|-----------------------|---------------------------|
 | `q`       | double |       | $0.0 \lt q \lt 1.0$                      | Quantile               |
 : Inputs for the inverse complementary cumulative distribution function {#tbl-if77-inputs-InverseComplementaryCumulativeDistribution}
 
-The output of this model is a double value.
+The output of this function is a double value.
 
 ### Linear interpolation function
 
-This function computes the Linearly interpolate between two points. The inputs for this model are shown below in @tbl-if77-inputs-LinearInterpolation.
+This function computes the Linearly interpolate between two points. The inputs for this function are shown below in @tbl-if77-inputs-LinearInterpolation.
 
 | Variable | Type   | Units | Limits                | Description |
 |----------|--------|-------|-----------------------|-------------|
@@ -410,11 +410,11 @@ This function computes the Linearly interpolate between two points. The inputs f
 | `x`      | double |       |                       | x-value     |
 : Inputs for the linear interpolation function {#tbl-if77-inputs-LinearInterpolation}
 
-The output of this model is a double value for interpolated y-value.
+The output of this function is a double value for interpolated y-value.
 
 ### Climate variability function
 
-This function computes the climate-specific variability. The inputs for this model are shown below in @tbl-if77-inputs-ClimateVariability.
+This function computes the climate-specific variability. The inputs for this function are shown below in @tbl-if77-inputs-ClimateVariability.
 
 | Variable  | Type   | Units | Limits                | Description               |
 |-----------|--------|-------|-----------------------|---------------------------|
@@ -424,11 +424,11 @@ This function computes the climate-specific variability. The inputs for this mod
 | `q`       | double |       |                       | Probability               |
 : Inputs for the climate variability function {#tbl-if77-inputs-ClimateVariability}
 
-The output of this model is a double value for variability, in dB.
+The output of this function is a double value for variability, in dB.
 
 ### All year continental variability function
 
-This function determine the variability for the all-year continental climate option. The inputs for this model are shown below in @tbl-if77-inputs-AllYearContinentalVariability.
+This function determine the variability for the all-year continental climate option. The inputs for this function are shown below in @tbl-if77-inputs-AllYearContinentalVariability.
 
 | Variable  | Type   | Units | Limits                | Description               |
 |-----------|--------|-------|-----------------------|---------------------------|
@@ -437,11 +437,11 @@ This function determine the variability for the all-year continental climate opt
 | `q`       | double |       |                       | Probability               |
 : Inputs for the all year continental variability function {#tbl-if77-inputs-AllYearContinentalVariability}
 
-The output of this model is a double value for variability, in dB.
+The output of this function is a double value for variability, in dB.
 
 ### Long term variability function
 
-This function computes the long term variability with support for combining, and weighting, two different climates. The inputs for this model are shown below in @tbl-if77-inputs-LongTermVariability.
+This function computes the long term variability with support for combining, and weighting, two different climates. The inputs for this function are shown below in @tbl-if77-inputs-LongTermVariability.
 
 | Variable  | Type   | Units | Limits                    | Description               |
 |-----------|--------|-------|---------------------------|---------------------------|
@@ -467,11 +467,11 @@ This function computes the long term variability with support for combining, and
 | `storm_size__km`        | int    | km    | Storm size                                                         |
 : Variability structure for the if77 propagation model {#tbl-if77-variability}
 
-The output of this model is a double value for variability, in dB.
+The output of this function is a double value for variability, in dB.
 
 ### Combine distributions function
 
-This function combines a given q for two distributions. The inputs for this model are shown below in @tbl-if77-inputs-CombineDistributions.
+This function combines a given q for two distributions. The inputs for this function are shown below in @tbl-if77-inputs-CombineDistributions.
 
 | Variable     | Type   | Units | Limits | Description                       |
 |--------------|--------|-------|--------|-----------------------------------|
@@ -482,11 +482,11 @@ This function combines a given q for two distributions. The inputs for this mode
 | `q`          | double |       |        | Probability                       |
 : Inputs for the combine distributions function {#tbl-if77-inputs-CombineDistributions}
 
-The output of this model is a double value for resulting distribution value.
+The output of this function is a double value for resulting distribution value.
 
 ### Combine and weight distributions function
 
-This function weights and combines two cumulative variability distributions, as described in [@FAA-ES-83/3, Chapter 10.6]. The inputs for this model are shown below in @tbl-if77-inputs-CombineAndWeightDistributions.
+This function weights and combines two cumulative variability distributions, as described in [@FAA-ES-83/3, Chapter 10.6]. The inputs for this function are shown below in @tbl-if77-inputs-CombineAndWeightDistributions.
 
 | Variable | Type         | Units | Limits | Description               |
 |----------|--------------|-------|--------|---------------------------|
@@ -496,11 +496,11 @@ This function weights and combines two cumulative variability distributions, as 
 | `w2`     | int          |       |        | Weight for distribution 2 |
 : Inputs for the combine and weight distributions function {#tbl-if77-inputs-CombineAndWeightDistributions}
 
-The output of this model is a double array values for resulting distribution.
+The output of this function is a double array values for resulting distribution.
 
 ### Calculate effective ray length function
 
-This function computes the ray distance through an absorbing layer of specified thickness on the surface of the earth. The ray travels from terminal 1 to terminal 2, with the height of terminal 2 being greater than or equal to the height of terminal 1. The inputs for this model are shown below in @tbl-if77-inputs-CalculateEffectiveRayLength.
+This function computes the ray distance through an absorbing layer of specified thickness on the surface of the earth. The ray travels from terminal 1 to terminal 2, with the height of terminal 2 being greater than or equal to the height of terminal 1. The inputs for this function are shown below in @tbl-if77-inputs-CalculateEffectiveRayLength.
 
 | Variable    | Type   | Units   | Limits | Description                                               |
 |-------------|--------|---------|--------|-----------------------------------------------------------|
@@ -512,11 +512,11 @@ This function computes the ray distance through an absorbing layer of specified 
 | `T_e__km`   | double | km      |        | Thickness of the absorbing layer                          |
 : Inputs for the calculate effective ray length function {#tbl-if77-inputs-CalculateEffectiveRayLength}
 
-The output of this model is a double value for ray length through absorbing layer, in km.
+The output of this function is a double value for ray length through absorbing layer, in km.
 
 ### Rain function
 
-This function computes the contribution to variability from rain. The inputs for this model are shown below in @tbl-if77-inputs-Rain.
+This function computes the contribution to variability from rain. The inputs for this function are shown below in @tbl-if77-inputs-Rain.
 
 | Variable             | Type   | Units   | Limits | Description                                     |
 |----------------------|--------|---------|--------|-------------------------------------------------|
@@ -531,11 +531,11 @@ This function computes the contribution to variability from rain. The inputs for
 | `q`                  | double |         |        | Probability                                     |
 : Inputs for the rain function {#tbl-if77-inputs-Rain}
 
-The output of this model is a double value for rain loss, in dB.
+The output of this function is a double value for rain loss, in dB.
 
 ### Scintillation function
 
-This function computes the scintillation variability value. The inputs for this model are shown below in @tbl-if77-inputs-Scintillation.
+This function computes the scintillation variability value. The inputs for this function are shown below in @tbl-if77-inputs-Scintillation.
 
 | Variable            | Type   | Units   | Limits | Description                                                        |
 |---------------------|--------|---------|--------|--------------------------------------------------------------------|
@@ -546,11 +546,11 @@ This function computes the scintillation variability value. The inputs for this 
 | `q`                 | double |         |        | Desired percentage value                                           |
 : Inputs for the scintillation function {#tbl-if77-inputs-Scintillation}
 
-The output of this model is a double value for scintillation variability, in dB.
+The output of this function is a double value for scintillation variability, in dB.
 
 ### Antenna gain function
 
-This function computes the gain from the antenna pattern based on the ray geometry. The inputs for this model are shown below in @tbl-if77-inputs-AntennaGain.
+This function computes the gain from the antenna pattern based on the ray geometry. The inputs for this function are shown below in @tbl-if77-inputs-AntennaGain.
 
 | Variable            | Type   | Units   | Limits | Description                                                        |
 |---------------------|--------|---------|--------|--------------------------------------------------------------------|
@@ -561,35 +561,35 @@ This function computes the gain from the antenna pattern based on the ray geomet
 | `q`                 | double |         |        | Desired percentage value                                           |
 : Inputs for the antenn again function {#tbl-if77-inputs-AntennaGain}
 
-The output of this model is three double values for vertical gain, horizontal gain and total gain.
+The output of this function is three double values for vertical gain, horizontal gain and total gain.
 
 ### Atmospheric absorption parameters function
 
-This function computes the atmospheric absorption rates for oxygen and water vapor. The inputs for this model are shown below in @tbl-if77-inputs-AtmosphericAbsorptionParameters.
+This function computes the atmospheric absorption rates for oxygen and water vapor. The inputs for this function are shown below in @tbl-if77-inputs-AtmosphericAbsorptionParameters.
 
 | Variable            | Type   | Units   | Limits | Description                                                        |
 |---------------------|--------|---------|--------|--------------------------------------------------------------------|
 | `f__mhz`            | double | MHz     |        | Frequency                                                          |
 : Inputs for the atmospheric absorption parameters function {#tbl-if77-inputs-AtmosphericAbsorptionParameters}
 
-The output of this model is two double values for absorption rate of oxygen and absorption rate of water vapor, in dB/km.
+The output of this function is two double values for absorption rate of oxygen and absorption rate of water vapor, in dB/km.
 
 ### Reflection material properties function
 
-This function computes the material properties for the reflection. The inputs for this model are shown below in @tbl-if77-inputs-ReflectionMaterialProperties.
+This function computes the material properties for the reflection. The inputs for this function are shown below in @tbl-if77-inputs-ReflectionMaterialProperties.
 
 | Variable              | Type   | Units   | Limits | Description                                |
 |-----------------------|--------|---------|--------|--------------------------------------------|
-| `material_enum`       | enum   |         |        | Material type enum. see @tbl-if77-material |
+| `material_enum`       | enum   |         |        | Material type enum. See @tbl-if77-material |
 | `f__mhz`              | double | MHz     |        | Frequency                                  |
 | `water_temp__celsius` | double | Celsius |        | Water temperature                          |
 : Inputs for the reflection material properties function {#tbl-if77-inputs-ReflectionMaterialProperties}
 
-The output of this model is two double values for conductivity and relative dielectric constant.
+The output of this function is two double values for conductivity and relative dielectric constant.
 
 ### Nakagami-Rice function
 
-This function computes the value of the Nakagami-Rice distribution for K and q. The inputs for this model are shown below in @tbl-if77-inputs-NakagamiRice.
+This function computes the value of the Nakagami-Rice distribution for K and q. The inputs for this function are shown below in @tbl-if77-inputs-NakagamiRice.
 
 | Variable | Type   | Units | Limits | Description |
 |----------|--------|-------|--------|-------------|
@@ -597,15 +597,121 @@ This function computes the value of the Nakagami-Rice distribution for K and q. 
 | `q`      | double |       |        | Probability |
 : Inputs for the Nakagami-Rice function {#tbl-if77-inputs-NakagamiRice}
 
-The output of this model is a double value for variability, in dB.
+The output of this function is a double value for variability, in dB.
 
 ### Find K for Ypi at 99 percent function
 
-This function computes the K-value of the Nakagami-Rice distribution for the given value of Y_pi(0.99). The inputs for this model are shown below in @tbl-if77-inputs-FindKForYpiAt99Percent.
+This function computes the K-value of the Nakagami-Rice distribution for the given value of Y_pi(0.99). The inputs for this function are shown below in @tbl-if77-inputs-FindKForYpiAt99Percent.
 
 | Variable            | Type   | Units   | Limits | Description                                                        |
 |---------------------|--------|---------|--------|--------------------------------------------------------------------|
 | `Y_pi_99__db`     | double | dB |        | Y_pi(0.99)                               |
 : Inputs for the find K for Ypi at 99 percent function {#tbl-if77-inputs-FindKForYpiAt99Percent}
 
-The output of this model is a double value for K-value.
+The output of this function is a double value for K-value.
+
+### Ray trace function
+
+This function traces a ray though a horizontally stratified atmosphere based on Thayer. The inputs for this function are shown below in @tbl-if77-inputs-RayTrace.
+
+| Variable        | Type   | Units   | Limits | Description                      |
+|-----------------|--------|---------|--------|----------------------------------|
+| `theta_tx__rad` | double | Radians |        | Takeoff angle                    |
+| `N_s`           | double | N-Units |        | Surface refractivity             |
+| `h_tx__km`      | double | km      |        | Height of the TX                 |
+| `h_rx__km`      | double | km      |        | Height of the RX                 |
+| `h_sur__km`     | double | km      |        | Height of the reflection surface |
+: Inputs for the ray trace function {#tbl-if77-inputs-RayTrace}
+
+The output of this function is two double values for Great-circle distance between terminals, in km and Ray angle at RX, in radians.
+
+### G_HBar function
+
+This function implements the formulation provided in [@FAA-ES-83/3, Chapter 4.1 Equation 83]. The inputs for this function are shown below in @tbl-if77-inputs-G_HBar.
+
+| Variable     | Type   | Units   | Limits | Description           |
+|--------------|--------|---------|--------|-----------------------|
+| `f__mhz`     | double | MHz     |        | Frequency             |
+| `a__km`      | double | km      |        | Earth radius          |
+| `K`          | double |         |        | Diffraction parameter |
+| `d_Lp__km`   | double | km      |        | Distance              |
+| `h_e__meter` | double | meter   |        | Height                |
+: Inputs for the G_HBar function {#tbl-if77-inputs-G_HBar}
+
+The output of this function is a double value for residual height gain, in dB.
+
+### Scattering volumeLoss function
+
+This function computes the scattering volume loss term for troposcatter. The inputs for this function are shown below in @tbl-if77-inputs-ScatteringVolumeLoss.
+
+| Variable    | Type   | Units   | Limits | Description               |
+|-------------|--------|---------|--------|---------------------------|
+| `eta`       | double |         |        | Intermediate parameter    |
+| `s`         | double |         |        | Modulus of asymmetry      |
+| `rho_1__km` | double | km      |        | Ray length for terminal 1 |
+| `rho_2__km` | double | km      |        | Ray length for terminal 2 |
+: Inputs for the scattering volumeloss function {#tbl-if77-inputs-ScatteringVolumeLoss}
+
+The output of this function is a double value for scattering volume loss term, in dB.
+
+### Fresnel function
+
+This function computes the Fresnel Integral for an ideal knife-edge. The inputs for this function are shown below in @tbl-if77-inputs-Fresnel.
+
+| Variable | Type   | Units   | Limits | Description           |
+|----------|--------|---------|--------|-----------------------|
+| `v`      | double |         |        | Diffraction parameter |
+: Inputs for the fresnel function {#tbl-if77-inputs-Fresnel}
+
+The output of this function is two double values for Magnitude and Phase.
+
+### Reflection function
+
+This function computes the ray reflection parameters. The inputs for this function are shown below in @tbl-if77-inputs-Reflection.
+
+| Variable                | Type   | Units   | Limits | Description                                               |
+|-------------------------|--------|---------|--------|-----------------------------------------------------------|
+| `psi`                   | double | Radians |        | Reflection angle                                          |
+| `f__mhz`                | double | MHz     |        | Frequency                                                 |
+| `material_enum`         | enum   |         |        | Material type enum. See @tbl-if77-material                |
+| `pol`                   | enum   |         |        | Polarization. See @tbl-if77-antenna_polarization          |
+| `flag`                  | int    |         |        | Internal control flag                                     |
+| `delta_h_d__km`         | double | km      |        | delta_h(d)                                                |
+| `g_h`                   | double |         |        | Horizontal gain                                           |
+| `g_v`                   | double |         |        | Vertical gain                                             |
+| `sigma`                 | double |         |        | Conductivity                                              |
+| `epsilon`               | double |         |        | Relative permittivity                                     |
+| `use_user_sigma_h_flag` | enum   |         |        | User sigma flag. See @tbl-if77-water_wave_height_use_flag |
+| `user_sigma_h`          | double |         |        | User sigma                                                |
+| `water_state`           | enum   |         |        | Water state enum. See @tbl-if77-water_state               |
+: Inputs for the reflection function {#tbl-if77-inputs-Reflection}
+
+The output of this function is three double values for magnitude of effective reflection coefficient, diffuse component of surface reflection multipath and phase shift of effective reflection coefficient.
+
+### Terminal geometry function
+
+This function computes the terminal geometry parameters. The inputs for this function are shown below in @tbl-if77-inputs-TerminalGeometry.
+
+| Variable    | Type   | Units   | Limits | Description                                                                                  |
+|-------------|--------|---------|--------|----------------------------------------------------------------------------------------------|
+| `terminal`  | struct |         |        | Struct holding various geometric parameters for the terminal. See @tbl-if77-outputs-terminal |
+| `a_e__km`   | double | km      |        | Effective earth radius                                                                       |
+| `N_s`       | double | N-Units |        | Surface refractivity                                                                         |
+| `h_sur__km` | double | km      |        | Height of the reflecting surface above MSL                                                   |
+: Inputs for the terminal geometry function {#tbl-if77-inputs-TerminalGeometry}
+
+The output of this function is a return code (see [here](errors.qmd#return-codes)) with a Terminal structure shown in @tbl-if77-outputs-terminal for terminal information.
+
+### Path geometry function
+
+This function computes the geometry parameters based on input option specified. The inputs for this function are shown below in @tbl-if77-inputs-PathGeometry.
+
+| Variable     | Type   | Units   | Limits | Description                                                                                    |
+|--------------|--------|---------|--------|------------------------------------------------------------------------------------------------|
+| `terminal_1` | struct |         |        | Struct holding various geometric parameters for the terminal 1. See @tbl-if77-outputs-terminal |
+| `terminal_2` | struct |         |        | Struct holding various geometric parameters for the terminal 2. See @tbl-if77-outputs-terminal |
+| `path`       | struct |         |        | Struct holding various geometric parameters for the path. See @tbl-if77-outputs-path           |
+| `input_flag` | enum   |         |        | Input flag enum. See @tbl-if77-horizon_input                                                   |
+: Inputs for the path geometry function {#tbl-if77-inputs-PathGeometry}
+
+The output of this function is a return code (see [here](errors.qmd#return-codes)) with two Terminal structure shown in @tbl-if77-outputs-terminal and a Path structure shown in @tbl-if77-outputs-path for low/high terminals and path information.
