@@ -177,7 +177,7 @@ The `counterpoise_material` input must be one of the following desired materials
 | `eirp`                               | double | dBW     |                                                   | Equivalent isotropic radiated power                           |
 | `h_sur__meter`                       | double | meters  | $0 \leq h\_sur \leq 600$                          | Average height of earth above MSL between terminals           |
 | `path_material`                      | enum   |         | See @tbl-if77-material                            | Material of the reflection surface                            |
-| `water_temp__celsius`                | int    | celsius | See @tbl-if77-water_temp                          | Temperature of the water                                      |
+| `water_temp__celsius`                | int    | Celsius | See @tbl-if77-water_temp                          | Temperature of the water                                      |
 | `water_wave_height`                  | double |         | $0 \leq water\_wave\_height \leq 99$              | Relative crest height of the waves in the water               |
 | `water_state`                        | enum   |         | See @tbl-if77-water_state                         | Roughness of the water                                        |
 | `path_water_wave_height_use_flag`    | enum   |         | See @tbl-if77-water_wave_height_use_flag          | Whether to use path_water_wave_height or standard value       |
@@ -190,14 +190,14 @@ The `counterpoise_material` input must be one of the following desired materials
 | `weight_2`                           | int    |         | $weight_2 \geq 0$                                 | High antenna weighting value for climate mixing               |
 : Card3 structure for the if77 propagation model {#tbl-if77-inputs-if77-card3}
 
-The `water_temp__celsius` input must be one of the following desired water temperature in celsius, as defined in @tbl-if77-water_temp.
+The `water_temp__celsius` input must be one of the following desired water temperature in Celsius, as defined in @tbl-if77-water_temp.
 
 | Enum Value | Water temperature in Celsius            |
 |------------|-----------------------------------------|
 | 0          | Water temperature of 0 degrees Celsius  |
 | 10         | Water temperature of 10 degrees Celsius |
 | 20         | Water temperature of 20 degrees Celsius |
-: Allowed water temperature in celsius values {#tbl-if77-water_temp}
+: Allowed water temperature in Celsius values {#tbl-if77-water_temp}
 
 The `water_state` input must be one of the following desired water states in **WaterState enum**, as defined in @tbl-if77-water_state.
 
@@ -350,7 +350,7 @@ In additional to the return code (see [here](errors.qmd#return-codes)) and Resul
 | `sigma`                 | double | S/m     | Conductivity                                                                 |
 | `epsilon`               | double |         | Relative permittivity                                                        |
 | `a_e__km`               | double | km      | Effective Earth radius                                                       |
-| `water_temp__celsius`   | double | celsius | Water temperature                                                            |
+| `water_temp__celsius`   | double | Celsius | Water temperature                                                            |
 | `use_user_sigma_h_flag` | enum   |         | Use user defined conductivity flag, see @tbl-if77-water_wave_height_use_flag |
 | `user_sigma_h`          | double | S/m     | User defined conductivity                                                    |
 | `water_state`           | enum   |         | Water state enum for average wave height range, see @tbl-if77-water_state    |
@@ -428,7 +428,7 @@ The output of this function is a double value for variability, in dB.
 
 ### All year continental variability function
 
-This function determine the variability for the all-year continental climate option. The inputs for this function are shown below in @tbl-if77-inputs-AllYearContinentalVariability.
+This function determines the variability for the all-year continental climate option. The inputs for this function are shown below in @tbl-if77-inputs-AllYearContinentalVariability.
 
 | Variable  | Type   | Units | Limits                | Description               |
 |-----------|--------|-------|-----------------------|---------------------------|
