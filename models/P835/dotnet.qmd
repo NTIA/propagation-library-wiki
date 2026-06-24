@@ -1,0 +1,189 @@
+---
+title: "The Recommendation ITU-R P.835-6 – .NET"
+date: 2025-01-24
+date-modified: 2025-06-12
+---
+
+This page details the installation and usage of the .NET version of the PropLib implementation of the Recommendation ITU-R P.835-6.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+## Installation
+
+This .NET package is distributed on 
+[NuGet](https://www.nuget.org/packages/ITS.ITU.PSeries.P835).
+
+There are two easy ways to install the NuGet package: [dotnet CLI](#installation-with-dotnet-cli) or [Visual Studio](#installation-with-visual-studio).
+
+### Installation with dotnet CLI
+
+1. Run the following command to install the package.
+
+    ```default
+    dotnet add package ITS.ITU.PSeries.P835
+    ```
+
+1. After the command completes, open the project csproj file to see the added NuGet package reference:
+
+    ```default
+    <ItemGroup>
+        <PackageReference Include="ITS.ITU.PSeries.P835" Version="1.0.0" />
+    </ItemGroup>
+    ```
+
+### Installation with Visual Studio
+
+1. Open your project in **Visual Studio** and select **Project > Manage NuGet Packages**.
+
+1. In the **NuGet Package Manager** page, choose **nuget.org** as the **Package source**.
+
+1. From the **Browse** tab, search for **ITS.ITU.PSeries.P835**, select ITS.ITU.PSeries.P835 in the list, and then select Install as shown in @fig-dotnet-add-nuget.
+
+    ![](/images/dotnet/dotnet-add-nuget.png){#fig-dotnet-add-nuget fig-alt="A screenshot showing the 'NuGet Package Manager'" width=600 fig-align="left"}
+
+1. If you're prompted to verify the installation, select OK.
+
+## Examples
+
+The following code examples show how each of the functions from Recommendation ITU-R P.835 can be called from .NET project.
+
+### Mean Annual Global Reference Atmosphere
+
+```c#
+using ITS.ITU.PSeries;
+
+// Define inputs
+double h__km = 15.0;        // Geometric height, in km
+double rho_0__g_m3 = 8.0;   // Ground-level water vapour density, in g/m^3
+
+// Call Mean Annual Global Reference Atmosphere functions
+double T__kelvin = P835.MeanAnnualGlobalReferenceAtmosphere.GlobalTemperature(h__km);
+// T__kelvin is approx. 216.65 Kelvin
+
+double p__hPa = P835.MeanAnnualGlobalReferenceAtmosphere.GlobalPressure(h__km);
+// p__hPa is approx. 121.1193 hPa
+
+double rho__g_m3 = P835.MeanAnnualGlobalReferenceAtmosphere.GlobalWaterVapourDensity(h__km, rho_0__g_m3);
+// rho__g_m3 is approx. 0.0044247 g/m^3
+
+// or omit rho_0__g_m3, using default Ground-level water vapour density, which is 7.5:
+// double rho__g_m3 = P835.MeanAnnualGlobalReferenceAtmosphere.GlobalWaterVapourDensity(h__km);
+// rho__g_m3 is approx. 0.004148 g/m^3
+
+double e__hPa = P835.MeanAnnualGlobalReferenceAtmosphere.GlobalWaterVapourPressure(h__km, rho_0__g_m3);
+// e__hPa is approx. 0.0044237 hPa
+
+// or omit rho_0__g_m3, using default Ground-level water vapour density, which is 7.5:
+// double e__hPa = P835.MeanAnnualGlobalReferenceAtmosphere.GlobalWaterVapourPressure(h__km);
+// e__hPa is approx. 0.004147 hPa
+```
+
+### Low-latitude Annual Reference Atmosphere
+
+```c#
+using ITS.ITU.PSeries;
+
+// Define inputs
+double h__km = 10.0;    // Geometric height, in km
+
+// Call Low-latitude Annual Reference Atmosphere functions
+double T__kelvin = P835.LowLatitudeAtmosphere.Temperature(h__km);
+// T__kelvin is approx. 237.478 Kelvin
+
+double p__hPa = P835.LowLatitudeAtmosphere.Pressure(h__km);
+// p__hPa is approx. 284.853 hPa
+
+double rho__g_m3 = P835.LowLatitudeAtmosphere.WaterVapourDensity(h__km);
+// rho__g_m3 is approx. 0.051421 g/m^3
+
+double e__hPa = P835.LowLatitudeAtmosphere.WaterVapourPressure(h__km);
+// e__hPa is approx. 0.0563514 hPa
+```
+
+### Mid-latitude Summer Reference Atmosphere
+
+```c#
+using ITS.ITU.PSeries;
+
+// Define inputs
+double h__km = 10.0;  // Geometric height, in km
+
+// Call Mid-latitude Summer Reference Atmosphere functions
+double T__kelvin = P835.MidLatitudeAtmosphere.SummerTemperature(h__km);
+// T__kelvin is approx. 235.716 Kelvin
+
+double p__hPa = P835.MidLatitudeAtmosphere.SummerPressure(h__km);
+// p__hPa is approx. 283.71 hPa
+
+double rho__g_m3 = P835.MidLatitudeAtmosphere.SummerWaterVapourDensity(h__km);
+// rho__g_m3 is approx. 0.0612398 g/m^3
+
+double e__hPa = P835.MidLatitudeAtmosphere.SummerWaterVapourPressure(h__km);
+// e__hPa is approx. 0.0666137 hPa
+```
+
+### Mid-latitude Winter Reference Atmosphere
+
+```c#
+using ITS.ITU.PSeries;
+
+// Define inputs
+double h__km = 10.0;  // Geometric height, in km
+
+// Call Mid-latitude Winter Reference Atmosphere functions
+double T__kelvin = P835.MidLatitudeAtmosphere.WinterTemperature(h__km);
+// T__kelvin is approx. 218 Kelvin
+
+double p__hPa = P835.MidLatitudeAtmosphere.WinterPressure(h__km);
+// p__hPa is approx. 258.979 hPa
+
+double rho__g_m3 = P835.MidLatitudeAtmosphere.WinterWaterVapourDensity(h__km);
+// rho__g_m3 is approx. 0.00998436 g/m^3
+
+double e__hPa = P835.MidLatitudeAtmosphere.WinterWaterVapourPressure(h__km);
+// e__hPa is approx. 0.0100443 hPa
+```
+
+### High-latitude Summer Reference Atmosphere
+
+```c#
+using ITS.ITU.PSeries;
+
+// Define inputs
+double h__km = 8.0;  // Geometric height, in km
+
+// Call High-latitude Summer Reference Atmosphere functions
+double T__kelvin = P835.HighLatitudeAtmosphere.SummerTemperature(h__km);
+// T__kelvin is approx. 239.621 Kelvin
+
+double p__hPa = P835.HighLatitudeAtmosphere.SummerPressure(h__km);
+// p__hPa is approx. 354.244 hPa
+
+double rho__g_m3 = P835.HighLatitudeAtmosphere.SummerWaterVapourDensity(h__km);
+// rho__g_m3 is approx. 0.129769 g/m^3
+
+double e__hPa = P835.HighLatitudeAtmosphere.SummerWaterVapourPressure(h__km);
+// e__hPa is approx. 0.143495 hPa
+```
+
+### High-latitude Winter Reference Atmosphere
+
+```c#
+using ITS.ITU.PSeries;
+
+// Define inputs
+double h__km = 8.0;  // Geometric height, in km
+
+// Call High-latitude Winter Reference Atmosphere functions
+double T__kelvin = P835.HighLatitudeAtmosphere.WinterTemperature(h__km);
+// T__kelvin is approx. 220.53 Kelvin
+
+double p__hPa = P835.HighLatitudeAtmosphere.WinterPressure(h__km);
+// p__hPa is approx. 324.41 hPa
+
+double rho__g_m3 = P835.HighLatitudeAtmosphere.WinterWaterVapourDensity(h__km);
+// rho__g_m3 is approx. 0.0177274 g/m^3
+
+double e__hPa = P835.HighLatitudeAtmosphere.WinterWaterVapourPressure(h__km);
+// e__hPa is approx. 0.0180407 hPa
+```

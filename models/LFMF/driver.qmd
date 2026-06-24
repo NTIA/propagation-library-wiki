@@ -1,16 +1,22 @@
 ---
 title: "Low Frequency / Medium Frequency Propagation Model – Command-Line Driver"
 date: 2025-01-10
-date-modified: 2025-01-10
+date-modified: 2025-06-12
 ---
 
 This page details the usage of the cross-platform command-line driver version of the Low Frequency / Medium Frequency (LF/MF) propagation model.
 
 {{< include /includes/driver/_intro_and_installation.qmd >}}
 
+To use the command-line driver program, you'll need to download the driver program
+(`LFMFDriver-1.1.0-Windows-x64.exe` or `LFMFDriver-1.1.0-Windows-x86.exe` on Windows, `LFMFDriver-1.1.0-Darwin-universal` on macOS, or `LFMFDriver-1.1.0-Linux-x86_64` on Linux)
+ and the shared library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux). 
+ These are distributed for each supported platform as part of the [GitHub Releases](https://github.com/NTIA/LFMF/releases/) starting with v1.1. 
+ Prior to v1.1, support was only provided for Windows platforms.
+
 {{< include /includes/driver/_general_usage.qmd >}}
 
-# Command-Line Arguments
+## Command-Line Arguments
 
 Executing the command-line driver requires specifying input arguments, defined in @tbl-lfmf-driver-input-args below.
 
@@ -31,7 +37,7 @@ The additional arguments are defined in @tbl-lfmf-driver-additional-args
 | `-v` | Display version information for the library and driver |
 : Additional arguments for the LF/MF command-line driver {#tbl-lfmf-driver-additional-args}
 
-# Examples
+## Examples
 
 The LF/MF model can be run by simply providing the input and output files on the command line.
 For example:
@@ -49,7 +55,7 @@ LFMFDriver-1.1.0-Windows-x64.exe -i input.txt -o output.txt
 
 Three example sets of input/output file pairs are provided below.
 
-## Example 1
+### Example 1
 
 ```{.default filename="Input File Contents"}
 h_tx__meter,0
@@ -67,14 +73,14 @@ pol,0
 Model                         LFMF
 Library Version               v1.1
 Driver Version                v1.1.0
-Date Generated                Mon Nov 18 13:56:29 2024
-Input Arguments               -i i_lfmf_01.txt -o o_lfmf_01.txt 
+Date Generated                Tue Jul 01 13:38:18 2025
+Input Arguments               -i input.txt -o results.txt 
 
 Inputs:
-h_tx__meter                   0            [meter]
-h_rx__meter                   0            [meter]
+h_tx__meter                   0            [meters]
+h_rx__meter                   0            [meters]
 f__mhz                        0.01         [MHz]
-p_tx__watt                    1000         [Watts]
+p_tx__watt                    1000         [watts]
 n_s                           301          [N-Units]
 d__km                         1000         [km]
 epsilon                       15           
@@ -82,14 +88,14 @@ sigma                         0.005
 pol                           0            [0 = Horizontal, 1 = Vertical]
 
 Results:
-Return Code                   0            [LFMF v1.0 Status: Successful execution]
+Return Code                   0            [LFMF v1.1 Status: Successful execution]
 Basic transmission loss       184.49       [dB]
 Electric field strength       -82.50       [dB(uV/m)]
 Received power                -114.93      [dB]
 Solution method               1            [0 = Flat earth with curve correction, 1 = Residue series]
 ```
 
-## Example 2
+### Example 2
 
 ```{.default filename="Input File Contents"}
 h_tx__meter,5.5
@@ -129,7 +135,7 @@ Received power                -84.78       [dB]
 Solution method               0            [0 = Flat earth with curve correction, 1 = Residue series]
 ```
 
-## Example 3
+### Example 3
 
 ```{.default filename="Input File Contents"}
 h_tx__meter,1

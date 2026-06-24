@@ -4,7 +4,7 @@ date: 2025-01-24
 date-modified: 2025-01-25
 ---
 
-This page details the installation and usage of the MATLAB® version of the PropLib implementation of Recommendation ITU-R P.2108.
+This page details the installation and usage of the MATLAB&reg; version of the PropLib implementation of Recommendation ITU-R P.2108.
 
 {{< include /includes/_under_construction.qmd >}}
 
@@ -14,7 +14,7 @@ This page details the installation and usage of the MATLAB® version of the Prop
 
 ## Getting Started
 
-This MATLAB® Toolbox is distributed on [MathWorks® File Exchange](#TODO).
+This MATLAB&reg; Toolbox is distributed on [MathWorks&reg; File Exchange](#TODO).
 
 {{< include /includes/matlab/_getting_started.qmd >}}
 

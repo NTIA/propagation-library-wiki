@@ -1,0 +1,203 @@
+---
+title: "The Recommendation ITU-R P.835-6 – Python"
+date: 2025-01-24
+date-modified: 2025-06-12
+---
+
+This page details the installation and usage of the Python version of the PropLib implementation of Recommendation ITU-R P.835-6.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+{{< include /includes/python/_getting_started.qmd >}}
+
+### Installation
+
+This Python package is distributed through the
+[Python Package Index (PyPI)](https://pypi.org/project/proplib-p835).
+Run the following command to install the package, and any required dependencies, into your Python environment.
+
+```default
+pip install proplib-p835
+```
+
+The following code snippet shows how to import the package and check the installed version.
+
+```python
+from ITS.ITU.PSeries import P835
+print(P835.__version__)
+```
+
+{{< include /includes/python/_uninstallation.qmd >}}
+
+```default
+pip uninstall proplib-p835
+```
+
+{{< include /includes/python/_documentation.qmd >}}
+
+```python
+from ITS.ITU.PSeries import P835
+help(P835.MeanAnnualGlobalAtmosphere.GlobalTemperature)
+```
+
+## Examples
+
+The following code examples show how each of the three models from Recommendation ITU-R P.835 can be called from Python.
+
+### Specific Attenuation Model
+
+```python
+from ITS.ITU.PSeries import P835
+
+# define inputs
+f__ghz = 60.0           # Frequency, in GHz.
+T__kelvin = 288.15      # Temperature, in Kelvin.
+e__hPa = 9.97288879     # Water vapour partial pressure, in hPa.
+p__hPa = 1013.25        # Dry air pressure, in hPa.
+
+# Call Specific Attenuation Model
+gamma = P835.SpecificAttenuation(f__ghz, T__kelvin, e__hPa, p__hPa)
+# gamma is approximately 14.77832 dB/km
+```
+
+
+### Mean Annual Global Reference Atmosphere
+
+```python
+from ITS.ITU.PSeries import P835
+
+# Define inputs
+h__km = 15.0           # Geometric height, in km
+rho_0__g_m3 = 8.0      # Ground-level water vapour density, in g/m^3
+
+# Call Mean Annual Global  Atmosphere functions
+T__kelvin = P835.MeanAnnualGlobalAtmosphere.GlobalTemperature(h__km)
+# T__kelvin is approx. 216.65 Kelvin
+
+p__hPa = P835.MeanAnnualGlobalAtmosphere.GlobalPressure(h__km)
+# p__hPa is approx. 121.1193 hPa
+
+rho__g_m3 = P835.MeanAnnualGlobalAtmosphere.GlobalWaterVapourDensity(h__km, rho_0__g_m3)
+# rho__g_m3 is approx. 0.0044247 g/m^3
+
+# or omit rho_0__g_m3, using default Ground-level water vapour density, which is 7.5:
+# rho__g_m3 = P835.MeanAnnualGlobalAtmosphere.GlobalWaterVapourDensity(h__km)
+# rho__g_m3 is approx. 0.004148 g/m^3
+
+e__hPa = P835.MeanAnnualGlobalAtmosphere.GlobalWaterVapourPressure(h__km, rho_0__g_m3)
+# e__hPa is approx. 0.0044237 hPa
+
+# or omit rho_0__g_m3, using default Ground-level water vapour density, which is 7.5:
+# e__hPa = P835.MeanAnnualGlobalAtmosphere.GlobalWaterVapourPressure(h__km)
+# e__hPa is approx. 0.004147 hPa
+```
+
+### Low-latitude Annual Reference Atmosphere
+
+```python
+from ITS.ITU.PSeries import P835
+
+# Define inputs
+h__km = 10.0    # Geometric height, in km
+
+# Call Low-latitude Annual Reference Atmosphere functions
+T__kelvin = P835.LowLatitudeAtmosphere.Temperature(h__km)
+# T__kelvin is approx. 237.478 Kelvin
+
+p__hPa = P835.LowLatitudeAtmosphere.Pressure(h__km)
+# p__hPa is approx. 284.853 hPa
+
+rho__g_m3 = P835.LowLatitudeAtmosphere.WaterVapourDensity(h__km)
+# rho__g_m3 is approx. 0.051421 g/m^3
+
+e__hPa = P835.LowLatitudeAtmosphere.WaterVapourPressure(h__km)
+# e__hPa is approx. 0.0563514 hPa
+```
+
+### Mid-latitude Summer Reference Atmosphere
+
+```python
+from ITS.ITU.PSeries import P835
+
+# Define inputs
+h__km = 10.0  # Geometric height, in km
+
+# Call Mid-latitude Summer Reference Atmosphere functions
+T__kelvin = P835.MidLatitudeAtmosphere.SummerTemperature(h__km)
+# T__kelvin is approx. 235.716 Kelvin
+
+p__hPa = P835.MidLatitudeAtmosphere.SummerPressure(h__km)
+# p__hPa is approx. 283.71 hPa
+
+rho__g_m3 = P835.MidLatitudeAtmosphere.SummerWaterVapourDensity(h__km)
+# rho__g_m3 is approx. 0.0612398 g/m^3
+
+e__hPa = P835.MidLatitudeAtmosphere.SummerWaterVapourPressure(h__km)
+# e__hPa is approx. 0.0666137 hPa
+```
+
+### Mid-latitude Winter Reference Atmosphere
+
+```python
+from ITS.ITU.PSeries import P835
+
+# Define inputs
+h__km = 10.0  # Geometric height, in km
+
+# Call Mid-latitude Winter Reference Atmosphere functions
+T__kelvin = P835.MidLatitudeAtmosphere.WinterTemperature(h__km)
+# T__kelvin is approx. 218 Kelvin
+
+p__hPa = P835.MidLatitudeAtmosphere.WinterPressure(h__km)
+# p__hPa is approx. 258.979 hPa
+
+rho__g_m3 = P835.MidLatitudeAtmosphere.WinterWaterVapourDensity(h__km)
+# rho__g_m3 is approx. 0.00998436 g/m^3
+
+e__hPa = P835.MidLatitudeAtmosphere.WinterWaterVapourPressure(h__km)
+# e__hPa is approx. 0.0100443 hPa
+```
+
+### High-latitude Summer Reference Atmosphere
+
+```python
+from ITS.ITU.PSeries import P835
+
+# Define inputs
+h__km = 8.0  # Geometric height, in km
+
+# Call High-latitude Summer Reference Atmosphere functions
+T__kelvin = P835.HighLatitudeAtmosphere.SummerTemperature(h__km)
+# T__kelvin is approx. 239.621 Kelvin
+
+p__hPa = P835.HighLatitudeAtmosphere.SummerPressure(h__km)
+# p__hPa is approx. 354.244 hPa
+
+rho__g_m3 = P835.HighLatitudeAtmosphere.SummerWaterVapourDensity(h__km)
+# rho__g_m3 is approx. 0.129769 g/m^3
+
+e__hPa = P835.HighLatitudeAtmosphere.SummerWaterVapourPressure(h__km)
+# e__hPa is approx. 0.143495 hPa
+```
+
+### High-latitude Winter Reference Atmosphere
+
+```python
+from ITS.ITU.PSeries import P835
+
+# Define inputs
+h__km = 8.0  # Geometric height, in km
+
+# Call High-latitude Winter Reference Atmosphere functions
+T__kelvin = P835.HighLatitudeAtmosphere.WinterTemperature(h__km)
+# T__kelvin is approx. 220.53 Kelvin
+
+p__hPa = P835.HighLatitudeAtmosphere.WinterPressure(h__km)
+# p__hPa is approx. 324.41 hPa
+
+rho__g_m3 = P835.HighLatitudeAtmosphere.WinterWaterVapourDensity(h__km)
+# rho__g_m3 is approx. 0.0177274 g/m^3
+
+e__hPa = P835.HighLatitudeAtmosphere.WinterWaterVapourPressure(h__km)
+# e__hPa is approx. 0.0180407 hPa
+```

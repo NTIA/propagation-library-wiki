@@ -1,0 +1,15 @@
+format:
+  html:
+    code-links:
+      - text: NTIA/p676
+        icon: github
+        href: https://github.com/NTIA/p676
+      - text: NTIA/p676-dotnet
+        icon: github
+        href: https://github.com/NTIA/p676-dotnet
+      - text: NTIA/p676-matlab
+        icon: github
+        href: https://github.com/NTIA/p676-matlab
+      - text: NTIA/p676-python
+        icon: github
+        href: https://github.com/NTIA/p676-python

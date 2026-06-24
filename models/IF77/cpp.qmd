@@ -1,0 +1,188 @@
+---
+title: "IF-77 Electromagnetic Wave Propagation Model – C++"
+date: 2026-05-08
+date-modified: 2026-05-12
+---
+
+This page details the installation and usage of the C++ version of the PropLib implementation of the IF-77 Electromagnetic Wave Propagation Model.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+## Installation
+
+To use the C++ library in your code, you'll need to download the shared library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux) and the header file. These are distributed for each supported platform as part of the [GitHub Releases](https://github.com/NTIA/if77/releases/).
+
+To use the shared library in your project, you'll need to link against it. The details for this process differ depending on your compiler and/or IDE, but generally you will need to somehow provide the path to the files you downloaded from the GitHub release.
+
+Once you've linked the dynamic library to your project, all you need to do is include the appropriate header file and, optionally, use its namespace:
+
+```cpp
+#include "if77.h"
+
+using namespace ITS::Propagation::IF77;  // Optional: makes later code more concise
+```
+
+This library has no external C++ dependencies.
+
+{{< include /includes/cpp/_documentation.qmd >}}
+
+[Docs](https://ntia.github.io/if77){.btn .btn-secondary .btn role="button"}
+
+## Examples
+
+The following code example shows how the IF77 model can be called in a C++ program.
+
+### Calling the IF77 Model
+
+```cpp
+#include "if77.h"
+#include "errors.h"
+#include <iostream>
+#include <iomanip>
+
+using namespace ITS::Propagation::IF77;
+
+int main()
+{
+    Card1 card1;
+    Card2 card2;
+    Card3 card3;
+
+    card1.d__km = 0.;
+    card1.output_type = OutputType::TRANSMISSION_LOSS;
+    card1.lobing_flag = LobingFlag::LOBING_FLAG__NO_LOBING;
+    card1.percentage = 50.;
+    card1.time_availability_flag = TimeAvailability::TIME_AVAILABILITY__HOURLY_MEDIAN;
+
+    card2.h_1__meter = 829.51898493742192;
+    card2.antenna_1_pattern = AntennaPattern::ANTENNA_PATTERN__ISOTROPIC;
+    card2.antenna_1_polarization = AntennaPolarization::ANTENNA_POLARIZATION__VERTICAL;
+    card2.antenna_1_tilt__deg = 0.;
+    card2.antenna_1_use = AntennaUse::ANTENNA_USE__TRACKING;
+    card2.antenna_1_half_half_beamwidth__deg = 0.;
+    card2.h_fss__meter = 819.51898493742192;
+    card2.rainfall_zone = RainfallZone::RAINFALL_ZONE__NO_RAINFALL;
+    card2.storm_size = STORM_SIZE__FIVE_KM;
+    card2.terrain_type = TerrainType::TERRAIN_TYPE__IRREGULAR_TERRAIN;
+    card2.horizon_input = HorizonInput::HORIZON_INPUT__HEIGHT;
+    card2.delta_h__meter = 7.3466882206290345;
+    card2.d_hzn__km = 1.0770273001274191;
+    card2.h_hzn__meter = 820.;
+    card2.low_horizon_angle_degrees = 0.;
+    card2.low_horizon_angle_minutes = 0.;
+    card2.low_horizon_angle_seconds = 36.;
+    card2.counterpoise_diameter__meter = 0.;
+    card2.counterpoise_height__meter = 0.;
+    card2.counterpoise_material = Material::MATERIAL__NO_COUNTERPOISE;
+
+    card3.h_2__meter = 15000.;
+    card3.antenna_2_pattern = AntennaPattern::ANTENNA_PATTERN__ISOTROPIC;
+    card3.antenna_2_use = AntennaUse::ANTENNA_USE__DIRECTIVE;
+    card3.antenna_2_polarization = AntennaPolarization::ANTENNA_POLARIZATION__VERTICAL;
+    card3.antenna_2_tilt__deg = 0.;   
+    card3.antenna_2_half_half_beamwidth__deg = 0.;
+    card3.N_0 = 301.;
+    card3.f__mhz = 225.;
+    card3.eirp = 0.;
+    card3.h_sur__meter = 821.;
+    card3.path_material = Material::MATERIAL__AVERAGE_GROUND;
+    card3.water_temp__celsius = TEMPERATURE__TEN_DEGREES_CELSIUS;
+    card3.water_wave_height = 0.;
+    card3.water_state = WaterState::WATER_STATE__CALM_GLASSY;
+    card3.path_water_wave_height_use_flag = WaterWaveHeight::WATER_WAVE_HEIGHT__USE_STANDARD;
+    card3.scintillation_index_group = ScintillationIndex::SCINTILLATION__INDEX_GROUP_0;
+    card3.scintillation_freq_scaling = FrequencyScaling::FREQUENCY_SCALING__NONE;
+    card3.scintillation_use_flag = ScintillationUse::SCINTILLATION_USE__NO_SCINTILLATION;
+    card3.climate_1 = Climate::CLIMATE__ALL_YEAR_TIME_BLOCK; 
+    card3.weight_1 = 0.;
+    card3.climate_2 = Climate::CLIMATE__ALL_YEAR_TIME_BLOCK; 
+    card3.weight_2 = 0.;
+
+    Result result;
+    ErrorCode rtn = IF77(card1, card2, card3, result);
+    std::cout << GetReturnStatusCharArray(rtn) << std::endl;
+    std::cout << "Total loss: " << std::setprecision(6) << result.A_fs__db
+              << "[dB]" << std::endl;
+}
+```
+
+### Calling the IF77 Extended Model
+
+```cpp
+#include "if77.h"
+#include "errors.h"
+#include <iostream>
+#include <iomanip>
+
+using namespace ITS::Propagation::IF77;
+
+int main()
+{
+    Card1 card1;
+    Card2 card2;
+    Card3 card3;
+
+    card1.d__km = 0.;
+    card1.output_type = OutputType::TRANSMISSION_LOSS;
+    card1.lobing_flag = LobingFlag::LOBING_FLAG__NO_LOBING;
+    card1.percentage = 50.;
+    card1.time_availability_flag = TimeAvailability::TIME_AVAILABILITY__HOURLY_MEDIAN;
+
+    card2.h_1__meter = 829.51898493742192;
+    card2.antenna_1_pattern = AntennaPattern::ANTENNA_PATTERN__ISOTROPIC;
+    card2.antenna_1_polarization = AntennaPolarization::ANTENNA_POLARIZATION__VERTICAL;
+    card2.antenna_1_tilt__deg = 0.;
+    card2.antenna_1_use = AntennaUse::ANTENNA_USE__TRACKING;
+    card2.antenna_1_half_half_beamwidth__deg = 0.;
+    card2.h_fss__meter = 819.51898493742192;
+    card2.rainfall_zone = RainfallZone::RAINFALL_ZONE__NO_RAINFALL;
+    card2.storm_size = STORM_SIZE__FIVE_KM;
+    card2.terrain_type = TerrainType::TERRAIN_TYPE__IRREGULAR_TERRAIN;
+    card2.horizon_input = HorizonInput::HORIZON_INPUT__HEIGHT;
+    card2.delta_h__meter = 7.3466882206290345;
+    card2.d_hzn__km = 1.0770273001274191;
+    card2.h_hzn__meter = 820.;
+    card2.low_horizon_angle_degrees = 0.;
+    card2.low_horizon_angle_minutes = 0.;
+    card2.low_horizon_angle_seconds = 36.;
+    card2.counterpoise_diameter__meter = 0.;
+    card2.counterpoise_height__meter = 0.;
+    card2.counterpoise_material = Material::MATERIAL__NO_COUNTERPOISE;
+
+    card3.h_2__meter = 15000.;
+    card3.antenna_2_pattern = AntennaPattern::ANTENNA_PATTERN__ISOTROPIC;
+    card3.antenna_2_use = AntennaUse::ANTENNA_USE__DIRECTIVE;
+    card3.antenna_2_polarization = AntennaPolarization::ANTENNA_POLARIZATION__VERTICAL;
+    card3.antenna_2_tilt__deg = 0.;   
+    card3.antenna_2_half_half_beamwidth__deg = 0.;
+    card3.N_0 = 301.;
+    card3.f__mhz = 225.;
+    card3.eirp = 0.;
+    card3.h_sur__meter = 821.;
+    card3.path_material = Material::MATERIAL__AVERAGE_GROUND;
+    card3.water_temp__celsius = TEMPERATURE__TEN_DEGREES_CELSIUS;
+    card3.water_wave_height = 0.;
+    card3.water_state = WaterState::WATER_STATE__CALM_GLASSY;
+    card3.path_water_wave_height_use_flag = WaterWaveHeight::WATER_WAVE_HEIGHT__USE_STANDARD;
+    card3.scintillation_index_group = ScintillationIndex::SCINTILLATION__INDEX_GROUP_0;
+    card3.scintillation_freq_scaling = FrequencyScaling::FREQUENCY_SCALING__NONE;
+    card3.scintillation_use_flag = ScintillationUse::SCINTILLATION_USE__NO_SCINTILLATION;
+    card3.climate_1 = Climate::CLIMATE__ALL_YEAR_TIME_BLOCK; 
+    card3.weight_1 = 0.;
+    card3.climate_2 = Climate::CLIMATE__ALL_YEAR_TIME_BLOCK; 
+    card3.weight_2 = 0.;
+
+    // Add declarations for terminal1, terminal2, and path
+    Terminal terminal1;
+    Terminal terminal2;
+    Path path;
+
+    Result result;
+    ErrorCode rtn = IF77_Ex(card1, card2, card3, result, terminal1, terminal2, path);
+    std::cout << GetReturnStatusCharArray(rtn) << std::endl;
+    std::cout << "Total loss: " << std::setprecision(6) << result.A_fs__db << "[dB]" << std::endl;
+    std::cout << "Terminal 1 Incident angle of the ray: " << std::setprecision(6) << terminal1.theta_ray__rad << "[rad]" << std::endl;
+    std::cout << "Terminal 2 Takeoff angle of ray: " << std::setprecision(6) << terminal2.theta_TO__rad << "[rad]" << std::endl;
+    std::cout << "Path Reflection angle: " << std::setprecision(6) << path.psi__rad << "[rad]" << std::endl;
+}
+```

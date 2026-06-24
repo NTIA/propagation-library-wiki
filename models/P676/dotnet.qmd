@@ -1,0 +1,113 @@
+---
+title: "The Recommendation ITU-R P.676-12 – .NET"
+date: 2025-01-24
+date-modified: 2025-06-12
+---
+
+This page details the installation and usage of the .NET version of the PropLib implementation of the Recommendation ITU-R P.676-12.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+## Installation
+
+This .NET package is distributed on 
+[NuGet](https://www.nuget.org/packages/ITS.ITU.PSeries.P676).
+
+There are two easy ways to install the NuGet package: [dotnet CLI](#installation-with-dotnet-cli) or [Visual Studio](#installation-with-visual-studio).
+
+### Installation with dotnet CLI
+
+1. Run the following command to install the package.
+
+    ```default
+    dotnet add package ITS.ITU.PSeries.P676
+    ```
+
+1. After the command completes, open the project csproj file to see the added NuGet package reference:
+
+    ```default
+    <ItemGroup>
+        <PackageReference Include="ITS.ITU.PSeries.P676" Version="1.0.0" />
+    </ItemGroup>
+    ```
+
+### Installation with Visual Studio
+
+1. Open your project in **Visual Studio** and select **Project > Manage NuGet Packages**.
+
+1. In the **NuGet Package Manager** page, choose **nuget.org** as the **Package source**.
+
+1. From the **Browse** tab, search for **ITS.ITU.PSeries.P676**, select ITS.ITU.PSeries.P676 in the list, and then select Install as shown in @fig-dotnet-add-nuget.
+
+    ![](/images/dotnet/dotnet-add-nuget.png){#fig-dotnet-add-nuget fig-alt="A screenshot showing the 'NuGet Package Manager'" width=600 fig-align="left"}
+
+1. If you're prompted to verify the installation, select OK.
+
+## Examples
+
+The following code examples show how each of the three models from Recommendation ITU-R P.676 can be called from .NET project.
+
+### Specific Attenuation Model
+
+```c#
+using ITS.ITU.PSeries;
+
+// define inputs
+double f__ghz = 60.0;           // Frequency, in GHz.
+double T__kelvin = 288.15;      // Temperature, in Kelvin.
+double e__hPa = 9.97288879;     // Water vapour partial pressure, in hPa.
+double p__hPa = 1013.25;        // Dry air pressure, in hPa.
+
+// Call Specific Attenuation Model
+double gamma = P676.SpecificAttenuation(f__ghz, T__kelvin, e__hPa, p__hPa);
+
+// gamma is approximately 14.7783 dB/km
+```
+
+### Terrestrial Path Attenuation Model
+
+```c#
+using ITS.ITU.PSeries;
+
+// Define inputs
+double f__ghz = 56.0;       // Frequency, in GHz.
+int int_atmosphere = 5;     // Reference atmosphere from P.835 (enum value).
+double r_0__km = 15.6;      // Path length, in km.
+
+// Call Terrestrial Path Attenuation Model
+int rtn = P676.TerrestrialPathAttenuation(f__ghz, int_atmosphere, r_0__km, out double A_gas__db);
+// rtn is 0 (SUCCESS)
+// A_gas__db is approximately 109.4131 dB
+
+// Alternately, atmosphere can be specified using the enum:
+P676.ReferenceAtmosphere atmosphere = P676.ReferenceAtmosphere.LowLatitude;
+rtn = P676.TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km, out double A_gas__db);
+
+// rtn is 0 (SUCCESS)
+// A_gas__db is approximately 109.4131 dB
+```
+
+### Slant Path Attenuation Model
+
+```c#
+using ITS.ITU.PSeries;
+
+// define inputs
+double f__ghz = 26.0;       // Frequency, in GHz.
+double h_1__km = 0.0;       // Height of the low terminal, in km.
+double h_2__km = 30.0;      // Height of the high terminal, in km.
+double beta_1__rad = 1.55;  // Elevation angle (from zenith), in rad.
+P676.ReferenceAtmosphere atmosphere = P676.ReferenceAtmosphere.MidLatitudeSummer;    // Reference atmosphere from P.835.
+
+// Call Slant Path Attenuation Model
+int rtn = P676.SlantPathAttenuation(f__ghz, h_1__km, h_2__km, beta_1__rad, 
+    atmosphere, out P676.SlantPathAttenuationResult result);
+
+// rtn is 0 (SUCCESS)
+// The result is a data structure containing five elements:
+// result.A_gas__db is approximately 16.9083 dB
+// result.bending__rad is approximately 0.0095 rad
+// result.a__km is approximately 538.1633 km
+// result.incident__rad is approximately 1.4753 rad
+// result.delta_L__km is approximately 0.0657 km
+```

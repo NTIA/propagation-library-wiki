@@ -1,0 +1,201 @@
+---
+title: "IF-77 Electromagnetic Wave Propagation Model – .NET"
+date: 2026-05-08
+date-modified: 2026-05-12
+---
+
+This page details the installation and usage of the .NET version of the PropLib implementation of the IF-77 Electromagnetic Wave propagation model.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+## Installation
+
+This .NET package is distributed on 
+[NuGet](https://www.nuget.org/packages/ITS.Propagation.IF77).
+
+There are two easy ways to install the NuGet package: [dotnet CLI](#installation-with-dotnet-cli) or [Visual Studio](#installation-with-visual-studio).
+
+### Installation with dotnet CLI
+
+1. Run the following command to install the package.
+
+    ```default
+    dotnet add package ITS.Propagation.IF77
+    ```
+
+1. After the command completes, open the project csproj file to see the added NuGet package reference:
+
+    ```default
+    <ItemGroup>
+        <PackageReference Include="ITS.Propagation.IF77" Version="1.1.0" />
+    </ItemGroup>
+    ```
+
+### Installation with Visual Studio
+
+1. Open your project in **Visual Studio** and select **Project > Manage NuGet Packages**.
+
+1. In the **NuGet Package Manager** page, choose **nuget.org** as the **Package source**.
+
+1. From the **Browse** tab, search for **ITS.Propagation.IF77**, select ITS.Propagation.IF77 in the list, and then select Install as shown in @fig-dotnet-add-nuget.
+
+    ![](/images/dotnet/dotnet-add-nuget.png){#fig-dotnet-add-nuget fig-alt="A screenshot showing the 'NuGet Package Manager'" width=600 fig-align="left"}
+
+1. If you're prompted to verify the installation, select OK.
+
+## Examples
+
+The following code examples show how the IF77 model can be called from .NET project.
+
+### Calling the IF77 Model
+
+```c#
+using ITS.Propagation;
+
+// define inputs
+var card1 = new IF77.Card1()
+{
+    d__km = 1.0770273001274191,
+    Output = IF77.Output.TransmissionLoss,
+    Lobing = IF77.Lobing.NoLobing,
+    Percentage = 50,
+    TimeAvailability = IF77.TimeAvailability.HourlyMedianLevels
+};
+var card2 = new IF77.Card2()
+{
+    Antenna_1_Half_Half_Beamwidth__deg = 0,
+    Antenna_1_Pattern = IF77.AntennaPattern.Isotropic,
+    Antenna_1_Polarization = IF77.AntennaPolarization.Vertical,
+    Antenna_1_Tilt__deg = 0,
+    Antenna_1_Use = IF77.AntennaUse.Tracking,
+    CounterpoiseDiameter__meter = 0,
+    CounterpoiseHeight__meter = 0,
+    CounterpoiseMaterial = IF77.Material.None,
+    delta_h__meter = 7.3466882206290345,
+    d_hzn__km = 1.0770273001274191,
+    HorizonInput = IF77.HorizonInput.Height,
+    h_1__meter = 829.51898493742192,
+    h_fss__meter = 819.51898493742192,
+    h_hzn__meter = 820,
+    RainfallZone = IF77.RainfallZone.NoRainfall,
+    StormSize = IF77.StormSize.FiveKm,
+    TerrainType = IF77.TerrainType.IrregularTerrain,
+    theta_hzn_degrees = 0,
+    theta_hzn_minutes = 0,
+    theta_hzn_seconds = 36,
+};
+var card3 = new IF77.Card3()
+{
+    Antenna_2_Pattern = IF77.AntennaPattern.Isotropic,
+    Antenna_2_Polarization = IF77.AntennaPolarization.Vertical,
+    Antenna_2_Tilt__deg = 0,
+    Antenna_2_Use = IF77.AntennaUse.Directive,
+    Antenna_2_Half_Half_Beamwidth__deg = 0,
+    Climate1 = IF77.Climate.AllYearTimeBlock,
+    Climate1Weight = 0,
+    Climate2 = IF77.Climate.AllYearTimeBlock,
+    Climate2Weight = 0,
+    EIRP = 0,
+    FrequencyScaling = IF77.FrequencyScaling.None,
+    f__mhz = 225,
+    h_2__meter = 15000,
+    h_sur__meter = 821,
+    N_0 = 301,
+    EarthReflectionMaterial = IF77.Material.AverageGround,
+    Scintillation = IF77.Scintillation.IndexGroup0,
+    ScintillationUse = IF77.ScintillationUse.NoScintillation,
+    WaterState = IF77.WaterState.CalmGlassy,
+    WaterTemperature__celsius = IF77.Temperature.TenDegreesCelsius,
+    WaterWaveHeight = 0,
+    WaterWaveHeightUse = IF77.WaterWaveHeight.UseStandard
+};
+
+// Call the IF77 model
+var rtn = IF77.IF77Model(card1, card2, card3, out IF77.Result result);
+
+// rtn is 0 (SUCCESS)
+// The result is a data structure containing five elements:
+// result.warnings                 is 0
+// result.takeoff_angle__degrees   is approximately  85.63319
+// result.propagation_mode         is ITS.Propagation.IF77.PropagationMode.LightOfSight (PropagationMode enum value 1)
+// result.A_fs__db                 is approximately  102.54639
+// result.A__db                    is approximately  -102.54841
+
+string msg = IF77.GetReturnStatus(rtn);
+// Get Return message: IF77 v1.0 Status: Successful execution
+
+string warning = IF77.GetWarningMessage(result.warnings);
+// Get Warning message: No Warnings
+```
+
+### Calling the IF77 Extended Model
+
+```c#
+using ITS.Propagation;
+
+// define inputs
+var card1 = new IF77.Card1()
+{
+    d__km = 1.0770273001274191,
+    Output = IF77.Output.TransmissionLoss,
+    Lobing = IF77.Lobing.NoLobing,
+    Percentage = 50,
+    TimeAvailability = IF77.TimeAvailability.HourlyMedianLevels
+};
+var card2 = new IF77.Card2()
+{
+    Antenna_1_Half_Half_Beamwidth__deg = 0,
+    Antenna_1_Pattern = IF77.AntennaPattern.Isotropic,
+    Antenna_1_Polarization = IF77.AntennaPolarization.Vertical,
+    Antenna_1_Tilt__deg = 0,
+    Antenna_1_Use = IF77.AntennaUse.Tracking,
+    CounterpoiseDiameter__meter = 0,
+    CounterpoiseHeight__meter = 0,
+    CounterpoiseMaterial = IF77.Material.None,
+    delta_h__meter = 7.3466882206290345,
+    d_hzn__km = 1.0770273001274191,
+    HorizonInput = IF77.HorizonInput.Height,
+    h_1__meter = 829.51898493742192,
+    h_fss__meter = 819.51898493742192,
+    h_hzn__meter = 820,
+    RainfallZone = IF77.RainfallZone.NoRainfall,
+    StormSize = IF77.StormSize.FiveKm,
+    TerrainType = IF77.TerrainType.IrregularTerrain,
+    theta_hzn_degrees = 0,
+    theta_hzn_minutes = 0,
+    theta_hzn_seconds = 36,
+};
+var card3 = new IF77.Card3()
+{
+    Antenna_2_Pattern = IF77.AntennaPattern.Isotropic,
+    Antenna_2_Polarization = IF77.AntennaPolarization.Vertical,
+    Antenna_2_Tilt__deg = 0,
+    Antenna_2_Use = IF77.AntennaUse.Directive,
+    Antenna_2_Half_Half_Beamwidth__deg = 0,
+    Climate1 = IF77.Climate.AllYearTimeBlock,
+    Climate1Weight = 0,
+    Climate2 = IF77.Climate.AllYearTimeBlock,
+    Climate2Weight = 0,
+    EIRP = 0,
+    FrequencyScaling = IF77.FrequencyScaling.None,
+    f__mhz = 225,
+    h_2__meter = 15000,
+    h_sur__meter = 821,
+    N_0 = 301,
+    EarthReflectionMaterial = IF77.Material.AverageGround,
+    Scintillation = IF77.Scintillation.IndexGroup0,
+    ScintillationUse = IF77.ScintillationUse.NoScintillation,
+    WaterState = IF77.WaterState.CalmGlassy,
+    WaterTemperature__celsius = IF77.Temperature.TenDegreesCelsius,
+    WaterWaveHeight = 0,
+    WaterWaveHeightUse = IF77.WaterWaveHeight.UseStandard
+};
+
+// Call the IF77 extended model
+var rtn = IF77.IF77ExModel(card1, card2, card3, out IF77.Result resultEx,
+    out IF77.Terminal terminal1, out IF77.Terminal terminal2, out IF77.Path path);
+
+// The terminal1 is a data structure containing terminal 1 information
+// The terminal2 is a data structure containing terminal 2 information
+// The path is a data structure containing path information
+```

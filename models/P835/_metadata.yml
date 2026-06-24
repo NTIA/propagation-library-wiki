@@ -1,0 +1,15 @@
+format:
+  html:
+    code-links:
+      - text: NTIA/p835
+        icon: github
+        href: https://github.com/NTIA/p835
+      - text: NTIA/p835-dotnet
+        icon: github
+        href: https://github.com/NTIA/p835-dotnet
+      - text: NTIA/p835-matlab
+        icon: github
+        href: https://github.com/NTIA/p835-matlab
+      - text: NTIA/p835-python
+        icon: github
+        href: https://github.com/NTIA/p835-python

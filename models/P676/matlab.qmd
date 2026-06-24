@@ -1,0 +1,98 @@
+---
+title: "The Recommendation ITU-R P.676-12 – MATLAB"
+date: 2025-01-24
+date-modified: 2025-06-12
+---
+
+This page details the installation and usage of the MATLAB&reg; version of the PropLib implementation of Recommendation ITU-R P.676-12.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+## Getting Started
+
+This MATLAB&reg; Toolbox is distributed on [MathWorks&reg; File Exchange](#TODO).
+
+{{< include /includes/matlab/_getting_started.qmd >}}
+
+{{< include /includes/matlab/_documentation.qmd >}}
+
+```matlab
+help ITS.ITU.PSeries.P676.SpecificAttenuation
+
+% Prints detailed usage information!
+```
+
+{{< include /includes/matlab/_examples.qmd >}}
+
+### Specific Attenuation Model
+
+```matlab
+import ITS.ITU.PSeries.P676.*
+
+% Define inputs
+f__ghz = 60.0;          % Frequency, in GHz.
+T__kelvin = 288.15;     % Temperature, in Kelvin.
+e__hPa = 9.97288879;    % Water vapour partial pressure, in hPa.
+p__hPa = 1013.25;       % Dry air pressure, in hPa.
+
+% Call Specific Attenuation Model
+gamma = SpecificAttenuation(f__ghz, T__kelvin, e__hPa, p__hPa);
+% gamma is approximately 14.7783 dB/km
+```
+
+### Terrestrial Path Attenuation Model
+
+This example shows multiple equivalent ways to specify the reference atmosphere input.
+
+```matlab
+import ITS.ITU.PSeries.P676.*
+
+% Define inputs
+f__ghz = 56.0;      % Frequency, in GHz.
+atmosphere = 5;     % Reference atmosphere from P.835.
+r_0__km = 15.6;     % Path length, in km.
+
+% Call Terrestrial Path Attenuation Model
+A_gas__db = TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km);
+% A_gas__db is approximately 109.4131 dB
+
+% can also use enum to provide reference atmosphere
+atmosphere = ReferenceAtmosphere.LowLatitude;   % int value is 5
+A_gas__db = TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km);
+
+% another way to provide the enum value:
+atmosphere = "LowLatitude";     % int value is 5
+A_gas__db = TerrestrialPathAttenuation(f__ghz, atmosphere, r_0__km);
+```
+
+### Slant Path Attenuation Model
+
+```matlab
+import ITS.ITU.PSeries.P676.*
+
+% define inputs
+f__ghz = 26.0;          % Frequency, in GHz.
+h_1__km = 0.0;          % Height of the low terminal, in km.
+h_2__km = 30.0;         % Height of the high terminal, in km.
+beta_1__rad = 1.55;     % Elevation angle (from zenith), in rad.
+atmosphere = 3;         % Reference atmosphere from P.835.
+
+% Call Slant Path Attenuation Model
+result = SlantPathAttenuation(f__ghz, h_1__km, h_2__km, beta_1__rad, atmosphere);
+% The result is a data structure containing five elements:
+% result.A_gas__db is approximately 16.9083 dB
+% result.bending__rad is approximately 0.0095 rad
+% result.a__km is approximately 538.1633 km
+% result.incident__rad is approximately 1.4753 rad
+% result.delta_L__km is approximately 0.0657 km
+
+% can also use enum to provide reference atmosphere
+atmosphere = ReferenceAtmosphere.MidLatitudeSummer;     % int value is 3
+result = SlantPathAttenuation(f__ghz, h_1__km, h_2__km, beta_1__rad, atmosphere);
+% The result is a data structure containing five elements:
+% result.A_gas__db is approximately 16.9083 dB
+% result.bending__rad is approximately 0.0095 rad
+% result.a__km is approximately 538.1633 km
+% result.incident__rad is approximately 1.4753 rad
+% result.delta_L__km is approximately 0.0657 km
+```

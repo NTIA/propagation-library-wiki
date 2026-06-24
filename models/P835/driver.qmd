@@ -1,0 +1,339 @@
+---
+title: "The Recommendation ITU-R P.835-6 – Command-Line Driver"
+date: 2025-01-10
+date-modified: 2025-06-12
+---
+
+This page details the usage of the cross-platform command-line driver version of the Recommendation ITU-R P.835-6.
+
+{{< include /includes/driver/_intro_and_installation.qmd >}}
+
+To use the command-line driver program, you'll need to download the driver program
+(`P835Driver-1.0.0-Windows-x64.exe` or `P835Driver-1.0.0-Windows-x86.exe` on Windows, `P835Driver-1.0.0-Darwin-universal` on macOS, or `P835Driver-1.0.0-Linux-x86_64` on Linux)
+ and the shared library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux). 
+ These are distributed for each supported platform as part of the [GitHub Releases](https://github.com/NTIA/p835/releases/).
+
+{{< include /includes/driver/_general_usage.qmd >}}
+
+## Command-Line Arguments
+
+Executing the command-line driver requires specifying input arguments, defined in @tbl-p835-driver-input-args below.
+
+
+| Flag     | Type   | Required | Description                                                                                           |
+|----------|--------|----------|-------------------------------------------------------------------------------------------------------|
+| `-i`     | string | true     | File specifying model input parameters in `key,value` format                                          |
+| `-model` | string | true     | Which model to run, one of `MEAN`, `LOW`, `MID-SUMMER`, `MID-WINTER`, `HIGH-SUMMER`, or `HIGH-WINTER` |
+| `-o`     | string | true     | Filename where output results should be written                                                       |
+: Arguments for the Recommendation ITU-R P.835 command-line driver {#tbl-p835-driver-input-args}
+
+Additional arguments are available to print help text and version information without running any model.
+When using these options, none of the arguments from @tbl-p835-driver-input-args are required.
+The additional arguments are defined in @tbl-p835-driver-additional-args
+
+| Flag | Description                                            |
+|------|--------------------------------------------------------|
+| `-h` | Display help text                                      |
+| `-v` | Display version information for the library and driver |
+: Additional arguments for the Recommendation ITU-R P.835 command-line driver {#tbl-p835-driver-additional-args}
+
+## Examples
+
+### Mean Annual Global Reference Atmosphere
+
+The Mean Annual Global Reference Atmosphere Model can be run by providing the `-model MEAN` flag on the command line.
+For example:
+
+```cmd
+# Windows (64-bit)
+P835Driver-1.0.0-Windows-x64.exe -i inputMEAN.txt -model MEAN -o outputMEAN.txt
+
+# macOS
+./P835Driver-1.0.0-Darwin-universal -i inputMEAN.txt -model MEAN -o outputMEAN.txt
+
+# Linux
+./P835Driver-1.0.0-Linux-x86_64 -i inputMEAN.txt -model MEAN -o outputMEAN.txt
+```
+
+A corresponding pair of input and output files for the Mean Annual Global Reference Atmosphere Model are provided below.
+
+**Example 1**
+
+```{.default filename="Input File Contents"}
+h__km,2
+rho_0__g_m3,8.5
+```
+
+```{.default filename="Output File Contents"}
+Model                                   P835
+Model Variant                           Mean Annual Global Reference Atmosphere Model
+Library Version                         v1.0
+Driver Version                          v1.0.0
+Date Generated                          Thu Jul 17 12:39:29 2025
+Input Arguments                         -i ..\inputMEAN.txt -o outputMEAN.txt -model MEAN 
+
+Inputs:
+h__km                                   2            [km]
+rho_0__g_m3                             8.5          [g/m^3]
+
+Results:
+Return Code                             0            [P835 v1.0 Status: Successful execution]
+Global temperature                      275.15409    [Kelvin]
+Global dry air pressure                 795.01422    [hPa]
+Global water vapour density             3.12698      [g/m^3]
+Global water vapour partial pressure    3.97047      [hPa]
+```
+
+**Example 2: Omit `rho_0__g_m3`, using default 7.5**
+
+```{.default filename="Input File Contents"}
+h__km,2
+```
+
+```{.default filename="Output File Contents"}
+Model                                   P835
+Model Variant                           Mean Annual Global Reference Atmosphere Model
+Library Version                         v1.0
+Driver Version                          v1.0.0
+Date Generated                          Fri Jul 18 10:24:43 2025
+Input Arguments                         -i ..\inputMEAN.txt -o outputMEAN.txt -model MEAN 
+
+Inputs:
+h__km                                   2            [km]
+rho_0__g_m3                             7.5          [g/m^3]
+
+Results:
+Return Code                             0            [P835 v1.0 Status: Successful execution]
+Global temperature                      275.15409    [Kelvin]
+Global dry air pressure                 795.01422    [hPa]
+Global water vapour density             2.75910      [g/m^3]
+Global water vapour partial pressure    3.50335      [hPa]
+```
+
+**Example 3: Invalid `h__km`**
+
+```{.default filename="Input File Contents"}
+h__km,200
+rho_0__g_m3,8.5
+```
+
+```{.default filename="Output File Contents"}
+Model                                   P835
+Model Variant                           Mean Annual Global Reference Atmosphere Model
+Library Version                         v1.0
+Driver Version                          v1.0.0
+Date Generated                          Fri Jul 18 10:21:51 2025
+Input Arguments                         -i ..\inputMEAN.txt -o outputMEAN.txt -model MEAN 
+
+Inputs:
+h__km                                   200          [km]
+rho_0__g_m3                             8.5          [g/m^3]
+
+Results:
+Return Code                             -1002        [P835 v1.0 Error: Geometry height must be <= 100]
+```
+
+### Low-latitude Annual Reference Atmosphere
+
+The Low-latitude Annual Reference Atmosphere Model can be run by providing the `-model LOW` flag on the command line.
+For example:
+
+```cmd
+# Windows (64-bit)
+P835Driver-1.0.0-Windows-x64.exe -i inputLOW.txt -model LOW -o outputLOW.txt
+
+# macOS
+./P835Driver-1.0.0-Darwin-universal -i inputLOW.txt -model LOW -o outputLOW.txt
+
+# Linux
+./P835Driver-1.0.0-Linux-x86_64 -i inputLOW.txt -model LOW -o outputLOW.txt
+```
+
+A corresponding pair of input and output files for the Low-latitude Annual Reference Atmosphere Model are provided below.
+
+```{.default filename="Input File Contents"}
+h__km,10
+```
+
+```{.default filename="Output File Contents"}
+Model                                   P835
+Model Variant                           Low-latitude Reference Atmosphere Model
+Library Version                         v1.0
+Driver Version                          v1.0.0
+Date Generated                          Fri Jul 18 10:05:23 2025
+Input Arguments                         -i ..\inputLOW.txt -o outputLOW.txt -model LOW 
+
+Inputs:
+h__km                                   10           [km]
+
+Results:
+Return Code                             0            [P835 v1.0 Status: Successful execution]
+Temperature                             237.47780    [Kelvin]
+Dry air pressure                        284.85260    [hPa]
+Water vapour density                    0.05142      [g/m^3]
+Water vapour partial pressure           0.05635      [hPa]
+```
+
+### Mid-latitude Summer Reference Atmosphere
+
+The Mid-latitude Summer Reference Atmosphere Model can be run by providing the `-model MID-SUMMER` or `-model MID_SUMMER` flag on the command line.
+For example:
+
+```cmd
+# Windows (64-bit)
+P835Driver-1.0.0-Windows-x64.exe -i inputMID_SUMMER.txt -model MID-SUMMER -o outputMID_SUMMER.txt
+
+# macOS
+./P835Driver-1.0.0-Darwin-universal -i inputMID_SUMMER.txt -model MID-SUMMER -o outputMID_SUMMER.txt
+
+# Linux
+./P835Driver-1.0.0-Linux-x86_64 -i inputMID_SUMMER.txt -model MID-SUMMER -o outputMID_SUMMER.txt
+```
+
+A corresponding pair of input and output files for the Mid-latitude Summer Reference Atmosphere Model are provided bemid.
+
+```{.default filename="Input File Contents"}
+h__km,8
+```
+
+```{.default filename="Output File Contents"}
+Model                                   P835
+Model Variant                           Mid-latitude Summer Reference Atmosphere Model
+Library Version                         v1.0
+Driver Version                          v1.0.0
+Date Generated                          Wed Jul 23 09:13:07 2025
+Input Arguments                         -i inputMID_SUMMER.txt -model MID-SUMMER -o outputMID_SUMMER.txt 
+
+Inputs:
+h__km                                   8            [km]
+
+Results:
+Return Code                             0            [P835 v1.0 Status: Successful execution]
+Temperature                             248.70684    [Kelvin]
+Dry air pressure                        367.69780    [hPa]
+Water vapour density                    0.19688      [g/m^3]
+Water vapour partial pressure           0.22596      [hPa]
+```
+
+### Mid-latitude Winter Reference Atmosphere
+
+The Mid-latitude Winter Reference Atmosphere Model can be run by providing the `-model MID-WINTER` or `-model MID_WINTER` flag on the command line.
+For example:
+
+```cmd
+# Windows (64-bit)
+P835Driver-1.0.0-Windows-x64.exe -i inputMID_WINTER.txt -model MID-WINTER -o outputMID_WINTER.txt
+
+# macOS
+./P835Driver-1.0.0-Darwin-universal -i inputMID_WINTER.txt -model MID-WINTER -o outputMID_WINTER.txt
+
+# Linux
+./P835Driver-1.0.0-Linux-x86_64 -i inputMID_WINTER.txt -model MID-WINTER -o outputMID_WINTER.txt
+```
+
+A corresponding pair of input and output files for the Mid-latitude Winter Reference Atmosphere Model are provided bemid.
+
+```{.default filename="Input File Contents"}
+h__km,8
+```
+
+```{.default filename="Output File Contents"}
+Model                                   P835
+Model Variant                           Mid-latitude Winter Reference Atmosphere Model
+Library Version                         v1.0
+Driver Version                          v1.0.0
+Date Generated                          Wed Jul 23 09:29:35 2025
+Input Arguments                         -i inputMID_WINTER.txt -model MID-WINTER -o outputMID_WINTER.txt 
+
+Inputs:
+h__km                                   8            [km]
+
+Results:
+Return Code                             0            [P835 v1.0 Status: Successful execution]
+Temperature                             232.49290    [Kelvin]
+Dry air pressure                        333.66430    [hPa]
+Water vapour density                    0.05034      [g/m^3]
+Water vapour partial pressure           0.05401      [hPa]
+```
+
+### High-latitude Summer Reference Atmosphere
+
+The High-latitude Summer Reference Atmosphere Model can be run by providing the `-model HIGH-SUMMER` or `-model HIGH_SUMMER` flag on the command line.
+For example:
+
+```cmd
+# Windows (64-bit)
+P835Driver-1.0.0-Windows-x64.exe -i inputHIGH_SUMMER.txt -model HIGH_SUMMER -o outputHIGH_SUMMER.txt
+
+# macOS
+./P835Driver-1.0.0-Darwin-universal -i inputHIGH_SUMMER.txt -model HIGH_SUMMER -o outputHIGH_SUMMER.txt
+
+# Linux
+./P835Driver-1.0.0-Linux-x86_64 -i inputHIGH_SUMMER.txt -model HIGH_SUMMER -o outputHIGH_SUMMER.txt
+```
+
+A corresponding pair of input and output files for the High-latitude Summer Reference Atmosphere Model are provided behigh.
+
+```{.default filename="Input File Contents"}
+h__km,5
+```
+
+```{.default filename="Output File Contents"}
+Model                                   P835
+Model Variant                           High-latitude Summer Reference Atmosphere Model
+Library Version                         v1.0
+Driver Version                          v1.0.0
+Date Generated                          Wed Jul 23 10:36:14 2025
+Input Arguments                         -i inputHIGH_SUMMER.txt -model HIGH_SUMMER -o outputHIGH_SUMMER.txt 
+
+Inputs:
+h__km                                   5            [km]
+
+Results:
+Return Code                             0            [P835 v1.0 Status: Successful execution]
+Temperature                             259.42990    [Kelvin]
+Dry air pressure                        540.30080    [hPa]
+Water vapour density                    1.00951      [g/m^3]
+Water vapour partial pressure           1.20857      [hPa]
+```
+
+### High-latitude Winter Reference Atmosphere
+
+The High-latitude Winter Reference Atmosphere Model can be run by providing the `-model HIGH-WINTER` or `-model HIGH_WINTER` flag on the command line.
+For example:
+
+```cmd
+# Windows (64-bit)
+P835Driver-1.0.0-Windows-x64.exe -i inputHIGH_WINTER.txt -model HIGH_WINTER -o outputHIGH_WINTER.txt
+
+# macOS
+./P835Driver-1.0.0-Darwin-universal -i inputHIGH_WINTER.txt -model HIGH_WINTER -o outputHIGH_WINTER.txt
+
+# Linux
+./P835Driver-1.0.0-Linux-x86_64 -i inputHIGH_WINTER.txt -model HIGH_WINTER -o outputHIGH_WINTER.txt
+```
+
+A corresponding pair of input and output files for the High-latitude Winter Reference Atmosphere Model are provided behigh.
+
+```{.default filename="Input File Contents"}
+h__km,5
+```
+
+```{.default filename="Output File Contents"}
+Model                                   P835
+Model Variant                           High-latitude Winter Reference Atmosphere Model
+Library Version                         v1.0
+Driver Version                          v1.0.0
+Date Generated                          Wed Jul 23 10:40:27 2025
+Input Arguments                         -i inputHIGH_WINTER.txt -model HIGH_WINTER -o outputHIGH_WINTER.txt 
+
+Inputs:
+h__km                                   5            [km]
+
+Results:
+Return Code                             0            [P835 v1.0 Status: Successful execution]
+Temperature                             241.06525    [Kelvin]
+Dry air pressure                        513.52730    [hPa]
+Water vapour density                    0.21901      [g/m^3]
+Water vapour partial pressure           0.24363      [hPa]
+```

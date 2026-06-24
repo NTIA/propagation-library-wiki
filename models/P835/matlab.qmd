@@ -1,0 +1,166 @@
+---
+title: "The Recommendation ITU-R P.835-6 – MATLAB"
+date: 2025-01-24
+date-modified: 2025-06-12
+---
+
+This page details the installation and usage of the MATLAB&reg; version of the PropLib implementation of Recommendation ITU-R P.835-6.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+## Getting Started
+
+This MATLAB&reg; Toolbox is distributed on [MathWorks&reg; File Exchange](#TODO).
+
+{{< include /includes/matlab/_getting_started.qmd >}}
+
+{{< include /includes/matlab/_documentation.qmd >}}
+
+```matlab
+help ITS.ITU.PSeries.P835.MeanAnnualGlobalAtmosphere.GlobalTemperature
+
+% Prints detailed usage information!
+```
+
+{{< include /includes/matlab/_examples.qmd >}}
+
+### Mean Annual Global Reference Atmosphere
+
+```matlab
+import ITS.ITU.PSeries.P835.*
+
+% Define inputs
+h__km = 15.0;           % Geometric height, in km
+rho_0__g_m3 = 8.0;      % Ground-level water vapour density, in g/m^3
+
+% Call Mean Annual Global  Atmosphere functions
+T__kelvin = MeanAnnualGlobalAtmosphere.GlobalTemperature(h__km);
+% T__kelvin is approx. 216.65 Kelvin
+
+p__hPa = MeanAnnualGlobalAtmosphere.GlobalPressure(h__km);
+% p__hPa is approx. 121.1193 hPa
+
+rho__g_m3 = MeanAnnualGlobalAtmosphere.GlobalWaterVapourDensity(h__km, rho_0__g_m3);
+% rho__g_m3 is approx. 0.0044247 g/m^3
+
+% or omit rho_0__g_m3, using default Ground-level water vapour density, which is 7.5:
+% rho__g_m3 = MeanAnnualGlobalAtmosphere.GlobalWaterVapourDensity(h__km);
+% rho__g_m3 is approx. 0.004148 g/m^3
+
+e__hPa = MeanAnnualGlobalAtmosphere.GlobalWaterVapourPressure(h__km, rho_0__g_m3);
+% e__hPa is approx. 0.0044237 hPa
+
+% or omit rho_0__g_m3, using default Ground-level water vapour density, which is 7.5:
+% e__hPa = MeanAnnualGlobalAtmosphere.GlobalWaterVapourPressure(h__km);
+% e__hPa is approx. 0.004147 hPa
+```
+
+### Low-latitude Annual Reference Atmosphere
+
+```matlab
+import ITS.ITU.PSeries.P835.*
+
+% Define inputs
+h__km = 10.0;    % Geometric height, in km
+
+% Call Low-latitude Annual Reference Atmosphere functions
+T__kelvin = LowLatitudeAtmosphere.Temperature(h__km);
+% T__kelvin is approx. 237.478 Kelvin
+
+p__hPa = LowLatitudeAtmosphere.Pressure(h__km);
+% p__hPa is approx. 284.853 hPa
+
+rho__g_m3 = LowLatitudeAtmosphere.WaterVapourDensity(h__km);
+% rho__g_m3 is approx. 0.051421 g/m^3
+
+e__hPa = LowLatitudeAtmosphere.WaterVapourPressure(h__km);
+% e__hPa is approx. 0.0563514 hPa
+```
+
+### Mid-latitude Summer Reference Atmosphere
+
+```matlab
+import ITS.ITU.PSeries.P835.*
+
+% Define inputs
+h__km = 10.0;  % Geometric height, in km
+
+% Call Mid-latitude Summer Reference Atmosphere functions
+T__kelvin = MidLatitudeAtmosphere.SummerTemperature(h__km);
+% T__kelvin is approx. 235.716 Kelvin
+
+p__hPa = MidLatitudeAtmosphere.SummerPressure(h__km);
+% p__hPa is approx. 283.71 hPa
+
+rho__g_m3 = MidLatitudeAtmosphere.SummerWaterVapourDensity(h__km);
+% rho__g_m3 is approx. 0.0612398 g/m^3
+
+e__hPa = MidLatitudeAtmosphere.SummerWaterVapourPressure(h__km);
+% e__hPa is approx. 0.0666137 hPa
+```
+
+### Mid-latitude Winter Reference Atmosphere
+
+```matlab
+import ITS.ITU.PSeries.P835.*
+
+% Define inputs
+h__km = 10.0;  % Geometric height, in km
+
+% Call Mid-latitude Winter Reference Atmosphere functions
+T__kelvin = MidLatitudeAtmosphere.WinterTemperature(h__km);
+% T__kelvin is approx. 218 Kelvin
+
+p__hPa = MidLatitudeAtmosphere.WinterPressure(h__km);
+% p__hPa is approx. 258.979 hPa
+
+rho__g_m3 = MidLatitudeAtmosphere.WinterWaterVapourDensity(h__km);
+% rho__g_m3 is approx. 0.00998436 g/m^3
+
+e__hPa = MidLatitudeAtmosphere.WinterWaterVapourPressure(h__km);
+% e__hPa is approx. 0.0100443 hPa
+```
+
+### High-latitude Summer Reference Atmosphere
+
+```matlab
+import ITS.ITU.PSeries.P835.*
+
+% Define inputs
+h__km = 8.0;  % Geometric height, in km
+
+% Call High-latitude Summer Reference Atmosphere functions
+T__kelvin = HighLatitudeAtmosphere.SummerTemperature(h__km);
+% T__kelvin is approx. 239.621 Kelvin
+
+p__hPa = HighLatitudeAtmosphere.SummerPressure(h__km);
+% p__hPa is approx. 354.244 hPa
+
+rho__g_m3 = HighLatitudeAtmosphere.SummerWaterVapourDensity(h__km);
+% rho__g_m3 is approx. 0.129769 g/m^3
+
+e__hPa = HighLatitudeAtmosphere.SummerWaterVapourPressure(h__km);
+% e__hPa is approx. 0.143495 hPa
+```
+
+### High-latitude Winter Reference Atmosphere
+
+```matlab
+import ITS.ITU.PSeries.P835.*
+
+% Define inputs
+h__km = 8.0;  % Geometric height, in km
+
+% Call High-latitude Winter Reference Atmosphere functions
+T__kelvin = HighLatitudeAtmosphere.WinterTemperature(h__km);
+% T__kelvin is approx. 220.53 Kelvin
+
+p__hPa = HighLatitudeAtmosphere.WinterPressure(h__km);
+% p__hPa is approx. 324.41 hPa
+
+rho__g_m3 = HighLatitudeAtmosphere.WinterWaterVapourDensity(h__km);
+% rho__g_m3 is approx. 0.0177274 g/m^3
+
+e__hPa = HighLatitudeAtmosphere.WinterWaterVapourPressure(h__km);
+% e__hPa is approx. 0.0180407 hPa
+```

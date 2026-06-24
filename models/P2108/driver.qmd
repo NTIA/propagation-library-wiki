@@ -8,9 +8,15 @@ This page details the usage of the cross-platform command-line driver version of
 
 {{< include /includes/driver/_intro_and_installation.qmd >}}
 
+To use the command-line driver program, you'll need to download the driver program
+(`P2108Driver-Windows-x64.exe` or `P2108Driver-Windows-x86.exe` on Windows, `P2108Driver-Darwin-universal` on macOS, or `P2108Driver-Linux-x86_64` on Linux)
+ and the shared library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux). 
+ These are distributed for each supported platform as part of the [GitHub Releases](https://github.com/NTIA/p2108/releases/) starting with v1.1. 
+ Prior to v1.1, support was only provided for Windows platforms.
+
 {{< include /includes/driver/_general_usage.qmd >}}
 
-# Command-Line Arguments
+## Command-Line Arguments
 
 Executing the command-line driver requires specifying input arguments, defined in @tbl-p2108-driver-input-args below.
 
@@ -32,9 +38,9 @@ The additional arguments are defined in @tbl-p2108-driver-additional-args
 | `-v` | Display version information for the library and driver |
 : Additional arguments for the Recommendation ITU-R P.2108 command-line driver {#tbl-p2108-driver-additional-args}
 
-# Examples
+## Examples
 
-## Height Gain Terminal Correction Model
+### Height Gain Terminal Correction Model
 
 The Height Gain Terminal Correction Model can be run by providing the `-model HGTCM` flag on the command line.
 For example:
@@ -80,7 +86,7 @@ Return Code              0            [P2108 Status: Successful execution]
 Clutter loss             24.5         (dB)
 ```
 
-## Terrestrial Statistical Model
+### Terrestrial Statistical Model
 
 The Terrestrial Statistical Model can be run by providing the `-model TSM` flag on the command line.
 For example:
@@ -122,7 +128,7 @@ Return Code              0            [P2108 Status: Successful execution]
 Clutter loss             32.5         (dB)
 ```
 
-## Aeronautical Statistical Model
+### Aeronautical Statistical Model
 
 The Aeronautical Statistical Model can be run by providing the `-model ASM` flag on the command line.
 For example:

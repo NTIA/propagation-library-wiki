@@ -1,0 +1,236 @@
+---
+title: "Recommendation ITU-R P.835-6"
+date: 2024-12-02
+date-modified: 2025-06-12
+---
+
+The Recommendation ITU-R P.835-6 provides expressions and data for reference standard atmospheres required for the calculation of gaseous attenuation on Earth-space paths [@p835-6].
+This implementation contains six set of functions of altitude: Mean annual global reference atmosphere [@p835-6, Annex1.1], Low-latitude annual reference atmosphere [@p835-6, Annex1.2], Summer Mid-latitude reference atmosphere [@p835-6, Annex1.3.1], Winter Mid-latitude reference atmosphere [@p835-6, Annex1.3.2], Summer High latitude reference atmosphere [@p835-6, Annex1.4.1] and Winter High latitude reference atmosphere [@p835-6, Annex1.4.2]. These functions can be used to determine temperature, pressure and water-vapour pressure, for calculating gaseous attenuation when more reliable local data are not available.
+In addition to those major functions, it also provides some intermedia conversion functions.
+
+{{< include /includes/_getting_started.qmd >}}
+
+## Functions
+
+The input of most of the Recommendation ITU-R P.835-6 function is Geometric height shown in @tbl-p835-inputs-geometric-height.
+
+| Variable | Type   | Units | Limits              | Description      |
+|----------|--------|-------|---------------------|------------------|
+| `h__km`  | double | km    | $0 \leq h \leq 100$ | Geometric height |
+: Geometric height input {#tbl-p835-inputs-geometric-height}
+
+### Mean Annual Global Reference Atmosphere
+
+This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.1]. 
+
+**Global Temperature**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in Kelvin.
+
+**Global Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+**Global Water Vapour Density**
+
+The inputs for this function are shown in @tbl-p835-inputs-water-vapour.
+
+The output of this function is a double value in g/m<sup>3</sup>.
+
+| Variable      | Type   | Units           | Limits              | Description                                                 |
+|---------------|--------|-----------------|---------------------|-------------------------------------------------------------|
+| `h__km`       | double | km              | $0 \leq h \leq 100$ | Geometric height                                            |
+| `rho_0__g_m3` | double | g/m<sup>3</sup> | $rho_0 \geq 0$      | Ground-level water vapour density, default is 7.5 |
+: Water Vapour inputs {#tbl-p835-inputs-water-vapour}
+
+**Global Water Vapour Pressure**
+
+The inputs for this function are shown in @tbl-p835-inputs-water-vapour.
+
+The output of this function is a double value in hPa.
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#mean-annual-global-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#mean-annual-global-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#mean-annual-global-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#mean-annual-global-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+
+### Low-latitude Annual Reference Atmosphere
+
+This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.2]. 
+
+**Low-latitude Temperature**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in Kelvin.
+
+**Low-latitude Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+**Low-latitude Water Vapour Density**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in g/m<sup>3</sup>.
+
+**Low-latitude Water Vapour Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#low-latitude-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#low-latitude-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#low-latitude-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#low-latitude-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+
+### Mid-latitude Summer Annual Reference Atmosphere
+
+This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.3.1]. 
+
+**Mid-latitude Summer Temperature**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in Kelvin.
+
+**Mid-latitude Summer Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+**Mid-latitude Summer Water Vapour Density**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in g/m<sup>3</sup>.
+
+**Mid-latitude Summer Water Vapour Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#mid-latitude-summer-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#mid-latitude-summer-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#mid-latitude-summer-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#mid-latitude-summer-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+
+### Mid-latitude Winter Annual Reference Atmosphere
+
+This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.3.2]. 
+
+**Mid-latitude Winter Temperature**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in Kelvin.
+
+**Mid-latitude Winter Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+**Mid-latitude Winter Water Vapour Density**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in g/m<sup>3</sup>.
+
+**Mid-latitude Winter Water Vapour Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#mid-latitude-winter-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#mid-latitude-winter-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#mid-latitude-winter-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#mid-latitude-winter-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+
+### High-latitude Summer Annual Reference Atmosphere
+
+This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.4.1]. 
+
+**High-latitude Summer Temperature**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in Kelvin.
+
+**High-latitude Summer Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+**High-latitude Summer Water Vapour Density**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in g/m<sup>3</sup>.
+
+**High-latitude Summer Water Vapour Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#high-latitude-summer-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#high-latitude-summer-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#high-latitude-summer-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#high-latitude-summer-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+
+### High-latitude Winter Annual Reference Atmosphere
+
+This set of functions implements Recommendation ITU-R P.835-6(12/2017) [@p835-6, Annex1.4.2]. 
+
+**High-latitude Winter Temperature**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in Kelvin.
+
+**High-latitude Winter Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+**High-latitude Winter Water Vapour Density**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in g/m<sup>3</sup>.
+
+**High-latitude Winter Water Vapour Pressure**
+
+The input for this function is shown in @tbl-p835-inputs-geometric-height.
+
+The output of this function is a double value in hPa.
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#high-latitude-winter-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#high-latitude-winter-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#high-latitude-winter-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#high-latitude-winter-annual-reference-atmosphere){.btn .btn-secondary .btn role="button"}

@@ -1,7 +1,7 @@
 ---
 title: "Low Frequency / Medium Frequency Propagation Model"
 date: 2024-12-02
-date-modified: 2025-01-25
+date-modified: 2025-06-12
 ---
 
 The Low Frequency / Medium Frequency (LF/MF) propagation model predicts basic transmission loss in the frequency range 0.01 - 30 MHz for propagation paths over a smooth Earth and antenna heights less than 50 meters. [@ntia-tr-99-368]
@@ -27,7 +27,7 @@ The model additionally outputs the predicted electric field strength of the grou
 
 ## Functions
 
-### Low Frequency / Mid Frequency Propagation Model
+### Low Frequency / Medium Frequency (LF/MF) Propagation Model
 
 This model's functionality is exposed through a single function. The inputs for this function are shown below in @tbl-lfmf-inputs.
 The model outputs are provided in @tbl-lfmf-outputs.
@@ -73,7 +73,7 @@ The `method` output indicates the solution method used internally by the model w
 
 {{< include /includes/_code_examples.qmd >}}
 
-[C++](cpp.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
-[.NET](dotnet.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
-[MATLAB](matlab.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
-[Python](python.qmd#calling-the-model){.btn .btn-secondary .btn role="button"}
+[C++](cpp.qmd#calling-the-lfmf-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#calling-the-lfmf-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#calling-the-lfmf-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#calling-the-lfmf-model){.btn .btn-secondary .btn role="button"}

@@ -1,34 +1,30 @@
 ---
 title: "Low Frequency / Medium Frequency Propagation Model – MATLAB"
 date: 2025-01-24
-date-modified: 2025-01-25
+date-modified: 2025-06-12
 ---
 
-This page details the installation and usage of the MATLAB® version of the PropLib implementation of the Low Frequency / Medium Frequency (LF/MF) propagation model.
-
-{{< include /includes/_under_construction.qmd >}}
+This page details the installation and usage of the MATLAB&reg; version of the PropLib implementation of the Low Frequency / Medium Frequency (LF/MF) propagation model.
 
 {{< include /includes/_link_to_model_home.qmd >}}
 
-<!--
-
 ## Getting Started
 
-This MATLAB® Toolbox is distributed on [MathWorks® File Exchange](#TODO).
+This MATLAB&reg; Toolbox is distributed on [MathWorks&reg; File Exchange](#TODO).
 
 {{< include /includes/matlab/_getting_started.qmd >}}
 
 {{< include /includes/matlab/_documentation.qmd >}}
 
 ```matlab
-help ITS.Propagation.LFMF.LFMF
+help ITS.Propagation.LFMF.LFMFModel
 
 % Prints detailed usage information!
 ```
 
 {{< include /includes/matlab/_examples.qmd >}}
 
-### Calling the Model
+### Calling the LFMF Model
 
 This example shows multiple equivalent ways to specify the polarization input.
 
@@ -55,8 +51,6 @@ pol = Polarization.HORIZONTAL;  % An equivalent way to specify the polarization
 
 % A_btl__db  is approximately  184.49
 % E__dBuVm   is approximately  -82.50
-% P_rx__dbm  is approximately  -115.93
-% method     is                1 (SolutionMethod enum value)
+% P_rx__dbm  is approximately  -114.93
+% method     is RESIDUE_SERIES (SolutionMethod enum value 1)
 ```
-
-->

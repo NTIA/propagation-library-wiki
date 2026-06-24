@@ -1,0 +1,215 @@
+---
+title: "The Recommendation ITU-R P.676-12 – Command-Line Driver"
+date: 2025-01-10
+date-modified: 2025-06-12
+---
+
+This page details the usage of the cross-platform command-line driver version of the Recommendation ITU-R P.676-12.
+
+{{< include /includes/driver/_intro_and_installation.qmd >}}
+
+To use the command-line driver program, you'll need to download the driver program
+(`P676Driver-1.0.0-Windows-x64.exe` or `P676Driver-1.0.0-Windows-x86.exe` on Windows, `P676Driver-1.0.0-Darwin-universal` on macOS, or `P676Driver-1.0.0-Linux-x86_64` on Linux)
+ and the shared library (`.dll` on Windows, `.dylib` on macOS, or `.so` on Linux). 
+ These are distributed for each supported platform as part of the [GitHub Releases](https://github.com/NTIA/p676/releases/).
+
+{{< include /includes/driver/_general_usage.qmd >}}
+
+## Command-Line Arguments
+
+Executing the command-line driver requires specifying input arguments, defined in @tbl-p676-driver-input-args below.
+
+
+| Flag     | Type   | Required | Description                                                  |
+|----------|--------|----------|--------------------------------------------------------------|
+| `-i`     | string | true     | File specifying model input parameters in `key,value` format |
+| `-model` | string | true     | Which model to run, one of `SPEC`, `TERR`, or `SLANT`        |
+| `-o`     | string | true     | Filename where output results should be written              |
+: Arguments for the Recommendation ITU-R P.676 command-line driver {#tbl-p676-driver-input-args}
+
+Additional arguments are available to print help text and version information without running any model.
+When using these options, none of the arguments from @tbl-p676-driver-input-args are required.
+The additional arguments are defined in @tbl-p676-driver-additional-args
+
+| Flag | Description                                            |
+|------|--------------------------------------------------------|
+| `-h` | Display help text                                      |
+| `-v` | Display version information for the library and driver |
+: Additional arguments for the Recommendation ITU-R P.676 command-line driver {#tbl-p676-driver-additional-args}
+
+## Examples
+
+### Specific Attenuation Model
+
+The Specific Attenuation Model can be run by providing the `-model SPEC` flag on the command line.
+For example:
+
+```cmd
+# Windows (64-bit)
+P676Driver-1.0.0-Windows-x64.exe -i inputSPEC.txt -model SPEC -o outputSPEC.txt
+
+# macOS
+./P676Driver-1.0.0-Darwin-universal -i inputSPEC.txt -model SPEC -o outputSPEC.txt
+
+# Linux
+./P676Driver-1.0.0-Linux-x86_64 -i inputSPEC.txt -model SPEC -o outputSPEC.txt
+```
+
+A corresponding pair of input and output files for the Specific Attenuation Model are provided below.
+
+```{.default filename="Input File Contents"}
+f__ghz,60
+T__kelvin,288.15
+e__hPa,9.97288879
+p__hPa,1013.25
+```
+
+```{.default filename="Output File Contents"}
+Model                           P676
+Model Variant                   Specific Attenuation Model
+Library Version                 v1.0
+Driver Version                  v1.0.0
+Date Generated                  Tue Jul 08 12:19:49 2025
+Input Arguments                 -i inputSPEC.txt -model SPEC -o outputSPEC.txt 
+
+Inputs:
+f__ghz                          60           [GHz]
+t__kelvin                       288.15       [Kelvin]
+e__hpa                          9.97289      [hPa]
+p__hpa                          1013.25      [hPa]
+
+Results:
+Return Code                     0            [P676 v1.0 Status: Successful execution]
+Specific gaseous attenuation    14.77832     [dB/km]
+```
+
+### Terrestrial Path Attenuation Model
+
+The Terrestrial Path Attenuation Model can be run by providing the `-model TERR` flag on the command line.
+For example:
+
+```cmd
+# Windows (64-bit)
+P676Driver-1.0.0-Windows-x64.exe -i inputTERR.txt -model TERR -o outputTERR.txt
+
+# macOS
+./P676Driver-1.0.0-Darwin-universal -i inputTERR.txt -model TERR -o outputTERR.txt
+
+# Linux
+./P676Driver-1.0.0-Linux-x86_64 -i inputTERR.txt -model TERR -o outputTERR.txt
+```
+
+A corresponding pair of input and output files for the Terrestrial Path Attenuation Model are provided below.
+
+```{.default filename="Input File Contents"}
+f__ghz,56
+T__kelvin,288.15
+e__hPa,9.97288879
+p__hPa,1013.25
+atmosphere,5
+r_0__km,15.6
+```
+
+```{.default filename="Output File Contents"}
+Model                           P676
+Model Variant                   Terrestrial Path Model
+Library Version                 v1.0
+Driver Version                  v1.0.0
+Date Generated                  Tue Jul 08 12:21:23 2025
+Input Arguments                 -i inputTERR.txt -model TERR -o outputTERR.txt 
+
+Inputs:
+f__ghz                          56           [GHz]
+t__kelvin                       288.15       [Kelvin]
+e__hpa                          9.97289      [hPa]
+p__hpa                          1013.25      [hPa]
+atmosphere                      5            [Low-latitude annual reference atmosphere]
+r_0__km                         15.6         [km]
+
+Results:
+Return Code                     0            [P676 v1.0 Status: Successful execution]
+Gaseous attenuation             109.41314    [dB]
+```
+
+### Slant Path Attenuation Model
+
+The Slant Path Attenuation Model can be run by providing the `-model SLANT` flag on the command line.
+For example:
+
+```cmd
+# Windows (64-bit)
+P676Driver-1.0.0-Windows-x64.exe -i inputSLANT.txt -model SLANT -o outputSLANT.txt
+
+# macOS
+./P676Driver-1.0.0-Darwin-universal -i inputSLANT.txt -model SLANT -o outputSLANT.txt
+
+# Linux
+./P676Driver-1.0.0-Linux-x86_64 -i inputSLANT.txt -model SLANT -o outputSLANT.txt
+```
+
+**Example 1**
+
+A corresponding pair of input and output files for the Slant Path Attenuation Model with **INVALID** inputs are provided below.
+
+```{.default filename="Input File Contents"}
+f__ghz,26
+h_1__km,0
+h_2__km,30
+beta_1__rad,1.55
+atmosphere,7
+```
+
+```{.default filename="Output File Contents"}
+Model                           P676
+Model Variant                   Slant Path Model
+Library Version                 v1.0
+Driver Version                  v1.0.0
+Date Generated                  Tue Jul 08 12:22:38 2025
+Input Arguments                 -i inputSLANT.txt -model SLANT -o outputSLANT.txt 
+
+Inputs:
+f__ghz                          26           [GHz]
+h_1__km                         0            [km]
+h_2__km                         30           [km]
+beta_1__rad                     1.55         [rad]
+atmosphere                      7            [Invalid atmosphere]
+
+Results:
+Return Code                     32           [P676 v1.0 Error: Invalid value for atmosphere]
+```
+
+**Example 2**
+
+A corresponding pair of input and output files for the Slant Path Attenuation Model with **VALID** inputs are provided below.
+
+```{.default filename="Input File Contents"}
+f__ghz,26
+h_1__km,0
+h_2__km,30
+beta_1__rad,1.55
+atmosphere,3
+```
+
+```{.default filename="Output File Contents"}
+Model                           P676
+Model Variant                   Slant Path Model
+Library Version                 v1.0
+Driver Version                  v1.0.0
+Date Generated                  Tue Jul 08 12:23:23 2025
+Input Arguments                 -i inputSLANT.txt -model SLANT -o outputSLANT.txt 
+
+Inputs:
+f__ghz                          26           [GHz]
+h_1__km                         0            [km]
+h_2__km                         30           [km]
+beta_1__rad                     1.55         [rad]
+atmosphere                      3            [Summer Mid-latitude reference atmosphere]
+
+Results:
+Return Code                     0            [P676 v1.0 Status: Successful execution]
+Gaseous attenuation             16.90827     [dB]
+Bending angle                   0.00950      [rad]
+Ray length                      538.16348    [km]
+Incident angle at h_2           1.47533      [rad]
+Excess atmospheric path length  0.06565      [km]
+```
