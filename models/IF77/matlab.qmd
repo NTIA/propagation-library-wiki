@@ -1,0 +1,174 @@
+---
+title: "IF-77 Electromagnetic Wave Propagation Model – MATLAB"
+date: 2026-05-12
+date-modified: 2026-05-12
+---
+
+This page details the installation and usage of the MATLAB&reg; version of the PropLib implementation of the IF-77 Electromagnetic Wave Propagation Model.
+
+{{< include /includes/_link_to_model_home.qmd >}}
+
+## Getting Started
+
+This MATLAB&reg; Toolbox is distributed on [MathWorks&reg; File Exchange](#TODO).
+
+{{< include /includes/matlab/_getting_started.qmd >}}
+
+{{< include /includes/matlab/_documentation.qmd >}}
+
+```matlab
+help ITS.Propagation.IF77.IF77Model
+
+% Prints detailed usage information!
+```
+
+{{< include /includes/matlab/_examples.qmd >}}
+
+### Calling the IF77 Model
+
+```matlab
+import ITS.Propagation.IF77.*
+
+% Define inputs
+if77_card1 = IF77Card1();      % IF77Card1 input class
+if77_card2 = IF77Card2();      % IF77Card2 input class
+if77_card3 = IF77Card3();      % IF77Card3 input class
+
+if77_card1.output_type = Enums.Output.TransmissionLoss;
+if77_card1.lobing_flag = Enums.Lobing.NoLobing;
+if77_card1.time_availability_flag = Enums.TimeAvailability.InstantaneousLevels;
+if77_card1.d__km = 119.3048129015685;
+if77_card1.percentage = 50;
+
+if77_card2.h_1__meter = 292.10976985787516;
+if77_card2.antenna_1_pattern = Enums.AntennaPattern.Isotropic;
+if77_card2.antenna_1_use = Enums.AntennaUse.Directive;
+if77_card2.antenna_1_polarization = Enums.AntennaPolarization.Vertical;
+if77_card2.antenna_1_tilt__deg = 0;
+if77_card2.antenna_1_half_half_beamwidth__deg = 0;
+if77_card2.h_fss__meter = 242.10976985787516;
+if77_card2.rainfall_zone = Enums.RainfallZone.NoRainfall;
+if77_card2.storm_size = Enums.StormSize.FiveKm;
+if77_card2.terrain_type = Enums.TerrainType.IrregularTerrain;
+if77_card2.horizon_input = Enums.HorizonInput.Height;
+if77_card2.delta_h__meter = 290.8360817429317;
+if77_card2.d_hzn__km = 5.8102343919372412;
+if77_card2.h_hzn__meter = 471;
+if77_card2.low_horizon_angle_degrees = 1;
+if77_card2.low_horizon_angle_minutes = 44;
+if77_card2.low_horizon_angle_seconds = 27;
+if77_card2.counterpoise_diameter__meter = 0;
+if77_card2.counterpoise_height__meter = 0;
+if77_card2.counterpoise_material = Enums.Material.None;
+
+if77_card3.h_2__meter = 120000;
+if77_card3.antenna_2_pattern = Enums.AntennaPattern.Isotropic;
+if77_card3.antenna_2_use = Enums.AntennaUse.Directive;
+if77_card3.antenna_2_polarization = Enums.AntennaPolarization.Vertical;
+if77_card3.antenna_2_tilt__deg = 0;
+if77_card3.antenna_2_half_half_beamwidth__deg = 0;
+if77_card3.N_0 = 315;
+if77_card3.f__mhz = 3000;
+if77_card3.eirp = 0;
+if77_card3.h_sur__meter = 284;
+if77_card3.path_material = Enums.Material.AverageGround;
+if77_card3.water_temp__celsius = Enums.Temperature.TenDegreesCelsius;
+if77_card3.water_wave_height = 0;
+if77_card3.water_state = Enums.WaterState.CalmGlassy;
+if77_card3.path_water_wave_height_use_flag = Enums.WaterWaveHeight.UseStandard;
+if77_card3.scintillation_index_group = Enums.ScintillationIndex.IndexGroup1;
+if77_card3.scintillation_freq_scaling = Enums.FrequencyScaling.None;
+if77_card3.scintillation_use_flag = Enums.ScintillationUse.NoScintillation;
+if77_card3.climate_1 = Enums.Climate.ContinentalAllYear;
+if77_card3.weight_1 = 0;
+if77_card3.climate_2 = Enums.Climate.ContinentalAllYear;
+if77_card3.weight_2 = 0;
+
+% Call the IF77 model
+if77_result = IF77(if77_card1, if77_card2, if77_card3);
+disp(if77_result);
+
+% The provided inputs should approximately result in:
+% IF77Result with properties:
+%                 warnings: 0
+%   takeoff_angle__degrees: 40.8568
+%         propagation_mode: LineOfSight
+%                 A_fs__db: 146.5910
+%                    A__db: -146.6341
+```
+
+### Calling the IF77 Extended Model
+
+The inputs for IF77 Extended Model are the same as IF77 Model shown above. The outputs include the terminals and path information in addition to IF77 model results.
+
+```matlab
+% Call the IF77 extended model
+[if77_result, if77_terminal1, if77_terminal2, if77_path] = IF77_Ex(if77_card1, if77_card2, if77_card3);
+disp(if77_result);
+disp(if77_terminal1);
+disp(if77_terminal2);
+disp(if77_path);
+
+% The provided inputs should approximately result in:
+% IF77Result with properties:
+%                 warnings: 0
+%   takeoff_angle__degrees: 40.8568
+%         propagation_mode: LineOfSight
+%                 A_fs__db: 146.5910
+%                    A__db: -146.6341
+
+% IF77Terminal with properties:
+%             h__km: 0.2921
+%           h_r__km: 0.2921
+%           h_e__km: 0.0081
+%          h_rs__km: 0.0081
+%       delta_h__km: 0
+%             d__km: 11.7889
+%           d_r__km: 11.9355
+%         d_hzn__km: 5.8102
+%      theta_r__rad: 0.0014
+%    theta_ray__rad: 0.0014
+%    theta_hzn__rad: 0.0304
+%     theta_TO__rad: -0.0311
+%           z_e__km: 8.5686e+03
+
+% IF77Terminal with properties:
+%             h__km: 99.5949
+%           h_r__km: 120
+%           h_e__km: 99.3109
+%          h_rs__km: 119.7160
+%       delta_h__km: 20.4051
+%             d__km: 1.2983e+03
+%           d_r__km: 1.2983e+03
+%         d_hzn__km: 1.0725e+03
+%      theta_r__rad: 0.1515
+%    theta_ray__rad: 0.1908
+%    theta_hzn__rad: -0.1932
+%     theta_TO__rad: 0.0311
+%           z_e__km: 8.6679e+03
+
+% IF77Path with properties:
+%                h_sur__km: 0.2840
+%                h_fss__km: 0.2421
+%               h_1fss__km: 0.0500
+%                h_hzn__km: 0.4710
+%                 d_ML__km: 1.0783e+03
+%                    d__km: 119.3048
+%                  d_0__km: 1.0483e+03
+%                  d_d__km: 1.0483e+03
+%           psi_limit__rad: 0.0032
+%              delta_h__km: 0.2908
+%                      N_0: 315
+%                      N_s: 305.6846
+%            material_enum: AverageGround
+%                    sigma: 0.0050
+%                  epsilon: 15
+%                  a_e__km: 8.5686e+03
+%      water_temp__celsius: 10
+%    use_user_sigma_h_flag: UseStandard
+%             user_sigma_h: 0
+%              water_state: CalmGlassy
+%                   lobing: NoLobing
+%                 psi__rad: 0.7132
+%             terrain_type: IrregularTerrain
+```

@@ -1,0 +1,717 @@
+---
+title: "IF-77 Electromagnetic Wave Propagation Model"
+date: 2026-05-01
+date-modified: 2026-05-06
+---
+
+The IF-77 Electromagnetic Wave propagation model predicts the basic transmission loss in the frequency range 0.1 to 20 GHz for aeronautical and satellite services. It also calculates power available, power density, and/or a desired-to-undesired signal ratio. This library implements M.E. Johnson and G.D. Gierhart's work published in The IF-77 Electromagnetic Wave Propagation Model[@FAA-ES-83/3], NTIA Sponsor Report FAA-ES-83/3, September 1983.
+
+{{< include /includes/_getting_started.qmd >}}
+
+## Primary Functions
+
+### IF77 Model
+
+This function implements the primary method of the IF-77 electromagnetic wave propagation model. The inputs for this function are 3 Card structures shown below in @tbl-if77-inputs-if77-card1, @tbl-if77-inputs-if77-card2, @tbl-if77-inputs-if77-card3.
+
+**if77 Card1 Inputs**
+
+| Card1 structure          | Type   | Units | Limits                          | Description                                            |
+|--------------------------|--------|-------|---------------------------------|--------------------------------------------------------|
+| `output_type`            | enum   |       | See @tbl-if77-outputs           | Type of output desired                                 |
+| `lobing_flag`            | enum   |       | See @tbl-if77-lobing            | Whether lobing should be used                          |
+| `time_availability_flag` | enum   |       | See @tbl-if77-time_availability | Time availability option                               |
+| `d__km`                  | double | km    | $d \geq 0$                      | Great-circle distance between terminals                |
+| `percentage`             | double |       | $0 < percentage < 100$          | Variability time percentage                            |
+: Card1 structure for the if77 propagation model {#tbl-if77-inputs-if77-card1}
+
+The `output_type` input must be one of the following desired output types in **Output enum**, as defined in @tbl-if77-outputs.
+
+| Enum Value | Output Type enum |
+|------------|-----------------------------|
+| 1          | Calculate power available   |
+| 2          | Calculate power density     |
+| 3          | Calculate transmission loss |
+: Allowed output type values {#tbl-if77-outputs}
+
+The `lobing_flag` input must be one of the following desired lobing flags in **LobingFlag enum**, as defined in @tbl-if77-lobing.
+
+| Enum Value | Lobing Flag enum                  |
+|------------|-----------------------------------|
+| 0          | Do not use lobing in calculations |
+| 2          | Use lobing in calculations        |
+: Allowed lobing flag values {#tbl-if77-lobing}
+
+The `time_availability_flag` input must be one of the following desired time availability flags in **TimeAvailability enum**, as defined in @tbl-if77-time_availability.
+
+| Enum Value | Time Availability enum   |
+|------------|--------------------------|
+| 1          | Hourly median levels     |
+| 2          | Instantaneous levels     |
+: Allowed time availability flag values {#tbl-if77-time_availability}
+
+**if77 Card2 Inputs**
+
+| Card2 structure                      | Type   | Units   | Limits                                             | Description                                                        |
+|--------------------------------------|--------|---------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| `h_1__meter`                         | double | meters  | $1 \leq h_1 \leq 3000$                             | Low antenna height above MSL                                       |
+| `antenna_1_pattern`                  | enum   |         | See @tbl-if77-antenna_pattern                      | Type of antenna at lower terminal                                  |
+| `antenna_1_use`                      | enum   |         | See @tbl-if77-antenna_use                          | Whether the low antenna is directive or tracking                   |
+| `antenna_1_polarization`             | enum   |         | See @tbl-if77-antenna_polarization                 | Polarization of low antenna                                        |
+| `antenna_1_tilt__deg`                | double | degrees | $-90 \leq antenna_1\_tilt \leq 90$                 | Tilt of the low antenna                                            |
+| `antenna_1_half_half_beamwidth__deg` | double | degrees | $1 \leq antenna_1\_half\_half\_beamwidth \leq 45$  | Half of the half power beamwidth of low antenna                    |
+| `h_fss__meter`                       | double | meters  | $0 \leq h\_fss \leq 4000$                          | Elevation of the facility site surface above mean sea level        |
+| `rainfall_zone`                      | enum   |         | See @tbl-if77-rainfall_zone                        | Rainfall zone through which the transmission takes place           |
+| `storm_size`                         | int    | km      | $storm\_size \geq 0$ (See @tbl-if77-storm_size)    | Size of the rainstorm between antennas                             |
+| `terrain_type`                       | enum   |         | See @tbl-if77-terrain_type                         | Type of terrain                                                    |
+| `horizon_input`                      | enum   |         | See @tbl-if77-horizon_input                        | How the horizon obstacle will be specified                         |
+| `delta_h__meter`                     | double | meters  | $0 \leq delta_h \leq 700$                          | Interdecile range of the terrain profile                           |
+| `d_hzn__km`                          | double | km      | $d\_hzn \geq 0$                                    | Distance to low antenna's horizon                                  |
+| `h_hzn__meter`                       | double | meters  | $0 \leq h\_hzn \leq 1500$                          | Height of low antenna's horizon                                    |
+| `low_horizon_angle_degrees`          | int    | degrees | $-12 \leq low\_horizon\_angle\_degrees \leq 12$    | Degree portion of the low horizon angle                            |
+| `low_horizon_angle_minutes`          | int    | minutes | $-60 \leq low\_horizon\_angle\_minutes \leq 60$    | Minutes portion of the low horizon angle                           |
+| `low_horizon_angle_seconds`          | int    | seconds | $-60 \leq low\_horizon\_angle\_seconds \leq 60$    | Seconds portion of the low horizon angle                           |
+| `counterpoise_diameter__meter`       | double | meters  | $counterpoise\_diameter \geq 0$                    | Diameter of the low antenna's reflecting counterpoise              |
+| `counterpoise_height__meter`         | double | meters  | $counterpoise\_height \geq 0$                      | Height of the low antenna's reflecting counterpoise                |
+| `counterpoise_material`              | enum   |         | See @tbl-if77-material                             | Reflective properties of the low antenna's reflecting counterpoise |
+: Card2 structure for the if77 propagation model {#tbl-if77-inputs-if77-card2}
+
+The `antenna_1_pattern` input must be one of the following desired antenna patterns in **AntennaPattern enum**, as defined in @tbl-if77-antenna_pattern.
+
+| Enum Value | Antenna Pattern enum                           |
+|------------|------------------------------------------------|
+| 1          | Isotropic antenna                              |
+| 2          | DME antenna                                    |
+| 3          | TACAN (RTA-2) antenna                          |
+| 4          | 4-loop array (cosine vertical pattern) antenna |
+| 5          | 8-loop array (cosine vertical pattern) antenna |
+| 6          | I or II (cosine vertical pattern) antenna      |
+| 7          | JTAC with tilted antenna                       |
+: Allowed antenna pattern values {#tbl-if77-antenna_pattern}
+
+The `antenna_1_use` input must be one of the following desired antenna use values in **AntennaUse enum**, as defined in @tbl-if77-antenna_use.
+
+| Enum Value | Antenna Use enum  |
+|------------|-------------------|
+| 0          | Directive antenna |
+| 1          | Tracking antenna  |
+: Allowed antenna use values {#tbl-if77-antenna_use}
+
+The `antenna_1_polarization` input must be one of the following desired antenna polarizations in **AntennaPolarization enum**, as defined in @tbl-if77-antenna_polarization.
+
+| Enum Value | Antenna Polarization enum       |
+|------------|---------------------------------|
+| 1          | Horizontal antenna polarization |
+| 2          | Vertical antenna polarization   |
+| 3          | Circular antenna polarization   |
+: Allowed antenna polarization values {#tbl-if77-antenna_polarization}
+
+The `rainfall_zone` input must be one of the following desired rainfall zones in **RainfallZone enum**, as defined in @tbl-if77-rainfall_zone.
+
+| Enum Value | Rainfall Zone enum                                |
+|------------|---------------------------------------------------|
+| 0          | No rainfall is considered                         |
+| 1          | Rainfall zone 1                                   |
+| 2          | Rainfall zone 2                                   |
+| 3          | Rainfall zone 3                                   |
+| 4          | Rainfall zone 4                                   |
+| 5          | Rainfall zone 5                                   |
+| 6          | Rainfall zone 6                                   |
+| 7          | 0.5 dB times the value in path_storm_size is used |
+: Allowed rainfall zone values {#tbl-if77-rainfall_zone}
+
+The `storm_size` input must be one of the following values if rainfall zone is `0.5 dB times the value in path_storm_size is used`, as defined in @tbl-if77-storm_size.
+
+| Value | Storm Size in km         |
+|------------|---------------------|
+| 0          | No storm            |
+| 5          | Storm size of 5 km  |
+| 10         | Storm size of 10 km |
+| 20         | Storm size of 20 km |
+: Allowed storm size values if rainfall zone is 7 {#tbl-if77-storm_size}
+
+The `terrain_type` input must be one of the following desired terrain types in **TerrainType enum**, as defined in @tbl-if77-terrain_type.
+
+| Enum Value | Terrain Type enum    |
+|------------|----------------------|
+| 1          | Smooth earth terrain |
+| 2          | Irregular terrain    |
+: Allowed terrain type values {#tbl-if77-terrain_type}
+
+The `horizon_input` input must be one of the following desired horizon inputs in **HorizonInput enum**, as defined in @tbl-if77-horizon_input.
+
+| Enum Value | Horizon Input enum                                                    |
+|------------|-----------------------------------------------------------------------|
+| 0          | No horizon obstacle is specified                                      |
+| 1          | Horizon obstacle specified by elevation angle                         |
+| 2          | Horizon obstacle specified by its height                              |
+| 3          | Horizon obstacle specified by both its elevation angle and its height |
+: Allowed horizon input values {#tbl-if77-horizon_input}
+
+The `counterpoise_material` input must be one of the following desired materials in **Material enum**, as defined in @tbl-if77-material.
+
+| Enum Value | Material enum                           |
+|------------|-----------------------------------------|
+| 0          | No counterpoise                         |
+| 1          | Counterpoise material is sea water      |
+| 2          | Counterpoise material is good ground    |
+| 3          | Counterpoise material is average ground |
+| 4          | Counterpoise material is poor ground    |
+| 5          | Counterpoise material is fresh water    |
+| 6          | Counterpoise material is concrete       |
+| 7          | Counterpoise material is metallic       |
+: Allowed material values {#tbl-if77-material}
+
+**if77 Card3 Inputs**
+
+| Card3 structure                      | Type   | Units   | Limits                                            |                                                               |
+|--------------------------------------|--------|---------|---------------------------------------------------|---------------------------------------------------------------|
+| `h_2__meter`                         | double | meters  | $h_2 \geq 0$                                      | Height of the high antenna                                    |
+| `antenna_2_pattern`                  | enum   |         | See @tbl-if77-antenna_pattern                     | Type of antenna at high terminal                              |
+| `antenna_2_use`                      | enum   |         | See @tbl-if77-antenna_use                         | Whether the high antenna is directive or tracking             |
+| `antenna_2_polarization`             | enum   |         | See @tbl-if77-antenna_polarization                | Polarization of high antenna                                  |
+| `antenna_2_tilt__deg`                | double | degrees | $-90 \leq antenna_2\_tilt \leq 90$                | Tilt of the high antenna                                      |
+| `antenna_2_half_half_beamwidth__deg` | double | degrees | $1 \leq antenna_2\_half\_half\_beamwidth \leq 45$ | Half of the half power beamwidth of high antenna              |
+| `N_0`                                | double | N-units | $200 \leq N_0 \leq 400$                           | Surface refractivity of the path referenced to mean sea level |
+| `f__mhz`                             | double | MHz     | $20 \leq f \leq 100000$                           | Frequency                                                     |
+| `eirp`                               | double | dBW     |                                                   | Equivalent isotropic radiated power                           |
+| `h_sur__meter`                       | double | meters  | $0 \leq h\_sur \leq 600$                          | Average height of earth above MSL between terminals           |
+| `path_material`                      | enum   |         | See @tbl-if77-material                            | Material of the reflection surface                            |
+| `water_temp__celsius`                | int    | Celsius | See @tbl-if77-water_temp                          | Temperature of the water                                      |
+| `water_wave_height`                  | double |         | $0 \leq water\_wave\_height \leq 99$              | Relative crest height of the waves in the water               |
+| `water_state`                        | enum   |         | See @tbl-if77-water_state                         | Roughness of the water                                        |
+| `path_water_wave_height_use_flag`    | enum   |         | See @tbl-if77-water_wave_height_use_flag          | Whether to use path_water_wave_height or standard value       |
+| `scintillation_index_group`          | enum   |         | See @tbl-if77-scintillation_index_group           | Atmospheric scintillation index group to use                  |
+| `scintillation_freq_scaling`         | enum   |         | See @tbl-if77-scintillation_freq_scaling          | Frequency scaling factor                                      |
+| `scintillation_use_flag`             | enum   |         | See @tbl-if77-scintillation_use_flag              | Whether to use scintillation                                  |
+| `climate_1`                          | enum   |         | See @tbl-if77-climate                             | Climate of the low antenna                                    |
+| `weight_1`                           | int    |         | $weight_1 \geq 0$                                 | Low antenna weighting value for climate mixing                |
+| `climate_2`                          | enum   |         | See @tbl-if77-climate                             | Climate of the high antenna                                   |
+| `weight_2`                           | int    |         | $weight_2 \geq 0$                                 | High antenna weighting value for climate mixing               |
+: Card3 structure for the if77 propagation model {#tbl-if77-inputs-if77-card3}
+
+The `water_temp__celsius` input must be one of the following desired water temperature in Celsius, as defined in @tbl-if77-water_temp.
+
+| Enum Value | Water temperature in Celsius            |
+|------------|-----------------------------------------|
+| 0          | Water temperature of 0 degrees Celsius  |
+| 10         | Water temperature of 10 degrees Celsius |
+| 20         | Water temperature of 20 degrees Celsius |
+: Allowed water temperature in Celsius values {#tbl-if77-water_temp}
+
+The `water_state` input must be one of the following desired water states in **WaterState enum**, as defined in @tbl-if77-water_state.
+
+| Enum Value | Water State enum                        |
+|------------|-----------------------------------------|
+| 0          | Average wave height range: 0 m          |
+| 1          | Average wave height range: 0 - 0.1 m    |
+| 2          | Average wave height range: 0.1 - 0.5 m  |
+| 3          | Average wave height range: 0.5 - 1.25 m |
+| 4          | Average wave height range: 1.25 - 2.5 m |
+| 5          | Average wave height range: 2.5 - 4 m    |
+| 6          | Average wave height range: 4 - 6 m      |
+| 7          | Average wave height range: 6 - 9 m      |
+| 8          | Average wave height range: 9 - 14 m     |
+| 9          | Average wave height range: > 14 m       |
+: Allowed water state values {#tbl-if77-water_state}
+
+The `water_wave_height_use_flag` input must be one of the following desired water wave height use flags in **WaterWaveHeight enum**, as defined in @tbl-if77-water_wave_height_use_flag.
+
+| Enum Value | Water Wave Height Use Flag enum                          |
+|------------|----------------------------------------------------------|
+| 0          | Use standard value associated with path_water_state_type |
+| 1          | Use value path_water_wave_height                         |
+: Allowed water wave height use flag values {#tbl-if77-water_wave_height_use_flag}
+
+The `scintillation_index_group` input must be one of the following desired scintillation index groups in **ScintillationIndex enum**, as defined in @tbl-if77-scintillation_index_group.
+
+| Enum Value | Scintillation Index enum       |
+|------------|--------------------------------|
+| 0          | Scintillation Index %:  0 - 19 |
+| 1          | Scintillation Index %: 20 - 39 |
+| 2          | Scintillation Index %: 40 - 59 |
+| 3          | Scintillation Index %: 60 - 79 |
+| 4          | Scintillation Index %: 80 - 89 |
+| 5          | Scintillation Index %: > 90    |
+: Allowed scintillation index group values {#tbl-if77-scintillation_index_group}
+
+The `scintillation_freq_scaling` input must be one of the following desired frequency scalings in **FrequencyScaling enum**, as defined in @tbl-if77-scintillation_freq_scaling.
+
+| Enum Value | Frequency Scaling enum              |
+|------------|-------------------------------------|
+| 0          | No frequency scaling                |
+| 1          | Frequency scaling of 136\/f is used |
+: Allowed frequency scaling values {#tbl-if77-scintillation_freq_scaling}
+
+The `scintillation_use_flag` input must be one of the following desired scintillation use flags in **ScintillationUse enum**, as defined in @tbl-if77-scintillation_use_flag.
+
+| Enum Value | Scintillation Use Flag enum   |
+|------------|-------------------------------|
+| 0          | Scintillation is not included |
+| 1          | Scintillation is included     |
+: Allowed scintillation use flag values {#tbl-if77-scintillation_use_flag}
+
+The `climate` input must be one of the following desired climates in **Climate enum**, as defined in @tbl-if77-climate.
+
+| Enum Value | Climate enum                        |
+|------------|-------------------------------------|
+| 0          | Continental all year                |
+| 1          | Equatorial                          |
+| 2          | Continental subtropical             |
+| 3          | Maritime subtropical                |
+| 4          | Desert                              |
+| 5          | Continental temperate               |
+| 6          | Maritime temperate overland         |
+| 7          | Maritime temperate overseas         |
+| 8          | No climate                          |
+| 9          | May - October, all hours            |
+| 10         | November - April, all hours         |
+| 11         | November - April, hours 0600 - 1300 |
+| 12         | November - April, hours 1300 - 1800 |
+| 13         | November - April, hours 1800 - 2400 |
+| 14         | May - October, hours 0600 - 1300    |
+| 15         | May - October, hours 1300 - 1800    |
+| 16         | May - October, hours 1800 - 2400    |
+| 17         | May - October, hours 0000 - 0600    |
+| 18         | November - April, hours 0000 - 0600 |
+| 19         | All time blocks in entire year      |
+: Allowed climate values {#tbl-if77-climate}
+
+**if77 Outputs**
+
+The IF77 model produces an output with a return code (see [here](errors.qmd#return-codes)) and a Result structure which contains five values provided in @tbl-if77-outputs-result.
+
+| Result structure         | Type   | Units   | Description                                         |
+|--------------------------|--------|---------|-----------------------------------------------------|
+| `warning`                | int    |         | Warning flags, see [here](errors.qmd#warning-flags) |
+| `takeoff_angle__degrees` | double | degrees | Takeoff angle                                       |
+| `propagation_mode`       | enum   |         | Mode of propagation, see @tbl-if77-propagation_mode |
+| `A_fs__db`               | double | db      | Free space loss                                     |
+| `A__db`                  | double | db      | Total loss                                          |
+: Result structure for the if77 propagation model {#tbl-if77-outputs-result}
+
+The output of `propagation_mode` is one of the values in `PropagationMode` enum, as defined in @tbl-if77-propagation_mode.
+
+| Enum Value | Propagation Mode enum             |
+|------------|-----------------------------------|
+| 0          | Mode of propagation not set       |
+| 1          | Line of sight mode of propagation |
+| 2          | Diffraction mode of propagation   |
+| 3          | Troposcatter mode of propagation  |
+: Propagation mode values {#tbl-if77-propagation_mode}
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#calling-the-if77-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#calling-the-if77-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#calling-the-if77-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#calling-the-if77-model){.btn .btn-secondary .btn role="button"}
+
+### IF77 Extended Model
+
+This function implements the primary method of the IF-77 electromagnetic wave propagation model with Internal results. The inputs for this function are the same as if77 model which are 3 Card structures shown above in @tbl-if77-inputs-if77-card1, @tbl-if77-inputs-if77-card2, @tbl-if77-inputs-if77-card3.
+
+**Internal Outputs**
+
+In additional to the return code (see [here](errors.qmd#return-codes)) and Result structure provided in @tbl-if77-outputs-result, this extended model provides 3 internal outputs contain low/high terminals and path information in Terminal structure shown in @tbl-if77-outputs-terminal and Path structure shown in @tbl-if77-outputs-path.
+
+| Terminal structure | Type   | Units   | Description                                             |
+|--------------------|--------|---------|---------------------------------------------------------|
+| `h__km`            | double | km      | Actual height used in model                             |
+| `h_r__km`          | double | km      | Real height above MSL                                   |
+| `h_e__km`          | double | km      | Effective height above reflecting surface               |
+| `h_rs__km`         | double | km      | Real height above reflecting surface                    |
+| `delta_h__km`      | double | km      | Delta between real height and effective height          |
+| `d__km`            | double | km      | Actual horizon distance used                            |
+| `d_r__km`          | double | km      | Ray traced smooth earth horizon distance                |
+| `d_hzn__km`        | double | km      | Distance to the terminals horizon used in calcs         |
+| `theta_r__rad`     | double | degrees | Terminal geometry angle, in rad                         |
+| `theta_ray__rad`   | double | degrees | Incident angle of the ray, in rad                       |
+| `theta_hzn__rad`   | double | degrees | Angle to the horizon (smooth earth or obstacle), in rad |
+| `theta_TO__rad`    | double | degrees | Takeoff angle of ray, in rad                            |
+| `z_e__km`          | double | km      | Radial from Earth center to top of antenna              |
+: Terminal structure for the if77 propagation model {#tbl-if77-outputs-terminal}
+
+| Path structure          | Type   | Units   | Description                                                                  |
+|-------------------------|--------|---------|------------------------------------------------------------------------------|
+| `h_sur__km`             | double | km      | Height of the reflecting surface                                             |
+| `h_fss__km`             | double | km      | Height of the facility site surface above MSL                                |
+| `h_1fss__km`            | double | km      | Height of the low antenna above the facility site surface                    |
+| `h_hzn__km`             | double | km      | Height of the horizon from the low terminal                                  |
+| `d_ML__km`              | double | km      | Maximum line-of-sight distance                                               |
+| `d__km`                 | double | km      | Great-circle path distance                                                   |
+| `d_0__km`               | double | km      | Largest distance in LOS region where diffraction effects are negligible      |
+| `d_d__km`               | double | km      | Initial estimate of d_0                                                      |
+| `psi_limit__rad`        | double | degrees | Largest angle at which lobing effects are considered, in rad                 |
+| `delta_h__km`           | double | km      | Terrain irregularity parameter                                               |
+| `N_0`                   | double | N-Units | Refractivity                                                                 |
+| `N_s`                   | double | N-Units | Surface refractivity                                                         |
+| `material_enum`         | enum   |         | Ground material, see @tbl-if77-material                                      |
+| `sigma`                 | double | S/m     | Conductivity                                                                 |
+| `epsilon`               | double |         | Relative permittivity                                                        |
+| `a_e__km`               | double | km      | Effective Earth radius                                                       |
+| `water_temp__celsius`   | double | Celsius | Water temperature                                                            |
+| `use_user_sigma_h_flag` | enum   |         | Use user defined conductivity flag, see @tbl-if77-water_wave_height_use_flag |
+| `user_sigma_h`          | double | S/m     | User defined conductivity                                                    |
+| `water_state`           | enum   |         | Water state enum for average wave height range, see @tbl-if77-water_state    |
+| `lobing`                | bool   |         | Whether lobing is used                                                       |
+| `psi__rad`              | double | degrees | Reflection angle, in rad                                                     |
+| `terrain_type`          | enum   |         | Terrain type enum, see @tbl-if77-terrain_type                                |
+: Path structure for the if77 propagation model {#tbl-if77-outputs-path}
+
+{{< include /includes/_code_examples.qmd >}}
+
+[C++](cpp.qmd#calling-the-if77-extended-model){.btn .btn-secondary .btn role="button"}
+[.NET](dotnet.qmd#calling-the-if77-extended-model){.btn .btn-secondary .btn role="button"}
+[MATLAB](matlab.qmd#calling-the-if77-extended-model){.btn .btn-secondary .btn role="button"}
+[Python](python.qmd#calling-the-if77-extended-model){.btn .btn-secondary .btn role="button"}
+
+## Error Codes and Warning Flags ##
+
+IF77 supports a defined list of error codes and warning flags. A complete list can be found [here](errors.qmd).
+
+## Intermedia Functions
+
+### Time variability function
+
+This function computes the time variability statistics. The inputs for this function are shown below in @tbl-if77-inputs-TimeVariability.
+
+| Variable  | Type   | Units | Limits                | Description               |
+|-----------|--------|-------|-----------------------|---------------------------|
+| `climate` | enum   |       | See @tbl-if77-climate | Climate statistics to use |
+| `d_e__km` | double | km    |                       | Effective distance        |
+| `f__mhz`  | double | MHz   |                       | Frequency                 |
+| `q`       | double |       |                       | Probability               |
+: Inputs for the time variability function {#tbl-if77-inputs-TimeVariability}
+
+The output of this function is a double value for variability, in dB.
+
+### Inverse complementary cumulative distribution function
+
+This function computes the inverse complementary cumulative distribution. The inputs for this function are shown below in @tbl-if77-inputs-InverseComplementaryCumulativeDistribution.
+
+| Variable  | Type   | Units | Limits                | Description               |
+|-----------|--------|-------|-----------------------|---------------------------|
+| `q`       | double |       | $0.0 \lt q \lt 1.0$                      | Quantile               |
+: Inputs for the inverse complementary cumulative distribution function {#tbl-if77-inputs-InverseComplementaryCumulativeDistribution}
+
+The output of this function is a double value.
+
+### Linear interpolation function
+
+This function computes the Linearly interpolate between two points. The inputs for this function are shown below in @tbl-if77-inputs-LinearInterpolation.
+
+| Variable | Type   | Units | Limits                | Description |
+|----------|--------|-------|-----------------------|-------------|
+| `x1`     | double |       |                       | Point 1     |
+| `y1`     | double |       |                       | Point 1     |
+| `x2`     | double |       |                       | Point 2     |
+| `y2`     | double |       |                       | Point 2     |
+| `x`      | double |       |                       | x-value     |
+: Inputs for the linear interpolation function {#tbl-if77-inputs-LinearInterpolation}
+
+The output of this function is a double value for interpolated y-value.
+
+### Climate variability function
+
+This function computes the climate-specific variability. The inputs for this function are shown below in @tbl-if77-inputs-ClimateVariability.
+
+| Variable  | Type   | Units | Limits                | Description               |
+|-----------|--------|-------|-----------------------|---------------------------|
+| `climate` | enum   |       | See @tbl-if77-climate | Climate statistics to use |
+| `d_e__km` | double | km    |                       | Effective distance        |
+| `f__mhz`  | double | MHz   |                       | Frequency                 |
+| `q`       | double |       |                       | Probability               |
+: Inputs for the climate variability function {#tbl-if77-inputs-ClimateVariability}
+
+The output of this function is a double value for variability, in dB.
+
+### All year continental variability function
+
+This function determines the variability for the all-year continental climate option. The inputs for this function are shown below in @tbl-if77-inputs-AllYearContinentalVariability.
+
+| Variable  | Type   | Units | Limits                | Description               |
+|-----------|--------|-------|-----------------------|---------------------------|
+| `d_e__km` | double | km    |                       | Effective distance        |
+| `f__mhz`  | double | MHz   |                       | Frequency                 |
+| `q`       | double |       |                       | Probability               |
+: Inputs for the all year continental variability function {#tbl-if77-inputs-AllYearContinentalVariability}
+
+The output of this function is a double value for variability, in dB.
+
+### Long term variability function
+
+This function computes the long term variability with support for combining, and weighting, two different climates. The inputs for this function are shown below in @tbl-if77-inputs-LongTermVariability.
+
+| Variable  | Type   | Units | Limits                    | Description               |
+|-----------|--------|-------|---------------------------|---------------------------|
+| `vary`    | struct |       | See @tbl-if77-variability | Variability structure     |
+| `f__mhz`  | double | MHz   |                           | Frequency                 |
+| `q`       | double |       |                           | Probability               |
+: Inputs for the long term variability function {#tbl-if77-inputs-LongTermVariability}
+
+| Variability structure   | Type   | Units | Description                                                        |
+|-------------------------|--------|-------|--------------------------------------------------------------------|
+| `d_e__km`               | enum   | km    | Effective distance                                                 |
+| `climate_1`             | enum   |       | Climate at low terminal. See @tbl-if77-climate                     |
+| `climate_2`             | enum   |       | Climate at high terminal. See @tbl-if77-climate                    |
+| `weight_1`              | int    |       | Climate weight at low terminal                                     |
+| `weight_2`              | int    |       | Climate weight at high terminal                                    |
+| `q`                     | double |       | Time probability                                                   |
+| `d_q__km`               | double | km    | Calculated by [@FAA-ES-83/3, Chapter 10.1 Equation (231)]          |
+| `time_availability`     | enum   |       | Time availability. See @tbl-if77-time_availability                 |
+| `include_scintillation` | bool   |       | Whether include scintillation effects                              |
+| `scint_index_group`     | enum   |       | Scintillation index group. See @tbl-if77-scintillation_index_group |
+| `scint_freq_scaling`    | bool   |       | Whether apply frequency scaling                                    |
+| `rainfall_zone`         | enum   |       | Rainfall zone enum. See @tbl-if77-rainfall_zone                    |
+| `storm_size__km`        | int    | km    | Storm size                                                         |
+: Variability structure for the if77 propagation model {#tbl-if77-variability}
+
+The output of this function is a double value for variability, in dB.
+
+### Combine distributions function
+
+This function combines a given q for two distributions. The inputs for this function are shown below in @tbl-if77-inputs-CombineDistributions.
+
+| Variable     | Type   | Units | Limits | Description                       |
+|--------------|--------|-------|--------|-----------------------------------|
+| `dist_1_med` | double |       |        | Distribution 1, median value      |
+| `dist_1_q`   | double |       |        | Distribution 1, probability value |
+| `dist_2_med` | double |       |        | Distribution 2, median value      |
+| `dist_2_q`   | double |       |        | Distribution 2, probability value |
+| `q`          | double |       |        | Probability                       |
+: Inputs for the combine distributions function {#tbl-if77-inputs-CombineDistributions}
+
+The output of this function is a double value for resulting distribution value.
+
+### Combine and weight distributions function
+
+This function weights and combines two cumulative variability distributions, as described in [@FAA-ES-83/3, Chapter 10.6]. The inputs for this function are shown below in @tbl-if77-inputs-CombineAndWeightDistributions.
+
+| Variable | Type         | Units | Limits | Description               |
+|----------|--------------|-------|--------|---------------------------|
+| `dist_1` | double array |       |        | Distribution 1            |
+| `dist_2` | double array |       |        | Distribution 2            |
+| `w1`     | int          |       |        | Weight for distribution 1 |
+| `w2`     | int          |       |        | Weight for distribution 2 |
+: Inputs for the combine and weight distributions function {#tbl-if77-inputs-CombineAndWeightDistributions}
+
+The output of this function is a double array values for resulting distribution.
+
+### Calculate effective ray length function
+
+This function computes the ray distance through an absorbing layer of specified thickness on the surface of the earth. The ray travels from terminal 1 to terminal 2, with the height of terminal 2 being greater than or equal to the height of terminal 1. The inputs for this function are shown below in @tbl-if77-inputs-CalculateEffectiveRayLength.
+
+| Variable    | Type   | Units   | Limits | Description                                               |
+|-------------|--------|---------|--------|-----------------------------------------------------------|
+| `z_1__km`   | double | km      |        | Radial for terminal 1                                     |
+| `z_2__km`   | double | km      |        | Radial for terminal 2                                     |
+| `a_e__km`   | double | km      |        | Effective earth radius                                    |
+| `d_arc__km` | double | km      |        | Distance between terminals along the surface of the earth |
+| `beta__rad` | double | radians |        | Takeoff angle                                             |
+| `T_e__km`   | double | km      |        | Thickness of the absorbing layer                          |
+: Inputs for the calculate effective ray length function {#tbl-if77-inputs-CalculateEffectiveRayLength}
+
+The output of this function is a double value for ray length through absorbing layer, in km.
+
+### Rain function
+
+This function computes the contribution to variability from rain. The inputs for this function are shown below in @tbl-if77-inputs-Rain.
+
+| Variable             | Type   | Units   | Limits | Description                                     |
+|----------------------|--------|---------|--------|-------------------------------------------------|
+| `rainfall_zone_enum` | enum   |         |        | Rainfall zone enum. See @tbl-if77-rainfall_zone |
+| `size_of_storm__km`  | int    | km      |        | Size of storm                                   |
+| `f__mhz`             | double | MHz     |        | Frequency                                       |
+| `d_arc__km`          | double | km      |        | Arc distance                                    |
+| `z_1__km`            | double | km      |        | Radial for terminal 1                           |
+| `z_2__km`            | double | km      |        | Radial for terminal 2                           |
+| `a_e__km`            | double | km      |        | Effective earth radius                          |
+| `theta_tx__rad`      | double | radians |        | Ray takeoff angle                               |
+| `q`                  | double |         |        | Probability                                     |
+: Inputs for the rain function {#tbl-if77-inputs-Rain}
+
+The output of this function is a double value for rain loss, in dB.
+
+### Scintillation function
+
+This function computes the scintillation variability value. The inputs for this function are shown below in @tbl-if77-inputs-Scintillation.
+
+| Variable            | Type   | Units   | Limits | Description                                                        |
+|---------------------|--------|---------|--------|--------------------------------------------------------------------|
+| `theta_FL__deg`     | double | degrees |        | Angle of the lower terminal location                               |
+| `f__mhz`            | double | MHz     |        | Frequency                                                          |
+| `index_group`       | enum   |         |        | Scintillation index group. See @tbl-if77-scintillation_index_group |
+| `frequency_scaling` | bool   |         |        | Frequency scaling option                                           |
+| `q`                 | double |         |        | Desired percentage value                                           |
+: Inputs for the scintillation function {#tbl-if77-inputs-Scintillation}
+
+The output of this function is a double value for scintillation variability, in dB.
+
+### Antenna gain function
+
+This function computes the gain from the antenna pattern based on the ray geometry. The inputs for this function are shown below in @tbl-if77-inputs-AntennaGain.
+
+| Variable            | Type   | Units   | Limits | Description                                                        |
+|---------------------|--------|---------|--------|--------------------------------------------------------------------|
+| `theta_FL__deg`     | double | degrees |        | Angle of the lower terminal location                               |
+| `f__mhz`            | double | MHz     |        | Frequency                                                          |
+| `index_group`       | enum   |         |        | AntennaGain index group. See @tbl-if77-antennagain_index_group |
+| `frequency_scaling` | bool   |         |        | Frequency scaling option                                           |
+| `q`                 | double |         |        | Desired percentage value                                           |
+: Inputs for the antenn again function {#tbl-if77-inputs-AntennaGain}
+
+The output of this function is three double values for vertical gain, horizontal gain and total gain.
+
+### Atmospheric absorption parameters function
+
+This function computes the atmospheric absorption rates for oxygen and water vapor. The inputs for this function are shown below in @tbl-if77-inputs-AtmosphericAbsorptionParameters.
+
+| Variable            | Type   | Units   | Limits | Description                                                        |
+|---------------------|--------|---------|--------|--------------------------------------------------------------------|
+| `f__mhz`            | double | MHz     |        | Frequency                                                          |
+: Inputs for the atmospheric absorption parameters function {#tbl-if77-inputs-AtmosphericAbsorptionParameters}
+
+The output of this function is two double values for absorption rate of oxygen and absorption rate of water vapor, in dB/km.
+
+### Reflection material properties function
+
+This function computes the material properties for the reflection. The inputs for this function are shown below in @tbl-if77-inputs-ReflectionMaterialProperties.
+
+| Variable              | Type   | Units   | Limits | Description                                |
+|-----------------------|--------|---------|--------|--------------------------------------------|
+| `material_enum`       | enum   |         |        | Material type enum. See @tbl-if77-material |
+| `f__mhz`              | double | MHz     |        | Frequency                                  |
+| `water_temp__celsius` | double | Celsius |        | Water temperature                          |
+: Inputs for the reflection material properties function {#tbl-if77-inputs-ReflectionMaterialProperties}
+
+The output of this function is two double values for conductivity and relative dielectric constant.
+
+### Nakagami-Rice function
+
+This function computes the value of the Nakagami-Rice distribution for K and q. The inputs for this function are shown below in @tbl-if77-inputs-NakagamiRice.
+
+| Variable | Type   | Units | Limits | Description |
+|----------|--------|-------|--------|-------------|
+| `K`      | double |       |        | K-value     |
+| `q`      | double |       |        | Probability |
+: Inputs for the Nakagami-Rice function {#tbl-if77-inputs-NakagamiRice}
+
+The output of this function is a double value for variability, in dB.
+
+### Find K for Ypi at 99 percent function
+
+This function computes the K-value of the Nakagami-Rice distribution for the given value of Y_pi(0.99). The inputs for this function are shown below in @tbl-if77-inputs-FindKForYpiAt99Percent.
+
+| Variable            | Type   | Units   | Limits | Description                                                        |
+|---------------------|--------|---------|--------|--------------------------------------------------------------------|
+| `Y_pi_99__db`     | double | dB |        | Y_pi(0.99)                               |
+: Inputs for the find K for Ypi at 99 percent function {#tbl-if77-inputs-FindKForYpiAt99Percent}
+
+The output of this function is a double value for K-value.
+
+### Ray trace function
+
+This function traces a ray though a horizontally stratified atmosphere based on Thayer. The inputs for this function are shown below in @tbl-if77-inputs-RayTrace.
+
+| Variable        | Type   | Units   | Limits | Description                      |
+|-----------------|--------|---------|--------|----------------------------------|
+| `theta_tx__rad` | double | Radians |        | Takeoff angle                    |
+| `N_s`           | double | N-Units |        | Surface refractivity             |
+| `h_tx__km`      | double | km      |        | Height of the TX                 |
+| `h_rx__km`      | double | km      |        | Height of the RX                 |
+| `h_sur__km`     | double | km      |        | Height of the reflection surface |
+: Inputs for the ray trace function {#tbl-if77-inputs-RayTrace}
+
+The output of this function is two double values for Great-circle distance between terminals, in km and Ray angle at RX, in radians.
+
+### G_HBar function
+
+This function implements the formulation provided in [@FAA-ES-83/3, Chapter 4.1 Equation 83]. The inputs for this function are shown below in @tbl-if77-inputs-G_HBar.
+
+| Variable     | Type   | Units   | Limits | Description           |
+|--------------|--------|---------|--------|-----------------------|
+| `f__mhz`     | double | MHz     |        | Frequency             |
+| `a__km`      | double | km      |        | Earth radius          |
+| `K`          | double |         |        | Diffraction parameter |
+| `d_Lp__km`   | double | km      |        | Distance              |
+| `h_e__meter` | double | meter   |        | Height                |
+: Inputs for the G_HBar function {#tbl-if77-inputs-G_HBar}
+
+The output of this function is a double value for residual height gain, in dB.
+
+### Scattering volumeLoss function
+
+This function computes the scattering volume loss term for troposcatter. The inputs for this function are shown below in @tbl-if77-inputs-ScatteringVolumeLoss.
+
+| Variable    | Type   | Units   | Limits | Description               |
+|-------------|--------|---------|--------|---------------------------|
+| `eta`       | double |         |        | Intermediate parameter    |
+| `s`         | double |         |        | Modulus of asymmetry      |
+| `rho_1__km` | double | km      |        | Ray length for terminal 1 |
+| `rho_2__km` | double | km      |        | Ray length for terminal 2 |
+: Inputs for the scattering volumeloss function {#tbl-if77-inputs-ScatteringVolumeLoss}
+
+The output of this function is a double value for scattering volume loss term, in dB.
+
+### Fresnel function
+
+This function computes the Fresnel Integral for an ideal knife-edge. The inputs for this function are shown below in @tbl-if77-inputs-Fresnel.
+
+| Variable | Type   | Units   | Limits | Description           |
+|----------|--------|---------|--------|-----------------------|
+| `v`      | double |         |        | Diffraction parameter |
+: Inputs for the fresnel function {#tbl-if77-inputs-Fresnel}
+
+The output of this function is two double values for Magnitude and Phase.
+
+### Reflection function
+
+This function computes the ray reflection parameters. The inputs for this function are shown below in @tbl-if77-inputs-Reflection.
+
+| Variable                | Type   | Units   | Limits | Description                                               |
+|-------------------------|--------|---------|--------|-----------------------------------------------------------|
+| `psi`                   | double | Radians |        | Reflection angle                                          |
+| `f__mhz`                | double | MHz     |        | Frequency                                                 |
+| `material_enum`         | enum   |         |        | Material type enum. See @tbl-if77-material                |
+| `pol`                   | enum   |         |        | Polarization. See @tbl-if77-antenna_polarization          |
+| `flag`                  | int    |         |        | Internal control flag                                     |
+| `delta_h_d__km`         | double | km      |        | delta_h(d)                                                |
+| `g_h`                   | double |         |        | Horizontal gain                                           |
+| `g_v`                   | double |         |        | Vertical gain                                             |
+| `sigma`                 | double |         |        | Conductivity                                              |
+| `epsilon`               | double |         |        | Relative permittivity                                     |
+| `use_user_sigma_h_flag` | enum   |         |        | User sigma flag. See @tbl-if77-water_wave_height_use_flag |
+| `user_sigma_h`          | double |         |        | User sigma                                                |
+| `water_state`           | enum   |         |        | Water state enum. See @tbl-if77-water_state               |
+: Inputs for the reflection function {#tbl-if77-inputs-Reflection}
+
+The output of this function is three double values for magnitude of effective reflection coefficient, diffuse component of surface reflection multipath and phase shift of effective reflection coefficient.
+
+### Terminal geometry function
+
+This function computes the terminal geometry parameters. The inputs for this function are shown below in @tbl-if77-inputs-TerminalGeometry.
+
+| Variable    | Type   | Units   | Limits | Description                                                                                  |
+|-------------|--------|---------|--------|----------------------------------------------------------------------------------------------|
+| `terminal`  | struct |         |        | Struct holding various geometric parameters for the terminal. See @tbl-if77-outputs-terminal |
+| `a_e__km`   | double | km      |        | Effective earth radius                                                                       |
+| `N_s`       | double | N-Units |        | Surface refractivity                                                                         |
+| `h_sur__km` | double | km      |        | Height of the reflecting surface above MSL                                                   |
+: Inputs for the terminal geometry function {#tbl-if77-inputs-TerminalGeometry}
+
+The output of this function is a return code (see [here](errors.qmd#return-codes)) with a Terminal structure shown in @tbl-if77-outputs-terminal for terminal information.
+
+### Path geometry function
+
+This function computes the geometry parameters based on input option specified. The inputs for this function are shown below in @tbl-if77-inputs-PathGeometry.
+
+| Variable     | Type   | Units   | Limits | Description                                                                                    |
+|--------------|--------|---------|--------|------------------------------------------------------------------------------------------------|
+| `terminal_1` | struct |         |        | Struct holding various geometric parameters for the terminal 1. See @tbl-if77-outputs-terminal |
+| `terminal_2` | struct |         |        | Struct holding various geometric parameters for the terminal 2. See @tbl-if77-outputs-terminal |
+| `path`       | struct |         |        | Struct holding various geometric parameters for the path. See @tbl-if77-outputs-path           |
+| `input_flag` | enum   |         |        | Input flag enum. See @tbl-if77-horizon_input                                                   |
+: Inputs for the path geometry function {#tbl-if77-inputs-PathGeometry}
+
+The output of this function is a return code (see [here](errors.qmd#return-codes)) with two Terminal structure shown in @tbl-if77-outputs-terminal and a Path structure shown in @tbl-if77-outputs-path for low/high terminals and path information.
